@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Actibooking.Data\Actibooking.Data.csproj" />
+    <ProjectReference Include="..\Actibooking.Models\Actibooking.Models.csproj" />
+  </ItemGroup>
+
 </Project>
