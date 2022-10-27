@@ -47,4 +47,4 @@ const ConstantsCourses = CoursesURL
 const ConstantsAdresses = AdressesURL
 
 
-export default ConstantsOrganizations; ConstantsCourses; ConstantsAdresses
+export default (ConstantsOrganizations, ConstantsCourses, ConstantsAdresses)
