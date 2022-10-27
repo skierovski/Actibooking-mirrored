@@ -18,7 +18,7 @@ namespace Actibooking.Models
 
         public int? MaxNumbersOfParticipants { get; set; }
 
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
 
         public DayOfWeek? DayOfWeek { get; set; }
 
