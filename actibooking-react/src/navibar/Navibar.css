@@ -1,0 +1,10 @@
+.Navibar{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: darkgray;
+    height: 30px;
+}
+.Navibar > div {
+    padding-left: 100px;
+}
