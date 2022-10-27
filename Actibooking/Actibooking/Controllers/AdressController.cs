@@ -1,14 +1,22 @@
-﻿using Actibooking.Models;
+﻿using Actibooking.Data.Repository;
+using Actibooking.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Actibooking.Controllers
 {
     public class AdressController : Controller
     {
-        [HttpGet("get-all-adresse/{id}")]
-        public async Task<bool> GetAllAdress(int organizationId)
+
+        private readonly IUnitOfWork _uow;
+
+        public AdressController(IUnitOfWork uow)
         {
-            return true;
+            _uow = uow;
+        }
+        [HttpGet("get-all-adresse/{id}")]
+        public async Task<IEnumerable<Adress>> GetAllAdress(int organizationId)
+        {
+            return await _uow.AdressRepo.GetAsync();
         }
 
         [HttpPost("create-adress/id")]

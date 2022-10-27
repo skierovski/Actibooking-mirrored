@@ -1,3 +1,7 @@
+using Actibooking.Data;
+using Actibooking.Data.Repository;
+using Actibooking.Models;
+
 namespace Actibooking
 {
     public class Program
@@ -20,6 +24,11 @@ namespace Actibooking
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddDbContext<ActibookingDBContex>();
+            builder.Services.AddScoped<IRepo<Organization>, DataRepository<Organization>>();
+            builder.Services.AddScoped<IRepo<Course>, DataRepository<Course>>();
+            builder.Services.AddScoped<IRepo<Adress>, DataRepository<Adress>>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

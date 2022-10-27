@@ -1,4 +1,5 @@
 ﻿using Actibooking.Data;
+using Actibooking.Data.Repository;
 using Actibooking.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,22 @@ namespace Actibooking.Controllers
     public class OrganizationsController : ControllerBase
     {
 
-        [HttpGet("get-all-organizations")]
-        public async Task<bool> GetAll()
+        private readonly IUnitOfWork _uow;
+        public OrganizationsController(IUnitOfWork uow)
         {
-            return true;
+            _uow = uow;
+        }
+
+        [HttpGet("get-all-organizations")]
+        public async Task<IEnumerable<Organization>> GetAll()
+        {
+            return await _uow.OrganizationRepo.GetAsync();
+        }
+
+        [HttpGet("get-organization/{id}")]
+        public async Task<Organization> GetOrganization(int id)
+        {
+            return await _uow.OrganizationRepo.GetByIdAsync(id);
         }
 
         [HttpPost("create-organization")]

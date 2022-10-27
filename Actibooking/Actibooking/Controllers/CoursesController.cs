@@ -1,4 +1,5 @@
 ﻿using Actibooking.Data;
+using Actibooking.Data.Repository;
 using Actibooking.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +10,22 @@ namespace Actibooking.Controllers
     [ApiController]
     public class CoursesController : ControllerBase
     {
-
-        [HttpGet("get-all-courses/{id}")]
-        public async Task<bool> GetAllCourses(int organizationId)
+        private readonly IUnitOfWork _uow;
+        public CoursesController(IUnitOfWork uow)
         {
-            return true;
+            _uow = uow;
+        }
+
+        [HttpGet("get-all-courses")]
+        public async Task<IEnumerable<Course>> GetAll()
+        {
+            return await _uow.CourseRepo.GetAsync();
+        }
+
+        [HttpGet("get-course/{id}")]
+        public async Task<Course> GetAllCourses(int id)
+        {
+            return await _uow.CourseRepo.GetByIdAsync(id);
         }
 
         [HttpPost("create-course/id")]
