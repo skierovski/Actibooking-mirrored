@@ -5,6 +5,17 @@ namespace Actibooking
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("CORSPolicy",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .WithOrigins("http://localhost:3000");
+                    });
+            });
 
             // Add services to the container.
 
@@ -23,6 +34,8 @@ namespace Actibooking
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("CORSPolicy");
 
             app.UseAuthorization();
 
