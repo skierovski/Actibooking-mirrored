@@ -18,9 +18,9 @@ namespace Actibooking.Models
 
         public int? MaxNumbersOfParticipants { get; set; }
 
-        public DateTime Date { get; set; }
+        public int Date { get; set; }
 
-        public DayOfWeek? DayOfWeek { get; set; }
+        public int? DayOfWeek { get; set; }
 
         [Required]
         public int Duration { get; set; }
@@ -34,6 +34,6 @@ namespace Actibooking.Models
         [Required]
         public int Cost { get; set; }
         [Required]
-        public Uri ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

@@ -10,17 +10,20 @@ namespace Actibooking.Data.Repository
     public class DataRepository<TEntity> : IRepo<TEntity> where TEntity : class
     {
 
-        private readonly ActibookingDBContex _ctx;
-        private readonly DbSet<TEntity> _dbSet;
+        protected readonly ActibookingDBContex _ctx;
+        protected readonly DbSet<TEntity> _dbSet;
 
         public DataRepository(ActibookingDBContex ctx)
         {
             _ctx = ctx;
             _dbSet = ctx.Set<TEntity>();
         }
-        public Task DeleteAsync(int id)
+        public virtual async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+/*            var entity = context.Blogs.OrderBy(e => e.Name).Include(e => e.Posts).First();
+            var entity2 = await _dbSet.FindAsync(id).In;*/
+            var entity = await _dbSet.FindAsync(id);
+            _dbSet.Remove(entity);
         }
 
         public async Task<IEnumerable<TEntity>> GetAsync()
@@ -33,14 +36,14 @@ namespace Actibooking.Data.Repository
             return await _dbSet.FindAsync(id);
         }
 
-        public Task InsertAsync(TEntity entity)
+        public async Task InsertAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
         }
 
-        public Task SaveChangesAsync()
+        public async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            await _ctx.SaveChangesAsync();
         }
 
         public void Update(TEntity entity)

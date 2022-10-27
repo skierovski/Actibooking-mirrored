@@ -30,16 +30,19 @@ namespace Actibooking.Controllers
         }
 
         [HttpPost("create-organization")]
-        public async Task<bool>CreateOrganization(Organization organization)
+        public async Task<bool> CreateOrganization(Organization organization)
         {
+            await _uow.OrganizationRepo.InsertAsync(organization);
+            await _uow.SaveChangesAsync();
             return true;
         }
 
         [HttpDelete]
         [Route("delete-organization/{id}")]
-        public async Task<bool> DeleteOrganization(int organizationId)
+        public async Task DeleteOrganization(int id)
         {
-            return true;
+            await _uow.OrganizationRepo.DeleteAsync(id);
+            await _uow.SaveChangesAsync();
         }
 
         [HttpPut]

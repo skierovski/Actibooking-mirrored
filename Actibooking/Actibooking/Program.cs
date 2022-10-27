@@ -1,5 +1,6 @@
 using Actibooking.Data;
 using Actibooking.Data.Repository;
+using Actibooking.Data.Repository.Implementation;
 using Actibooking.Models;
 
 namespace Actibooking
@@ -25,7 +26,7 @@ namespace Actibooking
 
             builder.Services.AddControllers();
             builder.Services.AddDbContext<ActibookingDBContex>();
-            builder.Services.AddScoped<IRepo<Organization>, DataRepository<Organization>>();
+            builder.Services.AddScoped<IRepo<Organization>, OrganizationRepository>();
             builder.Services.AddScoped<IRepo<Course>, DataRepository<Course>>();
             builder.Services.AddScoped<IRepo<Adress>, DataRepository<Adress>>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
