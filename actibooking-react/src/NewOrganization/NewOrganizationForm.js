@@ -39,13 +39,17 @@ const FlatNumberChangeHandler = (event) =>{setUserInput((prevState) => {
 const submitHandler = (event) => {
     event.preventDefault();
     const organizationData = {
-        name: userInput.enteredName,
-        country: userInput.enteredCountry,
-        city: userInput.enteredCity,
-        zipCode: userInput.enteredZipCode,
-        street: userInput.enteredStreet,
-        streetNumber: userInput.enteredStreetNumber,
-        flatNumber: userInput.enteredFlatNumber
+        "id":0,
+        "name": userInput.enteredName,
+        "courses":null,
+        "adresses": [{
+            "country": userInput.enteredCountry,
+            "city": userInput.enteredCity,
+            "zipCode": userInput.enteredZipCode,
+            "street": userInput.enteredStreet,
+            "streetNumber": userInput.enteredStreetNumber,
+            "flatNumber": userInput.enteredFlatNumber
+        }]
     }
     props.postOrganization(organizationData);
     setUserInput({

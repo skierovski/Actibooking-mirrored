@@ -1,10 +1,10 @@
-const API_BASE_URL = 'https://localhost:7127';
+const API_BASE_URL = 'https://localhost:7127/api';
 
 const OrganizationEndpoints = {
-    GET_ALL_ORGANIZATIONS: 'get-all-organizations',
-    CREATE_ORGANIZATION: 'create-organization',
-    DELETE_ORGANIZATION: 'delete-organization',
-    UPDATE_ORGANIZATION: 'update-organization'
+    GET_ALL_ORGANIZATIONS: 'Organizations/get-all-organizations',
+    CREATE_ORGANIZATION: 'Organizations/create-organization',
+    DELETE_ORGANIZATION: 'Organizations/delete-organization',
+    UPDATE_ORGANIZATION: 'Organizations/update-organization'
 }
 
 const CoursesEndpoints = {
@@ -47,4 +47,4 @@ const ConstantsCourses = CoursesURL
 const ConstantsAdresses = AdressesURL
 
 
-export default (ConstantsOrganizations, ConstantsCourses, ConstantsAdresses)
+export default ConstantsOrganizations;
