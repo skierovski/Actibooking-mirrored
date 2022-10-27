@@ -450,4 +450,3 @@ MigrationBackup/
 
 # End of https://www.gitignore.io/api/visualstudio,jetbrains+all,visualstudiocode
 /Actibooking/Actibooking.Data/Migrations
-/Actibooking/Actibooking.Data/ActibookingDBContex.cs
