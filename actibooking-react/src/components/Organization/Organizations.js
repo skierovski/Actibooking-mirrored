@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import SingleOrganization from "../SingleOrganizationView/SingleOrganization";
-import GetDataHandler from "../data/GetDataHandler";
-import ConstantsOrganizations from "../constants/Constants";
+import SingleOrganization from "./SingleOrganization";
+import GetDataHandler from "../../data/GetDataHandler";
+import ConstantsOrganizations from "../../constants/Constants";
 
 const Organizations = () => {
 

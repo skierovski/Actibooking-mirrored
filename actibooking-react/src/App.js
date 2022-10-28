@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {Route, Routes} from "react-router-dom"
-import NaviBar from "./navibar/Navibar";
-import Home from "./pages/Home";
-import Organization from "./pages/Organization";
-import CreateOrganization from "./pages/CreateOrganization";
-import Organizations from "./pages/Organizations";
+import NaviBar from "./components/navibar/Navibar";
+import Home from "./Home";
+import Organization from "./components/Organization/Organization";
+import CreateOrganization from "./components/Organization/CreateOrganization";
+import Organizations from "./components/Organization/Organizations";
 
 function App() {
 

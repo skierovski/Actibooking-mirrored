@@ -1,7 +1,7 @@
 import React from "react"
-import NewOrganizationForm from "../NewOrganization/NewOrganizationForm";
-import PostDataHandler from "../data/PostDataHandler";
-import ConstantsOrganizations from "../constants/Constants"
+import NewOrganizationForm from "./NewOrganizationForm";
+import PostDataHandler from "../../data/PostDataHandler";
+import ConstantsOrganizations from "../../constants/Constants"
 
 const CreateOrganization = () => {
 

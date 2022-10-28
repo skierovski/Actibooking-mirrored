@@ -1,7 +1,7 @@
 import React from "react";
 import "./SingleOrganization.css";
-import DeleteDataHandler from "../data/DeleteDataHandler";
-import ConstantsOrganizations from "../constants/Constants";
+import DeleteDataHandler from "../../data/DeleteDataHandler";
+import ConstantsOrganizations from "../../constants/Constants";
 
 const SingleOrganization = props => {
 
