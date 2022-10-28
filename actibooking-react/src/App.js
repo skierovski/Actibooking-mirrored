@@ -12,7 +12,6 @@ function App() {
 
   const isLoginHandler = (isLogin) => {
     setIsUserLogin(isLogin);
-    console.log(isUserLogin)
   }
   let userStatus = isUserLogin;
 
