@@ -21,6 +21,7 @@ const NaviBar = (props) => {
         <div className="Navibar">
             <div><Link to="/">Home</Link></div>
             <div><Link to="/Organization">Organization</Link></div>
+            <div><Link to="/Organizations">All Organization</Link></div>
             <div><button className="nav-language" onClick = {LoginHandler}>{login}</button></div>
         </div>
     ) 

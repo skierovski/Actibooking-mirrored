@@ -1,11 +1,13 @@
 import React from "react"
 import NewOrganizationForm from "../NewOrganization/NewOrganizationForm";
-import CreateOrganizationDataHandler from "../data/DataHandler";
+import PostDataHandler from "../data/PostDataHandler";
+import ConstantsOrganizations from "../constants/Constants"
 
 const CreateOrganization = () => {
 
+
     const postOrganizationHandler = (organization)=>{
-        CreateOrganizationDataHandler(organization);
+        PostDataHandler(ConstantsOrganizations.API_URL_CREATE_ORGANIZATION,organization);
     }
 
     return (
