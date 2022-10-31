@@ -1,9 +1,7 @@
 import React, {useState} from "react";
 import "./NewOrganizationForm.css";
 
-const NewOrganizationForm = (props) => {
-
-
+const NewOrganizationForm = props => {
     const [userInput, setUserInput] = useState({
         enteredName:'',
         enteredCountry:'',
@@ -52,55 +50,53 @@ const submitHandler = (event) => {
         }]
     }
     props.postOrganization(organizationData);
+    props.warning ? console.log('warning') : 
     setUserInput({
-        name: '',
-        country: '',
-        city: '',
-        zipCode: '',
-        street: '',
-        streetNumber: '',
-        flatNumber: ''
-    })
+        enteredName:'',
+        enteredCountry:'',
+        enteredCity:'',
+        enteredZipCode:'',
+        enteredStreet:'',
+        enteredStreetNumber:'',
+        enteredFlatNumber:''
+    });
 }
-
-
-
     return (
-    <form onSubmit={submitHandler}>
-        <div className="new-organization__controls">
-            <div className="new-organization__control">
-                <label>Name</label>
-                <input type='text' maxLength={100} value={userInput.enteredName} onChange={NameChangeHandler} required="true"/>
+        <form onSubmit={submitHandler}>
+            <div className="new-organization__controls">
+                <div className="new-organization__control">
+                    <label>Name</label>
+                    <input type='text' maxLength={100} value={userInput.enteredName} onChange={NameChangeHandler} required="true"/>
+                </div>
+                <div className="new-organization__control">
+                    <label>Country</label>
+                    <input type='text' maxLength={100} value={userInput.enteredCountry} onChange={CountryChangeHandler} required="true"/>
+                </div>
+                <div className="new-organization__control">
+                    <label>City</label>
+                    <input type='text' maxLength={50} value={userInput.enteredCity} onChange={CityChangeHandler} required="true"/>
+                </div>
+                <div className="new-organization__control">
+                    <label>ZipCode</label>
+                    <input type='text' maxLength={10} value={userInput.enteredZipCode} onChange={ZipCodeChangeHandler} required="true"/>
+                </div>
+                <div className="new-organization__control">
+                    <label>Street</label>
+                    <input type='text' maxLength={50} value={userInput.enteredStreet} onChange={StreetChangeHandler} required="true"/>
+                </div>
+                <div className="new-organization__control">
+                    <label>StreetNumber</label>
+                    <input type='text' maxLength={10} value={userInput.enteredStreetNumber} onChange={StreetNumberChangeHandler} required="true"/>
+                </div>
+                <div className="new-organization__control">
+                    <label>FlatNumber*</label>
+                    <input type='text' maxLength={10} value={userInput.enteredFlatNumber} onChange={FlatNumberChangeHandler} placeholder="none"/>
+                </div>
             </div>
-            <div className="new-organization__control">
-                <label>Country</label>
-                <input type='text' maxLength={100} value={userInput.enteredCountry} onChange={CountryChangeHandler} required="true"/>
+            <div className="new-organization__actions">
+                <button className="create-button" type="submit">Create</button>
             </div>
-            <div className="new-organization__control">
-                <label>City</label>
-                <input type='text' maxLength={50} value={userInput.enteredCity} onChange={CityChangeHandler} required="true"/>
-            </div>
-            <div className="new-organization__control">
-                <label>ZipCode</label>
-                <input type='text' maxLength={10} value={userInput.enteredZipCode} onChange={ZipCodeChangeHandler} required="true"/>
-            </div>
-            <div className="new-organization__control">
-                <label>Street</label>
-                <input type='text' maxLength={50} value={userInput.enteredStreet} onChange={StreetChangeHandler} required="true"/>
-            </div>
-            <div className="new-organization__control">
-                <label>StreetNumber</label>
-                <input type='text' maxLength={10} value={userInput.enteredStreetNumber} onChange={StreetNumberChangeHandler} required="true"/>
-            </div>
-            <div className="new-organization__control">
-                <label>FlatNumber*</label>
-                <input type='text' maxLength={10} value={userInput.enteredFlatNumber} onChange={FlatNumberChangeHandler} placeholder="none"/>
-            </div>
-        </div>
-        <div className="new-organization__actions">
-            <button type="submit">Create</button>
-        </div>
-    </form>
+        </form>
     )
 }
 export default NewOrganizationForm;

@@ -1,5 +1,5 @@
 
-const DeleteDataHandler = (url) => {
+const DeleteDataHandler = url => {
     fetch(url,{
         method:"DELETE",
     })

@@ -1,9 +1,10 @@
-import React from "react"
+import React from "react";
+import "./Organization.css"
 
 const Organization = () => {
     return (
-        <div>
-            Organization
+        <div className="OrganizationDiv">
+            <span>Organization details...</span>
         </div>
     )
 }

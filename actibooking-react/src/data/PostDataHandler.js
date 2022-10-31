@@ -1,5 +1,5 @@
 
-const PostDataHandler = (url,data) => {
+const PostDataHandler = (url, data, responseStatus) => {
     fetch(url,{
         method:"POST",
         headers: {
@@ -9,7 +9,7 @@ const PostDataHandler = (url,data) => {
             data
           ),
     })
-    .then(response => response.json())
-    .catch(error => {console.error(error)})
+    .then(response => {responseStatus(true);response.json()})
+    .catch(error => {console.error(error); responseStatus(false)})
 }
 export default PostDataHandler;

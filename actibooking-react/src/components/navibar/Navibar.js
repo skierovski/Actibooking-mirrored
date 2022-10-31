@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import "./Navibar.css"
+import "./Navibar.css";
 
-const NaviBar = (props) => {
-    const [login, setLogin] = useState("Login")
+const NaviBar = props => {
+    const [login, setLogin] = useState("Login");
     
     const LoginHandler = () => {
         if(login === "Login")

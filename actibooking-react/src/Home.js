@@ -1,12 +1,20 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./Home.css";
 
-const Home = (props) => {
+const Home = props => {
 
-    if (props.userStatus === true) return (<div><Link to="/Organization/Create">Create Organization</Link></div>)
-    else return (
-        <div>
-            Home
+    let navigate = useNavigate();
+    const changeRoute = () =>{
+        let path = `/Organization/Create`;
+        navigate(path);
+    }
+
+
+    return (
+        <div className="home-page-container">
+            {!props.userStatus && <div>Home Page</div>}
+            {props.userStatus && <button onClick={changeRoute}>Create Organization</button>}
         </div>
     )
 }
