@@ -1,6 +1,7 @@
 ﻿using Actibooking.Data;
 using Actibooking.Data.Repository;
 using Actibooking.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,6 +39,7 @@ namespace Actibooking.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("delete-organization/{id}")]
         public async Task DeleteOrganization(int id)
         {
