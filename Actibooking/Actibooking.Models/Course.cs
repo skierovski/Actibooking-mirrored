@@ -35,5 +35,7 @@ namespace Actibooking.Models
         public int Cost { get; set; }
         [Required]
         public string ImageUrl { get; set; }
+
+        public List<CourseTag>? CourseTags { get; set; }
     }
 }

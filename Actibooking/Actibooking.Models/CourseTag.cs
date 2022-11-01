@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Actibooking.Models
 {
-    public class Organization
+    public class CourseTag
     {
         [Key]
         public int Id { get; set; }
@@ -16,10 +16,10 @@ namespace Actibooking.Models
         [MaxLength(100)]
         public string Name { get; set; }
 
-        public List<Course>? Courses { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Description { get; set; }
 
-        public List<Adress>? Adresses { get; set; }
-
-        public List<OrganizationType>? OrganizationTypes { get; set; }
+        public List<Course>? Courses{ get; set; }
     }
 }

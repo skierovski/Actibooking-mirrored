@@ -33,6 +33,11 @@ namespace Actibooking.Data.Repository
         public IRepo<Organization> OrganizationRepo { get; }
         public IRepo<Course> CourseRepo { get; }
         public IRepo<Adress> AdressRepo { get; }
+
+        public IRepo<CourseTag> CourseTagRepo { get; }
+
+        public IRepo<OrganizationType> OrganizationTypeRepo { get; }
+
         public async Task SaveChangesAsync()
         {
             await _ctx.SaveChangesAsync();

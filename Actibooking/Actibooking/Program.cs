@@ -42,6 +42,8 @@ namespace Actibooking
             builder.Services.AddScoped<IRepo<Organization>, OrganizationRepository>();
             builder.Services.AddScoped<IRepo<Course>, DataRepository<Course>>();
             builder.Services.AddScoped<IRepo<Adress>, DataRepository<Adress>>();
+            builder.Services.AddScoped<IRepo<CourseTag>, DataRepository<CourseTag>>();
+            builder.Services.AddScoped<IRepo<OrganizationType>, DataRepository<OrganizationType>>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IAuthManager, AuthManager>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

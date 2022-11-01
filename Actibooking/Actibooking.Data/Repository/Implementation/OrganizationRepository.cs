@@ -20,5 +20,17 @@ namespace Actibooking.Data.Repository.Implementation
                     .Include(r => r.Courses).FirstOrDefaultAsync(o=> o.Id== id);
             _dbSet.Remove(entity);
         }
+
+        public override async Task<IEnumerable<Organization>> GetAsync()
+        {
+            return await _dbSet.Include(r => r.Adresses)
+                    .Include(r => r.Courses).Include(r => r.OrganizationTypes).ToListAsync();
+        }
+
+        public override async Task<Organization> GetByIdAsync(int id)
+        {
+            return await _dbSet.Include(r => r.Adresses)
+                    .Include(r => r.Courses).Include(r => r.OrganizationTypes).FirstOrDefaultAsync(p=>p.Id==id);
+        }
     }
 }

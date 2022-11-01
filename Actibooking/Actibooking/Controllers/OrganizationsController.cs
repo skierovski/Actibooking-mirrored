@@ -5,6 +5,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using Actibooking.Services;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace Actibooking.Controllers
 {
     [Route("api/[controller]")]
@@ -13,45 +23,82 @@ namespace Actibooking.Controllers
     {
 
         private readonly IUnitOfWork _uow;
-        public OrganizationsController(IUnitOfWork uow)
+        private readonly ILogger<OrganizationsController> _logger;
+        public OrganizationsController(IUnitOfWork uow, ILogger<OrganizationsController> logger)
         {
             _uow = uow;
+            _logger = logger;
         }
 
         [HttpGet("get-all-organizations")]
-        public async Task<IEnumerable<Organization>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return await _uow.OrganizationRepo.GetAsync();
+            try
+            {
+                var organizations = await _uow.OrganizationRepo.GetAsync();
+                return Ok(organizations);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetAll)}");
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
+
         }
 
         [HttpGet("get-organization/{id}")]
-        public async Task<Organization> GetOrganization(int id)
+        public async Task<IActionResult> GetOrganization(int id)
         {
-            return await _uow.OrganizationRepo.GetByIdAsync(id);
+            try
+            {
+                var organization = await _uow.OrganizationRepo.GetByIdAsync(id);
+                return Ok(organization);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetOrganization)}");
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
         }
 
         [HttpPost("create-organization")]
-        public async Task<bool> CreateOrganization(Organization organization)
+        public async Task<IActionResult> CreateOrganization(Organization organization)
         {
-            await _uow.OrganizationRepo.InsertAsync(organization);
-            await _uow.SaveChangesAsync();
-            return true;
+            try
+            {
+                await _uow.OrganizationRepo.InsertAsync(organization);
+                await _uow.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(CreateOrganization)}");
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
         }
 
         [HttpDelete]
-        [Authorize]
         [Route("delete-organization/{id}")]
-        public async Task DeleteOrganization(int id)
+        public async Task<IActionResult> DeleteOrganization(int id)
         {
-            await _uow.OrganizationRepo.DeleteAsync(id);
-            await _uow.SaveChangesAsync();
+            try
+            {
+                await _uow.OrganizationRepo.DeleteAsync(id);
+                await _uow.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(CreateOrganization)}");
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
         }
 
         [HttpPut]
         [Route("update-organization/{id}")]
-        public async Task<bool> UpdateOrganization(int organizationId)
+        public async Task<IActionResult> UpdateOrganization(int organizationId)
         {
-            return true;
+            return Ok();
         }
     }
 }
