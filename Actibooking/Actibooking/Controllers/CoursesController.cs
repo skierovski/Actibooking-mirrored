@@ -1,6 +1,7 @@
 ﻿using Actibooking.Data;
 using Actibooking.Data.Repository;
 using Actibooking.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace Actibooking.Controllers
             _logger = logger;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get-all-courses-tag")]
         public async Task<IActionResult> GetAll()
         {

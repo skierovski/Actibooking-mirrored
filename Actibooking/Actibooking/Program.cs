@@ -7,6 +7,9 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Actibooking.Services;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Actibooking
 {
@@ -38,7 +41,7 @@ namespace Actibooking
             /*builder.Services.ConfigureRateLimiting();*/
             builder.Services.AddAuthentication();
             builder.Services.ConfigureIdentity();
-            builder.Services.ConfigureJWT(configuration);
+            
             builder.Services.AddScoped<IRepo<Organization>, OrganizationRepository>();
             builder.Services.AddScoped<IRepo<Course>, DataRepository<Course>>();
             builder.Services.AddScoped<IRepo<Adress>, DataRepository<Adress>>();
@@ -46,6 +49,26 @@ namespace Actibooking
             builder.Services.AddScoped<IRepo<OrganizationType>, DataRepository<OrganizationType>>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IAuthManager, AuthManager>();
+
+            builder.Services.AddAuthentication(o => {
+                o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero,
+                    ValidIssuer = builder.Configuration["JwT:Issuer"],
+                    ValidAudience = builder.Configuration["JwT:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("KEY", EnvironmentVariableTarget.Machine)))
+                };
+            });
+
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
 
@@ -66,9 +89,9 @@ namespace Actibooking
             app.UseHttpsRedirection();
 
             app.UseCors("CORSPolicy");
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            
 
             app.MapControllers();
 
