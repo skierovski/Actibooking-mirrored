@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import "./Navibar.css";
 
 const NaviBar = props => {
+
     return(
             <div className="Navibar">
                 <div><Link to="/">Home</Link></div>
@@ -13,7 +14,7 @@ const NaviBar = props => {
                 <>
                     <div><Link to="/LogIn">Log In</Link></div>
                     <div><Link to="/SignUp">Sign Up</Link></div>
-                    </>}
+                </>}
             </div>
     ) 
 }

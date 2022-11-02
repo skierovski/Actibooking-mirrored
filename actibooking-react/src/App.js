@@ -12,7 +12,7 @@ import SignUp from "./components/Authentication/SignUp"
 
 const App = () => {
   let userStatus = false;
-  
+
   return (
     <div>
       <MainLogo/>

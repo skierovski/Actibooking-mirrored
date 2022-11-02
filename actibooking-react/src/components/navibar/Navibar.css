@@ -6,3 +6,7 @@
     text-align: center;
     flex: 1;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
