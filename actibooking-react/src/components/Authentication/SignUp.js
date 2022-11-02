@@ -1,12 +1,20 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import { json } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PostDataHandler from "../../data/PostDataHandler";
+import './SignUp.css'
 export default function SignUp() {
     const {register, handleSubmit, errors} = useForm();
+    let navigate = useNavigate();
+    const changeRoute = () =>{
+        let path = `/`;
+        navigate(path);
+    }
     const receiveResponseStatus = status => {
         if (status !== true) {
-            console.log("Good")}
+            console.log("Good");
+            changeRoute();
+        }
         else console.log("Bad");
     }
     const onSubmit = (values) => {
@@ -24,17 +32,16 @@ export default function SignUp() {
         PostDataHandler('https://localhost:7127/api/Account/register', UserData, receiveResponseStatus)
 
     };
-
-
     return (
         <div className="sign-up-form">
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input  type="text" required placeholder="FirstName" name="firstname" {...register('firstname')}/>
+            
+            <input type="text" required placeholder="FirstName" name="firstname" {...register('firstname')}/>
             <input type="text" required placeholder="LastName" name="lastname" {...register('lastname')}/>
             <input type="text" required placeholder="Email" name="email" {...register('email')}/>
             <input type="text" required placeholder="Password" name="password" {...register('password')}/>
             <input type="text" required placeholder="PhoneNumber" name="phoneNumber" {...register('phoneNumber')}/>
-            <input type="submit" />
+            <input className="submit" type="submit"/>
        </form>
         </div>
     );

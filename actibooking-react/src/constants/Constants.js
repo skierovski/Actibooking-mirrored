@@ -1,5 +1,7 @@
 const API_BASE_URL = 'https://localhost:7127/api';
 
+
+
 const OrganizationEndpoints = {
     GET_ALL_ORGANIZATIONS: 'Organizations/get-all-organizations',
     CREATE_ORGANIZATION: 'Organizations/create-organization',
