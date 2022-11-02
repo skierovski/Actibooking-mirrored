@@ -26,12 +26,12 @@ namespace Actibooking.Data.Repository
             _dbSet.Remove(entity);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAsync()
         {
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<TEntity> GetByIdAsync(int id)
+        public virtual async Task<TEntity> GetByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);
         }
