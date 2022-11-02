@@ -11,12 +11,14 @@ namespace Actibooking.Data.Repository
     {
         private readonly ActibookingDBContex _ctx;
         public UnitOfWork(ActibookingDBContex ctx, IRepo<Organization> organizationRepo,
-            IRepo<Course> courseRepo, IRepo<Adress> adressRepo)
+            IRepo<Course> courseRepo, IRepo<Adress> adressRepo, IRepo<CourseTag> courseTag, IRepo<OrganizationType> organizationType)
         {
             _ctx = ctx;
             OrganizationRepo = organizationRepo;
             CourseRepo = courseRepo;
             AdressRepo = adressRepo;
+            CourseTagRepo = courseTag;
+            OrganizationTypeRepo = organizationType;
         }
         public virtual void Dispose(bool disposing)
         {

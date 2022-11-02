@@ -19,24 +19,24 @@ namespace Actibooking.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrganizationsController : ControllerBase
+    public class OrganizationsTypeController : ControllerBase
     {
 
         private readonly IUnitOfWork _uow;
-        private readonly ILogger<OrganizationsController> _logger;
-        public OrganizationsController(IUnitOfWork uow, ILogger<OrganizationsController> logger)
+        private readonly ILogger<OrganizationsTypeController> _logger;
+        public OrganizationsTypeController(IUnitOfWork uow, ILogger<OrganizationsTypeController> logger)
         {
             _uow = uow;
             _logger = logger;
         }
 
-        [HttpGet("get-all-organizations")]
+        [HttpGet("get-all-organization-types")]
         public async Task<IActionResult> GetAll()
         {
             try
             {
-                var organizations = await _uow.OrganizationRepo.GetAsync();
-                return Ok(organizations);
+                var organizationsType = await _uow.OrganizationTypeRepo.GetAsync();
+                return Ok(organizationsType);
             }
             catch(Exception ex)
             {
@@ -46,58 +46,58 @@ namespace Actibooking.Controllers
 
         }
 
-        [HttpGet("get-organization/{id}")]
-        public async Task<IActionResult> GetOrganization(int id)
+        [HttpGet("get-organization-type/{id}")]
+        public async Task<IActionResult> GetOrganizationType(int id)
         {
             try
             {
-                var organization = await _uow.OrganizationRepo.GetByIdAsync(id);
-                return Ok(organization);
+                var organizationType = await _uow.OrganizationTypeRepo.GetByIdAsync(id);
+                return Ok(organizationType);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetOrganization)}");
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetOrganizationType)}");
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }
 
-        [HttpPost("create-organization")]
-        public async Task<IActionResult> CreateOrganization(Organization organization)
+        [HttpPost("create-organization-type")]
+        public async Task<IActionResult> CreateOrganizationType(OrganizationType organizationType)
         {
             try
             {
-                await _uow.OrganizationRepo.InsertAsync(organization);
+                await _uow.OrganizationTypeRepo.InsertAsync(organizationType);
                 await _uow.SaveChangesAsync();
                 return Ok();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(CreateOrganization)}");
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(CreateOrganizationType)}");
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }
 
         [HttpDelete]
         [Authorize]
-        [Route("delete-organization/{id}")]
-        public async Task<IActionResult> DeleteOrganization(int id)
+        [Route("delete-organization-type/{id}")]
+        public async Task<IActionResult> DeleteOrganizationType(int id)
         {
             try
             {
-                await _uow.OrganizationRepo.DeleteAsync(id);
+                await _uow.OrganizationTypeRepo.DeleteAsync(id);
                 await _uow.SaveChangesAsync();
                 return Ok();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(CreateOrganization)}");
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(DeleteOrganizationType)}");
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }
 
         [HttpPut]
-        [Route("update-organization/{id}")]
-        public async Task<IActionResult> UpdateOrganization(int Id)
+        [Route("update-organization-type/{id}")]
+        public async Task<IActionResult> UpdateOrganizationType(int id)
         {
             return Ok();
         }
