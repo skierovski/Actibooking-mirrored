@@ -19,11 +19,11 @@ const App = () => {
       <BaseWrapper><NaviBar userStatus={userStatus}></NaviBar></BaseWrapper>
       <Routes>
         <Route path="/" element={<Home userStatus = {userStatus}/>}/>
-        <Route path="/Organization" element={<Organization/>}/>
-        <Route path="/Organizations" element={<Organizations userStatus = {userStatus}/>}/>
-        <Route path="/Organization/Create" element={<CreateOrganization userStatus = {userStatus}/>}/>
+        <Route path="/Organization" element={<BaseWrapper><Organization/></BaseWrapper>}/>
+        <Route path="/Organizations" element={<BaseWrapper><Organizations userStatus = {userStatus}/></BaseWrapper>}/>
+        <Route path="/Organization/Create" element={<CreateOrganization userStatus = {true}/>}/>
         <Route path="/LogIn" element={<BaseWrapper><LogIn/></BaseWrapper>}/>
-        <Route path="/SignUp" element={<SignUp/>}/>
+        <Route path="/SignUp" element={<BaseWrapper><SignUp/></BaseWrapper>}/>
       </Routes>
     </div>
   );

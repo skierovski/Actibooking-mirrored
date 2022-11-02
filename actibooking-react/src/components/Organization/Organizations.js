@@ -19,7 +19,7 @@ const Organizations = props => {
     return (
         <div>
             {!listOfOrganizations[0] && <h2>No organization found ;(</h2>}
-            {listOfOrganizations.map(o => (<BaseWrapper><SingleOrganization key = {o.id} id={o.id} name = {o.name} courses= {o.courses} adresses = {o.adresses} DeleteOrganization = {DeleteOrganization} userStatus = {props.userStatus}/></BaseWrapper>))}
+            {listOfOrganizations.map(o => (<SingleOrganization key = {o.id} id={o.id} name = {o.name} courses= {o.courses} adresses = {o.adresses} DeleteOrganization = {DeleteOrganization} userStatus = {props.userStatus}/>))}
         </div>
     );
 }

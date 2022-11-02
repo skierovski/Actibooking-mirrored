@@ -11,29 +11,29 @@ form{
       
       .login__control label{
         font-weight: bold;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.3rem;
         display: block;
       }
       
       .login__control input {
         font: inherit;
-        padding: 0.5rem;
+        margin-bottom: 1rem;
         border-radius: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid rgb(204, 200, 200);
         width: 15rem;
         max-width: 100%;
-        text-align: center;
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
       }
       
       .login__actions {
         text-align: right;
-        margin-bottom: 5vh;
-        margin-right: 5vh;
+        margin-bottom: 1vh;
+        margin-right: 1vh;
       }
     
     .create-button {
-      border: 1px solid gray;
+      border: 2px solid rgb(180, 179, 179);
       border-radius: 5px;
       background-color: aquamarine;
+      width: 4rem;
     }

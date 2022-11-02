@@ -9,7 +9,7 @@ const PostDataHandler = (url, data, responseStatus = console.log) => {
             data
           ),
     })
-    .then(response => {responseStatus(response);response.json()})
+    .then(response => response, responseStatus(true))
     .catch(error => {console.error(error); responseStatus(false)})
 }
 export default PostDataHandler;

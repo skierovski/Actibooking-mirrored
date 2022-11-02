@@ -36,9 +36,9 @@ const LogIn = () => {
             <div className="login__controls">
                 <div className="login__control">
                     <label>Email</label>
-                        <input type='text' maxLength={100} value={userInput.email} onChange={EmailChangeHandler} required={true}/>
+                    <input type='text' maxLength={100} value={userInput.email} onChange={EmailChangeHandler} required={true}/>
                     <label>Password</label>
-                        <input type='text' maxLength={100} value={userInput.password} onChange={PasswordChangeHandler} required={true}/>
+                    <input type='text' maxLength={100} value={userInput.password} onChange={PasswordChangeHandler} required={true}/>
                 </div>
             </div>
             <div className="login__actions">

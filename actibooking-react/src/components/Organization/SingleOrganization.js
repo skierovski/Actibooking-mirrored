@@ -15,7 +15,6 @@ const SingleOrganization = props => {
                 <div>Id {props.id}</div>
                 <div>Name: {props.name}</div>
                 <div>Courses: {props.course? props.course : "None"}</div>
-                <div>Adresses: {props.adresses? props.adresses : "None"}</div>
                 {props.userStatus && <button className="DeleteButton" onClick={DeleteHandler}>Delete</button>}
             </ul>
         </div>

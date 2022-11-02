@@ -66,27 +66,27 @@ const submitHandler = (event) => {
             <div className="new-organization__controls">
                 <div className="new-organization__control">
                     <label>Name</label>
-                    <input type='text' maxLength={100} value={userInput.enteredName} onChange={NameChangeHandler} required="true"/>
+                    <input type='text' maxLength={100} value={userInput.enteredName} onChange={NameChangeHandler} required={true}/>
                 </div>
                 <div className="new-organization__control">
                     <label>Country</label>
-                    <input type='text' maxLength={100} value={userInput.enteredCountry} onChange={CountryChangeHandler} required="true"/>
+                    <input type='text' maxLength={100} value={userInput.enteredCountry} onChange={CountryChangeHandler} required={true}/>
                 </div>
                 <div className="new-organization__control">
                     <label>City</label>
-                    <input type='text' maxLength={50} value={userInput.enteredCity} onChange={CityChangeHandler} required="true"/>
+                    <input type='text' maxLength={50} value={userInput.enteredCity} onChange={CityChangeHandler} required={true}/>
                 </div>
                 <div className="new-organization__control">
                     <label>ZipCode</label>
-                    <input type='text' maxLength={10} value={userInput.enteredZipCode} onChange={ZipCodeChangeHandler} required="true"/>
+                    <input type='text' maxLength={10} value={userInput.enteredZipCode} onChange={ZipCodeChangeHandler} required={true}/>
                 </div>
                 <div className="new-organization__control">
                     <label>Street</label>
-                    <input type='text' maxLength={50} value={userInput.enteredStreet} onChange={StreetChangeHandler} required="true"/>
+                    <input type='text' maxLength={50} value={userInput.enteredStreet} onChange={StreetChangeHandler} required={true}/>
                 </div>
                 <div className="new-organization__control">
                     <label>StreetNumber</label>
-                    <input type='text' maxLength={10} value={userInput.enteredStreetNumber} onChange={StreetNumberChangeHandler} required="true"/>
+                    <input type='text' maxLength={10} value={userInput.enteredStreetNumber} onChange={StreetNumberChangeHandler} required={true}/>
                 </div>
                 <div className="new-organization__control">
                     <label>FlatNumber*</label>
