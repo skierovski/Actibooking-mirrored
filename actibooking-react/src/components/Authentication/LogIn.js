@@ -17,16 +17,21 @@ const LogIn = () => {
     })};
 
 
+    const responseHandler = response =>{
+        setToken(response.ok);
+    }
+
     const onSubmitHandler = event =>{
         event.preventDefault();
-        console.log(userInput);
-        PostDataHandler('https://localhost:7127/api/Account/login', userInput);
+        PostDataHandler('https://localhost:7127/api/Account/login', userInput, responseHandler);
         setUserInput({
             email:'',
             password:''
         })
     }
-    return (
+    if (token === true) return (<h1>Success</h1>)
+    else if (token === false) return (<h1>Login Failed</h1>)
+    else return (
         <form onSubmit={onSubmitHandler}>
             <div className="login__controls">
                 <div className="login__control">
