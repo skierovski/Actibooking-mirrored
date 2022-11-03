@@ -1,14 +1,15 @@
-import "./LogIn.css"
+import "./LogIn.css";
 import React, {useState} from "react";
 import PostDataHandler from "../../data/PostDataHandler";
+import jwt_decode from "jwt-decode";
 
-const LogIn = () => {
+const LogIn = props => {
 
-    const [token, setToken] = useState(null);
     const[userInput, setUserInput] = useState({
         email:'',
         password:''
     })
+
     const EmailChangeHandler = (event) =>{setUserInput((prevState) => {
         return {...prevState, email: event.target.value};
     })};
@@ -18,8 +19,11 @@ const LogIn = () => {
 
 
     const responseHandler = response =>{
-        setToken(response.ok);
+        props.setToken(response);
+        let decodedJWT = jwt_decode(response);
+        props.authorization(decodedJWT);
     }
+    
 
     const onSubmitHandler = event =>{
         event.preventDefault();
@@ -29,9 +33,8 @@ const LogIn = () => {
             password:''
         })
     }
-    if (token === true) return (<h1>Success</h1>)
-    else if (token === false) return (<h1>Login Failed</h1>)
-    else return (
+
+    return (
         <form onSubmit={onSubmitHandler}>
             <div className="login__controls">
                 <div className="login__control">

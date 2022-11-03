@@ -8,8 +8,8 @@ const PostDataHandler = (url, data, responseStatus = console.log) => {
         body: JSON.stringify(
             data
           ),
-    })
-    .then(response => response, responseStatus(true))
+    }).then(response => response.json().then(data => ({data: data,})).then(res => {responseStatus(res.data.token)
+}))
     .catch(error => {console.error(error); responseStatus(false)})
 }
 export default PostDataHandler;
