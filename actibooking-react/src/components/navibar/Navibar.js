@@ -5,7 +5,7 @@ import "./Navibar.css";
 const NaviBar = props => {
 
     return(
-            <div className="Navibar">
+            <div className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
                 <div><Link to="/">Home</Link></div>
                 <div><Link to="/Organization">Organization</Link></div>
                 <div><Link to="/Organizations">All Organization</Link></div>

@@ -16,7 +16,9 @@ const App = () => {
   return (
     <div>
       <MainLogo/>
-      <BaseWrapper><NaviBar userStatus={userStatus}></NaviBar></BaseWrapper>
+      <BaseWrapper>
+      <NaviBar userStatus={userStatus}></NaviBar>
+      </BaseWrapper>
       <Routes>
         <Route path="/" element={<Home userStatus = {userStatus}/>}/>
         <Route path="/Organization" element={<BaseWrapper><Organization/></BaseWrapper>}/>

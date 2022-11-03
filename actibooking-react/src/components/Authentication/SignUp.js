@@ -33,17 +33,36 @@ export default function SignUp() {
 
     };
     return (
-        <div className="sign-up-form">
+        
         <form onSubmit={handleSubmit(onSubmit)}>
-            
-            <input type="text" required placeholder="FirstName" name="firstname" {...register('firstname')}/>
-            <input type="text" required placeholder="LastName" name="lastname" {...register('lastname')}/>
-            <input type="text" required placeholder="Email" name="email" {...register('email')}/>
-            <input type="text" required placeholder="Password" name="password" {...register('password')}/>
-            <input type="text" required placeholder="PhoneNumber" name="phoneNumber" {...register('phoneNumber')}/>
-            <input className="submit" type="submit"/>
-       </form>
+        <div className="form-group">
+        <p class="text-center fs-4">Register</p>
+            <div className="row mt-3">
+                <div className="col">
+            <input className="form-control" type="text" required placeholder="FirstName" name="firstname" {...register('firstname')}/>
+            </div>
+            <div className="col">
+            <input className="form-control" type="text" required placeholder="LastName" name="lastname" {...register('lastname')}/>
+            </div>
+            </div>
+            <div className="row mt-3">
+            <div className="col">
+            <input className="form-control" type="email" required placeholder="Email" name="email" {...register('email')}/>
+            </div>
+            <div className="col">
+            <input className="form-control" type="password" required placeholder="Password" name="password" {...register('password')}/>
+            </div>
+            </div>
+            <div className="row mt-3">
+                <div className="col-8">
+            <input className="form-control input-lg" type="text" required placeholder="PhoneNumber" name="phoneNumber" {...register('phoneNumber')}/>
+            </div>
+            <div className="col-4">
+            <input className="form-control btn btn-primary " type="submit"/>
+            </div>
+            </div>
         </div>
+        </form>
     );
 }
 
