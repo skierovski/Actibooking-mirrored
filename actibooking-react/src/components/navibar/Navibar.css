@@ -1,0 +1,12 @@
+.Navibar{
+    display: flex;
+}
+.Navibar > div {
+    margin: 10px;
+    text-align: center;
+    flex: 1;
+}
+a{
+    text-decoration: none;
+    color: black;
+}

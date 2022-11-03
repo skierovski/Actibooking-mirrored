@@ -1,0 +1,39 @@
+form{
+    padding: 2%;
+    text-align: center;
+    }
+    
+    .login__controls {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      
+      .login__control label{
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+        display: block;
+      }
+      
+      .login__control input {
+        font: inherit;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        border: 1px solid rgb(204, 200, 200);
+        width: 15rem;
+        max-width: 100%;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+      }
+      
+      .login__actions {
+        text-align: right;
+        margin-bottom: 1vh;
+        margin-right: 1vh;
+      }
+    
+    .create-button {
+      border: 2px solid rgb(180, 179, 179);
+      border-radius: 5px;
+      background-color: aquamarine;
+      width: 4rem;
+    }
