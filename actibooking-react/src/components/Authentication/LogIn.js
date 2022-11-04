@@ -1,10 +1,12 @@
 import "./LogIn.css";
 import React, {useState} from "react";
 import PostDataHandler from "../../data/PostDataHandler";
+import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 const LogIn = props => {
 
+    const[isValidInput, setIsValidInput] = useState(true);
     const[userInput, setUserInput] = useState({
         email:'',
         password:''
@@ -17,21 +19,27 @@ const LogIn = props => {
         return {...prevState, password: event.target.value};
     })};
 
-
     const responseHandler = response =>{
         props.setToken(response);
         let decodedJWT = jwt_decode(response);
         props.authorization(decodedJWT);
     }
+
+    let navigate = useNavigate();
+    const changeRoute = () =>{
+        let path = `/`;
+        navigate(path);
+    }
     
+    const isLoggedIn = () =>{
+        if(localStorage.getItem("token") !== null){changeRoute()};
+        setIsValidInput(false);
+    }
 
     const onSubmitHandler = event =>{
         event.preventDefault();
         PostDataHandler('https://localhost:7127/api/Account/login', userInput, responseHandler);
-        setUserInput({
-            email:'',
-            password:''
-        })
+        setTimeout(isLoggedIn, 100);
     }
 
     return (
@@ -39,9 +47,9 @@ const LogIn = props => {
             <div className="login__controls">
                 <div className="login__control">
                     <label>Email</label>
-                    <input type='text' maxLength={100} value={userInput.email} onChange={EmailChangeHandler} required={true}/>
+                    <input type='email' style={{borderColor: isValidInput? "none":"red"}}  minLength={10} value={userInput.email} onChange={EmailChangeHandler} required={true}/>
                     <label>Password</label>
-                    <input type='text' maxLength={100} value={userInput.password} onChange={PasswordChangeHandler} required={true}/>
+                    <input type='password' style={{borderColor: isValidInput? "none":"red"}} pattern="(?=.*\d)(?=.*[\W_]).{5,}" value={userInput.password} onChange={PasswordChangeHandler} required={true}/>
                 </div>
             </div>
             <div className="login__actions">
@@ -49,7 +57,6 @@ const LogIn = props => {
             </div>
         </form>
     )
-
 }
 
 export default LogIn;

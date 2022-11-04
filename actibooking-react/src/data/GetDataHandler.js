@@ -1,7 +1,8 @@
-const GetDataHandler = (url, setMethod) => {
+const GetDataHandler = (url, setMethod, token = null) => {
     fetch(url,{
         headers: {
-            "Content-Type": "application/json" 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         },
     })
     .then(response => {return response.json()})

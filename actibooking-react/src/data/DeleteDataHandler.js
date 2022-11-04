@@ -1,4 +1,3 @@
-
 const DeleteDataHandler = url => {
     fetch(url,{
         method:"DELETE",

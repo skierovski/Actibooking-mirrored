@@ -31,7 +31,7 @@ namespace Actibooking.Controllers
         }
 
         [HttpGet("get-all-organizations")]
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetAll()
         {
             try

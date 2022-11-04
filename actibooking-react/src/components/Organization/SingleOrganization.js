@@ -15,7 +15,7 @@ const SingleOrganization = props => {
                 <div>Id {props.id}</div>
                 <div>Name: {props.name}</div>
                 <div>Courses: {props.course? props.course : "None"}</div>
-                {props.userStatus && <button className="DeleteButton" onClick={DeleteHandler}>Delete</button>}
+                {localStorage.getItem("UserRole") === "Admin" && <button className="DeleteButton" onClick={DeleteHandler}>Delete</button>}
             </ul>
         </div>
     )

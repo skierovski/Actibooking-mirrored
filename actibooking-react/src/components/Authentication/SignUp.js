@@ -50,12 +50,12 @@ export default function SignUp() {
             <input className="form-control" type="email" required placeholder="Email" name="email" {...register('email')}/>
             </div>
             <div className="col">
-            <input className="form-control" type="password" required placeholder="Password" name="password" {...register('password')}/>
+            <input className="form-control" type="password" placeholder="Password" name="password" {...register('password')} pattern="(?=.*\d)(?=.*[\W_]).{5,}" required/>
             </div>
             </div>
             <div className="row mt-3">
                 <div className="col-8">
-            <input className="form-control input-lg" type="text" required placeholder="PhoneNumber" name="phoneNumber" {...register('phoneNumber')}/>
+            <input className="form-control input-lg" type="text" required placeholder="PhoneNumber" name="phoneNumber" minLength={9} {...register('phoneNumber')}/>
             </div>
             <div className="col-4">
             <input className="form-control btn btn-primary " type="submit"/>

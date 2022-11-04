@@ -6,7 +6,7 @@ import NewOrganizationForm from "./NewOrganizationForm";
 import PostDataHandler from "../../data/PostDataHandler";
 import ConstantsOrganizations from "../../constants/Constants";
 
-const CreateOrganization = props => {
+const CreateOrganization = () => {
 
 
     const [warning, setWarning] = useState(false)
@@ -38,7 +38,7 @@ const CreateOrganization = props => {
         else creationSucceed();
     }
 
-    if (props.userStatus !== true) changeRoute();
+    if (!localStorage.getItem("token")) changeRoute();
     else return (
         <BaseWrapper>
             <div className="page-title"><strong>{response}</strong></div>

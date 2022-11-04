@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
-const Home = props => {
+const Home = () => {
 
     let navigate = useNavigate();
     const changeRoute = () =>{
@@ -13,8 +13,8 @@ const Home = props => {
 
     return (
         <div className="home-page-container">
-            {!props.userStatus && <div>Home Page</div>}
-            {props.userStatus && <button onClick={changeRoute}>Create Organization</button>}
+            {!localStorage.getItem("token") && <div>Home Page</div>}
+            {localStorage.getItem("token") && <button style={{"cursor": "pointer"}} onClick={changeRoute}>Create Organization</button>}
         </div>
     )
 }
