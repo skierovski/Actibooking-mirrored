@@ -1,14 +1,16 @@
+import axios from "axios";
 
-const PostDataHandler = (url, data, responseStatus = console.log) => {
-    fetch(url,{
-        method:"POST",
-        headers: {
-            "Content-Type": "application/json" 
-        },
-        body: JSON.stringify(
-            data
-          ),
-    }).then(response => {if (response.ok === true){response.json().then(data => ({data: data,})).then(res => {responseStatus(res.data.token)})}})
-    .catch(error => {console.error(error); responseStatus(false)})
-}
+const PostDataHandler = (url, data, method=console.log) => {
+    let responseData,error = null;
+    axios.post(url,data)
+      .then((response) => {
+        responseData = response.data;
+        method(responseData);    
+    })
+      .catch((err) => {
+        error = err;
+      }).finally(() => {
+      });
+      return {responseData, error};
+  }
 export default PostDataHandler;

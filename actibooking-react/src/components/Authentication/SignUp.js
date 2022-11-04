@@ -27,10 +27,8 @@ export default function SignUp() {
             "roles": [
                 "User"
               ]
-        }
-        console.log(UserData)    
-        PostDataHandler('https://localhost:7127/api/Account/register', UserData, receiveResponseStatus)
-
+        }   
+        const response = PostDataHandler('https://localhost:7127/api/Account/register', UserData)
     };
     return (
         
@@ -65,11 +63,3 @@ export default function SignUp() {
         </form>
     );
 }
-
-// "email": "user@example.com",
-// "password": "string",
-// "firstName": "string",
-// "lastName": "string",
-// "phoneNumber": "string",
-// "roles": [
-//   "string"
