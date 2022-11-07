@@ -20,8 +20,8 @@ const LogIn = props => {
     })};
 
     const responseHandler = response =>{
-        props.setToken(response.token);
-        let decodedJWT = jwt_decode(response.token);
+        props.setToken(response.data.token);
+        let decodedJWT = jwt_decode(response.data.token);
         props.authorization(decodedJWT);
     }
 
@@ -38,7 +38,7 @@ const LogIn = props => {
 
     const onSubmitHandler = event =>{
         event.preventDefault();
-        const response = PostDataHandler('https://localhost:7127/api/Account/login', userInput, responseHandler);
+        PostDataHandler('https://localhost:7127/api/Account/login', userInput, responseHandler);
         setTimeout(isLoggedIn, 100);
     }
 

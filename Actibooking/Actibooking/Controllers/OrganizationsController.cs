@@ -78,9 +78,8 @@ namespace Actibooking.Controllers
             }
         }
 
-        [HttpDelete]
-        [Authorize]
-        [Route("delete-organization/{id}")]
+        [HttpDelete("delete-organization/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteOrganization(int id)
         {
             try

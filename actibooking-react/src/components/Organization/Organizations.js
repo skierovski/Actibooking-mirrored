@@ -10,8 +10,8 @@ const Organizations = () => {
     const getDataHandler = () => {
         GetDataHandler(ConstantsOrganizations.API_URL_GET_ALL_ORGANIZATIONS, setListOfOrganizations, localStorage.getItem("token"));
     }
-    const DeleteOrganization = url => {
-        DeleteDataHandler(url);
+    const DeleteOrganization = (url, token) => {
+        DeleteDataHandler(url, token);
         setTimeout(getDataHandler, 100);
     }
     if (listOfOrganizations == null) return (<div onLoad={getDataHandler()}>Loading...</div>);

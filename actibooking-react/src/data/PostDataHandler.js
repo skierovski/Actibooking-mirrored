@@ -5,7 +5,7 @@ const PostDataHandler = (url, data, method=console.log) => {
     axios.post(url,data)
       .then((response) => {
         responseData = response.data;
-        method(responseData);    
+        method(response);    
     })
       .catch((err) => {
         error = err;

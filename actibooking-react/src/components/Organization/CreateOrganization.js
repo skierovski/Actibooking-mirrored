@@ -32,8 +32,9 @@ const CreateOrganization = () => {
         setResponse(" Server not responding properly ... ");
     }
 
-    const receiveResponseStatus = status => {
-        if (status !== true) {
+    const receiveResponseStatus = response => {
+        console.log(response.status)
+        if (!response.status) {
             creationFailed()}
         else creationSucceed();
     }

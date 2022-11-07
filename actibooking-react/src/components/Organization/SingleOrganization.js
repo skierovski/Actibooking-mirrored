@@ -6,7 +6,8 @@ const SingleOrganization = props => {
 
     const DeleteHandler = () => {
         let deleteElementUrl = `${ConstantsOrganizations.API_URL_DELETE_ORGANIZATION}/${props.id}`;
-        props.DeleteOrganization(deleteElementUrl);
+        let token = localStorage.getItem("token");
+        props.DeleteOrganization(deleteElementUrl, token);
     }
     
     return (
