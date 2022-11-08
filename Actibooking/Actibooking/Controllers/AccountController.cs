@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Actibooking.Controllers
@@ -89,6 +90,33 @@ namespace Actibooking.Controllers
                 _logger.LogInformation($"Something Went Wrong in the{nameof(Login)}");
                 return Problem($"Something Went Wrong in the{nameof(Login)}", statusCode: 500);
             }
+        }
+
+        [HttpPost("add-child")]
+
+        public async Task<IActionResult> AddChild([FromQuery] ClaimsPrincipal claimsPrincipal, Child child)
+        {
+            _logger.LogInformation($"Add children Attemp for {claimsPrincipal}");
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest("First name and Last name can't be empty");
+                }
+                if(await _userManager.GetUserAsync(claimsPrincipal) != null)
+                {
+                    var user = await _userManager.GetUserAsync(claimsPrincipal);
+                    user.Children.Add(child);   
+                }
+                return BadRequest("User not in database");
+
+            } 
+            catch (Exception ex)
+            {
+                _logger.LogInformation($"Something Went Wrong in the adding child");
+                return Problem($"Something Went Wrong in the adding child", statusCode: 500);
+            }
+            
         }
     }
 }

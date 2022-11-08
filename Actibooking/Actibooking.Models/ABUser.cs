@@ -18,5 +18,7 @@ namespace Actibooking.Models
         [MaxLength(100)]
         public string? LastName { get; set; }
         public List<Organization>? Organizations { get; set; }
+        public List<Child> Children { get; set; }
+        
     }
 }
