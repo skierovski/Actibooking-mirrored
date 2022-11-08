@@ -97,25 +97,18 @@ namespace Actibooking.Controllers
 
         [HttpPost("add-child")]
 
-        public async Task<IActionResult> AddChild([FromQuery] string email, string name, string lastName)
+        public async Task<IActionResult> AddChild([FromQuery] string userId, string name, string lastName)
         {
-            _logger.LogInformation($"Add children Attemp for {email}");
+            _logger.LogInformation($"Add children Attemp for {userId}");
             try
             {
-                if (!ModelState.IsValid)
+                if(await _userManager.FindByIdAsync(userId) != null)
                 {
-                    return BadRequest("First name and Last name can't be empty");
-                }
-                if(await _userManager.FindByEmailAsync(email) != null)
-                {
-                    var user = await _userManager.FindByEmailAsync(email);
+                    var user = await _userManager.FindByIdAsync(userId);
                     var child = new Child { Name = name, LastName = lastName, ABUser = user };
                     await _uow.ChildRepo.InsertAsync(child);
                     await _uow.SaveChangesAsync();
-
-
                     return Ok("Child has been added");
-                    
                 }
                 return BadRequest("User not in database");
 
