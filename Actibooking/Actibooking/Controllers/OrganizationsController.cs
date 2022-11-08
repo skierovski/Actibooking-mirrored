@@ -63,7 +63,7 @@ namespace Actibooking.Controllers
         }
 
         [HttpPost("create-organization")]
-        public async Task<IActionResult> CreateOrganization(Organization organization)
+        public async Task<IActionResult> CreateOrganization([FromQuery] Organization organization, string email)
         {
             try
             {

@@ -14,6 +14,7 @@ namespace Actibooking.Data.Repository
         IRepo<Adress> AdressRepo { get; }
         IRepo<CourseTag> CourseTagRepo { get; }
         IRepo<OrganizationType> OrganizationTypeRepo { get; }
+        IRepo<Child> ChildRepo { get; }
 
         Task SaveChangesAsync();
     }

@@ -11,7 +11,7 @@ namespace Actibooking.Data.Repository
     {
         private readonly ActibookingDBContex _ctx;
         public UnitOfWork(ActibookingDBContex ctx, IRepo<Organization> organizationRepo,
-            IRepo<Course> courseRepo, IRepo<Adress> adressRepo, IRepo<CourseTag> courseTag, IRepo<OrganizationType> organizationType)
+            IRepo<Course> courseRepo, IRepo<Adress> adressRepo, IRepo<CourseTag> courseTag, IRepo<OrganizationType> organizationType, IRepo<Child> childRepo)
         {
             _ctx = ctx;
             OrganizationRepo = organizationRepo;
@@ -19,6 +19,7 @@ namespace Actibooking.Data.Repository
             AdressRepo = adressRepo;
             CourseTagRepo = courseTag;
             OrganizationTypeRepo = organizationType;
+            ChildRepo = childRepo;
         }
         public virtual void Dispose(bool disposing)
         {
@@ -35,6 +36,7 @@ namespace Actibooking.Data.Repository
         public IRepo<Organization> OrganizationRepo { get; }
         public IRepo<Course> CourseRepo { get; }
         public IRepo<Adress> AdressRepo { get; }
+        public IRepo<Child> ChildRepo { get; }
 
         public IRepo<CourseTag> CourseTagRepo { get; }
 

@@ -22,16 +22,19 @@ namespace Actibooking.Controllers
         private readonly IMapper _mapper;
         private readonly ILogger<AccountController> _logger;
         private readonly IAuthManager _authManager;
+        private readonly IUnitOfWork _uow;
 
         public AccountController(UserManager<ABUser> userManager, 
             IMapper mapper, 
             ILogger<AccountController> logger,
-            IAuthManager authManager)
+            IAuthManager authManager,
+            IUnitOfWork uow)
         {
             _userManager = userManager;
             _mapper = mapper;
             _logger = logger;
             _authManager = authManager;
+            _uow = uow;
         }
 
         [HttpPost("register")]
@@ -94,19 +97,25 @@ namespace Actibooking.Controllers
 
         [HttpPost("add-child")]
 
-        public async Task<IActionResult> AddChild([FromQuery] ClaimsPrincipal claimsPrincipal, Child child)
+        public async Task<IActionResult> AddChild([FromQuery] string email, string name, string lastName)
         {
-            _logger.LogInformation($"Add children Attemp for {claimsPrincipal}");
+            _logger.LogInformation($"Add children Attemp for {email}");
             try
             {
                 if (!ModelState.IsValid)
                 {
                     return BadRequest("First name and Last name can't be empty");
                 }
-                if(await _userManager.GetUserAsync(claimsPrincipal) != null)
+                if(await _userManager.FindByEmailAsync(email) != null)
                 {
-                    var user = await _userManager.GetUserAsync(claimsPrincipal);
-                    user.Children.Add(child);   
+                    var user = await _userManager.FindByEmailAsync(email);
+                    var child = new Child { Name = name, LastName = lastName, ABUser = user };
+                    await _uow.ChildRepo.InsertAsync(child);
+                    await _uow.SaveChangesAsync();
+
+
+                    return Ok("Child has been added");
+                    
                 }
                 return BadRequest("User not in database");
 
