@@ -50,5 +50,10 @@ namespace Actibooking.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public virtual async Task<IEnumerable<TEntity>> GetByUserId(string userId)
+        {
+            return (IEnumerable<TEntity>)await _dbSet.FindAsync(userId);
+        }
     }
 }

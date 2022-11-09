@@ -90,15 +90,5 @@ namespace Actibooking.Controllers
         {
             return Ok();
         }
-
-        [HttpGet]
-        [Route("get-courses/{userId}")]
-        public async Task<IActionResult> GetUserCourses(string userId)
-        {
-            try
-            {
-
-            }
-        }
     }
 }

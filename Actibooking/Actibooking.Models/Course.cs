@@ -26,6 +26,7 @@ namespace Actibooking.Models
         public int Duration { get; set; }
 
         public string? Hour { get; set; }
+        public List<ABUser>? ABUsers { get; set; }
 
 
         [Required]
@@ -37,5 +38,6 @@ namespace Actibooking.Models
         public string ImageUrl { get; set; }
 
         public List<CourseTag>? CourseTags { get; set; }
+        public Organization? Organization { get; set;}
     }
 }
