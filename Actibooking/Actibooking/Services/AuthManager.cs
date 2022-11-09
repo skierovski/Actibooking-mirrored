@@ -11,11 +11,11 @@ namespace Actibooking.Services
 {
     public class AuthManager : IAuthManager
     {
-        private readonly UserManager<ABUser> _userManager;
+        private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IConfiguration _configuration;
-        private ABUser _user;
+        private ActiBookingUser _user;
 
-        public AuthManager(UserManager<ABUser> userManager, IConfiguration configuration)
+        public AuthManager(UserManager<ActiBookingUser> userManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _configuration = configuration;

@@ -452,3 +452,4 @@ MigrationBackup/
 /Actibooking/Actibooking.Data/Migrations
 /Actibooking/Actibooking.Data/ActibookingDBContex.cs
 /Actibooking/Actibooking.Data/ActibookingDBContext.cs
+/Actibooking/Actibooking/logs

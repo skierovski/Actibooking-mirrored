@@ -16,7 +16,7 @@ namespace Actibooking.Data
     {
         public static void ConfigureIdentity(this IServiceCollection services)
         {
-            var builder = services.AddIdentityCore<ABUser>(q => q.User.RequireUniqueEmail = true);
+            var builder = services.AddIdentityCore<ActiBookingUser>(q => q.User.RequireUniqueEmail = true);
 
             builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), services);
             builder.AddEntityFrameworkStores<ActibookingDBContex>().AddDefaultTokenProviders();
