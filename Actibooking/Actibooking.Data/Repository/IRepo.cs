@@ -1,6 +1,4 @@
-﻿using Actibooking.Models;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +14,5 @@ namespace Actibooking.Data.Repository
         void Update(TEntity entity);
         Task DeleteAsync(int id);
         Task SaveChangesAsync();
-        Task<IEnumerable<TEntity>> GetByUserId(string userId);
     }
 }

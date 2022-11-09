@@ -127,25 +127,5 @@ namespace Actibooking.Controllers
             }
             
         }
-
-        [HttpGet]
-        [Route("get-courses/{userId}")]
-        public async Task<IActionResult> GetUserCourses(string userId)
-        {
-            try
-            {
-                var activeCourses = await _uow.AbuserRepo.GetByUserId(userId);
-                if(activeCourses != null)
-                {
-                    return Ok(activeCourses);
-                }
-                return BadRequest("No Active Courses");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogInformation($"Something Went Wrong in the getting courses");
-                return Problem($"Something Went Wrong in the getting courses", statusCode: 500);
-            }
-        }
     }
 }
