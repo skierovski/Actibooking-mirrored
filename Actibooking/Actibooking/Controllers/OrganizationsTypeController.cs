@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Actibooking.Exceptions;
 
 namespace Actibooking.Controllers
 {
@@ -50,16 +51,14 @@ namespace Actibooking.Controllers
         [HttpGet("get-organization-type/{id}")]
         public async Task<IActionResult> GetOrganizationType(int id)
         {
-            try
+            var organizationType = await _uow.OrganizationTypeRepo.GetByIdAsync(id);
+            
+            if(organizationType == null)
             {
-                var organizationType = await _uow.OrganizationTypeRepo.GetByIdAsync(id);
-                return Ok(organizationType);
+                throw new NotFoundException(nameof(GetOrganizationType), id);
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetOrganizationType)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
-            }
+            return Ok(organizationType);
+     
         }
 
         [HttpPost("create-organization-type")]

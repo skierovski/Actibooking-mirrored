@@ -17,12 +17,12 @@ namespace Actibooking.Controllers
     [ApiController]
     public class AccountController :ControllerBase
     {
-        private readonly UserManager<ABUser> _userManager;
+        private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IMapper _mapper;
         private readonly ILogger<AccountController> _logger;
         private readonly IAuthManager _authManager;
 
-        public AccountController(UserManager<ABUser> userManager, 
+        public AccountController(UserManager<ActiBookingUser> userManager, 
             IMapper mapper, 
             ILogger<AccountController> logger,
             IAuthManager authManager)
@@ -39,14 +39,10 @@ namespace Actibooking.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
         {
-            _logger.LogInformation($"Registration Attemp for {userDTO.Email}");
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            _logger.LogInformation($"Registration Attempt for {userDTO.Email}");
             try
             {
-                var user = _mapper.Map<ABUser>(userDTO);
+                var user = _mapper.Map<ActiBookingUser>(userDTO);
                 user.UserName = userDTO.Email;
                 var result = await _userManager.CreateAsync(user, userDTO.Password);
                 if (!result.Succeeded)
@@ -55,14 +51,14 @@ namespace Actibooking.Controllers
                     {
                         ModelState.AddModelError(error.Code, error.Description);
                     }
-                    return BadRequest("$User Registration Attemp Failed");
+                    return BadRequest(ModelState);
                 }
                 await _userManager.AddToRolesAsync(user,userDTO.Roles);
                 return Accepted();
             }
             catch (Exception ex)
             {
-                _logger.LogInformation($"Something Went Wrong in the{nameof(Register)}");
+                _logger.LogError(ex,$"Something Went Wrong in the{nameof(Register)}");
                 return Problem($"Something Went Wrong in the{nameof(Register)}", statusCode: 500);
             }
         }

@@ -10,6 +10,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Serilog;
+using Actibooking.Middleware;
 
 namespace Actibooking
 {
@@ -30,6 +32,10 @@ namespace Actibooking
                         .WithOrigins("http://localhost:3000");
                     });
             });
+
+            // Cofigure Sirilog and Seq
+            // https://datalust.co/download and install SeQ
+            builder.Host.UseSerilog((ctx,lc) => lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
 
             // Add services to the container.
 
@@ -68,6 +74,13 @@ namespace Actibooking
                 };
             });
 
+            //Add Caching
+            builder.Services.AddResponseCaching(options =>
+            {
+                options.MaximumBodySize = 1024;
+                options.UseCaseSensitivePaths = true;
+            });
+            // Finish Caching 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -86,9 +99,30 @@ namespace Actibooking
                 app.UseSwaggerUI();
             }
 
+            app.UseMiddleware<ExceptionMiddleware>();
+
             app.UseHttpsRedirection();
 
             app.UseCors("CORSPolicy");
+
+
+            //Add Caching
+            app.UseResponseCaching();
+            app.Use(async (contex, next) =>
+            {
+                contex.Response.GetTypedHeaders().CacheControl =
+                new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+                {
+                    Public = true,
+                    MaxAge = TimeSpan.FromSeconds(10)
+                };
+                contex.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
+                new string[] { "Accept-Encoding" };
+                await next();
+            });
+
+            // Finish Caching 
+
             app.UseAuthentication();
             app.UseAuthorization();
             
