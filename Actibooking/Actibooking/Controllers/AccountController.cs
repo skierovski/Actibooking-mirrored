@@ -17,12 +17,12 @@ namespace Actibooking.Controllers
     [ApiController]
     public class AccountController :ControllerBase
     {
-        private readonly UserManager<ABUser> _userManager;
+        private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IMapper _mapper;
         private readonly ILogger<AccountController> _logger;
         private readonly IAuthManager _authManager;
 
-        public AccountController(UserManager<ABUser> userManager, 
+        public AccountController(UserManager<ActiBookingUser> userManager, 
             IMapper mapper, 
             ILogger<AccountController> logger,
             IAuthManager authManager)
@@ -46,7 +46,7 @@ namespace Actibooking.Controllers
             }
             try
             {
-                var user = _mapper.Map<ABUser>(userDTO);
+                var user = _mapper.Map<ActiBookingUser>(userDTO);
                 user.UserName = userDTO.Email;
                 var result = await _userManager.CreateAsync(user, userDTO.Password);
                 if (!result.Succeeded)

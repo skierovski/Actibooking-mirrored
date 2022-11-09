@@ -64,11 +64,11 @@ namespace Actibooking.Controllers
         }
 
         [HttpPost("create-organization")]
-        public async Task<IActionResult> CreateOrganization([FromBody] OrganizationDTO organizationDTO)
+        public async Task<IActionResult> CreateOrganization([FromBody] NewOrganizationDTO newOrganizationDTO)
         {
             try
             {
-                var organization = _mapper.Map<Organization>(organizationDTO);
+                var organization = _mapper.Map<Organization>(newOrganizationDTO);
                 await _uow.OrganizationRepo.InsertAsync(organization);
                 await _uow.SaveChangesAsync();
                 return Ok();

@@ -24,6 +24,8 @@ namespace Actibooking.Models
 
         public string? PhotosUrl { get; set; }
 
+        public string? ActiBookingUserId { get; set; }
+
         public List<Course>? Courses { get; set; }
 
         public List<Adress>? Adresses { get; set; }

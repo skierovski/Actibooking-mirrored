@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Actibooking.Models
 {
-    public class ABUser : IdentityUser
+    public class ActiBookingUser : IdentityUser
     {
         [Required]
         [MaxLength(100)]

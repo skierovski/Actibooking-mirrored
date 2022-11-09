@@ -20,4 +20,9 @@ namespace Actibooking.Models
 
         public string? PhotosUrl { get; set; }
     }
+
+    public class NewOrganizationDTO : OrganizationDTO
+    {
+        public string ActiBookingUserId { get; set; }
+    }
 }
