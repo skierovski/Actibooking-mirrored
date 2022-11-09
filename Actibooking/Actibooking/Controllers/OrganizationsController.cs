@@ -108,7 +108,24 @@ namespace Actibooking.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(CreateOrganization)}");
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(UpdateOrganization)}");
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
+        }
+        [HttpPost("add-trainer")]
+        public async Task<IActionResult> AddTrainer([FromQuery] int organizationId, int trainerId)
+        {
+            try
+            {
+                Organization org = await _uow.OrganizationRepo.GetByIdAsync(organizationId);
+                Trainer trainer = await _uow.TrainerRepo.GetByIdAsync(trainerId);
+                org.Trainers.Add(trainer);
+                await _uow.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(AddTrainer)}");
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }

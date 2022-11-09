@@ -11,5 +11,13 @@ namespace Actibooking.Models
     public class OrganizationDTO
     {
         public string Name { get; set; }
+
+        public bool IsPublic { get; set; }
+
+        public string? Description { get; set; }
+
+        public string? LogoUrl { get; set; }
+
+        public string? PhotosUrl { get; set; }
     }
 }
