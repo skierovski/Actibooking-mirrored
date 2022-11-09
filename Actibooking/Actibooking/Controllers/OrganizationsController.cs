@@ -21,12 +21,11 @@ namespace Actibooking.Controllers
     [ApiController]
     public class OrganizationsController : ControllerBase
     {
-        private readonly UserManager<ABUser> _userManager;
+
         private readonly IUnitOfWork _uow;
         private readonly ILogger<OrganizationsController> _logger;
-        public OrganizationsController(IUnitOfWork uow, ILogger<OrganizationsController> logger, UserManager<ABUser> userManager)
+        public OrganizationsController(IUnitOfWork uow, ILogger<OrganizationsController> logger)
         {
-            _userManager = userManager;
             _uow = uow;
             _logger = logger;
         }
@@ -64,25 +63,13 @@ namespace Actibooking.Controllers
         }
 
         [HttpPost("create-organization")]
-        public async Task<IActionResult> CreateOrganization([FromQuery] string name, string userId)
+        public async Task<IActionResult> CreateOrganization([FromQuery] Organization organization, string email)
         {
             try
             {
-                if(await _userManager.FindByIdAsync(userId) != null)
-                {
-                    var organization = new Organization()
-                    {
-                        Name = name,
-                        Adresses = null,
-                        Courses = null,
-                        OrganizationTypes = null,
-                        ABUser = await _userManager.FindByIdAsync(userId)
-                    };
-                    await _uow.OrganizationRepo.InsertAsync(organization);
-                    await _uow.SaveChangesAsync();
-                    return Ok("Organization has been created");
-                }
-                return BadRequest("No such a User in Database");
+                await _uow.OrganizationRepo.InsertAsync(organization);
+                await _uow.SaveChangesAsync();
+                return Ok();
             }
             catch (Exception ex)
             {

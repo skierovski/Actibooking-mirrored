@@ -21,6 +21,5 @@ namespace Actibooking.Models
         public List<Adress>? Adresses { get; set; }
 
         public List<OrganizationType>? OrganizationTypes { get; set; }
-        public ABUser? ABUser { get; set; }
     }
 }
