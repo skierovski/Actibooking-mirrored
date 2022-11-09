@@ -1,7 +1,7 @@
 ﻿using Actibooking.Data;
 using Actibooking.Data.Repository;
 using Actibooking.Models;
-using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,86 +9,63 @@ namespace Actibooking.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CoursesTagController : ControllerBase
+    public class CoursesController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-        private readonly ILogger<CoursesTagController> _logger;
-        public CoursesTagController(IUnitOfWork uow, ILogger<CoursesTagController> logger)
+        private readonly ILogger<OrganizationsController> _logger;
+        private readonly IMapper _mapper;
+        public CoursesController(IUnitOfWork uow, ILogger<OrganizationsController> logger, IMapper mapper)
         {
             _uow = uow;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpGet("get-all-courses-tag")]
-        public async Task<IActionResult> GetAll()
+        [HttpGet("get-all-courses")]
+        public async Task<IEnumerable<Course>> GetAll()
         {
+            return await _uow.CourseRepo.GetAsync();
+        }
 
+        [HttpGet("get-course/{id}")]
+        public async Task<Course> GetAllCourses(int id)
+        {
+            return await _uow.CourseRepo.GetByIdAsync(id);
+        }
+
+        [HttpPost("create-course/id")]
+        public async Task<bool> CreateCourse([FromBody] CourseDTO courseDTO, int organizationId)
+        {
             try
             {
-                var coursesTag = await _uow.CourseTagRepo.GetAsync();
-                return Ok(coursesTag);
+                Organization org = await _uow.OrganizationRepo.GetByIdAsync(organizationId);
+                if (org is not null)
+                {
+                    var course = _mapper.Map<Course>(courseDTO);
+                    await _uow.CourseRepo.InsertAsync(course);
+                    org.Courses.Add(course);
+                    await _uow.SaveChangesAsync();
+                    return true;
+                }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetAll)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
+            return false;
         }
 
-        [HttpGet("get-course-tag/{id}")]
-        public async Task<IActionResult> GetCourseTag(int id)
+        [HttpDelete("delete-course/{id}")]
+        public async Task<bool> DeleteCourse(int courseId)
         {
-            try
-            {
-                var courseTag = await _uow.CourseTagRepo.GetByIdAsync(id);
-                return Ok(courseTag);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetCourseTag)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
-            }
-        }
-
-        [HttpPost("create-course-tag")]
-        public async Task<IActionResult> CreateCourseTag(CourseTag courseTag)
-        {
-            try
-            {
-                await _uow.CourseTagRepo.InsertAsync(courseTag);
-                await _uow.SaveChangesAsync();
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(CreateCourseTag)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
-            }
-        }
-
-        [HttpDelete]
-        [Route("delete-course-tag/{id}")]
-        public async Task<IActionResult> DeleteCourseTag(int id)
-        {
-            try
-            {
-                await _uow.CourseTagRepo.DeleteAsync(id);
-                await _uow.SaveChangesAsync();
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(DeleteCourseTag)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
-            }
+            return true;
         }
 
         [HttpPut]
-        [Route("update-course-tag/{id}")]
-        public async Task<IActionResult> UpdateCourseTag(int id)
+        [Route("update-course/{id}")]
+        public async Task<bool> UpdateCourse(int courseId)
         {
-            return Ok();
+            return true;
         }
     }
 }

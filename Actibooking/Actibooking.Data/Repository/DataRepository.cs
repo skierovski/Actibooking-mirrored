@@ -48,7 +48,7 @@ namespace Actibooking.Data.Repository
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            _ctx.Update(entity);
         }
     }
 }

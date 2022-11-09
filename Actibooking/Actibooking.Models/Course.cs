@@ -18,24 +18,26 @@ namespace Actibooking.Models
 
         public int? MaxNumbersOfParticipants { get; set; }
 
-        public int Date { get; set; }
+        public string? Date { get; set; }
+
+        public bool IsPublic { get; set; }
 
         public int? DayOfWeek { get; set; }
 
-        [Required]
-        public int Duration { get; set; }
+        public int? Duration { get; set; }
+
+        public bool IsArchive { get; set; }
 
         public string? Hour { get; set; }
 
+        public string? Description { get; set; }
 
-        [Required]
-        public string Descriptions { get; set; }
+        public int? Cost { get; set; }
 
-        [Required]
-        public int Cost { get; set; }
-        [Required]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         public List<CourseTag>? CourseTags { get; set; }
+
+        public List<Trainer>? Trainers { get; set; }
     }
 }

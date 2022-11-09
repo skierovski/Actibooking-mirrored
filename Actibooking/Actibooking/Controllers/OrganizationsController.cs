@@ -24,14 +24,15 @@ namespace Actibooking.Controllers
 
         private readonly IUnitOfWork _uow;
         private readonly ILogger<OrganizationsController> _logger;
-        public OrganizationsController(IUnitOfWork uow, ILogger<OrganizationsController> logger)
+        private readonly IMapper _mapper;
+        public OrganizationsController(IUnitOfWork uow, ILogger<OrganizationsController> logger, IMapper mapper)
         {
             _uow = uow;
             _logger = logger;
+            _mapper = mapper;
         }
 
         [HttpGet("get-all-organizations")]
-        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -63,10 +64,11 @@ namespace Actibooking.Controllers
         }
 
         [HttpPost("create-organization")]
-        public async Task<IActionResult> CreateOrganization(Organization organization)
+        public async Task<IActionResult> CreateOrganization([FromBody] OrganizationDTO organizationDTO)
         {
             try
             {
+                var organization = _mapper.Map<Organization>(organizationDTO);
                 await _uow.OrganizationRepo.InsertAsync(organization);
                 await _uow.SaveChangesAsync();
                 return Ok();
@@ -95,11 +97,20 @@ namespace Actibooking.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("update-organization/{id}")]
-        public async Task<IActionResult> UpdateOrganization(int Id)
+        [HttpPut("update-organization")]
+        public async Task<IActionResult> UpdateOrganization(Organization organization)
         {
-            return Ok();
+            try
+            {
+                _uow.OrganizationRepo.Update(organization);
+                await _uow.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(CreateOrganization)}");
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
         }
     }
 }

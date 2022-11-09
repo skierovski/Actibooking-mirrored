@@ -1,4 +1,4 @@
-﻿using Actibooking.Data.Repository;
+﻿using Actibooking.Models;
 
 namespace Actibooking.Services
 {

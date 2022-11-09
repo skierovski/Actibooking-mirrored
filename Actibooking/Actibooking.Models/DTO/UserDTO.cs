@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Actibooking.Data.Repository
+namespace Actibooking.Models
 {
     public class LoginUserDTO
     {
