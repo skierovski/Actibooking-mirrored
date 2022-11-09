@@ -39,11 +39,7 @@ namespace Actibooking.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
         {
-            _logger.LogInformation($"Registration Attemp for {userDTO.Email}");
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            _logger.LogInformation($"Registration Attempt for {userDTO.Email}");
             try
             {
                 var user = _mapper.Map<ActiBookingUser>(userDTO);
@@ -55,14 +51,14 @@ namespace Actibooking.Controllers
                     {
                         ModelState.AddModelError(error.Code, error.Description);
                     }
-                    return BadRequest("$User Registration Attemp Failed");
+                    return BadRequest(ModelState);
                 }
                 await _userManager.AddToRolesAsync(user,userDTO.Roles);
                 return Accepted();
             }
             catch (Exception ex)
             {
-                _logger.LogInformation($"Something Went Wrong in the{nameof(Register)}");
+                _logger.LogError(ex,$"Something Went Wrong in the{nameof(Register)}");
                 return Problem($"Something Went Wrong in the{nameof(Register)}", statusCode: 500);
             }
         }
