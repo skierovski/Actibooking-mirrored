@@ -90,38 +90,6 @@ namespace Actibooking.Controllers
                 return Problem($"Something Went Wrong in the{nameof(Login)}", statusCode: 500);
             }
         }
-
-        [HttpPost("add-child")]
-
-        public async Task<IActionResult> AddChild([FromQuery] string email, string name, string lastName)
-        {
-            _logger.LogInformation($"Add children Attemp for {email}");
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest("First name and Last name can't be empty");
-                }
-                if(await _userManager.FindByEmailAsync(email) != null)
-                {
-                    var user = await _userManager.FindByEmailAsync(email);
-                    var child = new Child { Name = name, LastName = lastName, ABUser = user };
-                    await _uow.ChildRepo.InsertAsync(child);
-                    await _uow.SaveChangesAsync();
-
-
-                    return Ok("Child has been added");
-                    
-                }
-                return BadRequest("User not in database");
-
-            } 
-            catch (Exception ex)
-            {
-                _logger.LogInformation($"Something Went Wrong in the adding child");
-                return Problem($"Something Went Wrong in the adding child", statusCode: 500);
-            }
-            
-        }
+        
     }
 }
