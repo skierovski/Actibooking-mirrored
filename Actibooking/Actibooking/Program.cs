@@ -51,6 +51,7 @@ namespace Actibooking
             builder.Services.AddScoped<IRepo<Organization>, OrganizationRepository>();
             builder.Services.AddScoped<IRepo<Course>, DataRepository<Course>>();
             builder.Services.AddScoped<IRepo<Trainer>, DataRepository<Trainer>>();
+            builder.Services.AddScoped<IRepo<ActiBookingUser>, DataRepository<ActiBookingUser>>();
             builder.Services.AddScoped<IRepo<Child>, DataRepository<Child>>();
             builder.Services.AddScoped<IRepo<Adress>, DataRepository<Adress>>();
             builder.Services.AddScoped<IRepo<CourseTag>, DataRepository<CourseTag>>();

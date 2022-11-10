@@ -22,13 +22,15 @@ namespace Actibooking.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _uow;
 
-        public UserController(IMapper mapper,IUnitOfWork uow)
+        public UserController(IMapper mapper,IUnitOfWork uow, UserManager<ActiBookingUser> userManager )
         {
             _mapper = mapper;
             _uow = uow;
+            _userManager = userManager;
         }
 
         [HttpPost("add-child")]
@@ -39,5 +41,13 @@ namespace Actibooking.Controllers
             await _uow.SaveChangesAsync();
             return Ok("Child Added");
         }
+
+        [HttpGet("Get-user-courses/{id}")]
+        public async Task<IActionResult> GetUserCourses(string id)
+        {
+            ActiBookingUser user = await _userManager.FindByIdAsync(id);
+            return Ok(user.Courses.ToList());
+        }
+
     }
 }
