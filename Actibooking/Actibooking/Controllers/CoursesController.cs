@@ -36,21 +36,14 @@ namespace Actibooking.Controllers
         [HttpPost("create-course/id")]
         public async Task<bool> CreateCourse([FromBody] CourseDTO courseDTO, int organizationId)
         {
-            try
+            Organization org = await _uow.OrganizationRepo.GetByIdAsync(organizationId);
+            if (org != null)
             {
-                Organization org = await _uow.OrganizationRepo.GetByIdAsync(organizationId);
-                if (org is not null)
-                {
-                    var course = _mapper.Map<Course>(courseDTO);
-                    await _uow.CourseRepo.InsertAsync(course);
-                    org.Courses.Add(course);
-                    await _uow.SaveChangesAsync();
-                    return true;
-                }
-            }
-            catch(Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetAll)}");
+                var course = _mapper.Map<Course>(courseDTO);
+                await _uow.CourseRepo.InsertAsync(course);
+                org.Courses.Add(course);
+                await _uow.SaveChangesAsync();
+                return true;
             }
             return false;
         }

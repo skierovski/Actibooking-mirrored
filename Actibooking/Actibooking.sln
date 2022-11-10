@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actibooking", "Actibooking\Actibooking.csproj", "{292DD1A0-5795-4816-B85D-A13173EDD407}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actibooking", "Actibooking\Actibooking.csproj", "{292DD1A0-5795-4816-B85D-A13173EDD407}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actibooking.Models", "Actibooking.Models\Actibooking.Models.csproj", "{CB4D852A-A6A6-434D-B12C-1E1D4DB1F5E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actibooking.Models", "Actibooking.Models\Actibooking.Models.csproj", "{CB4D852A-A6A6-434D-B12C-1E1D4DB1F5E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actibooking.Utils", "Actibooking.Utils\Actibooking.Utils.csproj", "{1B05A844-7CD5-4356-841A-1CD987765CCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actibooking.Utils", "Actibooking.Utils\Actibooking.Utils.csproj", "{1B05A844-7CD5-4356-841A-1CD987765CCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actibooking.Data", "Actibooking.Data\Actibooking.Data.csproj", "{5EEF31A7-9292-4947-8F7B-253A7D336622}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actibooking.Data", "Actibooking.Data\Actibooking.Data.csproj", "{5EEF31A7-9292-4947-8F7B-253A7D336622}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

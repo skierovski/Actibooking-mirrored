@@ -22,6 +22,12 @@ namespace Actibooking.Models
         [Required]
         public bool IsTrainer { get; set; }
 
+        [Required]
+        public string? BirthDate { get; set; }
+
+        [Required]
+        public string? Gender { get; set; }
+
         public Trainer? trainer { get; set; }
 
         public List<Organization>? Organizations { get; set; }
