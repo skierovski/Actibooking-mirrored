@@ -23,18 +23,11 @@ namespace Actibooking.Controllers
     public class UserController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly ILogger<AccountController> _logger;
-        private readonly IAuthManager _authManager;
         private readonly IUnitOfWork _uow;
 
-        public UserController(IMapper mapper,
-            ILogger<AccountController> logger,
-            IAuthManager authManager,
-            IUnitOfWork uow)
+        public UserController(IMapper mapper,IUnitOfWork uow)
         {
             _mapper = mapper;
-            _logger = logger;
-            _authManager = authManager;
             _uow = uow;
         }
 
