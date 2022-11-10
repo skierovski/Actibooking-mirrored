@@ -11,8 +11,7 @@ namespace Actibooking.Data.Repository
     {
         private readonly ActibookingDBContex _ctx;
         public UnitOfWork(ActibookingDBContex ctx, IRepo<Organization> organizationRepo,
-            IRepo<Course> courseRepo, IRepo<Adress> adressRepo, IRepo<CourseTag> courseTag, IRepo<OrganizationType> organizationType, IRepo<Child> childRepo)
-            IRepo<Course> courseRepo, IRepo<Adress> adressRepo, IRepo<CourseTag> courseTag, IRepo<OrganizationType> organizationType, IRepo<Trainer> trainer)
+            IRepo<Course> courseRepo, IRepo<Adress> adressRepo, IRepo<CourseTag> courseTag, IRepo<OrganizationType> organizationType, IRepo<Child> childRepo, IRepo<Trainer> trainer)
         {
             _ctx = ctx;
             OrganizationRepo = organizationRepo;

@@ -28,7 +28,8 @@ namespace Actibooking.Models
     public class AddingChildDTO 
     {
         public string ActiBookingUserId { get; set; }
-        public Child child { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
     }
 
 
