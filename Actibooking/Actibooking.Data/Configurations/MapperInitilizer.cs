@@ -9,6 +9,7 @@ namespace Actibooking.Data.Configurations
         public MapperInitilizer()
         {
             CreateMap<ActiBookingUser, UserDTO>().ReverseMap();
+            CreateMap<AddingChildDTO, AddingChildDTO>().ReverseMap();
             CreateMap<Organization, OrganizationDTO>().ReverseMap();
             CreateMap<Organization, NewOrganizationDTO>().ReverseMap();
             CreateMap<Course, CourseDTO>().ReverseMap();

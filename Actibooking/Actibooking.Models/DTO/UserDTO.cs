@@ -24,4 +24,12 @@ namespace Actibooking.Models
         public string PhoneNumber { get; set; }
         public ICollection<string> Roles { get; set; }
     }
+
+    public class AddingChildDTO 
+    {
+        public string ActiBookingUserId { get; set; }
+        public Child child { get; set; }
+    }
+
+
 }

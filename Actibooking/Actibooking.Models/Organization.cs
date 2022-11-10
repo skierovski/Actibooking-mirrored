@@ -33,6 +33,6 @@ namespace Actibooking.Models
         public List<Trainer>? Trainers { get; set; }
 
         public List<OrganizationType>? OrganizationTypes { get; set; }
-        public ABUser ABUser { get; set; }
+        public ActiBookingUser ActiBookingUser { get; set; }
     }
 }

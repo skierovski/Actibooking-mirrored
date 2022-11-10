@@ -35,9 +35,12 @@ namespace Actibooking.Controllers
         }
 
         [HttpPost("add-child")]
-        public async Task<IActionResult> AddChild()
+        public async Task<IActionResult> AddChild(AddingChildDTO addingChildDTO)
         {
-            return Ok();
+            var newChild = _mapper.Map<Child>(addingChildDTO);
+            await _uow.ChildRepo.InsertAsync(newChild);
+            await _uow.SaveChangesAsync();
+            return Ok("Child Added");
         }
     }
 }
