@@ -35,15 +35,32 @@ namespace Actibooking.Controllers
         [HttpGet("get-all-organizations")]
         public async Task<IActionResult> GetAll()
         {
-            var organizations = await _uow.OrganizationRepo.GetAsync();
-            return Ok(organizations);
+            try
+            {
+                var organizations = await _uow.OrganizationRepo.GetAsync(includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
+                return Ok(organizations);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetAll)}");
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
+
         }
 
         [HttpGet("get-organization/{id}")]
         public async Task<IActionResult> GetOrganization(int id)
         {
-            var organization = await _uow.OrganizationRepo.GetByIdAsync(id);
-            return Ok(organization);
+            try
+            {
+                var organization = await _uow.OrganizationRepo.GetAsync(filter: o => o.Id == id, includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
+                return Ok(organization);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetOrganization)}");
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
         }
 
         [HttpPost("create-organization")]
