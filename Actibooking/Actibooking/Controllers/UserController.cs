@@ -49,5 +49,17 @@ namespace Actibooking.Controllers
             return Ok(user.Courses.ToList());
         }
 
+        [HttpPost("Add-user-to-course")]
+        public async Task<IActionResult> AddUserToCourse(AddingUserToCourseDTO addingUserToCourse)
+        {
+            // need to be validate, and add some property to Course
+            ActiBookingUser user = await _userManager.FindByIdAsync(addingUserToCourse.ActiBookingUserId);
+            Course course = await _uow.CourseRepo.GetByIdAsync(addingUserToCourse.CourseId);
+            user.Courses = new List<Course>();
+            user.Courses.Add(course);
+            await _userManager.UpdateAsync(user);
+            await _uow.SaveChangesAsync();
+            return Ok("User Added to Course");
+        }
     }
 }
