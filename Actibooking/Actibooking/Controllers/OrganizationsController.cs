@@ -37,7 +37,7 @@ namespace Actibooking.Controllers
         {
             try
             {
-                var organizations = await _uow.OrganizationRepo.GetAsync();
+                var organizations = await _uow.OrganizationRepo.GetAsync(includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
                 return Ok(organizations);
             }
             catch(Exception ex)
@@ -53,7 +53,7 @@ namespace Actibooking.Controllers
         {
             try
             {
-                var organization = await _uow.OrganizationRepo.GetByIdAsync(id);
+                var organization = await _uow.OrganizationRepo.GetAsync(filter: o => o.Id == id, includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
                 return Ok(organization);
             }
             catch (Exception ex)
