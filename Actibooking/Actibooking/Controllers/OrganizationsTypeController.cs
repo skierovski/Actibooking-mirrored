@@ -25,27 +25,19 @@ namespace Actibooking.Controllers
 
         private readonly IUnitOfWork _uow;
         private readonly ILogger<OrganizationsTypeController> _logger;
-        public OrganizationsTypeController(IUnitOfWork uow, ILogger<OrganizationsTypeController> logger)
+        private readonly IMapper _mapper;
+        public OrganizationsTypeController(IUnitOfWork uow, ILogger<OrganizationsTypeController> logger, IMapper mapper)
         {
             _uow = uow;
             _logger = logger;
+            _mapper = mapper;
         }
 
         [HttpGet("get-all-organization-types")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
-            try
-            {
-                var organizationsType = await _uow.OrganizationTypeRepo.GetAsync();
-                return Ok(organizationsType);
-            }
-            catch(Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetAll)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
-            }
-
+            var organizationsType = await _uow.OrganizationTypeRepo.GetAsync();
+            return Ok(organizationsType);
         }
 
         [HttpGet("get-organization-type/{id}")]
@@ -64,41 +56,27 @@ namespace Actibooking.Controllers
         [HttpPost("create-organization-type")]
         public async Task<IActionResult> CreateOrganizationType(OrganizationType organizationType)
         {
-            try
-            {
-                await _uow.OrganizationTypeRepo.InsertAsync(organizationType);
-                await _uow.SaveChangesAsync();
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(CreateOrganizationType)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
-            }
+            await _uow.OrganizationTypeRepo.InsertAsync(organizationType);
+            await _uow.SaveChangesAsync();
+            return Ok();
         }
 
         [HttpDelete]
-        [Authorize]
         [Route("delete-organization-type/{id}")]
         public async Task<IActionResult> DeleteOrganizationType(int id)
         {
-            try
-            {
-                await _uow.OrganizationTypeRepo.DeleteAsync(id);
-                await _uow.SaveChangesAsync();
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(DeleteOrganizationType)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
-            }
+            await _uow.OrganizationTypeRepo.DeleteAsync(id);
+            await _uow.SaveChangesAsync();
+            return Ok();
         }
 
         [HttpPut]
-        [Route("update-organization-type/{id}")]
-        public async Task<IActionResult> UpdateOrganizationType(int id)
+        [Route("update-organization-type/")]
+        public async Task<IActionResult> UpdateOrganizationType(OrganizationTypeDTO organizationTypeDTO)
         {
+            var organizationType = _mapper.Map <OrganizationType>(organizationTypeDTO);
+            _uow.OrganizationTypeRepo.Update(organizationType);
+            await _uow.SaveChangesAsync();
             return Ok();
         }
     }

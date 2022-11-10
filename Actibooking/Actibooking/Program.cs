@@ -48,7 +48,7 @@ namespace Actibooking
             builder.Services.AddAuthentication();
             builder.Services.ConfigureIdentity();
             
-            builder.Services.AddScoped<IRepo<Organization>, OrganizationRepository>();
+            builder.Services.AddScoped<IRepo<Organization>, DataRepository<Organization>>();
             builder.Services.AddScoped<IRepo<Course>, DataRepository<Course>>();
             builder.Services.AddScoped<IRepo<Trainer>, DataRepository<Trainer>>();
             builder.Services.AddScoped<IRepo<Child>, DataRepository<Child>>();
