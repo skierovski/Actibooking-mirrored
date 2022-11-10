@@ -25,5 +25,7 @@ namespace Actibooking.Models
         public Trainer? trainer { get; set; }
 
         public List<Organization>? Organizations { get; set; }
+        public List<Child>? Children { get; set; }
+        
     }
 }
