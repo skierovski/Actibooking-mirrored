@@ -37,6 +37,13 @@ namespace Actibooking.Models
         public int CourseId { get; set; }
         public string ActiBookingUserId { get; set; }
     }
+    public class AddingChildToCourseDTO 
+    {
+        public string ActiBookingUserId { get; set; }
+        public int CourseId { get; set; }
+        public int ChildId { get; set; }
+    }
+
 
 
 }

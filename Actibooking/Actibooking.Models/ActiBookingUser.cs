@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,8 +32,8 @@ namespace Actibooking.Models
         public Trainer? trainer { get; set; }
 
         public List<Organization>? Organizations { get; set; }
-        public List<Child>? Children { get; set; }
+        public ICollection<Child>? Children { get; set; }
         public List<Course>? Courses { get; set; }
-        
+
     }
 }
