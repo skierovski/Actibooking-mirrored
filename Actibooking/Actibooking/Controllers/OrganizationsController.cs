@@ -21,7 +21,7 @@ namespace Actibooking.Controllers
     [ApiController]
     public class OrganizationsController : ControllerBase
     {
-        private readonly UserManager<ABUser> _userManager;
+        private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IUnitOfWork _uow;
         private readonly ILogger<OrganizationsController> _logger;
         private readonly IMapper _mapper;

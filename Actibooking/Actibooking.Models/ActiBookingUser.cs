@@ -32,6 +32,7 @@ namespace Actibooking.Models
 
         public List<Organization>? Organizations { get; set; }
         public List<Child>? Children { get; set; }
+        public List<Course>? Courses { get; set; }
         
     }
 }

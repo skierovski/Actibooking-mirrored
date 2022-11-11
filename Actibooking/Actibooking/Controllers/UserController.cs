@@ -1,16 +1,20 @@
-﻿using Actibooking.Data.Repository;
+﻿using Actibooking.Data;
+using Actibooking.Data.Repository;
 using Actibooking.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
 using Actibooking.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
+
 
 namespace Actibooking.Controllers
 {
@@ -18,26 +22,44 @@ namespace Actibooking.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IMapper _mapper;
-        private readonly ILogger<AccountController> _logger;
-        private readonly IAuthManager _authManager;
         private readonly IUnitOfWork _uow;
 
-        public UserController(IMapper mapper,
-            ILogger<AccountController> logger,
-            IAuthManager authManager,
-            IUnitOfWork uow)
+        public UserController(IMapper mapper,IUnitOfWork uow, UserManager<ActiBookingUser> userManager )
         {
             _mapper = mapper;
-            _logger = logger;
-            _authManager = authManager;
             _uow = uow;
+            _userManager = userManager;
         }
 
         [HttpPost("add-child")]
-        public async Task<IActionResult> AddChild()
+        public async Task<IActionResult> AddChild(AddingChildDTO addingChildDTO)
         {
-            return Ok();
+            var newChild = _mapper.Map<Child>(addingChildDTO);
+            await _uow.ChildRepo.InsertAsync(newChild);
+            await _uow.SaveChangesAsync();
+            return Ok("Child Added");
+        }
+
+        [HttpGet("Get-user-courses/{id}")]
+        public async Task<IActionResult> GetUserCourses(string id)
+        {
+            ActiBookingUser user = await _userManager.FindByIdAsync(id);
+            return Ok(user.Courses.ToList());
+        }
+
+        [HttpPost("Add-user-to-course")]
+        public async Task<IActionResult> AddUserToCourse(AddingUserToCourseDTO addingUserToCourse)
+        {
+            // need to be validate, and add some property to Course
+            ActiBookingUser user = await _userManager.FindByIdAsync(addingUserToCourse.ActiBookingUserId);
+            Course course = await _uow.CourseRepo.GetByIdAsync(addingUserToCourse.CourseId);
+            user.Courses = new List<Course>();
+            user.Courses.Add(course);
+            await _userManager.UpdateAsync(user);
+            await _uow.SaveChangesAsync();
+            return Ok("User Added to Course");
         }
     }
 }
