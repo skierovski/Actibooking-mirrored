@@ -17,7 +17,6 @@ namespace Actibooking.Data.Repository.Implementation
         public override async Task DeleteAsync(int id)
         {
             var entity = await _dbSet.Include(r => r.Adresses)
-                .Include(r => r.Trainers)
                 .Include(r => r.Courses)
                 .FirstOrDefaultAsync(o=> o.Id== id);
             _dbSet.Remove(entity);

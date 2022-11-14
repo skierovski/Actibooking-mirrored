@@ -1,57 +1,75 @@
 ﻿using Actibooking.Data.Repository;
+using Actibooking.Exceptions;
 using Actibooking.Models;
-using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
+using NuGet.DependencyResolver;
 
 namespace Actibooking.Controllers
 {
     public class TrainerController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-        private readonly ILogger<OrganizationsController> _logger;
-        private readonly IMapper _mapper;
-        public TrainerController(IUnitOfWork uow, ILogger<OrganizationsController> logger, IMapper mapper)
+        private readonly UserManager<ActiBookingUser> _userManager;
+        public TrainerController(IUnitOfWork uow, UserManager<ActiBookingUser> userManager)
         {
             _uow = uow;
-            _logger = logger;
-            _mapper = mapper;
+            _userManager = userManager;
         }
 
         [HttpGet("get-all-trainers")]
         public async Task<IActionResult> GetAll()
         {
-            var trainers = await _uow.TrainerRepo.GetAsync();
-            return Ok(trainers);
+            IEnumerable<Trainer>? trainers = await _uow.TrainerRepo.GetAsync();
+            if (trainers != null)
+            {
+                return Ok(trainers);
+            }
+            throw new NotFoundException("Trener not found", trainers);
         }
 
         [HttpGet("get-trainer/{id}")]
         public async Task<IActionResult> GetTrainer(int id)
         {
-            var trainer = await _uow.TrainerRepo.GetByIdAsync(id);
-            return Ok(trainer);
+            Trainer trainer = await _uow.TrainerRepo.GetByIdAsync(id);
+            if (trainer != null)
+            {
+                return Ok(trainer);
+            }
+            throw new NotFoundException("Trener not found", id);
+
         }
 
         [HttpPost("create-trainer")]
-        public async Task<IActionResult> CreateTrainer()
+        public async Task<IActionResult> CreateTrainer(string userId)
         {
-            await _uow.TrainerRepo.InsertAsync(new Trainer());
-            await _uow.SaveChangesAsync();
-            return Ok();
+            ActiBookingUser? user = _userManager.Users.FirstOrDefault(u => u.Id == userId);
+            if (user != null)
+            {
+                user.IsTrainer = true;
+                Trainer trainer = new Trainer();
+                await _uow.TrainerRepo.InsertAsync(trainer);
+                user.trainer = trainer;
+                await _userManager.UpdateAsync(user);
+                await _uow.SaveChangesAsync();
+                return Ok(user);
+            }
+            throw new BadRequestException("Something was wrong");
         }
 
         [HttpPost("add-trainer")]
         public async Task<IActionResult> AddTrainer([FromQuery] int organizationId, int trainerId)
         {
-            Organization org = await _uow.OrganizationRepo.GetByIdAsync(organizationId);
+            Organization? org = await _uow.OrganizationRepo.GetByIdAsync(organizationId);
             if (org != null)
             {
                 Trainer trainer = await _uow.TrainerRepo.GetByIdAsync(trainerId);
                 org.Trainers.Add(trainer);
                 await _uow.SaveChangesAsync();
+                return Ok(trainer);
             }
-            return Ok();
+            throw new NotFoundException("Organization not found", organizationId);
         }
 
         [HttpDelete("delete-trainer/{id}")]
