@@ -49,6 +49,10 @@ namespace Actibooking.Middleware
                     statusCode = HttpStatusCode.BadRequest;
                     errorDetails.ErrorType = "Bad Request";
                     break;
+                case OutOfRangeException outOfRangeException:
+                    statusCode = HttpStatusCode.RequestedRangeNotSatisfiable;
+                    errorDetails.ErrorType = "Out Of Range";
+                    break;
                 default:
                     break;
             }

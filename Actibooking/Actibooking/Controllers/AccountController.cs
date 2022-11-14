@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Actibooking.Controllers
@@ -21,16 +22,19 @@ namespace Actibooking.Controllers
         private readonly IMapper _mapper;
         private readonly ILogger<AccountController> _logger;
         private readonly IAuthManager _authManager;
+        private readonly IUnitOfWork _uow;
 
         public AccountController(UserManager<ActiBookingUser> userManager, 
             IMapper mapper, 
             ILogger<AccountController> logger,
-            IAuthManager authManager)
+            IAuthManager authManager,
+            IUnitOfWork uow)
         {
             _userManager = userManager;
             _mapper = mapper;
             _logger = logger;
             _authManager = authManager;
+            _uow = uow;
         }
 
         [HttpPost("register")]
@@ -86,5 +90,6 @@ namespace Actibooking.Controllers
                 return Problem($"Something Went Wrong in the{nameof(Login)}", statusCode: 500);
             }
         }
+        
     }
 }
