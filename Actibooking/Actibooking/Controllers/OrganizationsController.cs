@@ -21,7 +21,6 @@ namespace Actibooking.Controllers
     [ApiController]
     public class OrganizationsController : ControllerBase
     {
-        private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IUnitOfWork _uow;
         private readonly ILogger<OrganizationsController> _logger;
         private readonly IMapper _mapper;
@@ -37,7 +36,7 @@ namespace Actibooking.Controllers
         {
             try
             {
-                var organizations = await _uow.OrganizationRepo.GetAsync(includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
+                IEnumerable<Organization> organizations = await _uow.OrganizationRepo.GetAsync(includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
                 return Ok(organizations);
             }
             catch(Exception ex)
@@ -45,7 +44,6 @@ namespace Actibooking.Controllers
                 _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetAll)}");
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
-
         }
 
         [HttpGet("get-organization/{id}")]
@@ -53,7 +51,7 @@ namespace Actibooking.Controllers
         {
             try
             {
-                var organization = await _uow.OrganizationRepo.GetAsync(filter: o => o.Id == id, includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
+                IEnumerable<Organization> organization = await _uow.OrganizationRepo.GetAsync(filter: o => o.Id == id, includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
                 return Ok(organization);
             }
             catch (Exception ex)
@@ -66,7 +64,7 @@ namespace Actibooking.Controllers
         [HttpPost("create-organization")]
         public async Task<IActionResult> CreateOrganization([FromBody] NewOrganizationDTO newOrganizationDTO)
         {
-            var organization = _mapper.Map<Organization>(newOrganizationDTO);
+            Organization organization = _mapper.Map<Organization>(newOrganizationDTO);
             await _uow.OrganizationRepo.InsertAsync(organization);
             await _uow.SaveChangesAsync();
             return Ok();
@@ -85,7 +83,7 @@ namespace Actibooking.Controllers
         [HttpPut("update-organization")]
         public async Task<IActionResult> UpdateOrganization(OrganizationDTO organizationDTO)
         {
-            var organization = _mapper.Map<Organization>(organizationDTO);
+            Organization organization = _mapper.Map<Organization>(organizationDTO);
             _uow.OrganizationRepo.Update(organization);
             await _uow.SaveChangesAsync();
             return Ok();

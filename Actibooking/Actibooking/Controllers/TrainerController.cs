@@ -68,7 +68,6 @@ namespace Actibooking.Controllers
             throw new BadRequestException("Something was wrong");
         }
 
-        //
         [HttpPost("add-trainer")]
         public async Task<IActionResult> AddTrainer([FromQuery] int organizationId, int trainerId)
         {
@@ -76,7 +75,14 @@ namespace Actibooking.Controllers
             if (org != null)
             {
                 Trainer trainer = await _uow.TrainerRepo.GetByIdAsync(trainerId);
-                org.Trainers = new List<Trainer>() { trainer };
+                if (org.Trainers is null)
+                {
+                    org.Trainers = new List<Trainer>() { trainer };
+                }
+                else
+                {
+                    org.Trainers.Add(trainer);
+                }
                 await _uow.SaveChangesAsync();
                 return Ok(trainer);
             }
