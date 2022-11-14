@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Actibooking.Exceptions;
+using System.Globalization;
 
 namespace Actibooking.Controllers
 {
@@ -51,11 +52,20 @@ namespace Actibooking.Controllers
         {
             if (await _userManager.FindByIdAsync(userId) != null)
             {
-                var actiBookingUsers = await _uow.UserRepo.GetAsync(filter: x => x.Id == userId, includeProperties: "Courses");
-                var userCourseList = actiBookingUsers.Select(x => x.Courses).ToList()[0];
+                var actiBookingUsers = await _uow.UserRepo.GetAsync(filter: x => x.Id == userId, includeProperties: "Participants");
+                var userCourseList = actiBookingUsers.Select(x => x.Participants).ToList()[0];
+                
                 if (userCourseList.Count() > 0)
                 {
-                    return Ok(userCourseList);
+                    List<Course> courses = new List<Course>();
+                    foreach (var userCourse in userCourseList)
+                    {
+                        Course courseToAdd = await _uow.CourseRepo.GetByIdAsync(userCourse.Id);
+                        courseToAdd.Participant = null;
+                        courseToAdd.CourseTags = null;
+                        courses.Add(courseToAdd);
+                    }
+                    return Ok(courses);
                 }
                 throw new NotFoundException("No activities", userId);
             }
@@ -72,8 +82,8 @@ namespace Actibooking.Controllers
                 if (await _uow.CourseRepo.GetByIdAsync(addingUserToCourse.CourseId) != null)
                 {
                     Course course = await _uow.CourseRepo.GetByIdAsync(addingUserToCourse.CourseId);
-                    user.Courses = new List<Course>(); 
-                    user.Courses.Add(course);
+                    Participant participant = new Participant() { ActiBookingUserId = user.Id, CourseId = course.Id};
+                    user.Participants = new List<Participant>() { participant };
                     await _userManager.UpdateAsync(user);
                     await _uow.SaveChangesAsync();
                     return Ok("User Added to Course");
@@ -94,18 +104,35 @@ namespace Actibooking.Controllers
                     Child child = await _uow.ChildRepo.GetByIdAsync(addingChildToCourse.ChildId);
                     if (await _uow.CourseRepo.GetByIdAsync(addingChildToCourse.CourseId) != null)
                     {
+
                         Course course = await _uow.CourseRepo.GetByIdAsync(addingChildToCourse.CourseId);
-                        child.Courses = new List<Course>();
-                        child.Courses.Add(course);
-                        await _userManager.UpdateAsync(user);
-                        await _uow.SaveChangesAsync();
-                        return Ok("Child Added to Course");
+                        if(CheckAge(child.BirthDate, course.minAge, course.maxAge))
+                        {
+                            Participant participant = new Participant() { ActiBookingUserId = user.Id, CourseId = course.Id, ChildId = child.Id };
+                            child.Participant = new List<Participant>() { participant };
+                            await _userManager.UpdateAsync(user);
+                            await _uow.SaveChangesAsync();
+                            return Ok("Child Added to Course");
+                        }
+                        throw new OutOfRangeException("Your age is not valid", course.minAge);
                     }
                     throw new NotFoundException("Course not found", addingChildToCourse.CourseId);
                 }
                 throw new NotFoundException("Child not found", addingChildToCourse.ChildId);
             }
             throw new NotFoundException("User not found", addingChildToCourse.ActiBookingUserId);
+        }
+
+        private bool CheckAge(string birthDate, int? minAge, int? maxAge)
+        {
+            var today = DateTime.Now.Date;
+            var userBirthDate = Convert.ToDateTime(birthDate);
+            var age = ((today - userBirthDate).TotalDays) / 365;
+            if( age >= minAge && age <= maxAge)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

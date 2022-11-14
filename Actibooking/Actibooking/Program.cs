@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Serilog;
 using Actibooking.Middleware;
+using System.Text.Json.Serialization;
 
 namespace Actibooking
 {
@@ -43,6 +44,7 @@ namespace Actibooking
             var configuration = provider.GetRequiredService<IConfiguration>();
 
             builder.Services.AddControllers();
+
             builder.Services.AddDbContext<ActibookingDBContex>();
             /*builder.Services.ConfigureRateLimiting();*/
             builder.Services.AddAuthentication();
@@ -52,6 +54,7 @@ namespace Actibooking
             builder.Services.AddScoped<IRepo<Course>, DataRepository<Course>>();
             builder.Services.AddScoped<IRepo<Trainer>, DataRepository<Trainer>>();
             builder.Services.AddScoped<IRepo<ActiBookingUser>, DataRepository<ActiBookingUser>>();
+            builder.Services.AddScoped<IRepo<Participant>, DataRepository<Participant>>();
             builder.Services.AddScoped<IRepo<Child>, DataRepository<Child>>();
             builder.Services.AddScoped<IRepo<Adress>, DataRepository<Adress>>();
             builder.Services.AddScoped<IRepo<CourseTag>, DataRepository<CourseTag>>();

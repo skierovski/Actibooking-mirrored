@@ -27,6 +27,8 @@ namespace Actibooking.Models
         public int? Duration { get; set; }
 
         public bool IsArchive { get; set; }
+        public int? maxAge { get; set; }
+        public int? minAge { get; set; }
 
         public string? Hour { get; set; }
 
@@ -39,5 +41,6 @@ namespace Actibooking.Models
         public List<CourseTag>? CourseTags { get; set; }
 
         public List<Trainer>? Trainers { get; set; }
+        public List<Participant>? Participant { get; set; }
     }
 }
