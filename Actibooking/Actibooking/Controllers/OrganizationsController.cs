@@ -81,6 +81,7 @@ namespace Actibooking.Controllers
             return Ok();
         }
 
+        //
         [HttpPut("update-organization")]
         public async Task<IActionResult> UpdateOrganization(OrganizationDTO organizationDTO)
         {

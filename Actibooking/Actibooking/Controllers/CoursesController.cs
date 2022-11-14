@@ -25,13 +25,13 @@ namespace Actibooking.Controllers
             _mapper = mapper;
             _userManager = userManager;
         }
-
+        //
         [HttpGet("get-all-courses")]
         public async Task<IEnumerable<Course>> GetAll()
         {
             return await _uow.CourseRepo.GetAsync();
         }
-
+        //
         [HttpGet("get-course/{id}")]
         public async Task<Course> GetAllCourses(int id)
         {
@@ -53,15 +53,15 @@ namespace Actibooking.Controllers
             }
             return false;
         }
-
+        //
         [HttpDelete("delete-course/{id}")]
         public async Task<bool> DeleteCourse(int courseId)
         {
             return true;
         }
 
-        [HttpPut]
-        [Route("update-course")]
+        //
+        [HttpPut("update-course")]
         public async Task<IActionResult> UpdateCourse(Course course)
         {
             _uow.CourseRepo.Update(course);

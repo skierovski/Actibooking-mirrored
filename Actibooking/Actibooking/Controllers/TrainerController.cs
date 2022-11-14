@@ -38,7 +38,17 @@ namespace Actibooking.Controllers
                 return Ok(trainer);
             }
             throw new NotFoundException("Trener not found", id);
+        }
 
+        [HttpGet("get-trainers-for-organization")]
+        public async Task<IActionResult> GetTrainersForOrganization(int organizationId)
+        {
+            IEnumerable<Organization> org = await _uow.OrganizationRepo.GetAsync(filter: o => o.Id == organizationId, includeProperties: "Trainers");
+            if (org != null)
+            {
+                return Ok(org.FirstOrDefault().Trainers);
+            }
+            throw new NotFoundException("Trener not found", org);
         }
 
         [HttpPost("create-trainer")]
@@ -58,6 +68,7 @@ namespace Actibooking.Controllers
             throw new BadRequestException("Something was wrong");
         }
 
+        //
         [HttpPost("add-trainer")]
         public async Task<IActionResult> AddTrainer([FromQuery] int organizationId, int trainerId)
         {
@@ -65,7 +76,7 @@ namespace Actibooking.Controllers
             if (org != null)
             {
                 Trainer trainer = await _uow.TrainerRepo.GetByIdAsync(trainerId);
-                org.Trainers.Add(trainer);
+                org.Trainers = new List<Trainer>() { trainer };
                 await _uow.SaveChangesAsync();
                 return Ok(trainer);
             }
