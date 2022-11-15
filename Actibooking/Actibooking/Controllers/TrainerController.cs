@@ -1,5 +1,6 @@
 ﻿using Actibooking.Data.Repository;
 using Actibooking.Models;
+using Actibooking.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,40 +8,40 @@ using System.Data;
 
 namespace Actibooking.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class TrainerController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-        private readonly ILogger<OrganizationsController> _logger;
-        private readonly IMapper _mapper;
-        public TrainerController(IUnitOfWork uow, ILogger<OrganizationsController> logger, IMapper mapper)
+        private readonly TrainerServices _trainerServices;
+        public TrainerController(IUnitOfWork uow, TrainerServices trainerServices)
         {
             _uow = uow;
-            _logger = logger;
-            _mapper = mapper;
+            _trainerServices = trainerServices;
         }
 
-        [HttpGet("get-all-trainers")]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var trainers = await _uow.TrainerRepo.GetAsync();
             return Ok(trainers);
         }
 
-        [HttpGet("get-trainer/{id}")]
-        public async Task<IActionResult> GetTrainer(int id)
+        [HttpGet("{trainerId}")]
+        public async Task<IActionResult> GetTrainer(int trainerId)
         {
-            var trainer = await _uow.TrainerRepo.GetByIdAsync(id);
+            var trainer = await _trainerServices.CheckIfExist(trainerId);
             return Ok(trainer);
         }
 
-        [HttpPost("create-trainer")]
+        [HttpPost("create")]
         public async Task<IActionResult> CreateTrainer()
         {
             await _uow.TrainerRepo.InsertAsync(new Trainer());
             await _uow.SaveChangesAsync();
             return Ok();
         }
-
+        // przenieś do organization
         [HttpPost("add-trainer")]
         public async Task<IActionResult> AddTrainer([FromQuery] int organizationId, int trainerId)
         {
@@ -54,7 +55,7 @@ namespace Actibooking.Controllers
             return Ok();
         }
 
-        [HttpDelete("delete-trainer/{id}")]
+        [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteTrainer(int id)
         {
@@ -63,7 +64,7 @@ namespace Actibooking.Controllers
             return Ok();
         }
 
-        [HttpPut("update-trainer")]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateTrainer([FromQuery] Trainer trainer)
         {
             _uow.TrainerRepo.Update(trainer);
