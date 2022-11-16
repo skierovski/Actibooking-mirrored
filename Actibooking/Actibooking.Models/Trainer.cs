@@ -17,5 +17,8 @@ namespace Actibooking.Models
         public string? Education { get; set; }
 
         public string? PhotoUrl { get; set; }
+        public string ActiBookingUserId { get; set; }
+        public ActiBookingUser ActiBookingUser { get; set;}
+        public int? OrganizationId { get; set; }
     }
 }

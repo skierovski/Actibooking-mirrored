@@ -1,4 +1,5 @@
 ﻿using Actibooking.Data.Repository;
+using Actibooking.Exceptions;
 using Actibooking.Models;
 using Actibooking.Services;
 using AutoMapper;
@@ -24,8 +25,9 @@ namespace Actibooking.Controllers
         private readonly IAuthManager _authManager;
         private readonly IUnitOfWork _uow;
 
+
         public AccountController(UserManager<ActiBookingUser> userManager, 
-            IMapper mapper, 
+            IMapper mapper,
             ILogger<AccountController> logger,
             IAuthManager authManager,
             IUnitOfWork uow)
@@ -43,53 +45,31 @@ namespace Actibooking.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
         {
-            _logger.LogInformation($"Registration Attempt for {userDTO.Email}");
-            try
-            {
-                var user = _mapper.Map<ActiBookingUser>(userDTO);
-                user.UserName = userDTO.Email;
-                var result = await _userManager.CreateAsync(user, userDTO.Password);
-                if (!result.Succeeded)
+           var user = _mapper.Map<ActiBookingUser>(userDTO);
+           user.UserName = userDTO.Email;
+           var result = await _userManager.CreateAsync(user, userDTO.Password);
+           if (!result.Succeeded)
+           {
+                foreach( var error in result.Errors)
                 {
-                    foreach( var error in result.Errors)
-                    {
-                        ModelState.AddModelError(error.Code, error.Description);
-                    }
-                    return BadRequest(ModelState);
+                    ModelState.AddModelError(error.Code, error.Description);
                 }
-                await _userManager.AddToRolesAsync(user,userDTO.Roles);
-                return Accepted();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex,$"Something Went Wrong in the{nameof(Register)}");
-                return Problem($"Something Went Wrong in the{nameof(Register)}", statusCode: 500);
-            }
+                throw new BadRequestException("Email already registred");
+           }
+           await _userManager.AddToRolesAsync(user,userDTO.Roles);
+           return Ok("Account Created");
+           
         }
 
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginUserDTO userDTO)
         {
-            _logger.LogInformation($"Login Attemp for {userDTO.Email}");
-            if (!ModelState.IsValid)
+            if (!await _authManager.ValidateUser(userDTO))
             {
-                return BadRequest(ModelState);
+                throw new UnauthorizedExeption(userDTO.Email);
             }
-            try
-            {
-                if (!await _authManager.ValidateUser(userDTO))
-                {
-                    return Unauthorized();
-                }
-                return Accepted(new { Token = await _authManager.CreateToken() });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogInformation($"Something Went Wrong in the{nameof(Login)}");
-                return Problem($"Something Went Wrong in the{nameof(Login)}", statusCode: 500);
-            }
+            return Accepted(new { Token = await _authManager.CreateToken() });
         }
-        
     }
 }

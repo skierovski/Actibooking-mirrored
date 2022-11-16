@@ -20,16 +20,12 @@ namespace Actibooking.Models
         [MaxLength(100)]
         public string? LastName { get; set; }
 
-        [Required]
         public bool IsTrainer { get; set; }
 
-        [Required]
         public string? BirthDate { get; set; }
-
-        [Required]
         public string? Gender { get; set; }
 
-        public Trainer? trainer { get; set; }
+        public Trainer? Trainer { get; set; }
 
         public List<Organization>? Organizations { get; set; }
         public List<Child>? Children { get; set; }
