@@ -21,9 +21,7 @@ namespace Actibooking.Controllers
     {
         private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IMapper _mapper;
-        private readonly ILogger<AccountController> _logger;
         private readonly IAuthManager _authManager;
-        private readonly IUnitOfWork _uow;
 
 
         public AccountController(UserManager<ActiBookingUser> userManager, 
@@ -34,16 +32,14 @@ namespace Actibooking.Controllers
         {
             _userManager = userManager;
             _mapper = mapper;
-            _logger = logger;
             _authManager = authManager;
-            _uow = uow;
         }
 
         [HttpPost("register")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> Register(UserDTO userDTO)
         {
            var user = _mapper.Map<ActiBookingUser>(userDTO);
            user.UserName = userDTO.Email;
@@ -63,7 +59,7 @@ namespace Actibooking.Controllers
 
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginUserDTO userDTO)
+        public async Task<IActionResult> Login(LoginUserDTO userDTO)
         {
             if (!await _authManager.ValidateUser(userDTO))
             {

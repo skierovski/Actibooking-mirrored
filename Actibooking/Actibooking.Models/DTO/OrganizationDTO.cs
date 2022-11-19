@@ -25,4 +25,9 @@ namespace Actibooking.Models
     {
         public string ActiBookingUserId { get; set; }
     }
+
+    public class UpdateOrganizationDTO : OrganizationDTO
+    {
+        public int Id { get; set; }
+    }
 }
