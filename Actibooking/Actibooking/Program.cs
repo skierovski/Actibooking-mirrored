@@ -61,6 +61,8 @@ namespace Actibooking
             builder.Services.AddScoped<IRepo<OrganizationType>, DataRepository<OrganizationType>>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IAuthManager, AuthManager>();
+            builder.Services.AddScoped<ICoursesManager, CourseManager>();
+            builder.Services.AddScoped<ITrainerManager, TrainerManager>();
 
             builder.Services.AddAuthentication(o => {
                 o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

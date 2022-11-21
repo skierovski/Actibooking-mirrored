@@ -43,7 +43,12 @@ namespace Actibooking.Models
         public int CourseId { get; set; }
         public int ChildId { get; set; }
     }
-
-
-
+    public class GetCourseParticipantsUserDTO
+    {
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public bool IsTrainer { get; set; }
+        public string? BirthDate { get; set; }
+        public string? Gender { get; set; }
+    }
 }
