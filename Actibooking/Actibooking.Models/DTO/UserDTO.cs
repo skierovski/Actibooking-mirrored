@@ -15,6 +15,8 @@ namespace Actibooking.Models
         [Required]
         [StringLength(15, ErrorMessage = " Your Password is limited to {2} to {1} character", MinimumLength = 6)]
         public string Password { get; set; }
+        public string BirthDate { get; set; }
+        public string Gender { get; set; }
     }
     public class UserDTO : LoginUserDTO
     {

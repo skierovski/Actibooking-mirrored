@@ -63,6 +63,7 @@ namespace Actibooking
             builder.Services.AddScoped<IAuthManager, AuthManager>();
             builder.Services.AddScoped<ICoursesManager, CourseManager>();
             builder.Services.AddScoped<ITrainerManager, TrainerManager>();
+            builder.Services.AddScoped<OrganizationManager>();
 
             builder.Services.AddAuthentication(o => {
                 o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

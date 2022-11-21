@@ -15,6 +15,8 @@ namespace Actibooking.Data.Configurations
             CreateMap<Organization, NewOrganizationDTO>().ReverseMap();
             CreateMap<Course, CourseDTO>().ReverseMap();
             CreateMap<OrganizationType, OrganizationTypeDTO>().ReverseMap();
+            CreateMap<Trainer, NewTrainerDTO>().ReverseMap();
+            CreateMap<Trainer, UpdateTrainerDTO>().ReverseMap();
             CreateMap<ActiBookingUser, GetCourseParticipantsUserDTO>().ReverseMap();
             CreateMap<Child, ChildDTO>().ReverseMap();
         }

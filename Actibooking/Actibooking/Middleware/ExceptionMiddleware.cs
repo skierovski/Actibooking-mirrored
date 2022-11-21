@@ -53,6 +53,10 @@ namespace Actibooking.Middleware
                     statusCode = HttpStatusCode.RequestedRangeNotSatisfiable;
                     errorDetails.ErrorType = "Out Of Range";
                     break;
+                case UnauthorizedExeption unauthorizedExeption:
+                    statusCode = HttpStatusCode.Unauthorized;
+                    errorDetails.ErrorType = "Bad Login or Password";
+                    break;
                 default:
                     break;
             }
