@@ -43,6 +43,7 @@ namespace Actibooking.Controllers
         {
            var user = _mapper.Map<ActiBookingUser>(userDTO);
            user.UserName = userDTO.Email;
+
            var result = await _userManager.CreateAsync(user, userDTO.Password);
            if (!result.Succeeded)
            {
