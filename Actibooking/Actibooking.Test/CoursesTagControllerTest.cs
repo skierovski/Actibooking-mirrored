@@ -24,11 +24,14 @@ namespace Actibooking.Test
             var iLoggerCoursesTagControllerMock = new Mock<ILogger<CoursesTagController>>();
             var coursesTagController = new CoursesTagController(iUnitOfWork.Object,  iLoggerCoursesTagControllerMock.Object);
 
-            var Tag = new CourseTag();
-            Tag.Description = "Testowy";
-            Tag.Name = "Testowy";
-            Tag.Id = 10;
-            Tag.Courses = null;
+            var Tag = new CourseTag()
+            {
+                Description = "Testowy",
+                Name = "Testowy",
+                Id = 10,
+                Courses = null,
+            };
+
 
             var newCoursesTag = await coursesTagController.CreateCourseTag(Tag);
             Assert.IsType<ObjectResult>(newCoursesTag);
