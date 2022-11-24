@@ -8,12 +8,12 @@ import Card from "./CategoryCard";
 
 const leftSlide = () => {
   var slider = document.getElementById("categoryslidercard");
-  slider.scrollLeft = slider.scrollLeft - 298;
+  slider.scrollLeft = slider.scrollLeft - 269;
 };
 
 const rightSlide = () => {
   var slider = document.getElementById("categoryslidercard");
-  slider.scrollLeft = slider.scrollLeft + 298;
+  slider.scrollLeft = slider.scrollLeft + 269;
 };
 
 const CategorySlideCard = (props) => {
