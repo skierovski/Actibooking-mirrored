@@ -1,7 +1,10 @@
+import "./CardButton.css";
 const CardButton = (props) => {
   return (
-    <div>
-      <button>View more</button>
+    <div className="button-container">
+      <a className="button-small" href="">
+        View more
+      </a>
     </div>
   );
 };

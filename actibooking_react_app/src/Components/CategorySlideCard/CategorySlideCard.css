@@ -28,7 +28,7 @@
   position: absolute;
   size: 40;
   opacity: 0.6;
-  border: 1px solid #34582f;
+  border: 2px solid #518e48;
   left: -20px;
 }
 
@@ -39,7 +39,7 @@
   size: 40;
   right: -20px;
   opacity: 0.6;
-  border: 1px solid #34582f;
+  border: 2px solid #518e48;
 }
 
 .right-categoryslidercard-button:hover,
@@ -65,7 +65,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-size: 320px;
-  border-bottom: 3px solid #34582f;
+  border-bottom: 3px solid #518e48;
 }
 
 .category-card-name {
