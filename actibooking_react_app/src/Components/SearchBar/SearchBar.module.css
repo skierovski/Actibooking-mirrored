@@ -1,0 +1,15 @@
+.searchBar{
+    width: 30vw;
+    height: 5vh;
+    background-color: rgb(255, 255, 255) ;
+    border-radius: 10px;
+    font-size: 25px;
+    text-align: center;
+    border: none;
+}
+.searchIcon{
+    transform:translateX(1.5vw);
+}
+.locationIcon{
+    transform:translateX(-1.5vw);
+}

@@ -1,11 +1,17 @@
-import "./App.css";
+import './App.css';
+import HomePage from './Components/HomePage/HomePage';
+import {Route, Routes} from "react-router-dom";
+import SingleOrganizationPage from "../src/Components/Organization/SingleOrganizationPage/SingleOrganizationPage";
 import CategorySlideCard from "./CategorySlideCard/CategorySlideCard";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <CategorySlideCard />
-    </div>
+    <>
+    <Routes>
+      <Route path="/" element={<HomePage/>}/>
+      <Route path="/Organizations/:id" element={<SingleOrganizationPage/>}/>
+    </Routes>
+    </>
   );
 }
 

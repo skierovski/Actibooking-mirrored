@@ -1,0 +1,14 @@
+.Authorization_container{
+    background-color: transparent;
+    text-align: center;
+}
+.Authorization{
+    width: fit-content;
+    font-size: 25px;
+    font-weight: 500;
+    color:black;
+    cursor: pointer;
+}
+.userIconContainer{
+    cursor: pointer;
+}
