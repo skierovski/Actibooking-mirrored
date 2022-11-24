@@ -1,0 +1,87 @@
+const Organizations =
+    [
+        {
+          "id": 1,
+          "name": "Dance School Gabi",
+          "isPublic": true,
+          "description": "Description",
+          "logoUrl": "https://www.kennedy-center.org/globalassets/education/opportunities-for-artists/pre-professional-artist-training/contemporary-dance-class-series/contemporary-dance-class-series-169.jpg?format=webp&width=1600&quality=70",
+          "photosUrl": "string",
+          "actiBookingUserId": "0044892c-5cd8-40fe-87f2-4e9326391890",
+          "courses": null,
+          "adresses": ['Gałczyńskiego 18/4 80-544 Gdańsk'],
+          "trainers": null,
+          "organizationTypes": null,
+          "actiBookingUser": null
+        },
+        {
+          "id": 2,
+          "name": "Crossfit with Aleksander Wielki",
+          "isPublic": true,
+          "description": "Zumba School",
+          "logoUrl": "https://www.basic-fit.com/on/demandware.static/-/Library-Sites-basic-fit-shared-library/default/dwf0cbd84f/Roots/Blog/Blog-Header/1088x612/19-07-Blog-fitness-training-personal-training.png",
+          "photosUrl": "string",
+          "actiBookingUserId": "0044892c-5cd8-40fe-87f2-4e9326391890",
+          "courses": null,
+          "adresses": ['Diany 38/4 80-299 Gdańsk'],
+          "trainers": null,
+          "organizationTypes": null,
+          "actiBookingUser": null
+        },
+        {
+            "id": 3,
+          "name": "Art School",
+          "isPublic": true,
+          "description": "Zumba School",
+          "logoUrl": "https://plus.unsplash.com/premium_photo-1663050956267-fa2f5f905862?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXJ0JTIwY2xhc3N8ZW58MHx8MHx8&w=1000&q=80",
+          "photosUrl": "string",
+          "actiBookingUserId": "0044892c-5cd8-40fe-87f2-4e9326391890",
+          "courses": null,
+          "adresses": ['Aleja Jana Pawła II/32 13/b 00-141 Warszawa'],
+          "trainers": null,
+          "organizationTypes": null,
+          "actiBookingUser": null
+        },
+        {
+          "id": 4,
+        "name": "Swimming School",
+        "isPublic": true,
+        "description": "Zumba School",
+        "logoUrl": "https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Kids/Articles/Swim+Lessons/carousel.jpg",
+        "photosUrl": "string",
+        "actiBookingUserId": "0044892c-5cd8-40fe-87f2-4e9326391890",
+        "courses": null,
+        "adresses": ['Pomorska 13/b 80-333 Gdańsk'],
+        "trainers": null,
+        "organizationTypes": null,
+        "actiBookingUser": null
+      },
+      {
+        "id": 5,
+      "name": "Painting School",
+      "isPublic": true,
+      "description": "Zumba School",
+      "logoUrl": "https://plus.unsplash.com/premium_photo-1663050956267-fa2f5f905862?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXJ0JTIwY2xhc3N8ZW58MHx8MHx8&w=1000&q=80",
+      "photosUrl": "string",
+      "actiBookingUserId": "0044892c-5cd8-40fe-87f2-4e9326391890",
+      "courses": null,
+      "adresses": ['Pomorska 13/b 80-333 Gdańsk'],
+      "trainers": null,
+      "organizationTypes": null,
+      "actiBookingUser": null
+    },
+    {
+      "id": 6,
+    "name": "Painting School",
+    "isPublic": true,
+    "description": "Zumba School",
+    "logoUrl": "https://www.alpadia.com/sites/default/files/styles/medium_big_sm/public/school/featured/german-language-courses-900x600.jpg?itok=1NpTTZbu",
+    "photosUrl": "string",
+    "actiBookingUserId": "0044892c-5cd8-40fe-87f2-4e9326391890",
+    "courses": null,
+    "adresses": ['ul. Ludwika Nabielaka/11 00-743 Warszawa'],
+    "trainers": null,
+    "organizationTypes": null,
+    "actiBookingUser": null
+  }]
+  export default Organizations;
