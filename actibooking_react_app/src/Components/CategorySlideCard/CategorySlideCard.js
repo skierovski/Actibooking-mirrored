@@ -8,12 +8,12 @@ import Card from "./CategoryCard";
 
 const leftSlide = () => {
   var slider = document.getElementById("categoryslidercard");
-  slider.scrollLeft = slider.scrollLeft - 320;
+  slider.scrollLeft = slider.scrollLeft - 298;
 };
 
 const rightSlide = () => {
   var slider = document.getElementById("categoryslidercard");
-  slider.scrollLeft = slider.scrollLeft + 320;
+  slider.scrollLeft = slider.scrollLeft + 298;
 };
 
 const CategorySlideCard = (props) => {
@@ -28,9 +28,7 @@ const CategorySlideCard = (props) => {
       />
       <div id="categoryslidercard">
         {Categories.map((Categories, index) => {
-          return (
-           <Card key={index} Categories={Categories} />
-          );
+          return <Card key={index} Categories={Categories} />;
         })}
       </div>
       <MdChevronRight
