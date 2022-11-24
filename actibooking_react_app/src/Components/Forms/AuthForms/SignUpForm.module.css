@@ -50,5 +50,7 @@ form{
     cursor: pointer;
     width: fit-content;
     margin: auto;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
