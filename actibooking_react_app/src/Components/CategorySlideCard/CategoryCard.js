@@ -1,4 +1,4 @@
-import CardButton from "./CardButton";
+import Button from "../DefaultModels/Button";
 
 const Card = (props) => {
   return (
@@ -9,7 +9,7 @@ const Card = (props) => {
       ></div>
       <div className="category-card-name">
         {props.Categories.CategoryName}
-        <CardButton />
+        <Button value="ViewMore" href={`Organizations/${props.Categories.CategoryId}`} />
       </div>
     </div>
   );
