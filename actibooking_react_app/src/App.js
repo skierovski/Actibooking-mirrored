@@ -1,20 +1,19 @@
-import './App.css';
-import HomePage from './Components/HomePage/HomePage';
-import {Route, Routes} from "react-router-dom";
+import "./App.css";
+import HomePage from "./Components/HomePage/HomePage";
+import { Route, Routes } from "react-router-dom";
 import SingleOrganizationPage from "../src/Components/Organization/SingleOrganizationPage/SingleOrganizationPage";
-import AccountPage from './Components/Account/AccountPage/AccountPage';
-import CategorySlideCard from "./Components/CategorySlideCard/CategorySlideCard";
+import AccountPage from "./Components/Account/AccountPage/AccountPage";
 
 const App = () => {
   return (
     <>
-    <Routes>
-      <Route path="/" element={<HomePage/>}/>
-      <Route path="/Organizations/:id" element={<SingleOrganizationPage/>}/>
-      <Route path='/Account/:id' element={<AccountPage/>}/>
-    </Routes>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/Organizations/:id" element={<SingleOrganizationPage />} />
+        <Route path="/Account/:id" element={<AccountPage />} />
+      </Routes>
     </>
   );
-}
+};
 
 export default App;
