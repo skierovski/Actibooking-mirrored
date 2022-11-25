@@ -5,6 +5,7 @@ const SingleOrganizationPage = (props) => {
     return (
         <>
             <Navibar/>
+            <h1>Single Organization Page Here</h1>
         </>
     )
 }

@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+.button-container {
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  top: 15px;
+  left: 160px;
+}
+
+.button-small {
+  background-color: #518e48;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  padding: 6px 6px;
+  text-decoration: none;
+}
+.button-small:hover {
+  background-color: #67ad5c;
+}
+.button-small:active {
+  position: relative;
+  top: 1px;
+}

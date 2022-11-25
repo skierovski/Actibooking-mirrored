@@ -28,7 +28,7 @@ export default function MostPopularOrganization() {
     <div className={styles.slaiderbox}>
       <Slider {...settings}>
         {Organizations.map((o) => (
-        <SliderCard logoUrl={o.logoUrl} name={o.name} adress={o.adresses[0]}/>
+        <SliderCard key={o.id} logoUrl={o.logoUrl} name={o.name} adress={o.adresses[0]}/>
       ))}
       </Slider>
       </div>
