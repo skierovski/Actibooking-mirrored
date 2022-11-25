@@ -4,6 +4,7 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import CategoryToShow from "./Data";
 import Card from "./CategoryCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
+import LastCard from "./LastCategoryCard";
 
 /* npm install react-icon --save */
 
@@ -16,8 +17,8 @@ const leftSlide = () => {
 const rightSlide = () => {
   var slider = document.getElementById("categoryslidercard");
   slider.scrollLeft = slider.scrollLeft + 269;
-  if (slider.scrollLeft > 1077) {
-    slider.scrollLeft = 1345;
+  if (slider.scrollLeft > 1346) {
+    slider.scrollLeft = 1614;
   }
   console.log(slider.scrollLeft);
 };
@@ -38,6 +39,7 @@ const CategorySlideCard = (props) => {
           {Categories.map((Categories, index) => {
             return <Card key={index} Categories={Categories} />;
           })}
+          <LastCard />
         </div>
         <MdChevronRight
           size={40}
