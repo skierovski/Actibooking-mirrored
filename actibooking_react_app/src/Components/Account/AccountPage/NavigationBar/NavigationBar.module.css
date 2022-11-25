@@ -1,0 +1,21 @@
+.Navigation {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 25;
+    border-radius: 12px;
+    background: rgba(59, 59, 59, 0.74);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(59, 59, 59, 0.3);
+    width: calc(40px + 1vw);
+    height: 50vh;
+}
+
+.ButtonIcon {
+    color: white;
+    scale: 1.5;
+}
