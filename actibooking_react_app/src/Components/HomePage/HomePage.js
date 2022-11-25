@@ -3,7 +3,7 @@ import VideoWrapper from "../VideoWrapper/VideoWrapper";
 import Navibar from "../Navibar/Navibar";
 import MostPopularOrganization from "../MostPupularOrganization/MostPopularOrganization";
 import SearchBarContainer from "../SearchBar/SearchBarContainer";
-import CategorySlideCard from "../CategorySlideCard/CategorySlideCard";
+import CategorySlideCard from "../OrganizationsCategorySlider/CategorySlideCard";
 const HomePage = () => {
   return (
     <>

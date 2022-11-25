@@ -1,21 +1,20 @@
-import React from "react";
-import "./CategorySlideCard.css";
+import "./OrganizationsCategorySlider.css";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import CategoryToShow from "./Data";
-import Card from "./CategoryCard";
-import SectionTitle from "../SectionTitle/SectionTitle";
-import LastCard from "./LastCategoryCard";
+import CategorySlideCardData from "../../Data/CategorySlideCardData";
+import CategoryCard from "./CategoryCard";
+import SectionTitle from "../DefaultModels/Titles/SectionTitle";
+import LastCategoryCard from "./LastCategoryCard";
 
 /* npm install react-icon --save */
 
 const leftSlide = () => {
-  var slider = document.getElementById("categoryslidercard");
+  let slider = document.getElementById("categoryslidercard");
   slider.scrollLeft = slider.scrollLeft - 269;
   console.log(slider.scrollLeft);
 };
 
 const rightSlide = () => {
-  var slider = document.getElementById("categoryslidercard");
+  let slider = document.getElementById("categoryslidercard");
   slider.scrollLeft = slider.scrollLeft + 269;
   if (slider.scrollLeft > 1346) {
     slider.scrollLeft = 1614;
@@ -23,8 +22,8 @@ const rightSlide = () => {
   console.log(slider.scrollLeft);
 };
 
-const CategorySlideCard = (props) => {
-  const CategorySlides = <CategoryToShow />;
+const CategorySlideCard = () => {
+  const CategorySlides = <CategorySlideCardData />;
   const Categories = CategorySlides.type;
   return (
     <div>
@@ -37,9 +36,9 @@ const CategorySlideCard = (props) => {
         />
         <div id="categoryslidercard">
           {Categories.map((Categories, index) => {
-            return <Card key={index} Categories={Categories} />;
+            return <CategoryCard key={index} Categories={Categories} />;
           })}
-          <LastCard />
+          <LastCategoryCard />
         </div>
         <MdChevronRight
           size={40}

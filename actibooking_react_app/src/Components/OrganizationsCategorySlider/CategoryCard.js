@@ -1,6 +1,6 @@
-import Button from "../DefaultModels/Button";
+import Button from "../DefaultModels/Buttons/Button";
 
-const Card = (props) => {
+const CategoryCard = (props) => {
   return (
     <div className="category-card">
       <div
@@ -15,4 +15,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default CategoryCard;
