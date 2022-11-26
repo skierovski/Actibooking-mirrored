@@ -11,7 +11,7 @@ const NavigationBar = (props) => {
                 <div className={styles.ButtonIcon} onClick={() => props.changeBody("security")}>
                     <FontAwesomeIcon icon={faLock}/>
                 </div>
-                <div className={styles.ButtonIcon} onClick={() => props.changeBody("course")}>
+                <div className={styles.ButtonIcon} onClick={() => props.changeBody("courses")}>
                     <FontAwesomeIcon icon={faCalendarDays}/>
                 </div>
                 <div className={styles.ButtonIcon}>
