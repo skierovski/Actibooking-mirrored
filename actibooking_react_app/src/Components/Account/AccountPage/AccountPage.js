@@ -21,8 +21,6 @@ const AccountPage = () => {
         <BodyToReturn body={body}/>
         </div>
         </div>
-
-
         </>
     )
 }

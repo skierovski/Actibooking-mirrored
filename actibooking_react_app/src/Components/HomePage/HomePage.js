@@ -1,9 +1,10 @@
 import Footer from "../Footer/Footer";
 import VideoWrapper from "../VideoWrapper/VideoWrapper";
 import Navibar from "../Navibar/Navibar";
-import MostPopularOrganization from "../MostPupularOrganization/MostPopularOrganization";
+import MostPopularOrganization from "../Organization/MostPupularOrganization/MostPopularOrganization";
 import SearchBarContainer from "../SearchBar/SearchBarContainer";
-import CategorySlideCard from "../CategorySlideCard/CategorySlideCard";
+import ScrollMotion from "../ScrollMotion/ScrollMotion";
+import CategorySlideCard from "../Organization/OrganizationsCategorySlider/CategorySlideCard";
 const HomePage = () => {
   return (
     <>
@@ -13,6 +14,7 @@ const HomePage = () => {
       </VideoWrapper>
       <MostPopularOrganization />
       <CategorySlideCard />
+      <ScrollMotion />
       <Footer />
     </>
   );

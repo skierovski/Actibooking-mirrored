@@ -1,0 +1,46 @@
+.animation {
+  width: 400px;
+  height: 80px;
+  background-color: aqua;
+  margin: 10px auto;
+}
+
+.motion-container {
+  width: 70vw;
+  max-width: 1920px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+
+.motion-box {
+  max-width: 1920px;
+  height: 100%;
+  white-space: nowrap;
+  display: block;
+  position: relative;
+}
+
+.img-motion {
+  width: 34vw;
+  height: 400px;
+  display: inline-block;
+  align-items: center;
+  vertical-align: middle;
+  border-radius: 10px;
+}
+
+.text-motion {
+  width: 34vw;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.055);
+  white-space: normal;
+  word-wrap: normal;
+}
