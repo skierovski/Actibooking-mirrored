@@ -3,7 +3,7 @@ import "./ScrollMotion.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SectionTitle from "../DefaultModels/Titles/SectionTitle";
-const ScrollMotion = (props) => {
+const ScrollMotion = () => {
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
