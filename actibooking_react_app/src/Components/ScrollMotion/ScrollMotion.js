@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./ScrollMotion.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import SectionTitle from "../SectionTitle/SectionTitle";
+import SectionTitle from "../DefaultModels/Titles/SectionTitle";
 const ScrollMotion = (props) => {
   useEffect(() => {
     AOS.init({ duration: 2000 });
