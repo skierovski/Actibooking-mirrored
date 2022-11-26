@@ -1,4 +1,4 @@
-export const CategoryData = [
+const CategorySlideCardData = [
   {
     CategoryId: 1,
     CategoryName: "Football School",
@@ -51,4 +51,4 @@ export const CategoryData = [
   },
 ];
 
-export default CategoryData;
+export default CategorySlideCardData;

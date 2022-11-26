@@ -1,6 +1,5 @@
-import Button from "../DefaultModels/Button";
-
-const LastCard = (props) => {
+import Button from "../DefaultModels/Buttons/Button";
+const LastCategoryCard = () => {
   return (
     <div className="category-card">
       <div className="category-card-image">
@@ -22,4 +21,4 @@ const LastCard = (props) => {
   );
 };
 
-export default LastCard;
+export default LastCategoryCard;
