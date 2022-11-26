@@ -1,8 +1,8 @@
 import "./OrganizationsCategorySlider.css";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import CategorySlideCardData from "../../Data/CategorySlideCardData";
+import CategorySlideCardData from "../../../Data/CategorySlideCardData";
 import CategoryCard from "./CategoryCard";
-import SectionTitle from "../DefaultModels/Titles/SectionTitle";
+import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
 import LastCategoryCard from "./LastCategoryCard";
 
 /* npm install react-icon --save */
@@ -14,7 +14,7 @@ const leftSlide = () => {
 };
 
 const rightSlide = () => {
-  let slider = document.getElementById("categoryslidercard");
+  var slider = document.getElementById("categoryslidercard");
   slider.scrollLeft = slider.scrollLeft + 269;
   if (slider.scrollLeft > 1346) {
     slider.scrollLeft = 1614;

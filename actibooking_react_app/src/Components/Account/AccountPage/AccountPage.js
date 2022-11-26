@@ -19,8 +19,6 @@ const AccountPage = () => {
         <NavigationBar changeBody={ChangeBody}/>
         <BodyToReturn body={body}/>
         </div>
-
-
         </>
     )
 }
