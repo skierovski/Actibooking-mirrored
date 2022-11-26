@@ -4,6 +4,7 @@ import Navibar from "../Navibar/Navibar";
 import MostPopularOrganization from "../MostPupularOrganization/MostPopularOrganization";
 import SearchBarContainer from "../SearchBar/SearchBarContainer";
 import CategorySlideCard from "../CategorySlideCard/CategorySlideCard";
+import ScrollMotion from "../ScrollMotion/ScrollMotion";
 const HomePage = () => {
   return (
     <>
@@ -13,6 +14,7 @@ const HomePage = () => {
       </VideoWrapper>
       <MostPopularOrganization />
       <CategorySlideCard />
+      <ScrollMotion />
       <Footer />
     </>
   );
