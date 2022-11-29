@@ -16,7 +16,7 @@ const ListOfOrganizations = () => {
                 {AllOrganizations
                 .filter(o=>o.isPublic)
                 .slice(startOrg,endOrg)
-                .map(o => <OrganizationContainer key={o.id} logoUrl={o.logoUrl} name={o.name} adress={o.adresses}/>)}
+                .map(o => <OrganizationContainer key={o.id} id={o.id} logoUrl={o.logoUrl} name={o.name} adress={o.adresses}/>)}
             </div>
             <Footer/>
         </>

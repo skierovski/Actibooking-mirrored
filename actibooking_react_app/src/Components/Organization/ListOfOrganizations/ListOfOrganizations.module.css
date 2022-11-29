@@ -1,6 +1,7 @@
-.organizations {
-  width: 100%;
-  height: 100vh;
-  max-width: 1920px;
-  background-color: rgb(224, 255, 214);
+.organizations{
+    width:70vw;
+    height: 100vh;
+    max-width: 1920px;
+    background-color: rgb(224, 255, 214);
+
 }

@@ -1,0 +1,36 @@
+.singleOrganizationContainer{
+    width: 70vw;
+    max-width: 1920px;
+    height: 100vh;
+
+}
+.mainDataContainer{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3vh;
+    border-radius: 20px;
+    padding: 2vh;
+    box-shadow: 4px 3px 8px 1px #676767;
+    -webkit-box-shadow: 4px 3px 8px 1px #676767;
+}
+.image{
+    height: 40vh;
+    border-radius: 20px;
+}
+.nameContainer{
+    font-size: 30px;
+}
+.adressContainer{
+    font-size: 20px;
+}
+.descriptionContainer{
+    width: 100%;
+    border-radius: 20px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    text-indent: 2vw;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 4px 3px 8px 1px #676767;
+    -webkit-box-shadow: 4px 3px 8px 1px #676767;
+}
