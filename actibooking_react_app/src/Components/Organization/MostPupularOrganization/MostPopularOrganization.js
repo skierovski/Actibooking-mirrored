@@ -25,13 +25,13 @@ export default function MostPopularOrganization() {
   return (
     <div className={styles.OrganizationsSlider}>
       <p>Our Recomended Organizations</p>
-    <div className={styles.slaiderbox}>
-      <Slider {...settings}>
-        {MostPopularOrganizationData.map((o) => (
-        <SliderCard key={o.id} logoUrl={o.logoUrl} name={o.name} adress={o.adresses[0]}/>
-      ))}
-      </Slider>
-      </div>
+        <div className={styles.slaiderbox}>
+        <Slider {...settings}>
+          {MostPopularOrganizationData.map((o) => (
+          <SliderCard key={o.id} logoUrl={o.logoUrl} name={o.name} adress={o.adresses[0]}/>
+        ))}
+        </Slider>
+        </div>
       </div>
   );
 }

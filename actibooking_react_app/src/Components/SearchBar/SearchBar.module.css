@@ -8,8 +8,5 @@
     border: none;
 }
 .searchIcon{
-    transform:translateX(1.5vw);
-}
-.locationIcon{
-    transform:translateX(-1.5vw);
+    transform:translateX(2.5vw);
 }
