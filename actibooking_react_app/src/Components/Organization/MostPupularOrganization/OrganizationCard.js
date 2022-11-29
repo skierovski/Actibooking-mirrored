@@ -1,4 +1,4 @@
-import Button from "../DefaultModels/Buttons/Button";
+import Button from "../../DefaultModels/Buttons/Button";
 import "./MostPopularOrganization.css";
 const OrganizationCard = (props) => {
   return (

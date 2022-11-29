@@ -39,11 +39,11 @@ export default function MostPopularOrganization() {
 import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import Organizations from "../../Data/Data";
+import Organizations from "../../../Data/MostPopularOrganizationData";
 // Import Swiper styles
 import "swiper/css";
 import OrganizationCard from "./OrganizationCard";
-import SectionTitle from "../DefaultModels/Titles/SectionTitle";
+import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./MostPopularOrganization.css";
