@@ -5,7 +5,7 @@ import CategorySlideCardData from "../../Data/CategorySlideCardData";
 // Import Swiper styles
 import "swiper/css";
 import CategoryCard from "./CategoryCard";
-import SectionTitle from "../DefaultModels/Titles/SectionTitle";
+import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
 import LastCategoryCard from "./LastCategoryCard";
 import "swiper/css/pagination";
 import "swiper/css/navigation";

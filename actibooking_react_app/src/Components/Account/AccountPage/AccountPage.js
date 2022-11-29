@@ -15,12 +15,12 @@ const AccountPage = () => {
     return(
         <>
         <Navibar />
-        <div className={styles.Container}>
+        <div className={styles.Wrapper}>
         <NavigationBar changeBody={ChangeBody}/>
+        <div className={styles.Container}>
         <BodyToReturn body={body}/>
         </div>
-
-
+        </div>
         </>
     )
 }

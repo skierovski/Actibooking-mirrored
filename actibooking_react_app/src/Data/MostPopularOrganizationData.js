@@ -1,4 +1,4 @@
-const Organizations =
+const MostPopularOrganizationData =
     [
         {
           "id": 1,
@@ -84,4 +84,4 @@ const Organizations =
     "organizationTypes": null,
     "actiBookingUser": null
   }]
-  export default Organizations;
+  export default MostPopularOrganizationData;

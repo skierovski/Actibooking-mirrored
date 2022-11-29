@@ -1,4 +1,4 @@
-import Button from "../DefaultModels/Buttons/Button";
+import Button from "../../DefaultModels/Buttons/Button";
 const LastCategoryCard = () => {
   return (
     <div className="category-card">
