@@ -12,8 +12,9 @@ const HomePage = () => {
         <Navibar />
         <SearchBarContainer />
       </VideoWrapper>
-      <MostPopularOrganization />
       <CategorySlideCard />
+      <MostPopularOrganization />
+
       <ScrollMotion />
       <Footer />
     </>

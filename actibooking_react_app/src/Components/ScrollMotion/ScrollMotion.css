@@ -13,27 +13,31 @@
   align-items: center;
   margin-bottom: 20px;
   vertical-align: top;
+  align-items: center;
+  justify-content: center;
 }
 
 .motion-box {
   max-width: 1920px;
   height: 100%;
   white-space: nowrap;
-  display: block;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .img-motion {
-  width: 34vw;
+  width: 29vw;
   height: 400px;
-  display: inline-block;
   align-items: center;
   vertical-align: middle;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .text-motion {
-  width: 34vw;
+  width: 29vw;
   height: 400px;
   background-color: white;
   border-radius: 10px;
@@ -43,4 +47,16 @@
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.055);
   white-space: normal;
   word-wrap: normal;
+}
+
+.img-motion-style {
+  max-height: 170px;
+}
+
+.text-motion-style {
+  font-family: "Open Sans", sans-serif;
+  padding: 10px;
+  font-size: 0.8vw;
+  font-weight: 300;
+  color: #000000;
 }
