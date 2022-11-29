@@ -15,8 +15,7 @@
   	-webkit-box-shadow: 4px 3px 8px 1px #676767;
 }
 .mainOrganizationContainer:hover{
-    transform: scale(1.2);
-    cursor: pointer;
+    transform: scale(1.05);
 }
 .organizationLogoContainer{
     border-radius: 20px;
@@ -48,6 +47,11 @@
     font-weight: 700;
     box-shadow: 4px 3px 8px 1px #676767;
     -webkit-box-shadow: 4px 3px 8px 1px #676767;
+}
+.linkName{
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
 }
 .organizationAdressContainer{
     display: flex;

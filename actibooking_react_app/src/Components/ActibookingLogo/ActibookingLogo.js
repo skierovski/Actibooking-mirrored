@@ -1,11 +1,12 @@
 import styles from "./ActibookingLogo.module.css";
+import { Link } from "react-router-dom";
 
 const ActibookingLogo = () =>{
 
 
     return(
         <div className={styles.ActibookingLogo_container}>
-            <p className={styles.ActibookingLogo}>ActiBooking</p>
+            <Link to={'/'} className={styles.ActibookingLogo}>ActiBooking</Link>
         </div>
     )
 }
