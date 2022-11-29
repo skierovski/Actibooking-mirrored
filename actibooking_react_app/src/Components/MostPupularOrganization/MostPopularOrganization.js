@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -33,5 +33,56 @@ export default function MostPopularOrganization() {
       </Slider>
       </div>
       </div>
+  );
+} */
+
+import React from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import Organizations from "../../Data/Data";
+// Import Swiper styles
+import "swiper/css";
+import OrganizationCard from "./OrganizationCard";
+import SectionTitle from "../DefaultModels/Titles/SectionTitle";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./MostPopularOrganization.css";
+
+// import required modules
+import { Navigation } from "swiper";
+export default function MostPopularOrganization() {
+  return (
+    <div>
+      <SectionTitle value="Top organization" />
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={5}
+        cssMode={true}
+        navigation={true}
+        pagination={true}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+        }}
+        modules={[Navigation]}
+        className="mySwiper"
+      >
+        {Organizations.map((O) => (
+          <SwiperSlide>
+            <OrganizationCard key={O.id} Organizations={O} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }

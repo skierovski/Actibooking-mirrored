@@ -58,19 +58,20 @@
   opacity: 1;
 } */
 
-.category-card {
+.organization-card {
   width: 259px;
   position: relative;
-  height: auto;
+  height: 300px;
   background-color: white;
   border-radius: 10px;
-  display: inline-block;
+  display: flex;
   margin-left: 5px;
   margin-right: 5px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.055);
+  flex-flow: column;
 }
 
-.category-card-image {
+.organization-card-image {
   width: 100%;
   height: auto;
   background-color: #67ad5c;
@@ -83,17 +84,19 @@
   align-items: center;
 }
 
-.category-card-image-div {
+.organization-card-image-div {
   position: absolute;
   top: 0;
 }
 
-.category-card-name {
+.organization-card-name {
   font-family: "Open Sans", sans-serif;
+  position: relative;
   padding: 10px;
-  font-size: 0.8vw;
+  font-size: 1vw;
   font-style: oblique;
   font-weight: 600;
+  flex-grow: 1;
 }
 
 .last-card-title {
@@ -101,7 +104,7 @@
   align-items: center;
 
   padding: 10px;
-  font-size: 1vw;
+  font-size: 1.9vw;
   font-style: oblique;
   font-weight: 600;
   color: white;
@@ -186,4 +189,9 @@
   align-items: center;
   justify-content: center;
   --swiper-navigation-size: 25px;
+}
+
+.organization-addresses {
+  font-weight: 300;
+  font-size: 0.7vw;
 }

@@ -2,7 +2,12 @@ import Button from "../DefaultModels/Buttons/Button";
 const LastCategoryCard = () => {
   return (
     <div className="category-card">
-      <div className="category-card-image">
+      <img
+        src={`./CategoryImg/green.jpeg`}
+        alt="Nature"
+        class="category-card-image"
+      ></img>
+      <div className="category-card-image-div">
         <p className="last-card-title">
           No
           <br /> interesting
@@ -11,11 +16,7 @@ const LastCategoryCard = () => {
       </div>
       <div className="category-card-name">
         Well, see
-        <Button
-          value="More Categories"
-          href={`Categories/`}
-          containerStyle="last-card-button"
-        />
+        <Button value="More Categories" href={`Categories/`} />
       </div>
     </div>
   );

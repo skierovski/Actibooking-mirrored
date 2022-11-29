@@ -1,11 +1,18 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
 .button-container {
+  width: auto;
   display: flex;
   position: relative;
-  align-items: flex-end;
-  top: 15px;
-  left: 160px;
+  -webkit-box-pack: right;
+  -ms-flex-pack: right;
+  -webkit-justify-content: right;
+  justify-content: right;
+  -webkit-box-align: right;
+  -ms-flex-align: right;
+  -webkit-align-items: right;
+  align-items: right;
+  margin: 10px;
 }
 
 .button-small {
@@ -15,7 +22,7 @@
   cursor: pointer;
   color: #ffffff;
   font-family: "Open Sans", sans-serif;
-  font-size: 13px;
+  font-size: 0.7vw;
   font-style: normal;
   font-weight: 300;
   padding: 6px 6px;
@@ -27,4 +34,45 @@
 .button-small:active {
   position: relative;
   top: 1px;
+}
+
+.button-organization {
+  background-color: #518e48;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.7vw;
+  font-style: normal;
+  font-weight: 300;
+  padding: 6px 6px;
+  text-decoration: none;
+  position: relative;
+  bottom: 0px;
+  right: 0px;
+}
+.button-organization:hover {
+  background-color: #67ad5c;
+}
+.button-organization:active {
+  position: relative;
+  top: 1px;
+}
+
+.button-container-organization {
+  width: auto;
+  display: flex;
+  position: absolute;
+  -webkit-box-pack: right;
+  -ms-flex-pack: right;
+  -webkit-justify-content: right;
+  justify-content: right;
+  -webkit-box-align: right;
+  -ms-flex-align: right;
+  -webkit-align-items: right;
+  align-items: right;
+  margin: 10px;
+  bottom: 0px;
+  right: 0px;
 }
