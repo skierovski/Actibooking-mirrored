@@ -1,6 +1,17 @@
-const SecurityPage = () =>{
+import styles from './SecurityPage.module.css';
+
+const SecurityPage = (props) =>{
     return(
-        <h2>Security Page</h2>
+        <>
+        <div className={styles.Security}>
+        <div className={styles.ChangePassword}>
+        <button>Change Password</button>
+        </div>
+        <div className={styles.ChangeEmail}>
+        <button>Change Email</button>
+        </div>
+        </div>
+        </>
     )
 }
 export default SecurityPage;

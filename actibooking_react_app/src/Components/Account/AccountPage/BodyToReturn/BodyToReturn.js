@@ -1,6 +1,7 @@
 import ProfilePage from "../ProfilePage/ProfilePage";
 import SecurityPage from "../SecurityPage/SecurityPage";
-import CoursesPage from '../CoursesPage/CoursesPage'
+import CoursesPage from '../CoursesPage/CoursesPage';
+import AccountPageData from '../../../../Data/AccountPageData';
 
 const BodyToReturn = (props) => {
     if(props.body === "security"){
@@ -10,12 +11,12 @@ const BodyToReturn = (props) => {
     }
     if (props.body === "courses") {
         return(
-            <CoursesPage/>
+            <CoursesPage data={AccountPageData}/>
         )
     } 
     else {
         return(
-            <ProfilePage/>
+            <ProfilePage data={AccountPageData}/>
         )
     }
 }

@@ -1,31 +1,56 @@
 import styles from './ProfilePage.module.css'
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
     return(
         <>
-        <div className={styles.ProfileImage}>
-            <div className={styles.Image}>
-                <img src='https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg' alt='Avatar'></img>
-            </div>
-            <div>
-            <p className={styles.Name}>Donald Tusk</p>
-            </div>
-        </div>
         <div className={styles.Information}>
             <ul>
                 <li>
+                    <div className={styles.Text}>
                     <strong>First and Last Name:</strong>
-                    <span>Donald Tusk</span>
+                    <span>{props.data.firstName} {props.data.lastName}</span>
+                    </div>
                 </li>
                 <li>
-                <strong>E-mail</strong>
-                    <span>Example@gmail.com</span>
+                <div className={styles.Text}>
+                    <strong>E-mail:</strong>
+                    <span>{props.data.email}</span>
+                    </div>
                 </li>
                 <li>
-                <strong>Card Information</strong>
-                    <span>1234567890123456</span>
+                <div className={styles.Text}>
+                    <strong>Birth Day:</strong>
+                    <span>{props.data.birthDate}</span>
+                    </div>
+                </li>
+                <li>
+                <div className={styles.Text}>
+                    <strong>Adress:</strong>
+                    <span>Diany 40/4 Gdańsk 80-299</span>
+                    </div>
+                </li>
+                <li>
+                <div className={styles.Text}>
+                    <strong>Gender:</strong>
+                    <span>{props.data.gender}</span>
+                    </div>
                 </li>
             </ul>
+        </div>
+        <div className={styles.TrainerChilds}>
+        <div className={styles.Childs}>
+                {props.data.children.map((o) =>(
+                    <span>{o.name} {o.lastName}</span>
+                ))}
+            </div>
+            <div className={styles.Trainer}>
+                {props.data.isTrainer?
+                    <span>You are Already Tainer</span>
+                 : 
+                 <button className={styles.Trainerbutton}>Active Trainer</button>
+                  }
+
+            </div>
         </div>
         </>
     )

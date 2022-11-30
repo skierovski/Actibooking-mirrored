@@ -1,0 +1,25 @@
+.ProfileImage {
+    display: flex;
+    width: 100%;
+    height: 20vh;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 13px -3px rgba(66, 68, 90, 1);
+
+}
+
+
+.Image img{
+    width: 10vw;
+    border-radius: 10px;
+    border-bottom: 3px solid #518e48;
+}
+
+.Name{
+    font-size: 2vw;
+    text-decoration: underline #518e48 3px ;
+
+}
