@@ -17,7 +17,7 @@ const NavigationBar = (props) => {
                 <div className={styles.ButtonIcon}>
                     <FontAwesomeIcon icon={faWallet}/>
                 </div>
-                <div className={styles.ButtonIcon}>
+                <div className={styles.ButtonIcon} onClick={() => props.changeBody("settings")}>
                     <FontAwesomeIcon icon={faGear}/>
                 </div>
             </div>
