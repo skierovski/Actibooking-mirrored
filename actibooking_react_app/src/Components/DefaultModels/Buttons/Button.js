@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Button.css";
 
 const Button = (props) => {
@@ -9,11 +10,12 @@ const Button = (props) => {
   }`;
   return (
     <div className={buttonContainerStyle}>
-      <a className={buttonHrefStyle} href={props.href}>
+      <Link className={buttonHrefStyle} to={props.href}>
         {props.value}
-      </a>
+      </Link>
     </div>
   );
 };
 
 export default Button;
+  

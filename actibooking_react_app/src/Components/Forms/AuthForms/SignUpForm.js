@@ -1,36 +1,25 @@
 import styles from "./SignUpForm.module.css";
-import {useState} from "react";
+import {useRef} from "react";
 
 const SignUpForm = props => {
 
-    const[userInput, setUserInput] = useState({
-        email:'',
-        password:'',
-        firstName:'',
-        lastName:'',
-        phoneNumber:'',
-        roles:['User']
-    })
-
-    const EmailChangeHandler = (event) =>{setUserInput((prevState) => {
-        return {...prevState, email: event.target.value};
-    })};
-    const PasswordChangeHandler = (event) =>{setUserInput((prevState) => {
-        return {...prevState, password: event.target.value};
-    })};
-    const FirstNameChangeHandler = (event) =>{setUserInput((prevState) => {
-        return {...prevState, firstName: event.target.value};
-    })};
-    const LastNameChangeHandler = (event) =>{setUserInput((prevState) => {
-        return {...prevState, lastName: event.target.value};
-    })};
-    const PhoneNumberChangeHandler = (event) =>{setUserInput((prevState) => {
-        return {...prevState, phoneNumber: event.target.value};
-    })};
+    const enteredEmail = useRef();
+    const enteredPassword = useRef();
+    const enteredFirstName = useRef();
+    const enteredLastName = useRef();
+    const enteredPhoneNumber = useRef();
 
     const onSubmitHandler = event =>{
         event.preventDefault();
-        console.log(userInput);
+        const data = {
+            email:enteredEmail.current.value,
+            password:enteredPassword.current.value,
+            firstName:enteredFirstName.current.value,
+            lastName:enteredLastName.current.value,
+            phoneNumber:enteredPhoneNumber.current.value,
+            roles:['User']
+        };
+        console.log(data);
         props.closeModal();
     }
 
@@ -43,15 +32,15 @@ const SignUpForm = props => {
             <div className={styles.login_controls}>
                 <div className={styles.login_control}>
                     <label>Email</label>
-                    <input type='email' minLength={10} value={userInput.email} onChange={EmailChangeHandler} required={true}/>
+                    <input type='email' minLength={10} ref={enteredEmail} required={true}/>
                     <label>Password</label>
-                    <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" value={userInput.password} onChange={PasswordChangeHandler} required={true}/>
+                    <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/>
                     <label>First Name</label>
-                    <input type='text' value={userInput.firstName} onChange={FirstNameChangeHandler} required={true}/>
+                    <input type='text' ref={enteredFirstName} required={true}/>
                     <label>Last Name</label>
-                    <input type='text' value={userInput.lastName} onChange={LastNameChangeHandler} required={true}/>
+                    <input type='text' ref={enteredLastName} required={true}/>
                     <label>Phone Number*</label>
-                    <input type='number' maxLength={9} minLength={9} value={userInput.phoneNumber} onChange={PhoneNumberChangeHandler} required={true}/>
+                    <input type='number' maxLength={9} minLength={9} ref={enteredPhoneNumber} required={false}/>
                     <div>Already have an account ? <p className={styles.sign_in_href} onClick={redirectToLogInModal}>Log in</p></div>
                 </div>
             </div>

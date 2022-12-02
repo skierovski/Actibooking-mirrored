@@ -1,5 +1,5 @@
 import styles from "./OrganizationContainer.module.css";
-import  { Link, Redirect } from 'react-router-dom';
+import  { Link } from 'react-router-dom';
 
 const OrganizationContainer = (props) => {
     return(

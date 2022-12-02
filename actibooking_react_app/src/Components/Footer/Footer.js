@@ -6,6 +6,7 @@ import {
   faFacebook,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -17,18 +18,18 @@ const Footer = () => {
         </p>
       </div>
       <div className={styles.link}>
-        <a href="link/" className={styles.links}>
+        <Link to="link/" className={styles.links}>
           About us
-        </a>
-        <a href="link/" className={styles.links}>
+        </Link>
+        <Link to="link/" className={styles.links}>
           FAQ
-        </a>
-        <a href="link/" className={styles.links}>
+        </Link>
+        <Link to="link/" className={styles.links}>
           Privacy Policy
-        </a>
-        <a href="link/" className={styles.links}>
+        </Link>
+        <Link to="link/" className={styles.links}>
           How To
-        </a>
+        </Link>
       </div>
       <div className={styles.privacy}>
         <div className={styles.icons}>

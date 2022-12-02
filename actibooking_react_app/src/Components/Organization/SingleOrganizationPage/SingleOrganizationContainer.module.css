@@ -4,14 +4,21 @@
     height: 100vh;
 
 }
-.mainDataContainer{
-    display: flex;
-    justify-content: space-around;
+.imageDataContainer{
     margin-bottom: 3vh;
     border-radius: 20px;
     padding: 2vh;
-    box-shadow: 4px 3px 8px 1px #676767;
-    -webkit-box-shadow: 4px 3px 8px 1px #676767;
+    box-shadow: 4px 3px 8px 1px #d2ffce;
+    -webkit-box-shadow: 4px 3px 8px 1px #427b3d;
+}
+.mainInfoContainer{
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5vw;
+    box-shadow: 4px 3px 8px 1px #d2ffce;
+    -webkit-box-shadow: 4px 3px 8px 1px #427b3d;
 }
 .image{
     height: 40vh;
@@ -19,18 +26,27 @@
 }
 .nameContainer{
     font-size: 30px;
+    font-weight: 700
 }
 .adressContainer{
     font-size: 20px;
 }
 .descriptionContainer{
+    clear: both;
+}
+.descriptionSection{
+    display: flex;
     width: 100%;
     border-radius: 20px;
     padding-top: 2vh;
     padding-bottom: 2vh;
     text-indent: 2vw;
-    font-size: 20px;
-    font-weight: 600;
-    box-shadow: 4px 3px 8px 1px #676767;
-    -webkit-box-shadow: 4px 3px 8px 1px #676767;
+    font-size: 15px;
+    font-weight: 400;
+    box-shadow: 4px 3px 8px 1px #427b3d;
+    -webkit-box-shadow: 4px 3px 8px 1px #427b3d;
+    justify-content: center;
+}
+.description{
+    width: 90%;
 }

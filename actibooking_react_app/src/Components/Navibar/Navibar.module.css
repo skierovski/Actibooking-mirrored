@@ -1,8 +1,16 @@
-.navibar_container{
+.navibar_main_container{
     width: 100%;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    opacity: 0.6;
+    border-bottom: 3px solid #518e48;
+}
+.navibar_container{
+    width: 70vw;
+    max-width: 1920px;
     height: 15vh;
-    background-color: transparent;
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content:space-between;
 }

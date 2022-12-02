@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
+.mainComponent{
+  margin-top: 50px;
+}
 .main-categoryslidercard-conteiner {
   width: 70vw;
   max-width: 1920px;

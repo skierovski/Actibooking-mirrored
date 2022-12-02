@@ -3,5 +3,17 @@
     height: 100vh;
     max-width: 1920px;
     background-color: rgb(224, 255, 214);
-
+}
+.pageNumber{
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.arrow{
+    cursor: pointer;
+}
+.arrow:hover{
+    scale: 0.9;
 }

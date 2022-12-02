@@ -10,3 +10,10 @@
 .searchIcon{
     transform:translateX(2.5vw);
 }
+.closeIcon{
+    transform:translateX(-2.5vw);
+    cursor: pointer;
+}
+.closeIcon:hover{
+    color: red;
+}

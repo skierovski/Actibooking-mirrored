@@ -1,5 +1,5 @@
 import styles from './VideoWrapper.module.css';
-import videoBg from '../../Assets/Actibooking-promo.mp4'
+import videoBg from '../../../Assets/Actibooking-promo.mp4'
 
 const VideoWrapper = props => {
   return (

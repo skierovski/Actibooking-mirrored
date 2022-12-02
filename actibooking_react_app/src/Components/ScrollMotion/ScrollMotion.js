@@ -8,7 +8,7 @@ const ScrollMotion = () => {
     AOS.init({ duration: 3000 });
   }, []);
   return (
-    <div>
+    <div className="mainContainer">
       <SectionTitle value="What distinguishes us?" />
       <div className="motion-container">
         <div className="motion-box">

@@ -1,8 +1,9 @@
 import {useState} from 'react';
-import LogInModal from '../Modals/LogInModal';
-import SignUpModal from '../Modals/SignUpModal';
+import LogInModal from './AuthorizationModals/LogInModal';
+import SignUpModal from './AuthorizationModals/SignUpModal';
 import styles from "./Authorization.module.css";
 import {HiOutlineUserCircle} from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 const Authorization = () =>{
 
@@ -36,14 +37,14 @@ const Authorization = () =>{
     }
 
     return(
-        <>
-            <HiOutlineUserCircle size={50} className={styles.userIconContainer} onClick={triggerLogInModal}/>
+        <div className={styles.AuthContainer}>
+            <Link to="/Account/1"><HiOutlineUserCircle size={50} className={styles.userIconContainer}/></Link>
             <div className={styles.Authorization_container}>
                 <div className={styles.Authorization} onClick={triggerLogInModal}>Log in / Sign up</div>
             </div>
             {logInModalData && <LogInModal data={logInModalData} closeModal={closeModal} switchModal={SwitchModal}/>}
             {signUpModalData && <SignUpModal data={signUpModalData} closeModal={closeModal} switchModal={SwitchModal}/>}
-        </>
+        </div>
     )
 }
 

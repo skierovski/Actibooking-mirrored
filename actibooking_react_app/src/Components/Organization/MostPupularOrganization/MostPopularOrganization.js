@@ -52,7 +52,7 @@ import "./MostPopularOrganization.css";
 import { Navigation } from "swiper";
 export default function MostPopularOrganization() {
   return (
-    <div>
+    <div className="mainComponent">
       <SectionTitle value="Top organization" />
       <Swiper
         slidesPerView={1}

@@ -1,3 +1,11 @@
+.AuthContainer{
+    background-color: transparent;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .Authorization_container{
     background-color: transparent;
     text-align: center;
@@ -10,5 +18,10 @@
     cursor: pointer;
 }
 .userIconContainer{
+    color: black;
+    margin-right: 10px;
+}
+.userIconContainer:hover{
     cursor: pointer;
+    color: #518e48;
 }

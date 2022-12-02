@@ -1,8 +1,8 @@
 import Footer from "../Footer/Footer";
-import VideoWrapper from "../VideoWrapper/VideoWrapper";
-import Navibar from "../Navibar/Navibar";
+import VideoWrapper from "./VideoWrapper/VideoWrapper";
+import Navibar from "../Navibar/Navibar"
 import MostPopularOrganization from "../Organization/MostPupularOrganization/MostPopularOrganization";
-import SearchBarContainer from "../SearchBar/SearchBarContainer";
+import SearchBarContainer from "./SearchBar/SearchBarContainer";
 import ScrollMotion from "../ScrollMotion/ScrollMotion";
 import CategorySlideCard from "../Organization/OrganizationsCategorySlider/CategorySlideCard";
 const HomePage = () => {
@@ -14,7 +14,6 @@ const HomePage = () => {
       </VideoWrapper>
       <CategorySlideCard />
       <MostPopularOrganization />
-
       <ScrollMotion />
       <Footer />
     </>
