@@ -23,7 +23,8 @@ const AccountPage = () => {
           <NavigationBar changeBody={ChangeBody} />
         </div>
         <div className={styles.Container}>
-          <BodyToReturn body={body} />
+        <ImageAndName data={AccountPageData}/>
+        <BodyToReturn body={body} changeBody={ChangeBody}/>
         </div>
       </div>
     </>

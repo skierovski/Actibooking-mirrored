@@ -7,7 +7,7 @@ const AccountPageData = {
         phoneNumber:	'533903641',
         firstName:	'Patryk',
         lastName:	'Skierkowski',
-        isTrainer: false,	
+        isTrainer: true,	
         birthDate:	'10-10-1995',
         gender:	'male',
         children: [
@@ -18,7 +18,10 @@ const AccountPageData = {
                 birthDate: '07-06-2020'
             },
             {
-
+                id: 2,
+                name: 'Martyna',
+                lastName: 'Skierkowski',
+                birthDate: '08-02-2018'
             }
         ],
         participants: [
