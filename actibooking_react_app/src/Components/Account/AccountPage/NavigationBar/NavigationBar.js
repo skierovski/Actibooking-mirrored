@@ -5,12 +5,14 @@ import {
   faCalendarDays,
   faLock,
   faWallet,
-} faPeopleGroup, faPersonRunning} from "@fortawesome/free-solid-svg-icons";
+  faPeopleGroup,
+  faPersonRunning,
+} from "@fortawesome/free-solid-svg-icons";
 import styles from "./NavigationBar.module.css";
 
 const NavigationBar = (props) => {
-    console.log(props)
-    const children = props.data.children;
+  console.log(props);
+  const children = props.data.children;
   return (
     <>
       <div className={styles.Navigation}>
@@ -41,18 +43,22 @@ const NavigationBar = (props) => {
         >
           <FontAwesomeIcon icon={faGear} /> Settings
         </div>
-                {children.length > 0? 
-                <div className={styles.ButtonIcon} onClick={() => props.changeBody("childs")}>
-                <FontAwesomeIcon icon={faPeopleGroup}/>
-                </div>:
-                null
-                }
-                {props.data.isTrainer?
-                 <div className={styles.ButtonIcon} onClick={() => props.changeBody("trainer")}>
-                 <FontAwesomeIcon icon={faPersonRunning}/>
-                 </div>:
-                 null   
-                }
+        {children.length > 0 ? (
+          <div
+            className={styles.ButtonIcon}
+            onClick={() => props.changeBody("childs")}
+          >
+            <FontAwesomeIcon icon={faPeopleGroup} />
+          </div>
+        ) : null}
+        {props.data.isTrainer ? (
+          <div
+            className={styles.ButtonIcon}
+            onClick={() => props.changeBody("trainer")}
+          >
+            <FontAwesomeIcon icon={faPersonRunning} />
+          </div>
+        ) : null}
       </div>
     </>
   );
