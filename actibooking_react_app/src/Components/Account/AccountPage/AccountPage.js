@@ -18,10 +18,10 @@ const AccountPage = () => {
         <div className={styles.AccountPage}>
         <Navibar />
         <div className={styles.Wrapper}>
-        <NavigationBar changeBody={ChangeBody}/>
+        <NavigationBar changeBody={ChangeBody} data={AccountPageData}/>
         <div className={styles.Container}>
         <ImageAndName data={AccountPageData}/>
-        <BodyToReturn body={body}/>
+        <BodyToReturn body={body} changeBody={ChangeBody}/>
         </div>
         </div>
         </div>

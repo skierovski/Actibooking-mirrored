@@ -1,3 +1,4 @@
+import BodyToReturn from '../BodyToReturn/BodyToReturn';
 import styles from './ProfilePage.module.css'
 
 const ProfilePage = (props) => {
@@ -39,13 +40,14 @@ const ProfilePage = (props) => {
         </div>
         <div className={styles.TrainerChilds}>
         <div className={styles.Childs}>
-                {props.data.children.map((o) =>(
-                    <span>{o.name} {o.lastName}</span>
-                ))}
+                {props.data.children.length > 0?
+                <button>Children Tab</button>:
+                <button>Add Child</button>
+            }
             </div>
             <div className={styles.Trainer}>
                 {props.data.isTrainer?
-                    <span>You are Already Tainer</span>
+                    <button>Trainer Tab</button>
                  : 
                  <button className={styles.Trainerbutton}>Active Trainer</button>
                   }
