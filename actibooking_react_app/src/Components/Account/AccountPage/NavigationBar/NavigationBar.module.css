@@ -1,21 +1,25 @@
 .Navigation {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
-    position: sticky;
-    top: 10%;
-    border-radius: 12px;
-    background: rgba(81, 142, 72, 0.49);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(59, 59, 59, 0.3);
-    width: calc(40px + 1vw);
-    height: 50vh;
+  display: flex;
+  width: 90%;
+  display: block;
+  justify-content: left;
+  align-items: flex-start;
+  text-align: left;
+  height: auto;
+  background-color: #518e48;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.055);
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .ButtonIcon {
-    color: white;
-    scale: 1.5;
+  padding: 10px;
+  margin: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.ButtonIcon:hover {
+  color: #8dd882;
 }
