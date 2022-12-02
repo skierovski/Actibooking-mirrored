@@ -48,7 +48,7 @@ const NavigationBar = (props) => {
             className={styles.ButtonIcon}
             onClick={() => props.changeBody("childs")}
           >
-            <FontAwesomeIcon icon={faPeopleGroup} />
+            <FontAwesomeIcon icon={faPeopleGroup} /> Childs
           </div>
         ) : null}
         {props.data.isTrainer ? (
@@ -56,7 +56,7 @@ const NavigationBar = (props) => {
             className={styles.ButtonIcon}
             onClick={() => props.changeBody("trainer")}
           >
-            <FontAwesomeIcon icon={faPersonRunning} />
+            <FontAwesomeIcon icon={faPersonRunning} /> Trainer Page
           </div>
         ) : null}
       </div>

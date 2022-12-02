@@ -1,9 +1,13 @@
-import styles from './TrainerPage.module.css'
+import styles from "./TrainerPage.module.css";
 
 const TrainerPage = () => {
-    return(
+  return (
+    <>
+      <div className={styles.Container}>
         <p>Trainer Page</p>
-    )
-}
+      </div>
+    </>
+  );
+};
 
 export default TrainerPage;

@@ -1,36 +1,47 @@
-.singleOrganizationContainer{
-    width: 70vw;
-    max-width: 1920px;
-    height: 100vh;
-
+.singleOrganizationContainer {
+  width: 70vw;
+  max-width: 1920px;
+  height: 100vh;
 }
-.mainDataContainer{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 3vh;
-    border-radius: 20px;
-    padding: 2vh;
-    box-shadow: 4px 3px 8px 1px #676767;
-    -webkit-box-shadow: 4px 3px 8px 1px #676767;
+.mainDataContainer {
+  display: flex;
+  width: 98%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.055);
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  vertical-align: top;
+  padding: 10px;
 }
-.image{
-    height: 40vh;
-    border-radius: 20px;
+.image {
+  height: 40vh;
+  border-radius: 20px;
 }
-.nameContainer{
-    font-size: 30px;
+.nameContainer {
+  font-size: 30px;
 }
-.adressContainer{
-    font-size: 20px;
+.adressContainer {
+  font-size: 20px;
 }
-.descriptionContainer{
-    width: 100%;
-    border-radius: 20px;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    text-indent: 2vw;
-    font-size: 20px;
-    font-weight: 600;
-    box-shadow: 4px 3px 8px 1px #676767;
-    -webkit-box-shadow: 4px 3px 8px 1px #676767;
+.descriptionContainer {
+  display: flex;
+  width: 98%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.055);
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  vertical-align: top;
+  padding: 10px;
 }
