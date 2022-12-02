@@ -1,29 +1,26 @@
 .AccountPage {
-    background: #f8fff7;
+  background: white;
+  justify-content: center;
+  text-align: center;
 }
 
 .Container {
-    display: flex;
-    max-width: 1280px;
-    width: 70vw;
-    height: 100vh;
-}
-
-h2{
-    margin-left: 5vw;
-}
-
-.Container {
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
-    height: 100%;
-    justify-content: space-between;
-    gap: 1vh;
+  width: 70%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .Wrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+  display: flex;
+  width: 70vw;
+  max-width: 1920px;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.055);
+}
+
+.LeftColumn {
+  width: 30%;
 }
