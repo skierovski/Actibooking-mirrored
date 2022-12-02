@@ -13,7 +13,6 @@ const SingleOrganizationContainer = params =>{
                     <div className={styles.adressContainer}>{organization.adresses}</div>
             </div>
             <div className={styles.descriptionContainer}>
-            <SectionTitle value="Description"/>
             <div className={styles.descriptionSection}>
                 <div className={styles.description}>{organization.description}</div>
             </div>

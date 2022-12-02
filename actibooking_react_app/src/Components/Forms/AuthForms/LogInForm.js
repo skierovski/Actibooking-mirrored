@@ -16,7 +16,7 @@ const LogInForm = props => {
         props.closeModal();
     }
 
-    const redirectToSignInModal = () =>{
+    const redirectToSignInModal = () => {
         props.redirectToSignInModal();
     }
 
