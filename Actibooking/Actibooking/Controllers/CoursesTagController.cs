@@ -1,6 +1,7 @@
 ﻿using Actibooking.Data;
 using Actibooking.Data.Repository;
 using Actibooking.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,14 +14,16 @@ namespace Actibooking.Controllers
     {
         private readonly IUnitOfWork _uow;
         private readonly ILogger<CoursesTagController> _logger;
-        public CoursesTagController(IUnitOfWork uow, ILogger<CoursesTagController> logger)
+        private readonly IMapper _mapper;
+        public CoursesTagController(IUnitOfWork uow, ILogger<CoursesTagController> logger, IMapper mapper)
         {
             _uow = uow;
             _logger = logger;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet("get-all-courses-tag")]
+        [HttpGet()]
         public async Task<IActionResult> GetAll()
         {
 
@@ -36,7 +39,7 @@ namespace Actibooking.Controllers
             }
         }
 
-        [HttpGet("get-course-tag/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetCourseTag(int id)
         {
             try
@@ -51,11 +54,12 @@ namespace Actibooking.Controllers
             }
         }
 
-        [HttpPost("create-course-tag")]
-        public async Task<IActionResult> CreateCourseTag(CourseTag courseTag)
+        [HttpPost()]
+        public async Task<IActionResult> CreateCourseTag(CourseTagDTO courseTagDTO)
         {
             try
             {
+                var courseTag = _mapper.Map<CourseTag>(courseTagDTO);
                 await _uow.CourseTagRepo.InsertAsync(courseTag);
                 await _uow.SaveChangesAsync();
                 return Ok();
@@ -68,7 +72,7 @@ namespace Actibooking.Controllers
         }
 
         [HttpDelete]
-        [Route("delete-course-tag/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> DeleteCourseTag(int id)
         {
             try
@@ -85,9 +89,12 @@ namespace Actibooking.Controllers
         }
 
         [HttpPut]
-        [Route("update-course-tag/{id}")]
-        public async Task<IActionResult> UpdateCourseTag(int id)
+        [Route("{id}")]
+        public async Task<IActionResult> UpdateCourseTag(CourseTagDTO courseTagDTO)
         {
+            var courseTag = _mapper.Map<CourseTag>(courseTagDTO);
+            _uow.CourseTagRepo.Update(courseTag);
+            await _uow.SaveChangesAsync();
             return Ok();
         }
     }

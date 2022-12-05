@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Actibooking.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AdressController : Controller
     {
 
@@ -15,7 +17,7 @@ namespace Actibooking.Controllers
             _uow = uow;
             _logger = logger;
         }
-        [HttpGet("get-all-adresses")]
+        [HttpGet()]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -30,7 +32,7 @@ namespace Actibooking.Controllers
             }
         }
 
-        [HttpGet("get-adress/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetAdress(int id)
         {
             try
@@ -45,8 +47,8 @@ namespace Actibooking.Controllers
             }
         }
 
-        [HttpPost("create-adress")]
-        public async Task<IActionResult> CreateAdress(Adress adress)
+        [HttpPost()]
+        public async Task<IActionResult> CreateAdress(Address adress)
         {
             try
             {
@@ -62,7 +64,7 @@ namespace Actibooking.Controllers
         }
 
         [HttpDelete]
-        [Route("delete-adress/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> DeleteAdress(int id)
         {
             try
@@ -79,7 +81,7 @@ namespace Actibooking.Controllers
         }
 
         [HttpPut]
-        [Route("update-adress/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> UpdateAdress(int adressId)
         {
             return Ok();

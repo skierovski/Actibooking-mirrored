@@ -28,11 +28,12 @@ namespace Actibooking.Models
 
         public List<Course>? Courses { get; set; }
 
-        public List<Adress>? Adresses { get; set; }
+        public List<Address>? Adresses { get; set; }
 
         public List<Trainer>? Trainers { get; set; }
 
         public List<OrganizationType>? OrganizationTypes { get; set; }
         public ActiBookingUser ActiBookingUser { get; set; }
+        public Rating CourseRating { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Actibooking.Test
 {
     public class AccountControllerTest
     {
-        [Fact]
+/*        [Fact]
         public async void TryValidateNewUser()
         {
 
@@ -38,7 +38,7 @@ namespace Actibooking.Test
 
             var newUser = await accountController.Register(newUserDTO);
             Assert.IsType<OkObjectResult>(newUser);
-        }
+        }*/
 
 
     }

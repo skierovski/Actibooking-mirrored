@@ -64,7 +64,10 @@ namespace Actibooking.Data.Repository
         {
             return await _dbSet.FindAsync(id);
         }
-
+        public virtual async Task<TEntity> GetByIdAsync(string id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
         public async Task InsertAsync(TEntity entity)
         {
             await _dbSet.AddAsync(entity);
@@ -79,5 +82,24 @@ namespace Actibooking.Data.Repository
         {
             _ctx.Update(entity);
         }
+
+
+        public async Task<bool> Exists(Expression<Func<TEntity, bool>> filter = null)
+        {
+            IQueryable<TEntity> query = _dbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            var entity = await query.FirstOrDefaultAsync();
+            if (entity != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

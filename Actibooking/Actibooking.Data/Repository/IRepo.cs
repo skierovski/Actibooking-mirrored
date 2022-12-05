@@ -15,10 +15,12 @@ namespace Actibooking.Data.Repository
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "");
         Task<TEntity> GetByIdAsync(int id);
+        Task<TEntity> GetByIdAsync(string id);
         Task InsertAsync(TEntity entity);
         void Update(TEntity entity);
         Task DeleteAsync(int id);
         Task SaveChangesAsync();
+        Task<bool> Exists(Expression<Func<TEntity, bool>> filter = null);
 
     }
 }

@@ -14,6 +14,7 @@ namespace Actibooking.Data.Configurations
             CreateMap<Organization, NewOrganizationDTO>().ReverseMap();
             CreateMap<Course, CourseDTO>().ReverseMap();
             CreateMap<OrganizationType, OrganizationTypeDTO>().ReverseMap();
+            CreateMap<CourseTag, CourseTagDTO>().ReverseMap();
         }
     }
 }

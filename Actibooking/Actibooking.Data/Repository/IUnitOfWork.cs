@@ -14,7 +14,7 @@ namespace Actibooking.Data.Repository
         IRepo<Address> AdressRepo { get; }
         IRepo<Participant> ParticipantRepo { get; }
         IRepo <ActiBookingUser> UserRepo { get; }
-        IRepo<CourseTag> CourseTagRepo { get; }
+        IRepo<CourseTagDTO> CourseTagRepo { get; }
         IRepo<OrganizationType> OrganizationTypeRepo { get; }
         IRepo<Child> ChildRepo { get; }
         IRepo<Trainer> TrainerRepo { get; }
