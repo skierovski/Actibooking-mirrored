@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Actibooking.Models
 {
-    internal class Rating
+    public class Rating
     {
+        public int Id { get; set; }
+        public int TotalRating { get; set; }
+        public int AmountRatings { get; set; }
+
     }
 }
