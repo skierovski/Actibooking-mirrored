@@ -21,74 +21,51 @@ namespace Actibooking.Controllers
     [ApiController]
     public class OrganizationsController : ControllerBase
     {
-        private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IUnitOfWork _uow;
-        private readonly ILogger<OrganizationsController> _logger;
-        private readonly IMapper _mapper;
-        public OrganizationsController(IUnitOfWork uow, ILogger<OrganizationsController> logger, IMapper mapper)
+
+
+        private readonly OrganizationManager _organizationManager;
+        public OrganizationsController(IUnitOfWork uow, OrganizationManager organizationManager)
         {
             _uow = uow;
-            _logger = logger;
-            _mapper = mapper;
+            _organizationManager = organizationManager;
         }
 
-        [HttpGet("get-all-organizations")]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            try
-            {
-                var organizations = await _uow.OrganizationRepo.GetAsync(includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
-                return Ok(organizations);
-            }
-            catch(Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetAll)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
-            }
-
+            var organizations = await _organizationManager.CheckIfEmpty();
+            return Ok(organizations);                                      
         }
 
-        [HttpGet("get-organization/{id}")]
-        public async Task<IActionResult> GetOrganization(int id)
+        [HttpGet("{organizationId}")]
+        public async Task<IActionResult> GetOrganization(int organizationId)
         {
-            try
-            {
-                var organization = await _uow.OrganizationRepo.GetAsync(filter: o => o.Id == id, includeProperties: "OrganizationTypes,Courses,Adresses,Trainers");
-                return Ok(organization);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the {nameof(GetOrganization)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
-            }
+            var organization = await _organizationManager.FindOrganzation(organizationId);
+            return Ok(organization);            
         }
 
-        [HttpPost("create-organization")]
-        public async Task<IActionResult> CreateOrganization([FromBody] NewOrganizationDTO newOrganizationDTO)
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateOrganization(NewOrganizationDTO newOrganizationDTO)
         {
-            var organization = _mapper.Map<Organization>(newOrganizationDTO);
-            await _uow.OrganizationRepo.InsertAsync(organization);
-            await _uow.SaveChangesAsync();
-            return Ok();
+            await _organizationManager.MapOrganization(newOrganizationDTO);
+            return Ok("Organization created");
         }
 
-        [HttpDelete("delete-organization/{id}")]
+        [HttpDelete("{organizationId}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteOrganization(int id)
+        public async Task<IActionResult> DeleteOrganization(int organizationId)
         {
-            await _uow.OrganizationRepo.DeleteAsync(id);
+            await _uow.OrganizationRepo.DeleteAsync(organizationId);
             await _uow.SaveChangesAsync();
             return Ok();
         }
 
-        //
-        [HttpPut("update-organization")]
-        public async Task<IActionResult> UpdateOrganization(OrganizationDTO organizationDTO)
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateOrganization(UpdateOrganizationDTO updateOrganizationDTO)
         {
-            var organization = _mapper.Map<Organization>(organizationDTO);
-            _uow.OrganizationRepo.Update(organization);
-            await _uow.SaveChangesAsync();
-            return Ok();
+            await _organizationManager.ConvertOrganization(updateOrganizationDTO);
+            return Ok("Organization Updated");
         }
 
     }
