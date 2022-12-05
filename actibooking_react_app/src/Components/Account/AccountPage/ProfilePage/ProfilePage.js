@@ -1,4 +1,3 @@
-import BodyToReturn from '../BodyToReturn/BodyToReturn';
 import styles from "./ProfilePage.module.css";
 import Button from "../../../DefaultModels/Buttons/Button";
 

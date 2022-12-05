@@ -20,12 +20,23 @@
   padding: 10px;
 }
 .image {
-  height: 40vh;
-  border-radius: 20px;
+  width: 20vw;
+  height: auto;
+  background-color: #67ad5c;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background-size: 320px;
+  border-bottom: 3px solid #518e48;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 .nameContainer {
   font-size: 30px;
-    font-weight: 700
+  font-weight: 700;
 }
 .adressContainer {
   font-size: 20px;
@@ -45,4 +56,9 @@
   margin-bottom: 10px;
   vertical-align: top;
   padding: 10px;
+}
+
+.mainInfoContainer {
+  height: auto;
+  vertical-align: top;
 }
