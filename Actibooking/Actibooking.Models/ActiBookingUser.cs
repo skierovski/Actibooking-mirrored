@@ -28,7 +28,7 @@ namespace Actibooking.Models
         public string? Gender { get; set; }
 
         public Trainer? trainer { get; set; }
-
+        public Address? Adresses { get; set; }
         public List<Organization>? Organizations { get; set; }
         public List<Child>? Children { get; set; }
         public List<Participant>? Participants { get; set; }

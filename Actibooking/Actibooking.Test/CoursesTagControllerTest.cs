@@ -24,7 +24,7 @@ namespace Actibooking.Test
             var iLoggerCoursesTagControllerMock = new Mock<ILogger<CoursesTagController>>();
             var coursesTagController = new CoursesTagController(iUnitOfWork.Object,  iLoggerCoursesTagControllerMock.Object);
 
-            var Tag = new CourseTag()
+            var Tag = new CourseTagDTO()
             {
                 Description = "Testowy",
                 Name = "Testowy",
@@ -45,7 +45,7 @@ namespace Actibooking.Test
             var iLoggerCoursesTagControllerMock = new Mock<ILogger<CoursesTagController>>();
             var coursesTagController = new CoursesTagController(iUnitOfWork.Object, iLoggerCoursesTagControllerMock.Object);
 
-            var Tag = new CourseTag();
+            var Tag = new CourseTagDTO();
             Tag.Description = "Kid";
 
 

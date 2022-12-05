@@ -33,14 +33,14 @@ namespace Actibooking.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("get-all-organization-types")]
+        [HttpGet()]
         public async Task<IActionResult> GetAll()
         {
             var organizationsType = await _uow.OrganizationTypeRepo.GetAsync();
             return Ok(organizationsType);
         }
 
-        [HttpGet("get-organization-type/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetOrganizationType(int id)
         {
             var organizationType = await _uow.OrganizationTypeRepo.GetByIdAsync(id);
@@ -53,7 +53,7 @@ namespace Actibooking.Controllers
      
         }
 
-        [HttpPost("create-organization-type")]
+        [HttpPost()]
         public async Task<IActionResult> CreateOrganizationType(OrganizationType organizationType)
         {
             await _uow.OrganizationTypeRepo.InsertAsync(organizationType);
@@ -62,7 +62,7 @@ namespace Actibooking.Controllers
         }
 
         [HttpDelete]
-        [Route("delete-organization-type/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> DeleteOrganizationType(int id)
         {
             await _uow.OrganizationTypeRepo.DeleteAsync(id);
@@ -71,7 +71,7 @@ namespace Actibooking.Controllers
         }
 
         [HttpPut]
-        [Route("update-organization-type/")]
+        [Route("")]
         public async Task<IActionResult> UpdateOrganizationType(OrganizationTypeDTO organizationTypeDTO)
         {
             var organizationType = _mapper.Map <OrganizationType>(organizationTypeDTO);

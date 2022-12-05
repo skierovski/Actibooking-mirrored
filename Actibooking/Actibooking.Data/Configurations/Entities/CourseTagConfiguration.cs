@@ -10,36 +10,36 @@ using System.Threading.Tasks;
 
 namespace Actibooking.Data.Configurations.Entities
 {
-    public class CourseTagConfiguration : IEntityTypeConfiguration<CourseTag>
+    public class CourseTagConfiguration : IEntityTypeConfiguration<CourseTagDTO>
     {
-        public void Configure(EntityTypeBuilder<CourseTag> builder)
+        public void Configure(EntityTypeBuilder<CourseTagDTO> builder)
         {
             builder.HasData(
-                    new CourseTag
+                    new CourseTagDTO
                     {
                         Id = 1,
                         Name = "Kid",
                         Description = "Course for Kids"
                     },
-                     new CourseTag
+                     new CourseTagDTO
                      {
                          Id = 2,
                          Name = "Adult",
                          Description = "Course for Adults"
                      },
-                      new CourseTag
+                      new CourseTagDTO
                       {
                           Id = 3,
                           Name = "Beginner",
                           Description = "Course for Beginners"
                       },
-                      new CourseTag
+                      new CourseTagDTO
                       {
                           Id = 4,
                           Name = "Intermediate",
                           Description = "Course for Intermediates"
                       },
-                      new CourseTag
+                      new CourseTagDTO
                       {
                           Id = 5,
                           Name = "Advanced",

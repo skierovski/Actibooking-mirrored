@@ -60,7 +60,7 @@ namespace Actibooking.Controllers
                 user.IsTrainer = true;
                 Trainer trainer = new Trainer();
                 await _uow.TrainerRepo.InsertAsync(trainer);
-                user.trainer = trainer;
+                user.Trainer = trainer;
                 await _userManager.UpdateAsync(user);
                 await _uow.SaveChangesAsync();
                 return Ok(user);

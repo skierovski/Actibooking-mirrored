@@ -38,7 +38,7 @@ namespace Actibooking.Models
 
         public string? ImageUrl { get; set; }
 
-        public List<CourseTag>? CourseTags { get; set; }
+        public List<CourseTagDTO>? CourseTags { get; set; }
 
         public List<Trainer>? Trainers { get; set; }
         public List<Participant>? Participant { get; set; }
