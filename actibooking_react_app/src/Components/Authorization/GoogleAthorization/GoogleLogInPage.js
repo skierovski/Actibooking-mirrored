@@ -18,6 +18,8 @@ function GoogleLogInPage() {
         <GoogleLogin
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
+            useOneTap={true}
+            text= "signup_with"
             />
             </GoogleOAuthProvider>
     )
