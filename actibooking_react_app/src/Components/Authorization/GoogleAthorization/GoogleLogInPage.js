@@ -1,8 +1,10 @@
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
 function GoogleLogInPage() {
+    const clientId = "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com";
     const responseGoogle = (response) => {
         console.log(response);
         const userObject = jwt_decode(response.credential);
@@ -12,10 +14,12 @@ function GoogleLogInPage() {
       }
 
     return(
+        <GoogleOAuthProvider clientId={clientId}>
         <GoogleLogin
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             />
+            </GoogleOAuthProvider>
     )
 }
 
