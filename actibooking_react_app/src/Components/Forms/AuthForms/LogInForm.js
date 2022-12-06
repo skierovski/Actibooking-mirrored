@@ -1,5 +1,6 @@
 import styles from "./LogInForm.module.css";
 import {useRef} from "react";
+import GoogleLogInPage from "../../Authorization/GoogleAthorization/GoogleLogInPage";
 
 const LogInForm = props => {
 
@@ -28,6 +29,7 @@ const LogInForm = props => {
                     <input type='email' minLength={10} ref={enteredEmail} required={true}/>
                     <label>Password</label>
                     <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/>
+                    <GoogleLogInPage/>
                     <div>Don't have an account ? <p className={styles.sign_in_href} onClick={redirectToSignInModal}>Sign in</p></div>
                 </div>
             </div>

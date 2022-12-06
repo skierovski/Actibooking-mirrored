@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import SingleOrganizationPage from "../src/Components/Organization/SingleOrganizationPage/SingleOrganizationPage";
 import ListOfOrganizations from "./Components/Organization/ListOfOrganizations/ListOfOrganizations";
 import AccountPage from "./Components/Account/AccountPage/AccountPage";
+import LogIn from "./Components/Authorization/GoogleAthorization/GoogleLogInPage";
 
 const App = () => {
   return (
