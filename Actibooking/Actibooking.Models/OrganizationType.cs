@@ -21,7 +21,7 @@ namespace Actibooking.Models
         public string Description { get; set; }
 
         public List<Organization>? Organizations { get; set; }
-        public string TypeImage { get; set; }
+        public string? TypeImage { get; set; }
 
     }
 }
