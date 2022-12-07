@@ -16,7 +16,9 @@ function GoogleLogInPage() {
     return(
         <GoogleOAuthProvider clientId={clientId}>
         <GoogleLogin
-            onSuccess={responseGoogle}
+            onSuccess={credentialResponse => {
+                console.log(credentialResponse);
+              }}
             onFailure={responseGoogle}
             useOneTap={true}
             text= "signup_with"
