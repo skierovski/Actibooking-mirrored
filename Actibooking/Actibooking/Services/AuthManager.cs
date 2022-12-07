@@ -14,6 +14,7 @@ namespace Actibooking.Services
         private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IConfiguration _configuration;
         private ActiBookingUser _user;
+        readonly RsaSecurityKey _key;
 
         public AuthManager(UserManager<ActiBookingUser> userManager, IConfiguration configuration)
         {
@@ -104,6 +105,24 @@ namespace Actibooking.Services
             _user = await _userManager.FindByNameAsync(userDTO.Email);
             return (_user != null && await _userManager.CheckPasswordAsync(_user,userDTO.Password));
 
+        }
+
+        public string CreateUserAuthToken(string userId)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Audience = "myApi",
+                Issuer = "AuthService",
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                            new Claim(ClaimTypes.Sid, userId.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddMinutes(60),
+                SigningCredentials = new SigningCredentials(_key, SecurityAlgorithms.RsaSha256)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }

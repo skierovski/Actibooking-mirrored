@@ -32,6 +32,7 @@ namespace Actibooking.Services
                 await _uow.SaveChangesAsync();
             }
             throw new NotFoundException("User not Found", addingChildDTO.ActiBookingUserId);
+
         }
 
         public async Task<IEnumerable<Course>> GetUserCourses(string userId, IUnitOfWork _uow)

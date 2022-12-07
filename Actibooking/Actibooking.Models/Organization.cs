@@ -34,6 +34,6 @@ namespace Actibooking.Models
 
         public List<OrganizationType>? OrganizationTypes { get; set; }
         public ActiBookingUser ActiBookingUser { get; set; }
-        public Rating CourseRating { get; set; }
+        public Rating? Ratings { get; set; }
     }
 }

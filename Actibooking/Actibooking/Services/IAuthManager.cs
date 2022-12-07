@@ -6,5 +6,6 @@ namespace Actibooking.Services
     {
         Task<bool> ValidateUser(LoginUserDTO userDTO);
         Task<string> CreateToken();
+        public string CreateUserAuthToken(string email);
     }
 }
