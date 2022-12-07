@@ -1,3 +1,4 @@
+import OrganizationNavbar from "./OrganizationNavbar/OrganizationNabar";
 import styles from "./SingleOrganizationContainer.module.css";
 
 const SingleOrganizationContainer = (params) => {
@@ -17,6 +18,7 @@ const SingleOrganizationContainer = (params) => {
           <div className={styles.adressContainer}>{organization.adresses}</div>
         </div>
       </div>
+      <OrganizationNavbar/>
       <div className={styles.descriptionContainer}>
         {organization.description}
       </div>
