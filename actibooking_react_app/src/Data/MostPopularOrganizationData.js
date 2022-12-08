@@ -8,9 +8,9 @@ const MostPopularOrganizationData =
           "logoUrl": "https://www.kennedy-center.org/globalassets/education/opportunities-for-artists/pre-professional-artist-training/contemporary-dance-class-series/contemporary-dance-class-series-169.jpg?format=webp&width=1600&quality=70",
           "photosUrl": "string",
           "actiBookingUserId": "0044892c-5cd8-40fe-87f2-4e9326391890",
-          "courses": null,
-          "adresses": ['Gałczyńskiego 18/4 80-544 Gdańsk'],
-          "trainers": null,
+          "courses": ["1", "2", "3"],
+          "adresses": ['Gałczyńskiego 18/4 80-544 Gdańsk', 'test 123123123'],
+          "trainers": ["1", "2", "3"],
           "organizationTypes": null,
           "actiBookingUser": null
         },

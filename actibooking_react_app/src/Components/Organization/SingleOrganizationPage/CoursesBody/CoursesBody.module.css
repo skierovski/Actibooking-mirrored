@@ -1,0 +1,4 @@
+.coursesConrainer {
+    display: flex;
+    flex-direction: column;
+}

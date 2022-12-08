@@ -1,12 +1,12 @@
 import styles from './OrganizationNavbar.module.css'
 
-const OrganizationNavbar = () =>{
+const OrganizationNavbar = (props) =>{
         return(
             <div className={styles.OrganizationNavbar}>
-                <div className={styles.listItem}>Courses</div>
-                <div className={styles.listItem}>Adress</div>
-                <div className={styles.listItem}>Description</div>
-                <div className={styles.listItem}>Trainers</div>
+                <div className={styles.listItem} onClick={() => {props.changeContainer("courses")}}>Courses</div>
+                <div className={styles.listItem} onClick={() => {props.changeContainer("adress")}}>Adress</div>
+                <div className={styles.listItem} onClick={() => {props.changeContainer("description")}}>Description</div>
+                <div className={styles.listItem} onClick={() => {props.changeContainer("trainers")}}>Trainers</div>
             </div>
         )
 }
