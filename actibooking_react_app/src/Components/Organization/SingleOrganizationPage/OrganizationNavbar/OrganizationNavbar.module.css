@@ -1,4 +1,11 @@
 .OrganizationNavbar {
     display: flex;
     justify-content: space-evenly;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 13px -3px rgba(66, 68, 90, 1);
+}
+
+.listItem {
+    background: rgba(255, 255, 255, 0.432);
 }
