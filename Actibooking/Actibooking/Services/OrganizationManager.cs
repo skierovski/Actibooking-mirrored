@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace Actibooking.Services
 {
-    public class OrganizationManager
+    public class OrganizationManager : IOrganizationManager
     {
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
@@ -45,7 +45,7 @@ namespace Actibooking.Services
             return true;
         }
 
-        internal async Task ConvertOrganization(UpdateOrganizationDTO updateOrganizationDTO)
+        public async Task ConvertOrganization(UpdateOrganizationDTO updateOrganizationDTO)
         {
             var organization = await _uow.OrganizationRepo.GetByIdAsync(updateOrganizationDTO.Id);
             if (organization != null)

@@ -23,4 +23,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Actibooking.Data\Actibooking.Data.csproj" />
+    <ProjectReference Include="..\Actibooking\Actibooking.csproj" />
+  </ItemGroup>
+
 </Project>
