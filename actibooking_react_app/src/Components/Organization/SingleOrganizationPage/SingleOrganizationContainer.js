@@ -59,10 +59,10 @@ const SingleOrganizationContainer = (params) => {
         </div>
       </div>
       <OrganizationNavbar changeContainer={ChangeContainer}/>
-      { container.description? <DescriptionBody organizationDescription = {organization.description}/>: null }
-      { container.adress? <AdressBody organizationAdress = {organization.adresses}/>: null }
-      { container.courses? <DescriptionBody organizationDescription = {organization.courses}/>: null }
-      { container.trainers? <DescriptionBody organizationDescription = {organization.trainers}/>: null }
+      { container.description&& <DescriptionBody organizationDescription = {organization.description}/>}
+      { container.adress&& <AdressBody organizationAdress = {organization.adresses}/>}
+      { container.courses&& <DescriptionBody organizationDescription = {organization.courses}/>}
+      { container.trainers&& <DescriptionBody organizationDescription = {organization.trainers}/>}
 
 
     </div>
