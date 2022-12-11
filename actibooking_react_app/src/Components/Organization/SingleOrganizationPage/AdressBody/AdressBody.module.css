@@ -1,0 +1,4 @@
+.adressContainer {
+    display: flex;
+    flex-direction: column;
+}

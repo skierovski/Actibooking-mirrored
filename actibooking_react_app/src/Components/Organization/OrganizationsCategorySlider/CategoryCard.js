@@ -12,7 +12,8 @@ const CategoryCard = (props) => {
         {props.Categories.CategoryName}
         <Button
           value="View courses"
-          href={`Organizations/${props.Categories.CategoryId}`}
+          /* href={`Organizations/${props.Categories.CategoryId}`} */
+          href={`Organizations`}
         />
       </div>
     </div>
