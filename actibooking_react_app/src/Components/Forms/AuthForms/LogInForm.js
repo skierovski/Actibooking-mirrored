@@ -1,23 +1,34 @@
 import styles from "./LogInForm.module.css";
 import {useRef} from "react";
+import LogInPostDataHandler from "../../FetchMethods/PostMethods/LogInPostDataHandler";
+import { useCookies } from "react-cookie";
 
 const LogInForm = props => {
 
     const enteredEmail = useRef()
     const enteredPassword = useRef()
+    const [cookies, setCookies, removeCookie] = useCookies();
 
     const onSubmitHandler = event =>{
         event.preventDefault();
         const data = {
             email:enteredEmail.current.value,
-            password:enteredPassword.current.value
+            password:enteredPassword.current.value,
         };
-        console.log(data);
-        props.closeModal();
+        LogInPostDataHandler("https://localhost:7127/api/Account/login", data, responseHandler)
     }
 
     const redirectToSignInModal = () => {
         props.redirectToSignInModal();
+    }
+
+    const responseHandler = (response) => {
+        let token = response.token;
+        if (token){
+            setCookies("token", token, {path: "/" }, 'httpOnly');
+            props.closeModal();
+        }
+        else alert("Wrong email or password");
     }
 
     return (

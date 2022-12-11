@@ -1,9 +1,6 @@
-
 import React from "react";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import Organizations from "../../../Data/MostPopularOrganizationData";
-
 import "swiper/css";
 import OrganizationCard from "./OrganizationCard";
 import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
@@ -41,8 +38,8 @@ export default function MostPopularOrganization() {
         className="mySwiper"
       >
         {Organizations.map((O) => (
-          <SwiperSlide>
-            <OrganizationCard key={O.id} Organizations={O} />
+          <SwiperSlide key={O.id}>
+            <OrganizationCard Organizations={O} />
           </SwiperSlide>
         ))}
       </Swiper>

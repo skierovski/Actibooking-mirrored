@@ -1,5 +1,6 @@
 import styles from "./SignUpForm.module.css";
 import {useRef} from "react";
+import SignUpPostDataHandler from "../../FetchMethods/PostMethods/SignUpPostDataHandler";
 
 const SignUpForm = props => {
 
@@ -12,15 +13,25 @@ const SignUpForm = props => {
     const onSubmitHandler = event =>{
         event.preventDefault();
         const data = {
-            email:enteredEmail.current.value,
-            password:enteredPassword.current.value,
-            firstName:enteredFirstName.current.value,
-            lastName:enteredLastName.current.value,
-            phoneNumber:enteredPhoneNumber.current.value,
-            roles:['User']
+            "email":enteredEmail.current.value,
+            "password":enteredPassword.current.value,
+            "firstName":enteredFirstName.current.value,
+            "lastName":enteredLastName.current.value,
+            "phoneNumber":enteredPhoneNumber.current.value,
+            "birthDate":"12/12/2022",
+            "gender":"Male/Female",
+            "roles":["User"]
         };
-        console.log(data);
-        props.closeModal();
+        SignUpPostDataHandler("https://localhost:7127/api/Account/register", data, responseHandler)
+    }
+
+    const responseHandler = (response) => {
+        console.log(response);
+        if (response.ok){
+            props.closeModal();
+            redirectToLogInModal();
+        }
+        else alert("Provide valid information");
     }
 
     const redirectToLogInModal = () =>{
