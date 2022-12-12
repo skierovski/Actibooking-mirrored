@@ -4,7 +4,8 @@ const TrainersBody = (props) => {
     const organizationTrainers = props.organizationTrainers;
         return (
             <div className={styles.trainersContainer}>
-                {organizationTrainers.map(trainer => <div>{trainer}</div>)}
+                {/* {organizationTrainers.map(t => <div>{t.name}</div>)} */}
+                trainers
              </div>
         )
 }

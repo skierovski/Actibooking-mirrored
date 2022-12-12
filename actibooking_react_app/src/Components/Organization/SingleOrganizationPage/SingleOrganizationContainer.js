@@ -2,6 +2,7 @@ import DescriptionBody from "./DescriptionBody/DescriptionBody";
 import OrganizationNavbar from "./OrganizationNavbar/OrganizationNabar";
 import styles from "./SingleOrganizationContainer.module.css";
 import {useState} from 'react'
+import TrainersBody from "./TrainersBody/TrainersBody"
 import AdressBody from "./AdressBody/AdressBody";
 
 const SingleOrganizationContainer = (params) => {
@@ -62,7 +63,7 @@ const SingleOrganizationContainer = (params) => {
       { container.description&& <DescriptionBody organizationDescription = {organization.description}/>}
       { container.adress&& <AdressBody organizationAdress = {organization.adresses}/>}
       { container.courses&& <DescriptionBody organizationDescription = {organization.courses}/>}
-      { container.trainers&& <DescriptionBody organizationDescription = {organization.trainers}/>}
+      { container.trainers&& <TrainersBody organizationDescription = {organization.trainers}/>}
 
 
     </div>

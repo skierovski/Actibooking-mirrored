@@ -8,6 +8,7 @@ import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
 } from "react-icons/bs";
+import OrganizationsFilter from "../OrganizationsFilter/OrganizationsFilter";
 const ListOfOrganizations = () => {
   const [startOrg, setStartOrg] = useState(0);
   const [endOrg, setEndOrg] = useState(4);
@@ -31,6 +32,7 @@ const ListOfOrganizations = () => {
   return (
     <>
       <Navibar />
+      <OrganizationsFilter/>
       <div className={styles.organizations}>
         <div className={styles.pageNumber}>
           <BsFillArrowLeftCircleFill

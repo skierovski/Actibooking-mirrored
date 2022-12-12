@@ -4,9 +4,15 @@ import SignUpModal from './AuthorizationModals/SignUpModal';
 import styles from "./Authorization.module.css";
 import {HiOutlineUserCircle} from 'react-icons/hi';
 import { Link } from 'react-router-dom';
+import { useCookies } from "react-cookie";
+import LogOutButton from './LogOutButton/LogOutButton';
+import SuccessfullyLoggedInModal from "../Authorization/AuthorizationModals/SuccessfullyLoggedInModal";
 
 const Authorization = () =>{
 
+    const success={title:"Success"};
+    const [cookies, setCookies] = useCookies();
+    const [isSuccessfull, setIsSuccessfull] = useState(false);
     const [logInModalData, setlogInModalData] = useState();
     const [signUpModalData, setSignUpModalData] = useState();
 
@@ -35,15 +41,13 @@ const Authorization = () =>{
         setlogInModalData(null);
         setSignUpModalData(null);
     }
-
     return(
         <div className={styles.AuthContainer}>
-            <Link to="/Account/1"><HiOutlineUserCircle size={50} className={styles.userIconContainer}/></Link>
-            <div className={styles.Authorization_container}>
-                <div className={styles.Authorization} onClick={triggerLogInModal}>Log in / Sign up</div>
-            </div>
-            {logInModalData && <LogInModal data={logInModalData} closeModal={closeModal} switchModal={SwitchModal}/>}
+            {cookies['token'] && <Link to="/Account/1"><HiOutlineUserCircle size={50} className={styles.userIconContainer}/></Link>}
+            {cookies['token'] ? <LogOutButton/> :<div className={styles.Authorization_container}><div className={styles.Authorization} onClick={triggerLogInModal}>Log in / Sign up</div></div>}
+            {logInModalData && <LogInModal data={logInModalData} closeModal={closeModal} switchModal={SwitchModal} setIsSuccessfull={() => setIsSuccessfull(true)}/>}
             {signUpModalData && <SignUpModal data={signUpModalData} closeModal={closeModal} switchModal={SwitchModal}/>}
+            {isSuccessfull && <SuccessfullyLoggedInModal data={success} closeModal={() => setIsSuccessfull(false)}/> }
         </div>
     )
 }

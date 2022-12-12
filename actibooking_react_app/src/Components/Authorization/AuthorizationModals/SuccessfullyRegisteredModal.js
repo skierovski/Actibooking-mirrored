@@ -1,19 +1,18 @@
 import ReactDOM from 'react-dom';
 import Modal from '../../DefaultModels/Modals/Modal';
-import LogInForm from '../../Forms/AuthForms/LogInForm';
 import Backdrop from '../../DefaultModels/Backdrop/Backdrop';
 
-const LogInModal = props => {
+const SuccessfullyRegisteredModal = props => {
     return (
     <>
         {ReactDOM.createPortal(<Backdrop close={props.closeModal}/>, document.getElementById('backdrop-root'))}
         {ReactDOM.createPortal(
                 <Modal title={props.data.title} close={props.closeModal}>
-                    <LogInForm closeModal={props.closeModal} redirectToSignInModal = {props.switchModal} setIsSuccessfull={props.setIsSuccessfull}/>
-                </Modal>, 
+                    <h1>You Syccessfully registered !!!</h1>
+                </Modal>,
             document.getElementById('modal-root')
         )}
     </>
   )
 }
-export default LogInModal;
+export default SuccessfullyRegisteredModal;

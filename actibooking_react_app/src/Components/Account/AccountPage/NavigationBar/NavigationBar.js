@@ -9,8 +9,12 @@ import {
   faPersonRunning,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./NavigationBar.module.css";
+import { useCookies } from "react-cookie";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const NavigationBar = (props) => {
+  const [cookies, setCookies, removeCookie] = useCookies();
   console.log(props);
   const children = props.data.children;
   return (
@@ -43,22 +47,27 @@ const NavigationBar = (props) => {
         >
           <FontAwesomeIcon icon={faGear} /> Settings
         </div>
-        {children.length > 0 ? (
+        {children.length > 0 &&(
           <div
             className={styles.ButtonIcon}
             onClick={() => props.changeBody("childs")}
           >
             <FontAwesomeIcon icon={faPeopleGroup} /> Childs
           </div>
-        ) : null}
-        {props.data.isTrainer ? (
+        )}
+        {props.data.isTrainer && (
           <div
             className={styles.ButtonIcon}
             onClick={() => props.changeBody("trainer")}
           >
             <FontAwesomeIcon icon={faPersonRunning} /> Trainer Page
           </div>
-        ) : null}
+        )}
+        <div className={styles.logOutIconContainer}>
+          <Link to={"/"} className={styles.LogOutIcon} onClick={() => removeCookie('token')}>
+            <FontAwesomeIcon icon={faRightFromBracket} /> Log out
+          </Link>
+        </div>
       </div>
     </>
   );

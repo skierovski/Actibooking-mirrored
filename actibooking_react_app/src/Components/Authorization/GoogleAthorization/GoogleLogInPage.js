@@ -21,7 +21,7 @@ function GoogleLogInPage() {
               }}
             onFailure={responseGoogle}
             useOneTap={true}
-            text= "signup_with"
+            text= "login_with"
             />
             </GoogleOAuthProvider>
     )

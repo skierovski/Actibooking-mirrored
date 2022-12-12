@@ -23,3 +23,17 @@
 .ButtonIcon:hover {
   color: #8dd882;
 }
+
+.logOutIconContainer{
+  margin-left: 20px;
+  padding-bottom: 20px;
+}
+.LogOutIcon{
+  text-decoration: none;
+  color: rgb(97, 0, 0);
+  cursor: pointer;
+  font-weight: 600;
+}
+.LogOutIcon:hover{
+  color: red;
+}
