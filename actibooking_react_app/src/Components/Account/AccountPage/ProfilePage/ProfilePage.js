@@ -4,7 +4,8 @@ import Button from "../../../DefaultModels/Buttons/Button";
 const ProfilePage = (props) => {
 
   const children = props.data.children;
-  console.log(children.length)
+  const isTrainer = props.data.isTrainer;
+  console.log(children)
   return (
     <>
       <div className={styles.Information}>
@@ -45,11 +46,13 @@ const ProfilePage = (props) => {
       </div>
       <div className={styles.TrainerChilds}>
         <div className={styles.Childs}>  
-        {children.length > 0? 
+        {children? 
           <Button value="Child Tab"/> : <Button value="Add child"/>}
         </div>
         <div className={styles.Trainer}>
-          {props.data.isTrainer?<Button value="Active trainer" href={`/Active`} /> : <p><Button value="Trainer Tab"></Button></p>}
+          {isTrainer?
+          <Button value="Trainer Tab"></Button>: 
+          <Button value="Active trainer" href={`/Active`} /> }
         </div>
       </div>
     </>

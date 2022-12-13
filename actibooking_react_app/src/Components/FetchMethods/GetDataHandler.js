@@ -1,12 +1,14 @@
-const GetDataHandler = (url, setMethod = console.log, token = null) => {
+const GetDataHandler = (url, setMethod, token = null) => {
     fetch(url,{
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         },
     })
-    .then(response => {setMethod(response.json())})
-    .then(data => console.log(data))
+    .then((response) => response.json())
+    .then((responseData) => {
+      setMethod(responseData);
+    })
     .catch(error => {console.error(error)})
 }
 export default GetDataHandler;
