@@ -8,12 +8,10 @@ import AccountPageData from "../../../Data/AccountPageData";
 
 const AccountPage = () => {
   const [body, setBody] = useState("default");
-
   const ChangeBody = (content) => {
     setBody(content);
     console.log(body);
   };
-
   return (
     <>
       <Navibar />

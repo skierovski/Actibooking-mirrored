@@ -2,6 +2,7 @@ import styles from "./ImageAndName.module.css";
 import SectionTitle from "../../../DefaultModels/Titles/SectionTitle";
 
 const ImageAndName = (props) => {
+  console.log(props)
   return (
     <div className={styles.ProfileImage}>
       <div className={styles.Image}>
