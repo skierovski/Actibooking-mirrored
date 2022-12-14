@@ -6,7 +6,7 @@ import ListOfOrganizations from "./Components/Organization/ListOfOrganizations/L
 import AccountPage from "./Components/Account/AccountPage/AccountPage";
 import { CookiesProvider } from 'react-cookie';
 import LogIn from "./Components/Authorization/GoogleAthorization/GoogleLogInPage";
-
+import GetDataHandler from "./Components/FetchMethods/GetDataHandler";
 const App = () => {
   return (
     <CookiesProvider>
@@ -14,7 +14,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/Organizations" element={<ListOfOrganizations />} />
         <Route path="/Organizations/:id" element={<SingleOrganizationPage/>} />
-        <Route path="/Account/:id" element={<AccountPage />} />
+        <Route path="/Account/:id" element={<AccountPage/>} />
       </Routes>
     </CookiesProvider>
   );

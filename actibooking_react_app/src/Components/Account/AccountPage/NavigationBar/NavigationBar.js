@@ -32,12 +32,14 @@ const NavigationBar = (props) => {
         >
           <FontAwesomeIcon icon={faLock} /> Security
         </div>
-        <div
+        {props.data.participants &&(
+          <div
           className={styles.ButtonIcon}
           onClick={() => props.changeBody("courses")}
         >
           <FontAwesomeIcon icon={faCalendarDays} /> Your activities
         </div>
+        )}
         <div className={styles.ButtonIcon}>
           <FontAwesomeIcon icon={faWallet} /> Payments
         </div>
@@ -47,7 +49,7 @@ const NavigationBar = (props) => {
         >
           <FontAwesomeIcon icon={faGear} /> Settings
         </div>
-        {children.length > 0 &&(
+        {children &&(
           <div
             className={styles.ButtonIcon}
             onClick={() => props.changeBody("childs")}

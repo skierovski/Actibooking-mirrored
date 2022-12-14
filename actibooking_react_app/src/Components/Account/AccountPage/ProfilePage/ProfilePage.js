@@ -2,6 +2,10 @@ import styles from "./ProfilePage.module.css";
 import Button from "../../../DefaultModels/Buttons/Button";
 
 const ProfilePage = (props) => {
+
+  const children = props.data.children;
+  const isTrainer = props.data.isTrainer;
+  console.log(children)
   return (
     <>
       <div className={styles.Information}>
@@ -41,15 +45,14 @@ const ProfilePage = (props) => {
         </ul>
       </div>
       <div className={styles.TrainerChilds}>
-        <div className={styles.Childs}>
-          {props.data.children.map((o) => (
-            <span>
-              {o.name} {o.lastName}
-            </span>
-          ))}
+        <div className={styles.Childs}>  
+        {children? 
+          <Button value="Child Tab"/> : <Button value="Add child"/>}
         </div>
         <div className={styles.Trainer}>
-          <Button value="Active trainer" href={`/Active`} />
+          {isTrainer?
+          <Button value="Trainer Tab"></Button>: 
+          <Button value="Active trainer" href={`/Active`} /> }
         </div>
       </div>
     </>

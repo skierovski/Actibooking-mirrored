@@ -5,8 +5,10 @@ const GetDataHandler = (url, setMethod, token = null) => {
             "Authorization": `Bearer ${token}`
         },
     })
-    .then(response => {return response.json()})
-    .then(data => setMethod(data))
+    .then((response) => response.json())
+    .then((responseData) => {
+      setMethod(responseData);
+    })
     .catch(error => {console.error(error)})
 }
 export default GetDataHandler;

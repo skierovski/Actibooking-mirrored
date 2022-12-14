@@ -7,7 +7,7 @@ const AccountPageData = {
         phoneNumber:	'533903641',
         firstName:	'Patryk',
         lastName:	'Skierkowski',
-        isTrainer: true,	
+        isTrainer: false,	
         birthDate:	'10-10-1995',
         gender:	'male',
         children: [

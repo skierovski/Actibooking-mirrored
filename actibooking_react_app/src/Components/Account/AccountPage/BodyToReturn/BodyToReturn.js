@@ -14,7 +14,7 @@ const BodyToReturn = (props) => {
     }
     if (props.body === "courses") {
         return(
-            <CoursesPage data={AccountPageData}/>
+            <CoursesPage data={props.data}/>
         )
     }
     if (props.body === "settings") {
@@ -24,7 +24,7 @@ const BodyToReturn = (props) => {
     }
     if(props.body ==="childs") {
         return(
-            <ChildPage data={AccountPageData}/>
+            <ChildPage data={props.data}/>
         )
     }
     if(props.body ==="trainer") {
@@ -34,7 +34,7 @@ const BodyToReturn = (props) => {
     }
     else {
         return(
-            <ProfilePage data={AccountPageData}/>
+            <ProfilePage data={props.data}/>
         )
     }
 }
