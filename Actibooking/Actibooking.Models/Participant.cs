@@ -10,7 +10,11 @@ namespace Actibooking.Models
     {
         public int Id { get; set; }
         public int CourseId { get; set; }
-        public string ActiBookingUserId { get; set; }
+        public Course Course { get; set; }
+
+        public string? ActiBookingUserId { get; set; }
+        public ActiBookingUser? ActiBookingUser { get; set; }
         public int? ChildId { get; set; }
+        public Child? Child { get; set; }
     }
 }

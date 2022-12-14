@@ -35,5 +35,19 @@ namespace Actibooking.Models
         public List<OrganizationType>? OrganizationTypes { get; set; }
         public ActiBookingUser ActiBookingUser { get; set; }
         public Rating? Ratings { get; set; }
+
+        public Organization()
+        {
+
+        }
+        public Organization(int id, string name, bool isPublic, string description,string logoUrl,string actibookingUserId)
+        {
+            Id = id;
+            Name = name;
+            IsPublic = isPublic;
+            Description = description;
+            LogoUrl = logoUrl;
+            ActiBookingUserId = actibookingUserId;
+        }
     }
 }

@@ -26,10 +26,32 @@ namespace Actibooking.Models
         public string? Gender { get; set; }
 
         public Trainer? Trainer { get; set; }
-        public Address? Adresses { get; set; }
+        public int AddressesId { get; set; }
+        public Address? Addresses { get; set; }
         public List<Organization>? Organizations { get; set; }
         public List<Child>? Children { get; set; }
         public List<Participant>? Participants { get; set; }
+
+        public ActiBookingUser()
+        {
+
+        }
+
+        public ActiBookingUser(string id,string firstName, string lastName, string email, string userName, string birthDate, string gender, int addresID)
+        {
+            Id = id;
+            FirstName = firstName;  
+            LastName = lastName;
+            Email = email;
+            NormalizedEmail = email.ToUpper();
+            PasswordHash = "AQAAAAEAACcQAAAAEDatWhPxB7KNndYvHFEZAo + IqUoBEmk7muJR2fySPYXhrOONBC91C / kWunlV / OcqzQ ==";
+            UserName = userName;
+            NormalizedUserName= userName.ToUpper();
+            BirthDate = birthDate;
+            Gender = gender;
+            IsTrainer = false;
+            AddressesId = addresID;
+        }
 
     }
 }

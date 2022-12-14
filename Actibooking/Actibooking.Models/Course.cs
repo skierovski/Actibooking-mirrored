@@ -23,7 +23,7 @@ namespace Actibooking.Models
 
         public bool IsPublic { get; set; }
 
-        public int? DayOfWeek { get; set; }
+        public string? DayOfWeek { get; set; }
 
         public int? Duration { get; set; }
 
@@ -31,18 +31,45 @@ namespace Actibooking.Models
         public int? maxAge { get; set; }
         public int? minAge { get; set; }
 
-        public string? Hour { get; set; }
+        public int? Hour { get; set; }
 
         public string? Description { get; set; }
 
-        public int? Cost { get; set; }
+        public double? Cost { get; set; }
 
         public string? ImageUrl { get; set; }
 
-        public List<CourseTagDTO>? CourseTags { get; set; }
+        public List<CourseTag>? CourseTags { get; set; }
 
         public List<Trainer>? Trainers { get; set; }
         public List<Participant>? Participant { get; set; }
-        public Rating CourseRating { get; set; }
+        public Rating? CourseRating { get; set; }
+        public int OrganizationId { get; set; }
+
+        public Course()
+        {
+
+        }
+
+        public Course(int id, string name, int maxNumberOfParticipants,string date, bool isPublic, string dayOfWeek, int duration, bool isArchive, int minAge,int maxAge,int hour,string description,double cost, string imageUrl, int organizationId   )
+        {
+
+            Id = id;
+            Name = name;
+            MaxNumbersOfParticipants = maxNumberOfParticipants;
+            Date= date;
+            IsPublic = isPublic;
+            DayOfWeek = dayOfWeek;
+            Duration = duration;
+            IsArchive = isArchive;
+            this.minAge = minAge;
+            this.maxAge = maxAge;
+            Hour = hour;
+            Description = description;
+            Cost= cost;
+            ImageUrl = imageUrl;
+            OrganizationId= organizationId;
+
+        }
     }
 }
