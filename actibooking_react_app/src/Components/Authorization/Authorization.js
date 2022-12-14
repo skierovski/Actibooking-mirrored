@@ -11,7 +11,7 @@ import SuccessfullyLoggedInModal from "../Authorization/AuthorizationModals/Succ
 const Authorization = () =>{
 
     const success={title:"Success"};
-    const [cookies, setCookies] = useCookies();
+    const [cookies] = useCookies();
     const [isSuccessfull, setIsSuccessfull] = useState(false);
     const [logInModalData, setlogInModalData] = useState();
     const [signUpModalData, setSignUpModalData] = useState();
