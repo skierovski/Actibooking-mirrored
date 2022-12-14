@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import LogOutButton from './LogOutButton/LogOutButton';
 import SuccessfullyLoggedInModal from "../Authorization/AuthorizationModals/SuccessfullyLoggedInModal";
-import jwtDecode from 'jwt-decode';
 
 const Authorization = () =>{
 
@@ -16,7 +15,6 @@ const Authorization = () =>{
     const [isSuccessfull, setIsSuccessfull] = useState(false);
     const [logInModalData, setlogInModalData] = useState();
     const [signUpModalData, setSignUpModalData] = useState();
-    const decodedToken = jwtDecode(cookies['token']);
 
     const triggerLogInModal = () => {
         setlogInModalData({
@@ -45,7 +43,7 @@ const Authorization = () =>{
     }
     return(
         <div className={styles.AuthContainer}>
-            {cookies['token'] && <Link to={`/Account/${decodedToken.uid}`}><HiOutlineUserCircle size={50} className={styles.userIconContainer}/></Link>}
+            {cookies['token'] && <Link to="/Account/1"><HiOutlineUserCircle size={50} className={styles.userIconContainer}/></Link>}
             {cookies['token'] ? <LogOutButton/> :<div className={styles.Authorization_container}><div className={styles.Authorization} onClick={triggerLogInModal}>Log in / Sign up</div></div>}
             {logInModalData && <LogInModal data={logInModalData} closeModal={closeModal} switchModal={SwitchModal} setIsSuccessfull={() => setIsSuccessfull(true)}/>}
             {signUpModalData && <SignUpModal data={signUpModalData} closeModal={closeModal} switchModal={SwitchModal}/>}
