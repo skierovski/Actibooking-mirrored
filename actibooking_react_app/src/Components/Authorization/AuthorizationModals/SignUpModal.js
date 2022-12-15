@@ -9,7 +9,7 @@ const SignUpModal= props => {
         {ReactDOM.createPortal(<Backdrop close={props.closeModal}/>, document.getElementById('backdrop-root'))}
         {ReactDOM.createPortal(
                 <Modal title={props.data.title} close={props.closeModal}>
-                    <SignUpForm closeModal={props.closeModal} redirectToSignInModal = {props.switchModal}/>
+                    <SignUpForm closeModal={props.closeModal} redirectToSignInModal = {props.switchModal} isSignUpCorrectly={props.isSignUpCorrectly}/>
                 </Modal>, 
             document.getElementById('modal-root')
         )}
