@@ -9,8 +9,6 @@ import LogOutButton from './LogOutButton/LogOutButton';
 import SuccessfullyLoggedInModal from "../Authorization/AuthorizationModals/SuccessfullyLoggedInModal";
 
 const Authorization = () =>{
-
-    const success={title:"Success"};
     const [cookies] = useCookies();
     const [isSuccessfull, setIsSuccessfull] = useState(false);
     const [logInModalData, setlogInModalData] = useState();
@@ -47,7 +45,7 @@ const Authorization = () =>{
             {cookies['token'] ? <LogOutButton/> :<div className={styles.Authorization_container}><div className={styles.Authorization} onClick={triggerLogInModal}>Log in / Sign up</div></div>}
             {logInModalData && <LogInModal data={logInModalData} closeModal={closeModal} switchModal={SwitchModal} setIsSuccessfull={() => setIsSuccessfull(true)}/>}
             {signUpModalData && <SignUpModal data={signUpModalData} closeModal={closeModal} switchModal={SwitchModal}/>}
-            {isSuccessfull && <SuccessfullyLoggedInModal data={success} closeModal={() => setIsSuccessfull(false)}/> }
+            {isSuccessfull && <SuccessfullyLoggedInModal closeModal={() => setIsSuccessfull(false)}/> }
         </div>
     )
 }

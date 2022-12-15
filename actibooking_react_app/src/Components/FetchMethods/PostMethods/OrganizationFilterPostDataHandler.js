@@ -11,3 +11,4 @@ const OrganizationFilterPostDataHandler = (url, method=console.log, token=null) 
   .catch(error => {console.error(error)})
     }
   export default OrganizationFilterPostDataHandler;
+  // tym sie prosze nie wzorowac, nie jest skończone

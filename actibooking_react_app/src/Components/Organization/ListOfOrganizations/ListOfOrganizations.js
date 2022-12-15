@@ -61,7 +61,7 @@ const ListOfOrganizations = () => {
             ))}
         </div>
       </div>
-      {/*       <Footer /> */}
+      {/* <Footer /> */}
     </>
   );
 };

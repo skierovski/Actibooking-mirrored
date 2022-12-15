@@ -3,13 +3,12 @@ import {useRef} from "react";
 import LogInPostDataHandler from "../../FetchMethods/PostMethods/LogInPostDataHandler";
 import { useCookies } from "react-cookie";
 import GoogleLogInPage from "../../Authorization/GoogleAthorization/GoogleLogInPage";
-import { useState } from "react";
 
 const LogInForm = props => {
 
     const enteredEmail = useRef()
     const enteredPassword = useRef()
-    const [cookies, setCookies, removeCookie] = useCookies();
+    const [cookies, setCookies] = useCookies();
 
     const onSubmitHandler = event =>{
         event.preventDefault();

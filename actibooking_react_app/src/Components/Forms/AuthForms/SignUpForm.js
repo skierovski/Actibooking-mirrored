@@ -1,19 +1,33 @@
 import styles from "./SignUpForm.module.css";
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import SignUpPostDataHandler from "../../FetchMethods/PostMethods/SignUpPostDataHandler";
 
 const SignUpForm = props => {
 
-    const enteredEmail = useRef();
+    const [enteredEmail, setEnteredEmail] = useState();
     const enteredPassword = useRef();
     const enteredFirstName = useRef();
     const enteredLastName = useRef();
     const enteredPhoneNumber = useRef();
 
+
+    useEffect(()=>{
+        const enteredEmailCheckTimeout = setTimeout(()=>{
+            //TODO tutaj trzeba przesłać enteredEmail i sprawdzić czy w bazie danych nie ma już takiego emaila, dodać style w dwóch przypadkach itd;
+            console.log(enteredEmail);
+        }, 1000);
+        return ()=>{
+            console.log("cleanout");
+            clearTimeout(enteredEmailCheckTimeout);
+        }
+    }, [enteredEmail]);
+
+
+
     const onSubmitHandler = event =>{
         event.preventDefault();
         const data = {
-            "email":enteredEmail.current.value,
+            "email":enteredEmail,
             "password":enteredPassword.current.value,
             "firstName":enteredFirstName.current.value,
             "lastName":enteredLastName.current.value,
@@ -38,12 +52,17 @@ const SignUpForm = props => {
         props.redirectToSignInModal();
     }
 
+
+    const onChangeEmailHandler = (event) => {
+        setEnteredEmail(event.target.value);
+    }
+
     return (
         <form onSubmit={onSubmitHandler}>
             <div className={styles.login_controls}>
                 <div className={styles.login_control}>
                     <label>Email</label>
-                    <input type='email' minLength={10} ref={enteredEmail} required={true}/>
+                    <input type='email' minLength={10} onChange={onChangeEmailHandler} required={true}/>
                     <label>Password</label>
                     <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/>
                     <label>First Name</label>
