@@ -9,12 +9,14 @@ import LogOutButton from './LogOutButton/LogOutButton';
 import SuccessfullyLoggedInModal from "../Authorization/AuthorizationModals/SuccessfullyLoggedInModal";
 import jwtDecode from 'jwt-decode';
 
+
 const Authorization = () =>{
     const [cookies] = useCookies();
     const [isSuccessfull, setIsSuccessfull] = useState(false);
     const [logInModalData, setlogInModalData] = useState();
     const [signUpModalData, setSignUpModalData] = useState();
     const decodedToken = jwtDecode(cookies['token']);
+    const [isSignUpCorrectly, setIsSignUpCorrectly] = useState(false);
 
     const triggerLogInModal = () => {
         setlogInModalData({
@@ -45,8 +47,8 @@ const Authorization = () =>{
         <div className={styles.AuthContainer}>
             {cookies['token'] && <Link to={`/Account/${decodedToken.uid}`}><HiOutlineUserCircle size={50} className={styles.userIconContainer}/></Link>}
             {cookies['token'] ? <LogOutButton/> :<div className={styles.Authorization_container}><div className={styles.Authorization} onClick={triggerLogInModal}>Log in / Sign up</div></div>}
-            {logInModalData && <LogInModal data={logInModalData} closeModal={closeModal} switchModal={SwitchModal} setIsSuccessfull={() => setIsSuccessfull(true)}/>}
-            {signUpModalData && <SignUpModal data={signUpModalData} closeModal={closeModal} switchModal={SwitchModal}/>}
+            {logInModalData && <LogInModal data={logInModalData} closeModal={closeModal} switchModal={SwitchModal} setIsSuccessfull={() => setIsSuccessfull(true)} isSignUpCorrectly={isSignUpCorrectly} />}
+            {signUpModalData && <SignUpModal data={signUpModalData} closeModal={closeModal} switchModal={SwitchModal} isSignUpCorrectly={()=>setIsSignUpCorrectly(true)}/>}
             {isSuccessfull && <SuccessfullyLoggedInModal closeModal={() => setIsSuccessfull(false)}/> }
         </div>
     )

@@ -23,11 +23,20 @@ const AccountPage = () => {
 
   }
 
+  const GetData = () =>{
+    GetDataHandler(`https://localhost:7127/api/User/${id}`, ResponseHandler)
+  }
+
+  const ResponseHandler = (props) => {
+    console.log(props);
+    setTimeout(() => setData(props), 2000)
+
+  }
   const ChangeBody = (content) => {
     setBody(content);
     console.log(body);
   };
-
+  console.log(data)
   return (
     <>
       {data && <><Navibar />

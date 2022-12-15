@@ -44,6 +44,7 @@ const SignUpForm = props => {
         if (response.ok){
             props.closeModal();
             redirectToLogInModal();
+            props.isSignUpCorrectly();
         }
         else alert("Provide valid information");
     }
