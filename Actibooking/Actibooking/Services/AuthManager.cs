@@ -18,12 +18,14 @@ namespace Actibooking.Services
         private ActiBookingUser _user;
         readonly RsaSecurityKey _key;
         private readonly IConfigurationSection _goolgeSettings;
+        private readonly IUnitOfWork _uow;
 
-        public AuthManager(UserManager<ActiBookingUser> userManager, IConfiguration configuration)
+        public AuthManager(UserManager<ActiBookingUser> userManager, IConfiguration configuration, IUnitOfWork uow)
         {
             _userManager = userManager;
             _configuration = configuration;
             _goolgeSettings = _configuration.GetSection("GoogleAuthSettings");
+            _uow = uow;
         }
 
         public async Task<string> CreateToken()
@@ -38,12 +40,14 @@ namespace Actibooking.Services
             var roles = await _userManager.GetRolesAsync(_user);
             var roleClaims = roles.Select(x => new Claim(ClaimTypes.Role, x));
             var UserClaims = await _userManager.GetClaimsAsync(_user);
+            _user.Addresses = await _uow.AdressRepo.GetByIdAsync(_user.AddressesId);
 
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, _user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, _user.Email),
+                new Claim("City", _user.Addresses.City),
                 new Claim("uid",_user.Id),
             }.Union(UserClaims).Union(roleClaims);
 
