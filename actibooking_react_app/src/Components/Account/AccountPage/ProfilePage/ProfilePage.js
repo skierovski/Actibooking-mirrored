@@ -1,5 +1,6 @@
 import styles from "./ProfilePage.module.css";
 import Button from "../../../DefaultModels/Buttons/Button";
+import Modal from '../../../DefaultModels/Modals/Modal'
 
 const ProfilePage = (props) => {
 
@@ -45,7 +46,7 @@ const ProfilePage = (props) => {
         </ul>
       </div>
       <div className={styles.TrainerChilds}>
-        <div className={styles.Childs}>  
+        <div className={styles.Childs} onClick={<Modal/>}>  
         {children? 
           <Button value="Child Tab"/> : <Button value="Add child"/>}
         </div>

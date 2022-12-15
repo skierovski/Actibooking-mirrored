@@ -4,6 +4,7 @@ import AllOrganizations from "../../../Data/MostPopularOrganizationData";
 import OrganizationContainer from "../OrganizationContainer/OrganizationContainer";
 import Navibar from "../../Navibar/Navibar";
 import Footer from "../../Footer/Footer";
+import GetDataHandler from "../../FetchMethods/GetDataHandler";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
@@ -13,6 +14,17 @@ const ListOfOrganizations = () => {
   const [startOrg, setStartOrg] = useState(0);
   const [endOrg, setEndOrg] = useState(4);
   const [page, setPage] = useState(1);
+  const [data, setData] = useState();
+
+  const GetData = () =>{
+    GetDataHandler('https://localhost:7127/api/Organizations', ResponseHandler)
+  }
+
+  const ResponseHandler = (props) => {
+    console.log(props);
+    setTimeout(() => setData(props), 2000)
+
+  }
 
   const nextPage = () => {
     if (page < AllOrganizations.length % 4) {
@@ -31,6 +43,8 @@ const ListOfOrganizations = () => {
 
   return (
     <>
+    {data &&
+    <>
       <Navibar />
       <OrganizationsFilter/>
       <div className={styles.organizations}>
@@ -48,7 +62,7 @@ const ListOfOrganizations = () => {
           />
         </div>
         <div className={styles.Container}>
-          {AllOrganizations.filter((o) => o.isPublic)
+          {data.filter((o) => o.isPublic)
             .slice(startOrg, endOrg)
             .map((o) => (
               <OrganizationContainer
@@ -61,7 +75,8 @@ const ListOfOrganizations = () => {
             ))}
         </div>
       </div>
-      {/* <Footer /> */}
+      </>}
+     {!data && <div  onLoad={GetData()}>Not working</div>}
     </>
   );
 };
