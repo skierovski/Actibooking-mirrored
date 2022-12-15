@@ -9,6 +9,7 @@ const Modal = props => {
                 <CgClose size={35} className={styles.closeIcon} onClick={props.close}/>
             </header>
             <div className={styles.content}>
+                
                 {props.children}              
             </div>
         </div>
