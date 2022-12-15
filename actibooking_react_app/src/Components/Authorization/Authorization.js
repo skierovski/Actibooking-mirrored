@@ -9,7 +9,7 @@ import LogOutButton from './LogOutButton/LogOutButton';
 import SuccessfullyLoggedInModal from "../Authorization/AuthorizationModals/SuccessfullyLoggedInModal";
 
 const Authorization = () =>{
-    const [cookies] = useCookies();
+    const [cookies, setCookies] = useCookies();
     const [isSuccessfull, setIsSuccessfull] = useState(false);
     const [logInModalData, setlogInModalData] = useState();
     const [signUpModalData, setSignUpModalData] = useState();
