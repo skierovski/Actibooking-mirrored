@@ -54,28 +54,5 @@ const Authorization = () => {
             {isSuccessfull && <SuccessfullyLoggedInModal closeModal={() => setIsSuccessfull(false)}/>}
         </div>
       )}
-      {logInModalData && (
-        <LogInModal
-          data={logInModalData}
-          closeModal={closeModal}
-          switchModal={SwitchModal}
-          setIsSuccessfull={() => setIsSuccessfull(true)}
-          isSignUpCorrectly={isSignUpCorrectly}
-        />
-      )}
-      {signUpModalData && (
-        <SignUpModal
-          data={signUpModalData}
-          closeModal={closeModal}
-          switchModal={SwitchModal}
-          isSignUpCorrectly={() => setIsSignUpCorrectly(true)}
-        />
-      )}
-      {isSuccessfull && (
-        <SuccessfullyLoggedInModal closeModal={() => setIsSuccessfull(false)} />
-      )}
-    </div>
-  );
-};
 
 export default Authorization;
