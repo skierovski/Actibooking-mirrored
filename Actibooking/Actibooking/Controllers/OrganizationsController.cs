@@ -25,8 +25,8 @@ namespace Actibooking.Controllers
         private readonly IUnitOfWork _uow;
 
 
-        private readonly OrganizationManager _organizationManager;
-        public OrganizationsController(IUnitOfWork uow, OrganizationManager organizationManager)
+        private readonly IOrganizationManager _organizationManager;
+        public OrganizationsController(IUnitOfWork uow, IOrganizationManager organizationManager)
         {
             _uow = uow;
             _organizationManager = organizationManager;
@@ -77,7 +77,7 @@ namespace Actibooking.Controllers
         {
             await _uow.OrganizationRepo.DeleteAsync(organizationId);
             await _uow.SaveChangesAsync();
-            return Ok();
+            return Ok("Organization deleted");
         }
 
         [HttpPut("update")]

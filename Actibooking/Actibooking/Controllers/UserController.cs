@@ -36,6 +36,13 @@ namespace Actibooking.Controllers
             _userService = userService;
         }
 
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetUser(string userId)
+        {
+            ActiBookingUser user = await _uow.UserRepo.GetByIdAsync(userId);
+            return Ok(user);
+        }
+
         [HttpPost("add-child")]
         public async Task<IActionResult> AddChild(AddingChildDTO addingChildDTO)
         {
