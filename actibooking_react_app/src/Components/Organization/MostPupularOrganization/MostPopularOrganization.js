@@ -7,10 +7,12 @@ import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./MostPopularOrganization.css";
+import { useCookies } from "react-cookie";
 
 
 import { Navigation } from "swiper";
 export default function MostPopularOrganization() {
+  const [cookies, setCookies] = useCookies();
   return (
     <div className="mainComponent">
       <SectionTitle value="Top organization" />
