@@ -80,6 +80,7 @@ namespace Actibooking.Tests.Service
             var result = manager.FindOrganzation(organization.Id);
 
             //Assert
+            var exeption = result.Exception.InnerException.GetType();
             result.Exception.InnerException.Message.Equals($"Organization ({organization.Id}) was not found");
         }
 
