@@ -27,8 +27,8 @@ namespace Actibooking.Models
         public string? ActiBookingUserId { get; set; }
 
         public List<Course>? Courses { get; set; }
-
-        public List<Address>? Adresses { get; set; }
+        public int AddressesId { get; set; }
+        public Address? Addresses { get; set; }
 
         public List<Trainer>? Trainers { get; set; }
 
@@ -41,7 +41,7 @@ namespace Actibooking.Models
         {
 
         }
-        public Organization(int id, string name, bool isPublic, string description,string logoUrl, string actibookingUserId, int ratingId)
+        public Organization(int id, string name, bool isPublic, string description,string logoUrl, string actibookingUserId, int ratingId, int addressesId)
         {
             Id = id;
             Name = name;
@@ -49,6 +49,7 @@ namespace Actibooking.Models
             Description = description;
             LogoUrl = logoUrl;
             ActiBookingUserId = actibookingUserId;
+            AddressesId = addressesId;
             RatingId = ratingId;
         }
     }

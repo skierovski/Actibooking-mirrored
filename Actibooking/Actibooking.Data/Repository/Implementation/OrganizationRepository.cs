@@ -16,7 +16,7 @@ namespace Actibooking.Data.Repository.Implementation
 
         public override async Task DeleteAsync(int id)
         {
-            var entity = await _dbSet.Include(r => r.Adresses)
+            var entity = await _dbSet.Include(r => r.Addresses)
                 .Include(r => r.Courses)
                 .FirstOrDefaultAsync(o=> o.Id== id);
             _dbSet.Remove(entity);
@@ -24,7 +24,7 @@ namespace Actibooking.Data.Repository.Implementation
 
         public override async Task<IEnumerable<Organization>> GetAsync()
         {
-            return await _dbSet.Include(r => r.Adresses)
+            return await _dbSet.Include(r => r.Addresses)
                     .Include(r => r.Courses)
                     .Include(r => r.OrganizationTypes)
                     .Include(r => r.Trainers)
@@ -33,7 +33,7 @@ namespace Actibooking.Data.Repository.Implementation
 
         public override async Task<Organization> GetByIdAsync(int id)
         {
-            return await _dbSet.Include(r => r.Adresses)
+            return await _dbSet.Include(r => r.Addresses)
                     .Include(r => r.Courses)
                     .Include(r => r.OrganizationTypes)
                     .Include(r => r.Trainers)

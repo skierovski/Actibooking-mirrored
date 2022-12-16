@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Actibooking.Controllers
 {
@@ -36,6 +37,24 @@ namespace Actibooking.Controllers
         {
             var organizations = await _organizationManager.CheckIfEmpty();
             return Ok(organizations);                                      
+        }
+
+        [HttpGet("top10")]
+        public async Task<IActionResult> GetTop10()
+        {
+            /*var actiBookingUsers = await _uow.UserRepo.GetAsync(filter: x => x.Id == userId, includeProperties: "Participants");*/
+            var organizations = await _uow.OrganizationRepo.GetAsync(includeProperties: "Addresses,Ratings", orderBy: q => q.OrderByDescending(d => d.Ratings.AverageRating));
+            var top10 = organizations.Take(10);
+            return Ok(top10);
+        }
+
+        [HttpGet("top10/{UserCity}")]
+        public async Task<IActionResult> GetTop10FromCity(string UserCity)
+        {
+            /*var actiBookingUsers = await _uow.UserRepo.GetAsync(filter: x => x.Id == userId, includeProperties: "Participants");*/
+            var organizations = await _uow.OrganizationRepo.GetAsync(filter: x => x.Addresses.City == UserCity, includeProperties: "Addresses,Ratings", orderBy: q => q.OrderByDescending(d => d.Ratings.AverageRating));
+            var top10 = organizations.Take(10);
+            return Ok(top10);
         }
 
         [HttpGet("{organizationId}")]
