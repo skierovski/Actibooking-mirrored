@@ -1,31 +1,30 @@
-import {useState} from 'react';
-import LogInModal from './AuthorizationModals/LogInModal';
-import SignUpModal from './AuthorizationModals/SignUpModal';
+import { useState } from "react";
+import LogInModal from "./AuthorizationModals/LogInModal";
+import SignUpModal from "./AuthorizationModals/SignUpModal";
 import styles from "./Authorization.module.css";
-import {HiOutlineUserCircle} from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { HiOutlineUserCircle } from "react-icons/hi";
+import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import LogOutButton from './LogOutButton/LogOutButton';
+import LogOutButton from "./LogOutButton/LogOutButton";
 import SuccessfullyLoggedInModal from "../Authorization/AuthorizationModals/SuccessfullyLoggedInModal";
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 
+const Authorization = () => {
+  const [cookies, setCookies] = useCookies();
+  const [isSuccessfull, setIsSuccessfull] = useState(false);
+  const [logInModalData, setlogInModalData] = useState();
+  const [signUpModalData, setSignUpModalData] = useState();
+  let decodedToken = null;
+  if (cookies["token"] !=null) {
+    decodedToken = jwtDecode(cookies["token"]);
+  }
+  const [isSignUpCorrectly, setIsSignUpCorrectly] = useState(false);
 
-const Authorization = () =>{
-    const [cookies, setCookies] = useCookies();
-    const [isSuccessfull, setIsSuccessfull] = useState(false);
-    const [logInModalData, setlogInModalData] = useState();
-    const [signUpModalData, setSignUpModalData] = useState();
-    let decodedToken = null;
-    if (cookies['token'] != null) {
-        decodedToken = jwtDecode(cookies['token']);
-    }
-    const [isSignUpCorrectly, setIsSignUpCorrectly] = useState(false);
-
-    const triggerLogInModal = () => {
-        setlogInModalData({
-            title:"Log In",
-        })
-    }
+  const triggerLogInModal = () => {
+    setlogInModalData({
+      title: "Log In",
+    });
+  };
 
     const triggerSignUpModal = () => {
         setSignUpModalData({
@@ -54,7 +53,29 @@ const Authorization = () =>{
             {signUpModalData && <SignUpModal data={signUpModalData} closeModal={closeModal} switchModal={SwitchModal} isSignUpCorrectly={()=>setIsSignUpCorrectly(true)}/>}
             {isSuccessfull && <SuccessfullyLoggedInModal closeModal={() => setIsSuccessfull(false)}/>}
         </div>
-    )
-}
+      )}
+      {logInModalData && (
+        <LogInModal
+          data={logInModalData}
+          closeModal={closeModal}
+          switchModal={SwitchModal}
+          setIsSuccessfull={() => setIsSuccessfull(true)}
+          isSignUpCorrectly={isSignUpCorrectly}
+        />
+      )}
+      {signUpModalData && (
+        <SignUpModal
+          data={signUpModalData}
+          closeModal={closeModal}
+          switchModal={SwitchModal}
+          isSignUpCorrectly={() => setIsSignUpCorrectly(true)}
+        />
+      )}
+      {isSuccessfull && (
+        <SuccessfullyLoggedInModal closeModal={() => setIsSuccessfull(false)} />
+      )}
+    </div>
+  );
+};
 
 export default Authorization;
