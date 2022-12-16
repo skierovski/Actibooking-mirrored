@@ -10,8 +10,7 @@ const LogInModal = props => {
         {ReactDOM.createPortal(<Backdrop close={props.closeModal}/>, document.getElementById('backdrop-root'))}
         {ReactDOM.createPortal(
                 <Modal title={props.data.title} close={props.closeModal}>
-                    <div id={"loginModalIcon"}></div>
-                    {props.isSignUpCorrectly && <SuccessfullyRegisteredModal/>}
+                    {props.isSignUpCorrectly && <SuccessfullyRegisteredModal closeModal={props.closeSignUpCorrectlyModal}/>}
                     <LogInForm closeModal={props.closeModal} redirectToSignInModal = {props.switchModal} setIsSuccessfull={props.setIsSuccessfull}/>
                 </Modal>, 
             document.getElementById('modal-root')

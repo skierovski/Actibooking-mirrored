@@ -50,9 +50,9 @@ const Authorization = () =>{
         <div className={styles.AuthContainer}>
             {cookies['token'] && <Link to={`/Account/${decodedToken.uid}`}><HiOutlineUserCircle size={50} className={styles.userIconContainer}/></Link>}
             {cookies['token'] ? <LogOutButton/> :<div className={styles.Authorization_container}><div className={styles.Authorization} onClick={triggerLogInModal}>Log in / Sign up</div></div>}
-            {logInModalData && <LogInModal data={logInModalData} closeModal={closeModal} switchModal={SwitchModal} setIsSuccessfull={() => setIsSuccessfull(true)} isSignUpCorrectly={isSignUpCorrectly} />}
+            {logInModalData && <LogInModal data={logInModalData} closeModal={closeModal} switchModal={SwitchModal} setIsSuccessfull={() => setIsSuccessfull(true)} isSignUpCorrectly={isSignUpCorrectly} closeSignUpCorrectlyModal={()=>setIsSignUpCorrectly(false)}/>}
             {signUpModalData && <SignUpModal data={signUpModalData} closeModal={closeModal} switchModal={SwitchModal} isSignUpCorrectly={()=>setIsSignUpCorrectly(true)}/>}
-            {isSuccessfull && <SuccessfullyLoggedInModal closeModal={() => setIsSuccessfull(false)}/> }
+            {isSuccessfull && <SuccessfullyLoggedInModal closeModal={() => setIsSuccessfull(false)}/>}
         </div>
     )
 }
