@@ -15,7 +15,10 @@ const Authorization = () =>{
     const [isSuccessfull, setIsSuccessfull] = useState(false);
     const [logInModalData, setlogInModalData] = useState();
     const [signUpModalData, setSignUpModalData] = useState();
-    const decodedToken = jwtDecode(cookies['token']);
+    let decodedToken = null;
+    if (cookies['token'] != null) {
+        decodedToken = jwtDecode(cookies['token']);
+    }
     const [isSignUpCorrectly, setIsSignUpCorrectly] = useState(false);
 
     const triggerLogInModal = () => {
