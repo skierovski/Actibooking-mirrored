@@ -34,13 +34,14 @@ namespace Actibooking.Models
 
         public List<OrganizationType>? OrganizationTypes { get; set; }
         public ActiBookingUser ActiBookingUser { get; set; }
+        public int RatingId { get; set; }
         public Rating? Ratings { get; set; }
 
         public Organization()
         {
 
         }
-        public Organization(int id, string name, bool isPublic, string description,string logoUrl,string actibookingUserId)
+        public Organization(int id, string name, bool isPublic, string description,string logoUrl, string actibookingUserId, int ratingId)
         {
             Id = id;
             Name = name;
@@ -48,6 +49,7 @@ namespace Actibooking.Models
             Description = description;
             LogoUrl = logoUrl;
             ActiBookingUserId = actibookingUserId;
+            RatingId = ratingId;
         }
     }
 }

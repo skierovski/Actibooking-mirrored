@@ -10,30 +10,55 @@ using System.Threading.Tasks;
 
 namespace Actibooking.Data.Configurations.Entities
 {
-    public class ChildConfiguration : IEntityTypeConfiguration<Child>
+    public class RatingConfiguration : IEntityTypeConfiguration<Rating>
     {
-        public void Configure(EntityTypeBuilder<Child> builder)
+        public void Configure(EntityTypeBuilder<Rating> builder)
         {
-            builder.HasData(new Child(1, "Oliwia", "Kowalska", "12-5-2009", "12c3dca5-04c9-4233-b1e2-ea517bc1fd0c"),
-new Child(2, "Jan", "Kowalski", "2-9-2011", "12c3dca5-04c9-4233-b1e2-ea517bc1fd0c"),
-new Child(3, "Zuzanna", "Kowalczyk", "29-1-2008", "1a5f99ca-6d76-4f88-8690-0fb67a6b65e2"),
-new Child(4, "Antoni", "Kowalczyk", "5-4-2010", "1a5f99ca-6d76-4f88-8690-0fb67a6b65e2"),
-new Child(5, "Lena", "Dąbrowska", "3-11-2007", "278a036a-7957-42a2-a931-d81176865990"),
-new Child(6, "Kacper", "Dąbrowski", "26-6-2006", "278a036a-7957-42a2-a931-d81176865990"),
-new Child(7, "Maja", "Pawłowska", "9-8-2012", "493ad475-7c9e-4fd2-ac1c-f1bb90c4be1b"),
-new Child(8, "Adam", "Pawłowski", "1-12-2013", "493ad475-7c9e-4fd2-ac1c-f1bb90c4be1b"),
-new Child(9, "Natalia", "Nowakowska", "7-2-2018", "5d1179e9-c591-4a94-b6a0-0eb1df7e7493"),
-new Child(10, "Marcel", "Nowakowski", "22-7-2017", "5d1179e9-c591-4a94-b6a0-0eb1df7e7493"),
-new Child(11, "Amelia", "Majewska", "12-10-2016", "69ff46c6-a99e-4759-9234-5a0e6785efb4"),
-new Child(12, "Wojciech", "Majewski", "2-3-2015", "69ff46c6-a99e-4759-9234-5a0e6785efb4"),
-new Child(13, "Julia", "Kozłowska", "29-5-2014", "6c767d62-934e-4ae5-87e8-4979ead7ea2c"),
-new Child(14, "Franek", "Kozłowski", "5-9-2013", "6c767d62-934e-4ae5-87e8-4979ead7ea2c"),
-new Child(15, "Laura", "Jabłońska", "3-1-2012", "70b042f8-bda5-40d5-9fe7-6a2a69a3e5c0"),
-new Child(16, "Mikołaj", "Jabłoński", "26-4-2006", "70b042f8-bda5-40d5-9fe7-6a2a69a3e5c0"),
-new Child(17, "Zofia", "Kwiatkowska", "9-11-2007", "842f6f6f-77e5-466f-be9e-867c23317ec8"),
-new Child(18, "Nikodem", "Kwiatkowski", "1-6-2008", "842f6f6f-77e5-466f-be9e-867c23317ec8"),
-new Child(19, "Marysia", "Szewczyk", "7-8-2009", "96670e83-96b2-4794-890f-8ec696031e5a"),
-new Child(20, "Ignacy", "Szewczyk", "22-12-2010", "96670e83-96b2-4794-890f-8ec696031e5a")
+            builder.HasData(new Rating(1, 450, 100, 4.50),
+new Rating(2, 453, 100, 4.53),
+new Rating(3, 458, 100, 4.58),
+new Rating(4, 460, 100, 4.60),
+new Rating(5, 463, 100, 4.63),
+new Rating(6, 468, 100, 4.68),
+new Rating(7, 470, 100, 4.70),
+new Rating(8, 473, 100, 4.73),
+new Rating(9, 478, 100, 4.78),
+new Rating(10, 480, 100, 4.80),
+new Rating(11, 483, 100, 4.83),
+new Rating(12, 488, 100, 4.88),
+new Rating(13, 490, 100, 4.90),
+new Rating(14, 493, 100, 4.93),
+new Rating(15, 498, 100, 4.98),
+new Rating(16, 499, 100, 4.99),
+new Rating(17, 450, 100, 4.50),
+new Rating(18, 453, 100, 4.53),
+new Rating(19, 458, 100, 4.58),
+new Rating(20, 460, 100, 4.60),
+new Rating(21, 463, 100, 4.63),
+new Rating(22, 468, 100, 4.68),
+new Rating(23, 470, 100, 4.70),
+new Rating(24, 473, 100, 4.73),
+new Rating(25, 478, 100, 4.78),
+new Rating(26, 480, 100, 4.80),
+new Rating(27, 483, 100, 4.83),
+new Rating(28, 488, 100, 4.88),
+new Rating(29, 490, 100, 4.90),
+new Rating(30, 493, 100, 4.93),
+new Rating(31, 498, 100, 4.98),
+new Rating(32, 499, 100, 4.99),
+new Rating(33, 450, 100, 4.50),
+new Rating(34, 453, 100, 4.53),
+new Rating(35, 458, 100, 4.58),
+new Rating(36, 460, 100, 4.60),
+new Rating(37, 463, 100, 4.63),
+new Rating(38, 468, 100, 4.68),
+new Rating(39, 470, 100, 4.70),
+new Rating(40, 473, 100, 4.73),
+new Rating(41, 478, 100, 4.78),
+new Rating(42, 480, 100, 4.80),
+new Rating(43, 483, 100, 4.83),
+new Rating(44, 488, 100, 4.88),
+new Rating(45, 490, 100, 4.90)
                 );
         }
     }
