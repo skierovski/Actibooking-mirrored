@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actibooking.Utils", "Actibo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actibooking.Data", "Actibooking.Data\Actibooking.Data.csproj", "{5EEF31A7-9292-4947-8F7B-253A7D336622}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actibooking.Test", "Actibooking.Test\Actibooking.Test.csproj", "{86FE43BF-2A9D-4638-BD73-559F6E879D85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actibooking.Tests", "Actibooking.Tests\Actibooking.Tests.csproj", "{F4B8F5BB-1035-4754-8CA8-E4257966B70B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{292DD1A0-5795-4816-B85D-A13173EDD407} = {292DD1A0-5795-4816-B85D-A13173EDD407}
+		{5EEF31A7-9292-4947-8F7B-253A7D336622} = {5EEF31A7-9292-4947-8F7B-253A7D336622}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +39,10 @@ Global
 		{5EEF31A7-9292-4947-8F7B-253A7D336622}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EEF31A7-9292-4947-8F7B-253A7D336622}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EEF31A7-9292-4947-8F7B-253A7D336622}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86FE43BF-2A9D-4638-BD73-559F6E879D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86FE43BF-2A9D-4638-BD73-559F6E879D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86FE43BF-2A9D-4638-BD73-559F6E879D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86FE43BF-2A9D-4638-BD73-559F6E879D85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B8F5BB-1035-4754-8CA8-E4257966B70B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B8F5BB-1035-4754-8CA8-E4257966B70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B8F5BB-1035-4754-8CA8-E4257966B70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B8F5BB-1035-4754-8CA8-E4257966B70B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
