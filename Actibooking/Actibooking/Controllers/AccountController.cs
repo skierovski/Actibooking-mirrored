@@ -93,7 +93,7 @@ namespace Actibooking.Controllers
                 user = await _userManager.FindByEmailAsync(payload.Email);
                 if (user == null)
                 {
-                    user = new ActiBookingUser { FirstName = payload.GivenName, LastName = payload.FamilyName, Email = payload.Email, UserName = payload.Email, AddressesId = 140, IsTrainer= false };
+                    user = new ActiBookingUser { FirstName = payload.GivenName, LastName = payload.FamilyName, Email = payload.Email, UserName = payload.Email, IsTrainer= false };
                     await _userManager.CreateAsync(user);
                     //prepare and send an email for the email confirmation
                     await _userManager.AddToRoleAsync(user, "User");
