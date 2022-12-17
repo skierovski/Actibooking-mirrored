@@ -12,7 +12,7 @@ const SuccessfullyLoggedInModal = props => {
                     <div className={styles.modal}>
                     <header className={styles.header}>
                         <h2>Success !!!</h2>
-                        <CgClose size={20} className={styles.closeIcon} onClick={props.closeModal}/>
+                        <CgClose size={20} className={styles.closeIcon} onClick={()=>props.closeModal()}/>
                     </header>
                     <div className={styles.content}>
                         <p>You succesfully logged in</p>         

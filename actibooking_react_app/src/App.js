@@ -5,9 +5,10 @@ import SingleOrganizationPage from "../src/Components/Organization/SingleOrganiz
 import ListOfOrganizations from "./Components/Organization/ListOfOrganizations/ListOfOrganizations";
 import AccountPage from "./Components/Account/AccountPage/AccountPage";
 import { CookiesProvider } from 'react-cookie';
-import LogIn from "./Components/Authorization/GoogleAthorization/GoogleLogInPage";
-import GetDataHandler from "./Components/FetchMethods/GetDataHandler";
+
+
 const App = () => {
+
   return (
     <CookiesProvider>
       <Routes>
