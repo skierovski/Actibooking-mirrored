@@ -7,7 +7,7 @@ const OrganizationContainer = (props) => {
             <div className={styles.organizationLogoContainer}><img alt="organization_image" className={styles.image} src={props.logoUrl}/></div>
             <div className={styles.organizationData}>
                 <div className={styles.organizationNameContainer}><Link className={styles.linkName} to={`/Organizations/${props.id}`}>{props.name}</Link></div>
-                <div className={styles.organizationAdressContainer}>{props.adress}</div>
+                <div className={styles.organizationAdressContainer}>{props.addresses.zipcode} {props.addresses.city} {props.addresses.street} {props.addresses.streetNumber}</div>
             </div>
         </div>
     )

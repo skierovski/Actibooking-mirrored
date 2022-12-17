@@ -22,33 +22,17 @@ const ScrollMotion = () => {
           <div className="text-motion" data-aos="fade-left">
             <SectionTitle value="One place" />
             <p className="text-motion-style">
-              One search machine of extracurricular activities for both children
-              and adults
-            </p>
-            <p className="text-motion-style">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-            </p>
-            <p className="text-motion-style">
-              industry. Lorem Ipsum has been the industry's standard dummy text
-            </p>
-            <p className="text-motion-style">
-              ever since the 1500s, when an unknown printer took a galley of
-              type
-            </p>
-            <p className="text-motion-style">
-              and scrambled it to make a type specimen book. It has survived not
-            </p>
-            <p className="text-motion-style">
-              {" "}
-              only five centuries, but also the leap into electronic
-              typesetting,
-            </p>
-            <p className="text-motion-style">
-              remaining essentially unchanged. It was popularised in the 1960s
-            </p>
-            <p className="text-motion-style">
-              with the release of Letraset sheets containing Lorem Ipsum
-              passages,
+              <b>Actibooking</b> to platforma umożliwiająca szybkie i łatwe
+              wyszukiwanie różnego rodzaju kursów. Dzięki temu możesz z
+              łatwością znaleźć oferty szkoleniowe z różnych dziedzin.
+              Wyszukiwarka na stronie pozwala filtrować wyniki według kryteriów
+              takich jak lokalizacja, cena czy poziom zaawansowania. Dzięki temu
+              możesz znaleźć kurs idealnie dopasowany do Twoich potrzeb i
+              możliwości. Ponadto, strona zawiera również informacje o
+              prowadzących kursy oraz ich doświadczeniu, co pozwala Ci wybrać
+              najlepszą ofertę. <b>Actibooking</b> to doskonałe rozwiązanie dla
+              osób szukających kursów w różnych dziedzinach, ponieważ umożliwia
+              łatwe i szybkie znalezienie odpowiednich opcji.
             </p>
           </div>
         </div>
@@ -58,32 +42,17 @@ const ScrollMotion = () => {
           <div className="text-motion" data-aos="fade-right">
             <SectionTitle value="Comparable" />
             <p className="text-motion-style">
-              Standard descriptions allowing easy comparison
-            </p>
-            <p className="text-motion-style">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-            </p>
-            <p className="text-motion-style">
-              industry. Lorem Ipsum has been the industry's standard dummy text
-            </p>
-            <p className="text-motion-style">
-              ever since the 1500s, when an unknown printer took a galley of
-              type
-            </p>
-            <p className="text-motion-style">
-              and scrambled it to make a type specimen book. It has survived not
-            </p>
-            <p className="text-motion-style">
-              {" "}
-              only five centuries, but also the leap into electronic
-              typesetting,
-            </p>
-            <p className="text-motion-style">
-              remaining essentially unchanged. It was popularised in the 1960s
-            </p>
-            <p className="text-motion-style">
-              with the release of Letraset sheets containing Lorem Ipsum
-              passages,
+              <b>Actibooking</b> to strona internetowa, która umożliwia łatwe
+              porównywanie różnych proponowanych kursów. Co ważne, wszystkie
+              oferty są opisane w sposób jednolity, dzięki czemu łatwiej jest
+              porównać je ze sobą i wybrać najlepszą opcję. W porównaniu do
+              innych platform, na których kursy bywają opisane w różny sposób i
+              trudno je ze sobą porównać. <b>Actibooking</b> oferuje bardziej
+              przejrzysty i ujednolicony sposób prezentacji ofert. Dzięki temu
+              możesz szybko i łatwo znaleźć kurs, który spełni Twoje oczekiwania
+              i będzie dostosowany do Twoich potrzeb. <b>Actibooking</b> to więc
+              doskonałe rozwiązanie dla osób, które chcą szybko i łatwo porównać
+              różne kursy i wybrać najlepszą opcję.
             </p>
           </div>
           <div className="img-motion" data-aos="fade-left">
@@ -106,31 +75,20 @@ const ScrollMotion = () => {
           </div>
           <div className="text-motion" data-aos="fade-left">
             <SectionTitle value="Transparent" />
-            <p className="text-motion-style">no hidden cost simple rules</p>
             <p className="text-motion-style">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-            </p>
-            <p className="text-motion-style">
-              industry. Lorem Ipsum has been the industry's standard dummy text
-            </p>
-            <p className="text-motion-style">
-              ever since the 1500s, when an unknown printer took a galley of
-              type
-            </p>
-            <p className="text-motion-style">
-              and scrambled it to make a type specimen book. It has survived not
-            </p>
-            <p className="text-motion-style">
-              {" "}
-              only five centuries, but also the leap into electronic
-              typesetting,
-            </p>
-            <p className="text-motion-style">
-              remaining essentially unchanged. It was popularised in the 1960s
-            </p>
-            <p className="text-motion-style">
-              with the release of Letraset sheets containing Lorem Ipsum
-              passages,
+              <b>Actibooking</b> to strona internetowa, która zapewnia
+              przejrzystość wszystkich oferowanych kursów. Nie ma na niej
+              żadnych ukrytych kosztów ani pułapek, dzięki czemu możesz być
+              pewien, że otrzymasz dokładnie to, za co zapłaciłeś. Wszystkie
+              koszty są od razu podane na stronie, więc nie musisz się martwić o
+              nieoczekiwane dodatkowe opłaty. Ponadto, na <b>Actibooking</b>{" "}
+              znajdziesz również dokładne informacje dotyczące zasad kursów,
+              dzięki czemu wiesz, czego możesz się spodziewać podczas ich
+              trwania. Ogólnie rzecz biorąc, <b>Actibooking</b> to strona, na
+              której możesz znaleźć wiele różnych kursów bez obaw o ukryte
+              koszty czy niejasne zasady. Jest to więc doskonałe rozwiązanie dla
+              osób, które chcą mieć pewność, że otrzymają dokładnie to, za co
+              zapłacą.
             </p>
           </div>
         </div>
