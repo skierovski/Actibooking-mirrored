@@ -22,10 +22,7 @@ export default function MostPopularOrganization() {
   const [data, setData] = useState();
 
   const GetData = () => {
-    if (cookies["token"] != null) {
-      var href = `https://localhost:7127/api/Organizations/top10/${decodedToken.City}`;
-      console.log(href);
-      console.log(decodedToken);
+    if (decodedToken.City != null) {
       GetDataHandler(
         `https://localhost:7127/api/Organizations/top10/${decodedToken.City}`,
         ResponseHandler
