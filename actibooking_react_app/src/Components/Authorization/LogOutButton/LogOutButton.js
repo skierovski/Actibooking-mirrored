@@ -7,9 +7,11 @@ const LogOutButton = () =>{
     const [cookies, setCookies, removeCookie] = useCookies();
 
 
-    const removeCookieHandler = ()=>{
+    const removeCookieHandler = () =>{
         removeCookie('token');
-        window.location.reload();
+        setTimeout(()=>{
+            window.location.reload();
+        },100)
     }
 
 

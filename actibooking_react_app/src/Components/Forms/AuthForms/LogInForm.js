@@ -27,7 +27,6 @@ const LogInForm = props => {
         let token = response.token;
         if (token){
             setCookies("token", token, {path: "/" }, 'httpOnly');
-            props.closeModal();
             props.setIsSuccessfull();
         }
         else alert("Wrong email or password");

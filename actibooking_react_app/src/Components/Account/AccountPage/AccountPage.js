@@ -1,11 +1,12 @@
 import Navibar from "../../Navibar/Navibar";
 import styles from "./AccountPage.module.css";
 import BodyToReturn from "./BodyToReturn/BodyToReturn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavigationBar from "./NavigationBar/NavigationBar";
 import ImageAndName from "./ImageAndName/ImageAndName";
 import { useParams } from "react-router-dom";
 import GetDataHandler from "../../FetchMethods/GetDataHandler";
+import LoadingScreen from "../../DefaultModels/LoadingScreen/LoadingScreen";
 
 const AccountPage = () => {
   const {id}=useParams();
@@ -13,14 +14,13 @@ const AccountPage = () => {
   const [data, setData] = useState();
 
 
-  const GetData = () =>{
+  useEffect(()=>{
     GetDataHandler(`https://localhost:7127/api/User/${id}`, ResponseHandler)
-  }
+  },[])
 
   const ResponseHandler = (props) => {
     console.log(props);
     setTimeout(() => setData(props), 2000)
-
   }
 
   const ChangeBody = (content) => {
@@ -30,7 +30,8 @@ const AccountPage = () => {
   console.log(data)
   return (
     <>
-      {data && <><Navibar />
+    <Navibar />
+      {data && <>
         <div className={styles.Wrapper}>
           <div className={styles.LeftColumn}>
             <ImageAndName data={data} />
@@ -40,7 +41,7 @@ const AccountPage = () => {
             <BodyToReturn body={body} data={data} changeBody={ChangeBody} />
           </div>
         </div></>}
-        {!data && <div  onLoad={GetData()}>Not working</div>}
+        {!data && <LoadingScreen/>}
       </>
     );
 };

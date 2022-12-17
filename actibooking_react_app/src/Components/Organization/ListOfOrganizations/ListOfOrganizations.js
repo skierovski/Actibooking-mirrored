@@ -22,7 +22,7 @@ const ListOfOrganizations = () => {
 
   const ResponseHandler = (props) => {
     console.log(props);
-    setTimeout(() => setData(props), 2000)
+    setData(props)
 
   }
 

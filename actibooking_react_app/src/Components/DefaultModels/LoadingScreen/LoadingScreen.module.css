@@ -7,7 +7,15 @@
     overflow: hidden;
     border-radius: 10px;
 }
-
+.loadingScreenIcon{
+  color: #518e48;
+  animation: transition 2s;
+  transform:rotate(720deg);
+}
+@keyframes transition {
+    from{}
+    to{}
+}
 @media (min-width: 768px) {
     .loadingScreen {
       left: calc(50% - 20rem);
