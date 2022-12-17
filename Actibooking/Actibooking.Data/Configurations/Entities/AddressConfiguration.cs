@@ -152,7 +152,8 @@ new Address(135, "Poland", "61-834", "Poznań", "ul. Gołębia", "4", null),
 new Address(136, "Poland", "61-835", "Poznań", "ul. Kozia", "67", null),
 new Address(137, "Poland", "61-836", "Poznań", "ul. Jaskółcza", "37", null),
 new Address(138, "Poland", "61-894", "Poznań", "ul. Niezłomnych", "96", null),
-new Address(139, "Poland", "61-895", "Poznań", "ul. Powstańców Wielkopolskich", "7", null)
+new Address(139, "Poland", "61-895", "Poznań", "ul. Powstańców Wielkopolskich", "7", null),
+new Address(140, "Empty", "Empty", "Empty", "Empty", "Empty", null)
                 );
         }
     }

@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.Metrics;
+using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +23,7 @@ namespace Actibooking.Models
         [MaxLength(100)]
         public string? LastName { get; set; }
 
-        public bool IsTrainer { get; set; }
+        public bool? IsTrainer { get; set; }
 
         public string? BirthDate { get; set; }
         public string? Gender { get; set; }
@@ -34,7 +37,14 @@ namespace Actibooking.Models
 
         public ActiBookingUser()
         {
-
+            Addresses = new Address {
+                Country = "Empty",
+            City = "Empty",
+            Zipcode = "Empty",
+            Street = "Empty",
+            StreetNumber = "Empty",
+            FlatNumber = "Empty",
+            };
         }
 
         public ActiBookingUser(string id,string firstName, string lastName, string email, string userName, string birthDate, string gender, int addresID)
