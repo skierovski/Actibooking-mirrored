@@ -35,7 +35,8 @@ namespace Actibooking.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var organizations = await _organizationManager.CheckIfEmpty();
+            /*var organizations = await _organizationManager.CheckIfEmpty();*/
+            var organizations = await _uow.OrganizationRepo.GetAsync(includeProperties: "Addresses,Ratings", orderBy: q => q.OrderByDescending(d => d.Ratings.AverageRating));
             return Ok(organizations);                                      
         }
 
@@ -60,7 +61,7 @@ namespace Actibooking.Controllers
         [HttpGet("{organizationId}")]
         public async Task<IActionResult> GetOrganization(int organizationId)
         {
-            var organization = await _organizationManager.FindOrganzation(organizationId);
+            var organization = await _uow.OrganizationRepo.GetAsync(filter: x => x.Id == organizationId, includeProperties: "Addresses,Ratings", orderBy: q => q.OrderByDescending(d => d.Ratings.AverageRating));
             return Ok(organization);            
         }
 
