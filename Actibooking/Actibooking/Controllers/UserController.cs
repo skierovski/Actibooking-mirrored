@@ -39,7 +39,17 @@ namespace Actibooking.Controllers
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetUser(string userId)
         {
-            ActiBookingUser user = await _uow.UserRepo.GetByIdAsync(userId);
+            var user = await _uow.UserRepo.GetByIdAsync(userId);
+            var children = await _uow.ChildRepo.GetAsync(filter: x => x.ActiBookingUserId == userId);
+            user.Children = null;
+            user.Children = new List<Child>();
+            foreach (var child in children)
+            {
+                child.Parent = null;
+                user.Children.Add(child);
+            }
+
+
             return Ok(user);
         }
 
