@@ -52,13 +52,6 @@ span {
   text-transform: capitalize;
 }
 
-.Text {
-  font-family: "Open Sans", sans-serif;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .TrainerChilds {
   display: flex;
   flex-direction: row;

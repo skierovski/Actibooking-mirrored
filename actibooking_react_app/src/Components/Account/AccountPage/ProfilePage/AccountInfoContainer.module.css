@@ -1,0 +1,6 @@
+.Text {
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

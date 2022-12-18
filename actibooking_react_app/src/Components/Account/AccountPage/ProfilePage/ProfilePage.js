@@ -3,6 +3,7 @@ import Modal from '../../../DefaultModels/Modals/Modal'
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import SignUpPostDataHandler from "../../../FetchMethods/PostMethods/SignUpPostDataHandler";
+import AccountInfoContainer from "./AccountInfoContaner";
 
 const ProfilePage = (props) => {
   const { register, handleSubmit } = useForm();
@@ -42,40 +43,7 @@ const ProfilePage = (props) => {
     </form>
     </Modal>
     )}
-        <ul>
-          <li>
-            <div className={styles.Text}>
-              <strong>First and Last Name:</strong>
-              <span>
-                {props.data.firstName} {props.data.lastName}
-              </span>
-            </div>
-          </li>
-          <li>
-            <div className={styles.Text}>
-              <strong>E-mail:</strong>
-              <span>{props.data.email}</span>
-            </div>
-          </li>
-          <li>
-            <div className={styles.Text}>
-              <strong>Birth Day:</strong>
-              <span>{props.data.birthDate}</span>
-            </div>
-          </li>
-          <li>
-            <div className={styles.Text}>
-              <strong>Adress:</strong>
-              <span>Pomorska 13b/7 Gdańsk 80-344</span>
-            </div>
-          </li>
-          <li>
-            <div className={styles.Text}>
-              <strong>Gender:</strong>
-              <span>{props.data.gender}</span>
-            </div>
-          </li>
-        </ul>
+        <AccountInfoContainer data={props.data}></AccountInfoContainer>
       </div>
       <div className={styles.TrainerChilds}>
         <div className={styles.Childs}>  
