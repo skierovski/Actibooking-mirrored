@@ -24,7 +24,7 @@ const BodyToReturn = (props) => {
     }
     if(props.body ==="childs") {
         return(
-            <ChildPage data={props.data}/>
+            <ChildPage data={props.data} changeBody={props.changeBody}/>
         )
     }
     if(props.body ==="trainer") {
