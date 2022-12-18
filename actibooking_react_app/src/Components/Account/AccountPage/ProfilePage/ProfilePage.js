@@ -1,15 +1,47 @@
 import styles from "./ProfilePage.module.css";
-import Button from "../../../DefaultModels/Buttons/Button";
 import Modal from '../../../DefaultModels/Modals/Modal'
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import SignUpPostDataHandler from "../../../FetchMethods/PostMethods/SignUpPostDataHandler";
 
 const ProfilePage = (props) => {
-
-  const children = props.data.children;
+  const { register, handleSubmit } = useForm();
+  const [modal, setModal] = useState(false);
+  const children = props.data.children[0];
   const isTrainer = props.data.isTrainer;
-  console.log(children)
+
+  const onSubmit = (data) => {
+    console.log(props);
+    const addChildObject = {
+      actiBookingUserId: props.data.id,
+      name: data.firstName,
+      lastName: data.lastName,
+      birthDate: data.birthDate
+    }
+    console.log(addChildObject)
+    SignUpPostDataHandler("https://localhost:7127/api/User/add-child", addChildObject)
+    
+  }
+  const toggleModal = () => {
+    setModal(!modal)
+  }
+
+
   return (
     <>
       <div className={styles.Information}>
+      {modal  && (<Modal title="Add child" close={toggleModal}>
+    <form onSubmit={handleSubmit(onSubmit)}>
+    <label>First name:</label>
+      <input {...register("firstName")}></input>
+      <label>Last name:</label>
+      <input {...register("lastName")}></input>
+      <label>Birth Date:</label>
+      <input type='date' {...register("birthDate")}></input>
+      <input type="submit" />
+    </form>
+    </Modal>
+    )}
         <ul>
           <li>
             <div className={styles.Text}>
@@ -34,7 +66,7 @@ const ProfilePage = (props) => {
           <li>
             <div className={styles.Text}>
               <strong>Adress:</strong>
-              <span>Diany 40/4 Gdańsk 80-299</span>
+              <span>Pomorska 13b/7 Gdańsk 80-344</span>
             </div>
           </li>
           <li>
@@ -46,14 +78,14 @@ const ProfilePage = (props) => {
         </ul>
       </div>
       <div className={styles.TrainerChilds}>
-        <div className={styles.Childs} onClick={<Modal/>}>  
+        <div className={styles.Childs}>  
         {children? 
-          <Button value="Child Tab"/> : <Button value="Add child"/>}
+          <button>Child Tab</button> : <button onClick={toggleModal} value="Add child">Add Child</button>}
         </div>
         <div className={styles.Trainer}>
           {isTrainer?
-          <Button value="Trainer Tab"></Button>: 
-          <Button value="Active trainer" href={`/Active`} /> }
+          <button value="Trainer Tab">Trainer Tab</button>: 
+          <button value="Active trainer" href={`/Active`}>Active trainer</button> }
         </div>
       </div>
     </>
