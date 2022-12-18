@@ -1,24 +1,23 @@
 .loadingScreen {
+    display: flex;
     position: fixed;
-    top: 20vh;
-    left: 10%;
-    width: 80%;
+    width: 100%;
+    height: 100%;
     z-index: 1000;
     overflow: hidden;
     border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+
 }
 .loadingScreenIcon{
   color: #518e48;
-  animation: transition 2s;
-  transform:rotate(720deg);
+  animation-name: spinning;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
-@keyframes transition {
-    from{}
-    to{}
+@keyframes spinning {
+    from{transform: rotate(0deg)}
+    to{transform: rotate(360deg)}
 }
-@media (min-width: 768px) {
-    .loadingScreen {
-      left: calc(50% - 20rem);
-      width: 40rem;
-    }
-  }

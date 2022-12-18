@@ -1,18 +1,18 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Organizations from "../../../Data/MostPopularOrganizationData";
 import "swiper/css";
-import OrganizationCard from "./OrganizationCard";
-import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./MostPopularOrganization.css";
+import OrganizationCard from "./OrganizationCard";
+import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
 import { useCookies } from "react-cookie";
 import GetDataHandler from "../../FetchMethods/GetDataHandler";
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
-
 import { Navigation } from "swiper";
+import LoadingScreen from "../../DefaultModels/LoadingScreen/LoadingScreen";
+
 export default function MostPopularOrganization() {
   const [cookies, setCookies] = useCookies();
   let decodedToken = null;
@@ -35,9 +35,9 @@ export default function MostPopularOrganization() {
     }
   };
 
-  const ResponseHandler = (props) => {
-    console.log(props);
-    setData(props);
+  const ResponseHandler = (response) => {
+    console.log(response);
+    setData(response);
   };
   return (
     <>
@@ -75,7 +75,7 @@ export default function MostPopularOrganization() {
           </Swiper>
         </div>
       )}
-      {!data && <div onLoad={GetData()}>Not working</div>}
+      {!data && <LoadingScreen onLoad={GetData()}/>}
     </>
   );
 }

@@ -1,15 +1,12 @@
 import { useState } from "react";
 import styles from "./ListOfOrganizations.module.css";
-import AllOrganizations from "../../../Data/MostPopularOrganizationData";
 import OrganizationContainer from "../OrganizationContainer/OrganizationContainer";
 import Navibar from "../../Navibar/Navibar";
-import Footer from "../../Footer/Footer";
 import GetDataHandler from "../../FetchMethods/GetDataHandler";
-import {
-  BsFillArrowLeftCircleFill,
-  BsFillArrowRightCircleFill,
-} from "react-icons/bs";
+import {BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill} from "react-icons/bs";
 import OrganizationsFilter from "../OrganizationsFilter/OrganizationsFilter";
+import LoadingScreen from "../../DefaultModels/LoadingScreen/LoadingScreen";
+
 const ListOfOrganizations = () => {
   const [startOrg, setStartOrg] = useState(0);
   const [endOrg, setEndOrg] = useState(6);
@@ -76,7 +73,7 @@ const ListOfOrganizations = () => {
           </div>
         </>
       )}
-      {!data && <div onLoad={GetData()}>Not working</div>}
+      {!data && <LoadingScreen onLoad={GetData()}/>}
     </>
   );
 };

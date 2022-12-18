@@ -20,7 +20,7 @@ const AccountPage = () => {
 
   const ResponseHandler = (props) => {
     console.log(props);
-    setTimeout(() => setData(props), 2000)
+    setTimeout(() => setData(props), 1000)
   }
 
   const ChangeBody = (content) => {
