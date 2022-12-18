@@ -1,18 +1,26 @@
 import ReactDOM from 'react-dom';
 import Backdrop from '../../DefaultModels/Backdrop/Backdrop';
 import styles from "./SuccessfullyLoggedInModal.module.css";
-import { CgClose } from 'react-icons/cg';
 
 
 const SuccessfullyLoggedInModal = props => {
+
+
+    const closeUp = () =>{
+        console.log("close")
+        setTimeout(()=>{
+            props.closeModal();
+        }, 2000)
+    }
+
+
     return (
     <>
-        {ReactDOM.createPortal(<Backdrop close={props.closeModal}/>, document.getElementById('backdrop-root'))}
+        {ReactDOM.createPortal(<Backdrop/>, document.getElementById('modal-root'))}
         {ReactDOM.createPortal(
-                    <div className={styles.modal}>
+                    <div className={styles.modal} onLoad={closeUp()}>
                     <header className={styles.header}>
                         <h2>Success !!!</h2>
-                        <CgClose size={20} className={styles.closeIcon} onClick={props.closeModal}/>
                     </header>
                     <div className={styles.content}>
                         <p>You succesfully logged in</p>         

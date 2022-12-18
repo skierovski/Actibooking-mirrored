@@ -1,10 +1,32 @@
 .iconContainer{
-    position: relative;
-    width: 80%;
-    z-index: 11000;
+    position: absolute;
+    z-index: 1010;
     overflow: hidden;
+    width:100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-0.4vw, -4vh);
 }
 
 .icon{
-
+    color: green;
 }
+
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4000vh;
+    z-index: 1000;
+    background: rgba(31, 41, 31, 0.75);
+  }
+.icon {
+    animation: transition 2s;
+  }
+  @keyframes transition {
+    from { scale: 1}
+    to   { scale: 50}
+  }

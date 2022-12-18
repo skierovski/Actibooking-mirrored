@@ -5,7 +5,7 @@ import LogInPostDataHandler from '../../FetchMethods/PostMethods/LogInPostDataHa
 import { useCookies } from 'react-cookie';
 
 
-function GoogleLogInPage() {
+function GoogleLogInPage (props) {
   const [cookies, setCookies] = useCookies();
     const clientId = "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com";
     const responseGoogle = (response) => {
@@ -24,10 +24,11 @@ function GoogleLogInPage() {
       LogInPostDataHandler('https://localhost:7127/api/Account/authenticate', token, ResponseHandler)
     }
 
-    const ResponseHandler = (props) =>{
-      let token = props.token;
+    const ResponseHandler = (response) =>{
+      let token = response.token;
         if (token){
             setCookies("token", token, {path: "/" }, 'httpOnly');
+            props.closeModal();
         }
         else alert("Wrong email or password");
     }
@@ -38,7 +39,7 @@ function GoogleLogInPage() {
             onSuccess={ResponseSucces}
             onFailure={responseGoogle}
             useOneTap={true}
-            text= "login_with"
+            text= "continue_with"
             />
             </GoogleOAuthProvider>
     )

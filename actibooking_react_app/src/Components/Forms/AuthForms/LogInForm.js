@@ -27,7 +27,6 @@ const LogInForm = props => {
         let token = response.token;
         if (token){
             setCookies("token", token, {path: "/" }, 'httpOnly');
-            props.closeModal();
             props.setIsSuccessfull();
         }
         else alert("Wrong email or password");
@@ -41,7 +40,7 @@ const LogInForm = props => {
                     <input type='email' minLength={10} ref={enteredEmail} required={true}/>
                     <label>Password</label>
                     <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/>
-                    <div className={styles.google_control}><GoogleLogInPage/></div>
+                    <div className={styles.google_control}><GoogleLogInPage closeModal= {()=>{props.closeModal()}}/></div>
                     <div>Don't have an account ? <p className={styles.sign_in_href} onClick={redirectToSignInModal}>Sign in</p></div>
                 </div>
             </div>
