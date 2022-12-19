@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 const NavigationBar = (props) => {
   const [cookies, setCookies, removeCookie] = useCookies();
   console.log(props);
-  const children = props.data.children;
+  const children = props.data.children[0];
   return (
     <>
       <div className={styles.Navigation}>

@@ -20,7 +20,8 @@ const AccountPage = () => {
 
   const ResponseHandler = (props) => {
     console.log(props);
-    setTimeout(() => setData(props), 1000)
+    setData(props)
+
   }
 
   const ChangeBody = (content) => {
@@ -38,7 +39,7 @@ const AccountPage = () => {
             <NavigationBar changeBody={ChangeBody} data={data} />
           </div>
           <div className={styles.Container}>
-            <BodyToReturn body={body} data={data} changeBody={ChangeBody} />
+            <BodyToReturn body={body} data={data} changeBody={() => ChangeBody()}/>
           </div>
         </div></>}
         {!data && <LoadingScreen/>}
