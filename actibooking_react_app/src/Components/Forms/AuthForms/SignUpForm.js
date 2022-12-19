@@ -1,14 +1,17 @@
 import styles from "./SignUpForm.module.css";
-import {useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import SignUpPostDataHandler from "../../FetchMethods/PostMethods/SignUpPostDataHandler";
+import AuthContext from "../../../Context/auth-context";
 
-const SignUpForm = props => {
+const SignUpForm = () => {
 
     const [enteredEmail, setEnteredEmail] = useState();
     const enteredPassword = useRef();
     const enteredFirstName = useRef();
     const enteredLastName = useRef();
     const enteredPhoneNumber = useRef();
+
+    const auth_ctx = useContext(AuthContext)
 
 
     useEffect(()=>{
@@ -17,24 +20,21 @@ const SignUpForm = props => {
             console.log(enteredEmail);
         }, 1000);
         return ()=>{
-            console.log("cleanout");
             clearTimeout(enteredEmailCheckTimeout);
         }
     }, [enteredEmail]);
 
-
-
     const onSubmitHandler = event =>{
         event.preventDefault();
-        const data = {
-            "email":enteredEmail,
-            "password":enteredPassword.current.value,
-            "firstName":enteredFirstName.current.value,
-            "lastName":enteredLastName.current.value,
-            "phoneNumber":enteredPhoneNumber.current.value,
-            "birthDate":"12/12/2022",
-            "gender":"Male/Female",
-            "roles":["User"]
+        let data = {
+            email:enteredEmail,
+            password:enteredPassword.current.value,
+            firstName:enteredFirstName.current.value,
+            lastName:enteredLastName.current.value,
+            phoneNumber:enteredPhoneNumber.current.value,
+            birthDate:"12/12/2022",
+            gender:"Male/Female",
+            roles:["User"]
         };
         SignUpPostDataHandler("https://localhost:7127/api/Account/register", data, responseHandler)
     }
@@ -42,17 +42,12 @@ const SignUpForm = props => {
     const responseHandler = (response) => {
         console.log(response);
         if (response.ok){
-            props.closeModal();
-            redirectToLogInModal();
-            props.isSignUpCorrectly();
+            auth_ctx.closeModal();
+            auth_ctx.SwitchModal();
+            auth_ctx.setIsSignUpCorrectly(true);
         }
         else alert("Provide valid information");
     }
-
-    const redirectToLogInModal = () =>{
-        props.redirectToSignInModal();
-    }
-
 
     const onChangeEmailHandler = (event) => {
         setEnteredEmail(event.target.value);
@@ -72,7 +67,7 @@ const SignUpForm = props => {
                     <input type='text' ref={enteredLastName} required={true}/>
                     <label>Phone Number*</label>
                     <input type='number' maxLength={9} minLength={9} ref={enteredPhoneNumber} required={false}/>
-                    <div>Already have an account ? <p className={styles.sign_in_href} onClick={redirectToLogInModal}>Log in</p></div>
+                    <div>Already have an account ? <p className={styles.sign_in_href} onClick={()=>{auth_ctx.SwitchModal()}}>Log in</p></div>
                 </div>
             </div>
             <div className={styles.login_actions}>

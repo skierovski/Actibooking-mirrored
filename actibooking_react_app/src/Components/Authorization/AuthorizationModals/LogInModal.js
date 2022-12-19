@@ -6,16 +6,15 @@ import SuccessfullyRegisteredModal from './SuccessfullyRegisteredModal';
 import { useContext } from 'react';
 import AuthContext from "../../../Context/auth-context"
 
-const LogInModal = props => {
-    const ctx = useContext(AuthContext);
-    console.log(ctx);
+const LogInModal = () => {
+    const auth_ctx = useContext(AuthContext);
     return (
     <>
-        {ReactDOM.createPortal(<Backdrop close={props.closeModal}/>, document.getElementById('backdrop-root'))}
+        {ReactDOM.createPortal(<Backdrop close={auth_ctx.closeModal}/>, document.getElementById('backdrop-root'))}
         {ReactDOM.createPortal(
-                <Modal title={props.data.title} close={props.closeModal}>
-                    {props.isSignUpCorrectly && <SuccessfullyRegisteredModal closeModal={props.closeSignUpCorrectlyModal}/>}
-                    <LogInForm closeModal={props.closeModal} redirectToSignInModal = {props.switchModal} setIsSuccessfull={props.setIsSuccessfull}/>
+                <Modal title="Log in" close={auth_ctx.closeModal}>
+                    {auth_ctx.isSignUpCorrectly && <SuccessfullyRegisteredModal closeModal={() => auth_ctx.setIsSignUpCorrectly(false)}/>}
+                    <LogInForm/>
                 </Modal>, 
             document.getElementById('modal-root')
         )}

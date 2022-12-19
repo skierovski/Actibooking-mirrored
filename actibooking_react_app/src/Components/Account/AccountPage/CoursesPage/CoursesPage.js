@@ -1,9 +1,12 @@
-import styles from './CoursesPage.module.css'
+import { useContext } from 'react';
+import styles from './CoursesPage.module.css';
+import AccountContext from '../../../../Context/account-ctx';
 
-const CoursesPage = (props) =>{
+const CoursesPage = () =>{
+    const account_ctx = useContext(AccountContext);
     return(
         <>
-            {props.data.participants.map((o) =>(
+            {account_ctx.userData.participants.map((o) =>(
                 <div key={o.CourseId} className={styles.CourseTab}>
                     <span >{o.name}</span>
                     <span>{o.dayofweek}</span>

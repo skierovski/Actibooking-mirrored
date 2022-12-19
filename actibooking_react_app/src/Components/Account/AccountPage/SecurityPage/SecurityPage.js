@@ -1,6 +1,6 @@
 import styles from './SecurityPage.module.css';
 
-const SecurityPage = (props) =>{
+const SecurityPage = () =>{
     return(
         <>
         <div className={styles.Security}>

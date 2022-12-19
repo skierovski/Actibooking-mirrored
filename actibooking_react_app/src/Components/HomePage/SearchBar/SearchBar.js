@@ -9,15 +9,12 @@ const SearchBar = () =>{
     const searchValueHandler = (event) => {
         setSearchValue(event.target.value);
     }
-    const clearSearchBar = () => {
-        setSearchValue('');
-    }
 
     return(
         <>
             <BiSearchAlt size={50} className={styles.searchIcon}/>
             <input className={styles.searchBar} maxLength={50} value={searchValue} onChange={searchValueHandler} placeholder="Search..."/>
-            {searchValue?<CgClose size={25} className={styles.closeIcon} onClick={clearSearchBar}/>: null}
+            {searchValue?<CgClose size={25} className={styles.closeIcon} onClick={() => setSearchValue('')}/>: null}
         </>
     )
 }

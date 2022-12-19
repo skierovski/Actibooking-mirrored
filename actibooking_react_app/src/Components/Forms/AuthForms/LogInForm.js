@@ -1,33 +1,32 @@
 import styles from "./LogInForm.module.css";
-import {useRef} from "react";
+import {useContext, useRef} from "react";
 import LogInPostDataHandler from "../../FetchMethods/PostMethods/LogInPostDataHandler";
-import { useCookies } from "react-cookie";
 import GoogleLogInPage from "../../Authorization/GoogleAthorization/GoogleLogInPage";
+import AuthContext from "../../../Context/auth-context"
+import CookiesContext from "../../../Context/cookies-context";
 
-const LogInForm = props => {
+const LogInForm = () => {
 
     const enteredEmail = useRef()
     const enteredPassword = useRef()
-    const [cookies, setCookies] = useCookies();
+    const auth_ctx = useContext(AuthContext);
+    const cookies_ctx = useContext(CookiesContext);
+
 
     const onSubmitHandler = event =>{
         event.preventDefault();
-        const data = {
+        let userData = {
             email:enteredEmail.current.value,
             password:enteredPassword.current.value,
         };
-        LogInPostDataHandler("https://localhost:7127/api/Account/login", data, responseHandler)
-    }
-
-    const redirectToSignInModal = () => {
-        props.redirectToSignInModal();
+        LogInPostDataHandler("https://localhost:7127/api/Account/login", userData, responseHandler)
     }
 
     const responseHandler = (response) => {
         let token = response.token;
         if (token){
-            setCookies("token", token, {path: "/" }, 'httpOnly');
-            props.setIsSuccessfull();
+            cookies_ctx.SetCookie("token", token, "/", 'httpOnly');
+            auth_ctx.setIsSuccessfullLoggedIn(true);
         }
         else alert("Wrong email or password");
     }
@@ -40,8 +39,8 @@ const LogInForm = props => {
                     <input type='email' minLength={10} ref={enteredEmail} required={true}/>
                     <label>Password</label>
                     <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/>
-                    <div className={styles.google_control}><GoogleLogInPage closeModal= {()=>{props.closeModal()}}/></div>
-                    <div>Don't have an account ? <p className={styles.sign_in_href} onClick={redirectToSignInModal}>Sign in</p></div>
+                    <div className={styles.google_control}><GoogleLogInPage/></div>
+                    <div>Don't have an account ? <p className={styles.sign_in_href} onClick={()=>auth_ctx.SwitchModal()}>Sign in</p></div>
                 </div>
             </div>
             <div className={styles.login_actions}>
@@ -50,5 +49,4 @@ const LogInForm = props => {
         </form>
     )
 }
-
 export default LogInForm;

@@ -1,7 +1,3 @@
 import React from "react";
-
-const AuthContext = React.createContext({
-    userData:null
-});
-
+const AuthContext = React.createContext({});
 export default AuthContext;

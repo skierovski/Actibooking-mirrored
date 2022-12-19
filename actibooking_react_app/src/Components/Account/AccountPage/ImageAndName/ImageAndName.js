@@ -1,8 +1,13 @@
 import styles from "./ImageAndName.module.css";
 import SectionTitle from "../../../DefaultModels/Titles/SectionTitle";
+import { useContext } from "react";
+import AccountContext from "../../../../Context/account-ctx";
 
-const ImageAndName = (props) => {
-  console.log(props)
+
+const ImageAndName = () => {
+
+  const account_ctx = useContext(AccountContext);
+
   return (
     <div className={styles.ProfileImage}>
       <div className={styles.Image}>
@@ -12,9 +17,7 @@ const ImageAndName = (props) => {
         ></img>
       </div>
       <div>
-        <SectionTitle
-          value={`${props.data.firstName} ${props.data.lastName}`}
-        />
+        <SectionTitle value={`${account_ctx.userData.firstName} ${account_ctx.userData.lastName}`}/>
       </div>
     </div>
   );
