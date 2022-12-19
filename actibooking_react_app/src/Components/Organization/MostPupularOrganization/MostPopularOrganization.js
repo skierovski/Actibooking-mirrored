@@ -15,14 +15,14 @@ import LoadingScreen from "../../DefaultModels/LoadingScreen/LoadingScreen";
 
 export default function MostPopularOrganization() {
   const [cookies, setCookies] = useCookies();
-  let decodedToken = null;
+  let decodedToken = {City:null};
   if (cookies["token"] != null) {
     decodedToken = jwtDecode(cookies["token"]);
   }
   const [data, setData] = useState();
 
   const GetData = () => {
-    if (decodedToken.City != null) {
+    if (cookies["token"] != null && decodedToken.City != null) {
       GetDataHandler(
         `https://localhost:7127/api/Organizations/top10/${decodedToken.City}`,
         ResponseHandler
@@ -36,7 +36,6 @@ export default function MostPopularOrganization() {
   };
 
   const ResponseHandler = (response) => {
-    console.log(response);
     setData(response);
   };
   return (

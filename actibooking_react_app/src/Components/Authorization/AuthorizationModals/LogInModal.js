@@ -3,8 +3,12 @@ import Modal from '../../DefaultModels/Modals/Modal';
 import LogInForm from '../../Forms/AuthForms/LogInForm';
 import Backdrop from '../../DefaultModels/Backdrop/Backdrop';
 import SuccessfullyRegisteredModal from './SuccessfullyRegisteredModal';
+import { useContext } from 'react';
+import AuthContext from "../../../Context/auth-context"
 
 const LogInModal = props => {
+    const ctx = useContext(AuthContext);
+    console.log(ctx);
     return (
     <>
         {ReactDOM.createPortal(<Backdrop close={props.closeModal}/>, document.getElementById('backdrop-root'))}

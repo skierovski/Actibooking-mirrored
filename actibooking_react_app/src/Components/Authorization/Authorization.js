@@ -11,14 +11,12 @@ import jwtDecode from "jwt-decode";
 import AuthContext from "../../Context/auth-context";
 
 const Authorization = () => {
-
-
-  const ctx = useContext(AuthContext);
+  
   const [cookies, setCookies] = useCookies();
   const [isSuccessfull, setIsSuccessfull] = useState(false);
   const [logInModalData, setlogInModalData] = useState();
   const [signUpModalData, setSignUpModalData] = useState();
-  let decodedToken;
+  let decodedToken=null;
   if (cookies["token"]) {
     decodedToken = jwtDecode(cookies["token"]);
   }
