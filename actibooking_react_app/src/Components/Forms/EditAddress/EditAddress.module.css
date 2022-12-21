@@ -1,0 +1,75 @@
+form{
+    padding: 2%;
+    text-align: center;
+    }
+    
+.login_controls {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content:center;
+    }
+
+.login_control label{
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+        display: block;
+        font-weight: 400;
+        color: #1f1f1f;
+    }
+      
+.login_control input {
+        text-align: center;
+        margin-bottom: 2rem;
+        border-radius: 7px;
+        border: none;
+        width: 25rem;
+        max-width: 100%;
+        height: 2rem;
+        font-size: 15px;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+    }
+      
+.login_actions {
+        text-align: right;
+        margin-bottom: 1vh;
+        margin-right: 1vh;
+    }
+
+.google_control{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+.create_button {
+    margin: 10px;
+    border: none;
+    background-color: #518e48;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.7vw;
+    font-style: normal;
+    font-weight: 300;
+    padding: 6px 6px;
+    text-decoration: none;
+    width: 100px;
+    }
+.create_button:hover{
+    background-color: #67ad5c;
+}
+
+.sign_in_href{
+    color: blue;
+    cursor: pointer;
+    width: fit-content;
+    margin: auto;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}

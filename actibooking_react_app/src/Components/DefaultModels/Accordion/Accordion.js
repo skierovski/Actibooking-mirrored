@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import "./Accordion.css";
-const Accordion = ({ title, content }) => {
+const Accordion = (props) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
     <div className="accordion-item">
       <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
-        <div>{title}</div>
+        <div>{props.title}</div>
         <div>{isActive ? "-" : "+"}</div>
       </div>
-      {isActive && <div className="accordion-content">{content}</div>}
+      {isActive && (
+        <div className="accordion-content">
+          {props.content}
+          {props.children}
+        </div>
+      )}
     </div>
   );
 };
