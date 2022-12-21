@@ -1,13 +1,12 @@
 import Navibar from "../../Navibar/Navibar";
 import { useParams } from "react-router-dom";
 import styles from "./AccountPage.module.css";
-import ChildPage from "./ChildPage/ChildPage";
 import TrainerPage from "./TrainerPage/TrainerPage";
 import CoursesPage from "./CoursesPage/CoursesPage";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import {useContext, useEffect, useState } from "react";
 import SettingsPage from "./SettingsPage/SettingsPage";
-import SecurityPage from "./SecurityPage/SecurityPage";
+import SecurityPage from "./SettingsPage/SecurityPanel/SecurityPanel";
 import ImageAndName from "./ImageAndName/ImageAndName";
 import NavigationBar from "./NavigationBar/NavigationBar";
 import AccountContext from "../../../Context/account-ctx";
@@ -49,10 +48,8 @@ const AccountPage = () => {
           </div>
           <div className={styles.Container}>
             {body.isProfilePage && <ProfilePage/>}
-            {body.isSecurityPage && <SecurityPage/>}
             {body.isCoursesPage && <CoursesPage/>}
             {body.isSettingsPage && <SettingsPage/>}
-            {body.isChildPage && <ChildPage/>}
             {body.isTrainerPage && <TrainerPage/>}
           </div>
         </div>}
