@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -12,32 +12,32 @@ import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { Navigation } from "swiper";
 import LoadingScreen from "../../DefaultModels/LoadingScreen/LoadingScreen";
+import CookiesContext from "../../../Context/cookies-context";
 
 export default function MostPopularOrganization() {
-  const [cookies, setCookies] = useCookies();
-  let decodedToken = {City:null};
-  if (cookies["token"] != null) {
-    decodedToken = jwtDecode(cookies["token"]);
-  }
+  const cookies_ctx = useContext(CookiesContext);
   const [data, setData] = useState();
+  let decodedToken;
+  let token = cookies_ctx.GetCookie("token");
+
+  if (token != null) {
+    decodedToken = cookies_ctx.DecodeToken(token);
+  }
 
   const GetData = () => {
-    if (cookies["token"] != null && decodedToken.City != null) {
+    if (cookies_ctx.GetCookie("token") != null && decodedToken.City != null) {
       GetDataHandler(
         `https://localhost:7127/api/Organizations/top10/${decodedToken.City}`,
-        ResponseHandler
+        setData
       );
     } else {
       GetDataHandler(
         `https://localhost:7127/api/Organizations/top10`,
-        ResponseHandler
+        setData
       );
     }
   };
 
-  const ResponseHandler = (response) => {
-    setData(response);
-  };
   return (
     <>
       {data && (

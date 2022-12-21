@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
-import LogInModal from "./AuthorizationModals/LogInModal";
-import SignUpModal from "./AuthorizationModals/SignUpModal";
-import styles from "./Authorization.module.css";
-import { HiOutlineUserCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import LogOutButton from "./LogOutButton/LogOutButton";
-import SuccessfullyLoggedInModal from "../Authorization/AuthorizationModals/SuccessfullyLoggedInModal";
+import { useContext, useState } from "react";
+import styles from "./Authorization.module.css";
 import AuthContext from "../../Context/auth-context";
+import { HiOutlineUserCircle } from "react-icons/hi";
+import LogOutButton from "./LogOutButton/LogOutButton";
+import LogInModal from "./AuthorizationModals/LogInModal";
 import CookiesContext from "../../Context/cookies-context";
+import SignUpModal from "./AuthorizationModals/SignUpModal";
+import SuccessfullyLoggedInModal from "../Authorization/AuthorizationModals/SuccessfullyLoggedInModal";
 
 const Authorization = () => {
 

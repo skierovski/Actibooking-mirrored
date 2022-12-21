@@ -14,13 +14,9 @@ const ListOfOrganizations = () => {
   const [data, setData] = useState("");
 
   const GetData = () => {
-    GetDataHandler("https://localhost:7127/api/Organizations", ResponseHandler);
+    GetDataHandler("https://localhost:7127/api/Organizations", setData);
   };
 
-  const ResponseHandler = (props) => {
-    setData(props);
-  };
-  console.log(data);
   const nextPage = () => {
     if (page < data.length / 6) {
       setStartOrg(startOrg + 6);
@@ -28,6 +24,7 @@ const ListOfOrganizations = () => {
       setPage(page + 1);
     }
   };
+  
   const prevPage = () => {
     if (page > 1) {
       setStartOrg(startOrg - 6);
@@ -35,6 +32,7 @@ const ListOfOrganizations = () => {
       setPage(page - 1);
     }
   };
+
   console.log(data.length);
   return (
     <>
