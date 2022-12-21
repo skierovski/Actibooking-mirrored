@@ -5,6 +5,7 @@ import AccountContext from '../../../../Context/account-ctx';
 const AccountInfoContainer = () =>{
 
   const account_ctx = useContext(AccountContext);
+  console.log(account_ctx)
 
     return(
         <ul>
@@ -31,7 +32,7 @@ const AccountInfoContainer = () =>{
           <li>
             <div className={styles.Text}>
               <strong>Adress:</strong>
-              <span>Pomorska 13b/7 Gdańsk 80-344</span>
+              <span>{account_ctx.userData.adresses}</span>
             </div>
           </li>
           <li>

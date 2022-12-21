@@ -7,41 +7,50 @@ import { CookiesProvider, useCookies } from "react-cookie";
 import AccountPage from "./Components/Account/AccountPage/AccountPage";
 import ListOfOrganizations from "./Components/Organization/ListOfOrganizations/ListOfOrganizations";
 import SingleOrganizationPage from "../src/Components/Organization/SingleOrganizationPage/SingleOrganizationPage";
+import EditOrganization from "./Components/EditOrganization/EditOrganization";
 
 const App = () => {
-  
   const [cookies, setCookies, removeCookie] = useCookies();
 
-  const GetCookie = (cookieName) =>{
+  const GetCookie = (cookieName) => {
     return cookies[cookieName];
-  }
+  };
 
-  const SetCookie = (cookieName, cookieValue, cookiePath=null, options=null) =>{
-    setCookies(cookieName, cookieValue, {path: cookiePath}, options );
-  }
+  const SetCookie = (
+    cookieName,
+    cookieValue,
+    cookiePath = null,
+    options = null
+  ) => {
+    setCookies(cookieName, cookieValue, { path: cookiePath }, options);
+  };
 
-  const RemoveCookie = (cookieName) =>{
+  const RemoveCookie = (cookieName) => {
     removeCookie(cookieName);
-  }
+  };
 
   const DecodeToken = (token) => {
     return jwtDecode(token);
-  }
+  };
 
   return (
     <CookiesProvider>
       <CookiesContext.Provider
-      value={{
-        GetCookie,
-        SetCookie,
-        RemoveCookie,
-        DecodeToken
-      }}
+        value={{
+          GetCookie,
+          SetCookie,
+          RemoveCookie,
+          DecodeToken,
+        }}
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/Organizations" element={<ListOfOrganizations />} />
-          <Route path="/Organizations/:id" element={<SingleOrganizationPage />} />
+          <Route
+            path="/Organizations/:id"
+            element={<SingleOrganizationPage />}
+          />
+          <Route path="/Edit/Organization/:id" element={<EditOrganization />} />
           <Route path="/Account/:id" element={<AccountPage />} />
           <Route path="/FAQ" element={<FAQPage />} />
         </Routes>

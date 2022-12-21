@@ -1,4 +1,4 @@
-import styles from './SecurityPage.module.css';
+import styles from './SecurityPanel.module.css';
 
 const SecurityPage = () =>{
     return(
