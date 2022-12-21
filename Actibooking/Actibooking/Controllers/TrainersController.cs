@@ -41,7 +41,7 @@ namespace Actibooking.Controllers
             return await _trainerManager.GetTrainersForOrganization(organizationId);
         }
 
-        [HttpPost("")]
+        [HttpPost("{userId}")]
         public async Task<ActiBookingUser> CreateTrainer(string userId)
         {
             return await _trainerManager.CreateTrainer(userId);

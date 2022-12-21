@@ -40,7 +40,7 @@ namespace Actibooking.Controllers
         public async Task<IActionResult> GetUser(string userId)
         {
             var user = await _uow.UserRepo.GetAsync(filter: x => x.Id == userId, includeProperties: "Children");
-            return Ok(user);
+            return Ok(user.FirstOrDefault());
         }
 
         [HttpPost("add-child")]
