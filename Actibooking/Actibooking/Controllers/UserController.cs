@@ -39,8 +39,8 @@ namespace Actibooking.Controllers
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetUser(string userId)
         {
-            ActiBookingUser user = await _uow.UserRepo.GetByIdAsync(userId);
-            return Ok(user);
+            var user = await _uow.UserRepo.GetAsync(filter: x => x.Id == userId, includeProperties: "Children");
+            return Ok(user.FirstOrDefault());
         }
 
         [HttpPost("add-child")]
