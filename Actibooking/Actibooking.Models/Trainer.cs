@@ -21,5 +21,10 @@ namespace Actibooking.Models
         public ActiBookingUser ActiBookingUser { get; set; }
         public int? OrganizationId { get; set; }
         public Rating TrainerRating { get; set; }
+
+        public Trainer()
+        {
+            TrainerRating = new Rating();
+        }
     }
 }

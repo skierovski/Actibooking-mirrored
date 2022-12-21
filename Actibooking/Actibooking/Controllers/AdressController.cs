@@ -1,4 +1,5 @@
 ﻿using Actibooking.Data.Repository;
+using Actibooking.Exceptions;
 using Actibooking.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -80,11 +81,21 @@ namespace Actibooking.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("{id}")]
-        public async Task<IActionResult> UpdateAdress(int adressId)
+        [HttpPut()]
+        public async Task<IActionResult> UpdateAdress([FromQuery] Address address)
         {
+            _uow.AdressRepo.Update(address);
+            await _uow.SaveChangesAsync();
             return Ok();
+            /*          _uow.CourseTagRepo.Update(courseTag);
+                        await _uow.SaveChangesAsync();
+                        return Ok();
+                        if (await _uow.AdressRepo.InsertAsync(address))
+                        {
+                            return Ok("Course updated successfuly");
+                        }
+                        throw new NotFoundException("Address", address);
+                 */
         }
     }
 }
