@@ -10,10 +10,12 @@ const ProfilePage = () => {
   const account_ctx = useContext(AccountContext);
   const { register, handleSubmit } = useForm();
   const [modal, setModal] = useState(false);
-  const children = account_ctx.userData.children ? account_ctx.userData.children[0] : null;
+  const children = account_ctx.userData.children ? account_ctx.userData.children : null;
   const isTrainer = account_ctx.userData.isTrainer;
+  console.log(children)
+  console.log(account_ctx)
 
-  const onSubmit = (data) => {
+  const onSubmitChild = (data) => {
     const addChildObject = {
       actiBookingUserId: account_ctx.userData.id,
       name: data.firstName,
@@ -23,11 +25,15 @@ const ProfilePage = () => {
     SignUpPostDataHandler("https://localhost:7127/api/User/add-child", addChildObject)
   }
 
+  const onSubmitTrainer = () => {
+    SignUpPostDataHandler(`https://localhost:7127/api/Trainers/${account_ctx.userData.id}`)
+  }
+
   return (
     <>
       <div className={styles.Information}>
         {modal  && <Modal title="Add child" close={() => setModal(false)}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmitChild)}>
       <label>First name:</label>
         <input {...register("firstName")}></input>
         <label>Last name:</label>
@@ -41,13 +47,26 @@ const ProfilePage = () => {
       </div>
       <div className={styles.TrainerChilds}>
           <div className={styles.Childs}>  
-          {children? 
-            <button>Child Tab</button> : <button onClick={() => setModal(true)} value="Add child">Add Child</button>}
+          {children?
+          <>
+          {children.map(o => (
+            <div>{o.name} {o.lastName}</div>
+          ))}
+            <button className={styles.ProfileButton} onClick={() => setModal(true)} value="Add child">+ Add Child</button>
+            </>
+             : 
+             <>
+             <div>No added childs yet</div>
+             <button className={styles.ProfileButton} onClick={() => setModal(true)} value="Add child">+ Add Child</button>
+             </>}
           </div>
           <div className={styles.Trainer}>
             {isTrainer?
-            <button value="Trainer Tab">Trainer Tab</button>: 
-            <button value="Active trainer" href={`/Active`}>Active trainer</button> }
+            <button className={styles.ProfileButton} value="Trainer Tab">Trainer Tab</button>: 
+            <>
+            <span>Become Trainer in Actibooking</span>
+            <button className={styles.ProfileButton} onClick={onSubmitTrainer} value="Active trainer">Active trainer</button>
+            </> }
           </div>
       </div>
     </>

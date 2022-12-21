@@ -1,10 +1,12 @@
 import styles from './SettingsPage.module.css';
 import { useForm } from "react-hook-form";
+import SecurityPage from './SecurityPanel/SecurityPanel';
 
 const SettingsPage = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
     return (
+        <>
         <div className={styles.Settings}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.Inputs}>
@@ -32,7 +34,8 @@ const SettingsPage = () => {
             </div>
             </form>
         </div>
-
+        <SecurityPage/>
+        </>
     )
 }
 

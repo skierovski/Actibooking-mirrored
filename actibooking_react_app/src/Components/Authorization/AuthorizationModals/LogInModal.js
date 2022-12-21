@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom';
+import { useContext } from 'react';
 import Modal from '../../DefaultModels/Modals/Modal';
+import AuthContext from "../../../Context/auth-context";
 import LogInForm from '../../Forms/AuthForms/LogInForm';
 import Backdrop from '../../DefaultModels/Backdrop/Backdrop';
 import SuccessfullyRegisteredModal from './SuccessfullyRegisteredModal';
-import { useContext } from 'react';
-import AuthContext from "../../../Context/auth-context"
 
 const LogInModal = () => {
     const auth_ctx = useContext(AuthContext);

@@ -78,6 +78,7 @@ span {
   display: flex;
   width: 98%;
   display: block;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -100,3 +101,11 @@ span {
   outline: inherit;
   font-size: 1vw;
 }
+
+.ProfileButton {
+  background: #518e48bd;
+  border: none;
+  
+}
+
+

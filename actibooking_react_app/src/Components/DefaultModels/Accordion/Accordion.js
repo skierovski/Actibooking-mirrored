@@ -1,3 +1,4 @@
+import "./Accordion.css";
 import React, { useState } from "react";
 import "./Accordion.css";
 const Accordion = (props) => {
