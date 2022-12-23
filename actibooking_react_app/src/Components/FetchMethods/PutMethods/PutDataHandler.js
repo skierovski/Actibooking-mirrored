@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 
 const PutDataHandler = (url, postData, token = null) => {
   // const [postId, setPostId] = useState(null);
@@ -12,8 +12,9 @@ const PutDataHandler = (url, postData, token = null) => {
     body: JSON.stringify(postData),
   };
   fetch(url, requestOptions)
-    .then(async (response) => {
-      const data = await response.json();
+    .then(response => {
+      const data = response.json();
+      console.log(response.ok)
 
       // check for error response
       if (!response.ok) {

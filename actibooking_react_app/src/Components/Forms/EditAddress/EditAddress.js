@@ -1,11 +1,9 @@
 import { useContext, useState } from "react";
 import styles from "./EditAddress.module.css";
-import AuthContext from "../../../Context/auth-context";
 import CookiesContext from "../../../Context/cookies-context";
 import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
 
 const EditAddress = (props) => {
-
 
   const [address, setAddress] = useState({
     id: props.id,
@@ -30,48 +28,13 @@ const EditAddress = (props) => {
       flatNumber: address.flatNumber,
     };
     if (userData.flatNumber == "brak") userData.flatNumber=null;
-    console.log(userData)
     PutDataHandler(
       "https://localhost:7127/api/Adress",
       userData,
       cookies_ctx.GetCookie("token")
     );
   };
-  const dateChangeHandlerCountry = (event) => {
-    setAddress((prevState) => {
-      return { ...prevState, country: event.target.value };
-    });
-  };
-
-  const dateChangeHandlerCity = (event) => {
-    setAddress((prevState) => {
-      return { ...prevState, city: event.target.value };
-    });
-  };
-
-  const dateChangeHandlerZipCode = (event) => {
-    setAddress((prevState) => {
-      return { ...prevState, zipcode: event.target.value };
-    });
-  };
-
-  const dateChangeHandlerStreet = (event) => {
-    setAddress((prevState) => {
-      return { ...prevState, street: event.target.value };
-    });
-  };
-
-  const dateChangeHandlerStreetNumber = (event) => {
-    setAddress((prevState) => {
-      return { ...prevState, streetNumber: event.target.value };
-    });
-  };
-
-  const dateChangeHandlerstreetFlatNumber = (event) => {
-    setAddress((prevState) => {
-      return { ...prevState, flatNumber: event.target.value };
-    });
-  };
+  
   return (
     <form onSubmit={onSubmitHandler}>
       <div className={styles.login_controls}>
@@ -80,37 +43,37 @@ const EditAddress = (props) => {
           <input
             required={true}
             value={address.country}
-            onChange={dateChangeHandlerCountry}
+            onChange={e=>setAddress(prevState => {return{ ...prevState, country: e.target.value}})}
           />
           <label>city</label>
           <input
             required={true}
             value={address.city}
-            onChange={dateChangeHandlerCity}
+            onChange={e=>setAddress(prevState => {return{ ...prevState, city: e.target.value}})}
           />
           <label>zipcode</label>
           <input
             required={true}
             value={address.zipcode}
-            onChange={dateChangeHandlerZipCode}
+            onChange={e=>setAddress(prevState => {return{ ...prevState, address: e.target.value}})}
           />
           <label>street</label>
           <input
             required={true}
             value={address.street}
-            onChange={dateChangeHandlerStreet}
+            onChange={e=>setAddress(prevState => {return{ ...prevState, street: e.target.value}})}
           />
           <label>streetNumber</label>
           <input
             required={true}
             value={address.streetNumber}
-            onChange={dateChangeHandlerStreetNumber}
+            onChange={e=>setAddress(prevState => {return{ ...prevState, streetNumber: e.target.value}})}
           />
           <label>flatNumber</label>
           <input
             required={true}
             value={address.flatNumber??"brak"}
-            onChange={dateChangeHandlerstreetFlatNumber}
+            onChange={e=>setAddress(prevState => {return{ ...prevState, flatNumber: e.target.value }})}
           />
         </div>
       </div>

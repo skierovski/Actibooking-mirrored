@@ -1,9 +1,9 @@
-import styles from "./LogInForm.module.css";
 import {useContext, useRef} from "react";
-import LogInPostDataHandler from "../../FetchMethods/PostMethods/LogInPostDataHandler";
-import GoogleLogInPage from "../../Authorization/GoogleAthorization/GoogleLogInPage";
+import styles from "./LogInForm.module.css";
 import AuthContext from "../../../Context/auth-context"
 import CookiesContext from "../../../Context/cookies-context";
+import GoogleLogInPage from "../../Authorization/GoogleAthorization/GoogleLogInPage";
+import LogInPostDataHandler from "../../FetchMethods/PostMethods/LogInPostDataHandler";
 
 const LogInForm = () => {
 

@@ -1,7 +1,7 @@
 import styles from "./SignUpForm.module.css";
+import AuthContext from "../../../Context/auth-context";
 import {useContext, useEffect, useRef, useState} from "react";
 import SignUpPostDataHandler from "../../FetchMethods/PostMethods/SignUpPostDataHandler";
-import AuthContext from "../../../Context/auth-context";
 
 const SignUpForm = () => {
 
@@ -40,7 +40,6 @@ const SignUpForm = () => {
     }
 
     const responseHandler = (response) => {
-        console.log(response);
         if (response.ok){
             auth_ctx.closeModal();
             auth_ctx.SwitchModal();
@@ -49,16 +48,12 @@ const SignUpForm = () => {
         else alert("Provide valid information");
     }
 
-    const onChangeEmailHandler = (event) => {
-        setEnteredEmail(event.target.value);
-    }
-
     return (
         <form onSubmit={onSubmitHandler}>
             <div className={styles.login_controls}>
                 <div className={styles.login_control}>
                     <label>Email</label>
-                    <input type='email' minLength={10} onChange={onChangeEmailHandler} required={true}/>
+                    <input type='email' minLength={10} onChange={e => {setEnteredEmail(e.target.value)}} required={true}/>
                     <label>Password</label>
                     <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/>
                     <label>First Name</label>
