@@ -12,13 +12,19 @@ const EditAddress = (props) => {
   const enteredStreet = useRef();
   const enteredStreetNumber = useRef();
   const enteredFlatNumber = useRef();
-  const[ address, setAddress] = useState({
+  const [address, setAddress] = useState({
     country: props.Addresses.country,
+    city: props.Addresses.city,
+    zipcode: props.Addresses.zipcode,
+    street: props.Addresses.street,
+    streetNumber: props.Addresses.streetNumber,
+    flatNumber: props.Addresses.flatNumber,
   });
   const auth_ctx = useContext(AuthContext);
   const cookies_ctx = useContext(CookiesContext);
 
   const onSubmitHandler = (event) => {
+    console.log("test1");
     event.preventDefault();
     let userData = {
       id: props.id,
@@ -35,9 +41,43 @@ const EditAddress = (props) => {
       cookies_ctx.GetCookie("token")
     );
   };
-  const dateChangeHandler = (event) =>{setAddress((prevState) => {
-    return {...prevState, country: event.target.value};
-})};
+  const dateChangeHandlerCountry = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, country: event.target.value };
+    });
+    console.log("test2");
+  };
+
+  const dateChangeHandlerCity = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, city: event.target.value };
+    });
+  };
+
+  const dateChangeHandlerZipCode = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, zipcode: event.target.value };
+    });
+  };
+
+  const dateChangeHandlerStreet = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, street: event.target.value };
+    });
+  };
+
+  const dateChangeHandlerStreetNumber = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, streetNumber: event.target.value };
+    });
+  };
+
+  const dateChangeHandlerstreetFlatNumber = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, flatNumber: event.target.value };
+    });
+  };
+
   console.log(props.Addresses);
   return (
     <form onSubmit={onSubmitHandler}>
@@ -48,43 +88,48 @@ const EditAddress = (props) => {
             ref={enteredCountry}
             required={true}
             value={address.country}
-            onChange={dateChangeHandler}
+            onChange={dateChangeHandlerCountry}
           />
           <label>city</label>
           <input
             ref={enteredCity}
             required={true}
-            value={props.Addresses.city}
+            value={address.city}
+            onChange={dateChangeHandlerCity}
           />
           <label>zipcode</label>
           <input
             ref={enteredZipcode}
             required={true}
-            value={props.Addresses.zipcode}
+            value={address.zipcode}
+            onChange={dateChangeHandlerZipCode}
           />
           <label>street</label>
           <input
             ref={enteredStreet}
             required={true}
-            value={props.Addresses.street}
+            value={address.street}
+            onChange={dateChangeHandlerStreet}
           />
           <label>streetNumber</label>
           <input
             ref={enteredStreetNumber}
             required={true}
-            value={props.Addresses.streetNumber}
+            value={address.streetNumber}
+            onChange={dateChangeHandlerStreetNumber}
           />
           <label>flatNumber</label>
           <input
             ref={enteredFlatNumber}
             required={true}
-            value={props.Addresses.flatNumber}
+            value={address.flatNumber}
+            onChange={dateChangeHandlerstreetFlatNumber}
           />
         </div>
       </div>
       <div className={styles.login_actions}>
         <button className={styles.create_button} type="submit">
-          Save Address
+          Edit Address
         </button>
       </div>
     </form>
