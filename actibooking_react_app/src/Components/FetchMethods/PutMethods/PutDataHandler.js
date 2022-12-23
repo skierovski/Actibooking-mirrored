@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const PutDataHandler = (url, postData, token = null) => {
-  const [postId, setPostId] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
+  // const [postId, setPostId] = useState(null);
+  // const [errorMessage, setErrorMessage] = useState(null);
   const requestOptions = {
     method: "PUT",
     headers: {
@@ -22,10 +22,10 @@ const PutDataHandler = (url, postData, token = null) => {
         return Promise.reject(error);
       }
 
-      setPostId(data.id);
+      // setPostId(data.id);
     })
     .catch((error) => {
-      setErrorMessage(error);
+      // setErrorMessage(error);
       console.error("There was an error!", error);
     });
 };

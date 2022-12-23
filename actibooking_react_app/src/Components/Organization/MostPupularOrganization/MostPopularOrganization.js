@@ -1,18 +1,16 @@
-import React, { useContext } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "./MostPopularOrganization.css";
-import OrganizationCard from "./OrganizationCard";
-import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
-import { useCookies } from "react-cookie";
-import GetDataHandler from "../../FetchMethods/GetDataHandler";
-import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { Navigation } from "swiper";
-import LoadingScreen from "../../DefaultModels/LoadingScreen/LoadingScreen";
+import "./MostPopularOrganization.css";
+import React, { useContext } from "react";
+import OrganizationCard from "./OrganizationCard";
+import { Swiper, SwiperSlide } from "swiper/react";
 import CookiesContext from "../../../Context/cookies-context";
+import GetDataHandler from "../../FetchMethods/GetDataHandler";
+import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
+import LoadingScreen from "../../DefaultModels/LoadingScreen/LoadingScreen";
 
 export default function MostPopularOrganization() {
   const cookies_ctx = useContext(CookiesContext);
