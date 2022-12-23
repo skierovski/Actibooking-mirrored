@@ -1,7 +1,7 @@
 import styles from './SettingsPage.module.css';
 import { useForm } from "react-hook-form";
 import SecurityPage from './SecurityPanel/SecurityPanel';
-import PutDataHandler from '../../../FetchMethods/PutMethods/PutDataHandler';
+import PutDataHandler from '../../FetchMethods/PutMethods/PutDataHandler';
 
 const SettingsPage = (props) => {
     const { register, handleSubmit } = useForm();

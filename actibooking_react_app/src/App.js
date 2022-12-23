@@ -4,7 +4,7 @@ import FAQPage from "./Components/FAQPage/FAQPage";
 import HomePage from "./Components/HomePage/HomePage";
 import CookiesContext from "./Context/cookies-context";
 import { CookiesProvider, useCookies } from "react-cookie";
-import AccountPage from "./Components/Account/AccountPage/AccountPage";
+import AccountPage from "./Components/Account/AccountPage";
 import ListOfOrganizations from "./Components/Organization/ListOfOrganizations/ListOfOrganizations";
 import SingleOrganizationPage from "../src/Components/Organization/SingleOrganizationPage/SingleOrganizationPage";
 import EditOrganization from "./Components/EditOrganization/EditOrganization";

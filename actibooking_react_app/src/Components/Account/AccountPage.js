@@ -1,23 +1,23 @@
-import Navibar from "../../Navibar/Navibar";
+import Navibar from "../Navibar/Navibar";
 import { useParams } from "react-router-dom";
 import styles from "./AccountPage.module.css";
 import TrainerPage from "./TrainerPage/TrainerPage";
 import CoursesPage from "./CoursesPage/CoursesPage";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import {useContext, useEffect, useState } from "react";
-import SettingsPage from "./SettingsPage/SettingsPage";
-import SecurityPage from "./SettingsPage/SecurityPanel/SecurityPanel";
 import ImageAndName from "./ImageAndName/ImageAndName";
 import NavigationBar from "./NavigationBar/NavigationBar";
-import AccountContext from "../../../Context/account-ctx";
-import CookiesContext from "../../../Context/cookies-context";
-import GetDataHandler from "../../FetchMethods/GetDataHandler";
-import LoadingScreen from "../../DefaultModels/LoadingScreen/LoadingScreen";
+import AccountContext from "../../Context/account-ctx";
+import CookiesContext from "../../Context/cookies-context";
+import GetDataHandler from "../FetchMethods/GetDataHandler";
+import LoadingScreen from "../DefaultModels/LoadingScreen/LoadingScreen";
+import SettingsPage from "./SettingsPage/SettingsPage";
 
 const AccountPage = () => {
   const {id}=useParams();
   const [userData, setData] = useState();
   const [body, setBody] = useState();
+  const [editUserPhoto, setEditUserPhoto] = useState();
   const cookies_ctx = useContext(CookiesContext);
   
   useEffect(()=>{
@@ -36,8 +36,10 @@ const AccountPage = () => {
     <AccountContext.Provider
     value={{
       userData,
+      editUserPhoto,
       setBody,
-      logOut
+      logOut,
+      setEditUserPhoto
     }}>
     <Navibar/>
       {userData &&

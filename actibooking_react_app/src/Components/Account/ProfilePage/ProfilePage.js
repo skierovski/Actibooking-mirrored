@@ -2,11 +2,11 @@ import ReactDOM from 'react-dom';
 import { useForm } from "react-hook-form";
 import styles from "./ProfilePage.module.css";
 import React, { useContext, useState } from "react";
-import Modal from '../../../DefaultModels/Modals/Modal';
+import Modal from '../../DefaultModels/Modals/Modal';
 import AccountInfoContainer from "./AccountInfoContaner";
-import AccountContext from "../../../../Context/account-ctx";
-import SignUpPostDataHandler from "../../../FetchMethods/PostMethods/SignUpPostDataHandler";
-import Backdrop from '../../../DefaultModels/Backdrop/Backdrop';
+import AccountContext from "../../../Context/account-ctx";
+import SignUpPostDataHandler from "../../FetchMethods/PostMethods/SignUpPostDataHandler";
+import Backdrop from '../../DefaultModels/Backdrop/Backdrop';
 
 const ProfilePage = () => {
   const account_ctx = useContext(AccountContext);

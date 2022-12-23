@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styles from './CoursesPage.module.css';
-import AccountContext from '../../../../Context/account-ctx';
+import AccountContext from '../../../Context/account-ctx';
 
 const CoursesPage = () =>{
     const account_ctx = useContext(AccountContext);
