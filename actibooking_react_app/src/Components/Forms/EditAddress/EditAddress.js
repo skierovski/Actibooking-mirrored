@@ -4,7 +4,6 @@ import CookiesContext from "../../../Context/cookies-context";
 import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
 
 const EditAddress = (props) => {
-
   const [address, setAddress] = useState({
     id: props.id,
     country: props.Addresses.country,
@@ -19,7 +18,7 @@ const EditAddress = (props) => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     let userData = {
-      id: props.id,
+      id: props.Addresses.id,
       country: address.country,
       city: address.city,
       zipcode: address.zipcode,

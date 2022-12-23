@@ -62,7 +62,7 @@ const ProfilePage = () => {
           </div>
           <div className={styles.Trainer}>
             {isTrainer?
-            <button className={styles.ProfileButton} value="Trainer Tab">Trainer Tab</button>: 
+            <button className={styles.ProfileButton} onClick={() => account_ctx.setBody({isTrainerPage:true})} value="Trainer Tab">Trainer Tab</button>: 
             <>
             <span>Become Trainer in Actibooking</span>
             <button className={styles.ProfileButton} onClick={onSubmitTrainer} value="Active trainer">Active trainer</button>
