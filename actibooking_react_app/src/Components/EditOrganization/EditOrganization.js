@@ -35,10 +35,10 @@ const EditOrganization = () => {
               <Accordion title={"Name"}></Accordion>
               <Accordion title={"Edit Logo"}></Accordion>
               <Accordion title={"Edit Address"}>
-                <EditAddress Addresses={data[0].addresses} />
+                <EditAddress id={id} Addresses={data[0].addresses} />
               </Accordion>
               <Accordion title={"Edit Description"}>
-                <EditDescription content={data[0].description} />
+                <EditDescription id={id} content={data[0].description} />
               </Accordion>
               <Accordion title={"Manage Courses"}></Accordion>
               <Accordion title={"Manage Trainers"}></Accordion>

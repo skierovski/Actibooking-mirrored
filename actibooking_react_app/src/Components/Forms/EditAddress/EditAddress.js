@@ -1,90 +1,120 @@
+import { useContext, useState } from "react";
 import styles from "./EditAddress.module.css";
-import { useContext, useRef, useState } from "react";
-import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
-
 import AuthContext from "../../../Context/auth-context";
 import CookiesContext from "../../../Context/cookies-context";
+import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
 
 const EditAddress = (props) => {
-  const enteredCountry = useRef();
-  const enteredCity = useRef();
-  const enteredZipcode = useRef();
-  const enteredStreet = useRef();
-  const enteredStreetNumber = useRef();
-  const enteredFlatNumber = useRef();
-  const[ address, setAddress] = useState({
+  const [address, setAddress] = useState({
+    id: props.id,
     country: props.Addresses.country,
+    city: props.Addresses.city,
+    zipcode: props.Addresses.zipcode,
+    street: props.Addresses.street,
+    streetNumber: props.Addresses.streetNumber,
+    flatNumber: props.Addresses.flatNumber,
   });
-  const auth_ctx = useContext(AuthContext);
   const cookies_ctx = useContext(CookiesContext);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     let userData = {
-      id: props.id,
-      country: enteredCountry.current.value,
-      city: enteredCity.current.value,
-      zipcode: enteredZipcode.current.value,
-      street: enteredStreet.current.value,
-      streetNumber: enteredStreetNumber.current.value,
-      flatNumber: enteredFlatNumber.current.value,
+      id: props.Addresses.id,
+      country: address.country,
+      city: address.city,
+      zipcode: address.zipcode,
+      street: address.street,
+      streetNumber: address.streetNumber,
+      flatNumber: address.flatNumber,
     };
+    if (userData.flatNumber == "brak") userData.flatNumber = null;
+    console.log(userData);
     PutDataHandler(
       "https://localhost:7127/api/Adress",
       userData,
       cookies_ctx.GetCookie("token")
     );
   };
-  const dateChangeHandler = (event) =>{setAddress((prevState) => {
-    return {...prevState, country: event.target.value};
-})};
-  console.log(props.Addresses);
+  const dateChangeHandlerCountry = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, country: event.target.value };
+    });
+  };
+
+  const dateChangeHandlerCity = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, city: event.target.value };
+    });
+  };
+
+  const dateChangeHandlerZipCode = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, zipcode: event.target.value };
+    });
+  };
+
+  const dateChangeHandlerStreet = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, street: event.target.value };
+    });
+  };
+
+  const dateChangeHandlerStreetNumber = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, streetNumber: event.target.value };
+    });
+  };
+
+  const dateChangeHandlerstreetFlatNumber = (event) => {
+    setAddress((prevState) => {
+      return { ...prevState, flatNumber: event.target.value };
+    });
+  };
   return (
     <form onSubmit={onSubmitHandler}>
       <div className={styles.login_controls}>
         <div className={styles.login_control}>
           <label>country</label>
           <input
-            ref={enteredCountry}
             required={true}
             value={address.country}
-            onChange={dateChangeHandler}
+            onChange={dateChangeHandlerCountry}
           />
           <label>city</label>
           <input
-            ref={enteredCity}
             required={true}
-            value={props.Addresses.city}
+            value={address.city}
+            onChange={dateChangeHandlerCity}
           />
           <label>zipcode</label>
           <input
-            ref={enteredZipcode}
             required={true}
-            value={props.Addresses.zipcode}
+            value={address.zipcode}
+            onChange={dateChangeHandlerZipCode}
           />
           <label>street</label>
           <input
-            ref={enteredStreet}
             required={true}
-            value={props.Addresses.street}
+            value={address.street}
+            onChange={dateChangeHandlerStreet}
           />
           <label>streetNumber</label>
           <input
-            ref={enteredStreetNumber}
             required={true}
-            value={props.Addresses.streetNumber}
+            value={address.streetNumber}
+            onChange={dateChangeHandlerStreetNumber}
           />
           <label>flatNumber</label>
           <input
-            ref={enteredFlatNumber}
             required={true}
-            value={props.Addresses.flatNumber}
+            value={address.flatNumber ?? "brak"}
+            onChange={dateChangeHandlerstreetFlatNumber}
           />
         </div>
       </div>
       <div className={styles.login_actions}>
         <button className={styles.create_button} type="submit">
-          Save Address
+          Edit Address
         </button>
       </div>
     </form>
