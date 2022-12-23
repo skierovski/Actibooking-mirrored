@@ -71,5 +71,13 @@ namespace Actibooking.Controllers
             await _userService.AddChildToCourse(addingChildToCourse,_uow);
             return Ok("Child Added to Course");
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser(UpdateUserDTO updateUserDTO)
+        {
+            await _userService.MapUserUpdateAsync(updateUserDTO, _uow);
+            return Ok("User Updated");
+
+        }
     }
 }

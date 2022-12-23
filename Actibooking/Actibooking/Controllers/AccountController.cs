@@ -108,5 +108,12 @@ namespace Actibooking.Controllers
                 return BadRequest("Invalid External Authentication.");
             return Accepted(new { Token = await _authManager.CreateToken(user) });
         }
+        [HttpPost("change-email")]
+        public async  Task<IActionResult> ChangeEmail(ChangeEmailDTO changeEmailDTO)
+        {
+            ActiBookingUser user = await _userManager.FindByIdAsync(changeEmailDTO.UserId);
+            await _userManager.ChangeEmailAsync(user, changeEmailDTO.Email, changeEmailDTO.Token);
+            return Ok("Email Changed");
+        }
     }
 }

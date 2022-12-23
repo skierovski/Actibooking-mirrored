@@ -20,5 +20,6 @@ namespace Actibooking.Services
         Task AddChildToCourse(AddingChildToCourseDTO addingChildToCourse, IUnitOfWork _uow);
         bool CheckIsNull(string massage, object ObjectToCheck, object Key);
         bool CheckAge(string birthDate, int? minAge, int? maxAge);
+        Task<bool> MapUserUpdateAsync(UpdateUserDTO updateUserDTO, IUnitOfWork uow);
     }
 }

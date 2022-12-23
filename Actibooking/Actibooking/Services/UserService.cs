@@ -118,5 +118,30 @@ namespace Actibooking.Services
             throw new OutOfRangeException("Your age is not valid", minAge);
         }
 
+        public async Task<bool> MapUserUpdateAsync(UpdateUserDTO updateUserDTO, IUnitOfWork _uow)
+        {
+            ActiBookingUser user = await _uow.UserRepo.GetByIdAsync(updateUserDTO.ActiBookingUserId);
+            if (updateUserDTO.FirstName != null)
+            {
+                user.FirstName = updateUserDTO.FirstName;
+            }
+            if (updateUserDTO.LastName != null)
+            {
+                user.LastName = updateUserDTO.LastName;
+            }
+            if (updateUserDTO.BirthDate != null)
+            {
+                user.BirthDate = updateUserDTO.BirthDate;
+            }
+            if (updateUserDTO.Gender != null)
+            {
+                user.Gender = updateUserDTO.Gender;
+            }
+            _uow.UserRepo.Update(user);
+            await _uow.SaveChangesAsync();
+            return true;
+
+        }
+
     }
 }
