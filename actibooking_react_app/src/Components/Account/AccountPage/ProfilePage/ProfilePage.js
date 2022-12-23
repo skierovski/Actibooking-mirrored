@@ -1,10 +1,12 @@
+import ReactDOM from 'react-dom';
 import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
 import styles from "./ProfilePage.module.css";
+import React, { useContext, useState } from "react";
 import Modal from '../../../DefaultModels/Modals/Modal';
 import AccountInfoContainer from "./AccountInfoContaner";
 import AccountContext from "../../../../Context/account-ctx";
 import SignUpPostDataHandler from "../../../FetchMethods/PostMethods/SignUpPostDataHandler";
+import Backdrop from '../../../DefaultModels/Backdrop/Backdrop';
 
 const ProfilePage = () => {
   const account_ctx = useContext(AccountContext);
@@ -32,7 +34,8 @@ const ProfilePage = () => {
   return (
     <>
       <div className={styles.Information}>
-        {modal  && <Modal title="Add child" close={() => setModal(false)}>
+        {modal  && <>
+          {ReactDOM.createPortal(<Modal title="Add child" close={() => setModal(false)}>
       <form onSubmit={handleSubmit(onSubmitChild)}>
       <label>First name:</label>
         <input {...register("firstName")}></input>
@@ -42,7 +45,10 @@ const ProfilePage = () => {
         <input type='date' {...register("birthDate")}></input>
         <input type="submit" />
       </form>
-      </Modal>}
+      </Modal>, document.getElementById("modal-root"))}
+        {ReactDOM.createPortal(<Backdrop close={() => setModal(false)}/>, document.getElementById('backdrop-root'))}
+        </>
+      }
       <AccountInfoContainer></AccountInfoContainer>
       </div>
       <div className={styles.TrainerChilds}>
