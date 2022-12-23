@@ -5,8 +5,6 @@ import CookiesContext from "../../../Context/cookies-context";
 import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
 
 const EditAddress = (props) => {
-
-
   const [address, setAddress] = useState({
     id: props.id,
     country: props.Addresses.country,
@@ -21,7 +19,7 @@ const EditAddress = (props) => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     let userData = {
-      id: props.id,
+      id: props.Addresses.id,
       country: address.country,
       city: address.city,
       zipcode: address.zipcode,
@@ -29,8 +27,8 @@ const EditAddress = (props) => {
       streetNumber: address.streetNumber,
       flatNumber: address.flatNumber,
     };
-    if (userData.flatNumber == "brak") userData.flatNumber=null;
-    console.log(userData)
+    if (userData.flatNumber == "brak") userData.flatNumber = null;
+    console.log(userData);
     PutDataHandler(
       "https://localhost:7127/api/Adress",
       userData,
@@ -109,7 +107,7 @@ const EditAddress = (props) => {
           <label>flatNumber</label>
           <input
             required={true}
-            value={address.flatNumber??"brak"}
+            value={address.flatNumber ?? "brak"}
             onChange={dateChangeHandlerstreetFlatNumber}
           />
         </div>
