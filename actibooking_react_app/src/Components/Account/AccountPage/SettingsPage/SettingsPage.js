@@ -1,11 +1,15 @@
 import styles from './SettingsPage.module.css';
 import { useForm } from "react-hook-form";
 import SecurityPage from './SecurityPanel/SecurityPanel';
+import PutDataHandler from '../../../FetchMethods/PutMethods/PutDataHandler';
 
-const SettingsPage = () => {
+const SettingsPage = (props) => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        console.log(data);
+
+        data["ActiBookingUserId"] = props.id;
+        console.log(data)
+        PutDataHandler("https://localhost:7127/api/User",data)
     };
     return (
         <>
@@ -22,7 +26,7 @@ const SettingsPage = () => {
                 </div>
                 <div className={styles.InputRow}>
                 <label>Birth date:</label>
-                <input {...register("birthDate")} />
+                <input type="date" {...register("birthDate")} />
                 </div>
                 <div className={styles.InputRow}>
                 <label>Gender:</label>

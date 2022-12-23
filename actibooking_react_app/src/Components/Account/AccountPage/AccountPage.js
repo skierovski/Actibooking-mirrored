@@ -49,7 +49,7 @@ const AccountPage = () => {
           <div className={styles.Container}>
             {body.isProfilePage && <ProfilePage/>}
             {body.isCoursesPage && <CoursesPage/>}
-            {body.isSettingsPage && <SettingsPage/>}
+            {body.isSettingsPage && <SettingsPage id={id}/>}
             {body.isTrainerPage && <TrainerPage/>}
           </div>
         </div>}
