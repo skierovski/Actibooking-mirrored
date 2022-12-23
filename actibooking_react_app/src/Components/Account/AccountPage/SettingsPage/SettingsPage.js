@@ -4,7 +4,9 @@ import SecurityPage from './SecurityPanel/SecurityPanel';
 
 const SettingsPage = () => {
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data);
+    };
     return (
         <>
         <div className={styles.Settings}>
