@@ -8,6 +8,7 @@ import AccountPage from "./Components/Account/AccountPage";
 import ListOfOrganizations from "./Components/Organization/ListOfOrganizations/ListOfOrganizations";
 import SingleOrganizationPage from "../src/Components/Organization/SingleOrganizationPage/SingleOrganizationPage";
 import EditOrganization from "./Components/EditOrganization/EditOrganization";
+import Input from "./Components/DefaultModels/Input/Input";
 
 const App = () => {
   const [cookies, setCookies, removeCookie] = useCookies();
@@ -44,15 +45,13 @@ const App = () => {
         }}
       >
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/Organizations" element={<ListOfOrganizations />} />
-          <Route
-            path="/Organizations/:id"
-            element={<SingleOrganizationPage />}
-          />
-          <Route path="/Edit/Organization/:id" element={<EditOrganization />} />
-          <Route path="/Account/:id" element={<AccountPage />} />
-          <Route path="/FAQ" element={<FAQPage />} />
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/Organizations" element={<ListOfOrganizations/>}/>
+          <Route path="/Organizations/:id" element={<SingleOrganizationPage/>}/>
+          <Route path="/Edit/Organization/:id" element={<EditOrganization/>}/>
+          <Route path="/Account/:id" element={<AccountPage/>}/>
+          <Route path="/FAQ" element={<FAQPage/>}/>
+          <Route path="/Input" element={<Input id={1} type={'text'} value={"some value"} label={"My Label"} onChange={e=>{console.log(e.target.value)}}/>}/>
         </Routes>
       </CookiesContext.Provider>
     </CookiesProvider>

@@ -1,5 +1,6 @@
-import {useContext, useRef} from "react";
+import {useContext, useState} from "react";
 import styles from "./LogInForm.module.css";
+import Input from "../../DefaultModels/Input/Input";
 import AuthContext from "../../../Context/auth-context"
 import CookiesContext from "../../../Context/cookies-context";
 import GoogleLogInPage from "../../Authorization/GoogleAthorization/GoogleLogInPage";
@@ -7,8 +8,8 @@ import LogInPostDataHandler from "../../FetchMethods/PostMethods/LogInPostDataHa
 
 const LogInForm = () => {
 
-    const enteredEmail = useRef()
-    const enteredPassword = useRef()
+    const [enteredEmail, setEnteredEmail] = useState()
+    const [enteredPassword, setEnteredPassword] = useState()
     const auth_ctx = useContext(AuthContext);
     const cookies_ctx = useContext(CookiesContext);
 
@@ -16,8 +17,8 @@ const LogInForm = () => {
     const onSubmitHandler = event =>{
         event.preventDefault();
         let userData = {
-            email:enteredEmail.current.value,
-            password:enteredPassword.current.value,
+            email:enteredEmail,
+            password:enteredPassword,
         };
         LogInPostDataHandler("https://localhost:7127/api/Account/login", userData, responseHandler)
     }
@@ -35,10 +36,12 @@ const LogInForm = () => {
         <form onSubmit={onSubmitHandler}>
             <div className={styles.login_controls}>
                 <div className={styles.login_control}>
-                    <label>Email</label>
-                    <input type='email' minLength={10} ref={enteredEmail} required={true}/>
-                    <label>Password</label>
-                    <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/>
+                    {/* <label>Email</label>
+                    <input type='email' minLength={10} ref={enteredEmail} required={true}/> */}
+                    <Input label="Email" type="email" minLength={10} onChange={e=>setEnteredEmail(e.target.value)} required={true}/>
+                    {/* <label>Password</label>
+                    <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/> */}
+                    <Input label="Password" type="password" pattern ="(?=.*\d)(?=.*[\W_]).{5,}" onChange={e=>setEnteredPassword(e.target.value)} required={true}/>
                     <div className={styles.google_control}><GoogleLogInPage/></div>
                     <div>Don't have an account ? <p className={styles.sign_in_href} onClick={()=>auth_ctx.SwitchModal()}>Sign in</p></div>
                 </div>

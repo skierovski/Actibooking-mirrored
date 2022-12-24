@@ -1,37 +1,27 @@
 import styles from "./SignUpForm.module.css";
 import AuthContext from "../../../Context/auth-context";
-import {useContext, useEffect, useRef, useState} from "react";
+import {useContext, useRef, useState} from "react";
 import SignUpPostDataHandler from "../../FetchMethods/PostMethods/SignUpPostDataHandler";
+import Input from "../../DefaultModels/Input/Input";
 
 const SignUpForm = () => {
 
     const [enteredEmail, setEnteredEmail] = useState();
-    const enteredPassword = useRef();
-    const enteredFirstName = useRef();
-    const enteredLastName = useRef();
-    const enteredPhoneNumber = useRef();
+    const [enteredPassword, setEnteredPassword] = useState();
+    const [enteredFirstName, setEnteredFirstName] = useState();
+    const [enteredLastName, setEnteredLastName] = useState();
+    const [enteredPhoneNumber, setEnteredPhoneNumber] = useState();
 
     const auth_ctx = useContext(AuthContext)
-
-
-    useEffect(()=>{
-        const enteredEmailCheckTimeout = setTimeout(()=>{
-            //TODO tutaj trzeba przesłać enteredEmail i sprawdzić czy w bazie danych nie ma już takiego emaila, dodać style w dwóch przypadkach itd;
-            console.log(enteredEmail);
-        }, 1000);
-        return ()=>{
-            clearTimeout(enteredEmailCheckTimeout);
-        }
-    }, [enteredEmail]);
 
     const onSubmitHandler = event =>{
         event.preventDefault();
         let data = {
             email:enteredEmail,
-            password:enteredPassword.current.value,
-            firstName:enteredFirstName.current.value,
-            lastName:enteredLastName.current.value,
-            phoneNumber:enteredPhoneNumber.current.value,
+            password:enteredPassword,
+            firstName:enteredFirstName,
+            lastName:enteredLastName,
+            phoneNumber:enteredPhoneNumber,
             birthDate:"12/12/2022",
             gender:"Male/Female",
             roles:["User"]
@@ -52,16 +42,11 @@ const SignUpForm = () => {
         <form onSubmit={onSubmitHandler}>
             <div className={styles.login_controls}>
                 <div className={styles.login_control}>
-                    <label>Email</label>
-                    <input type='email' minLength={10} onChange={e => {setEnteredEmail(e.target.value)}} required={true}/>
-                    <label>Password</label>
-                    <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/>
-                    <label>First Name</label>
-                    <input type='text' ref={enteredFirstName} required={true}/>
-                    <label>Last Name</label>
-                    <input type='text' ref={enteredLastName} required={true}/>
-                    <label>Phone Number*</label>
-                    <input type='number' maxLength={9} minLength={9} ref={enteredPhoneNumber} required={false}/>
+                    <Input label="Email" type="email" minLength={10} onChange={e=>setEnteredEmail(e.target.value)} required={true}/>
+                    <Input label="Password" type="password" pattern ="(?=.*\d)(?=.*[\W_]).{5,}" onChange={e=>setEnteredPassword(e.target.value)} required={true}/>
+                    <Input label="First Name" type="text" onChange={e=>setEnteredFirstName(e.target.value)} required={true}/>
+                    <Input label="Last Name" type="text" onChange={e=>setEnteredLastName(e.target.value)} required={true}/>
+                    <Input label="Phone Number*" type="number" maxLength={9} minLength={9} onChange={e=>setEnteredPhoneNumber(e.target.value)} required={true}/>
                     <div>Already have an account ? <p className={styles.sign_in_href} onClick={()=>{auth_ctx.SwitchModal()}}>Log in</p></div>
                 </div>
             </div>

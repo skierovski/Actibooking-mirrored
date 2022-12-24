@@ -4,7 +4,7 @@ import styles from "./NavigationBar.module.css";
 import AccountContext from "../../../Context/account-ctx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import {faGear, faUser, faCalendarDays, faLock, faWallet, faPersonRunning} from "@fortawesome/free-solid-svg-icons";
+import {faGear, faUser, faCalendarDays, faWallet, faPersonRunning} from "@fortawesome/free-solid-svg-icons";
 
 const NavigationBar = () => {
   const account_ctx = useContext(AccountContext);
