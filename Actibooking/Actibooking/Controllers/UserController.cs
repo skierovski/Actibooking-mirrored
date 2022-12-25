@@ -23,16 +23,14 @@ namespace Actibooking.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserManager<ActiBookingUser> _userManager;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _uow;
         private readonly IUserService _userService;
 
-        public UserController(IMapper mapper,IUnitOfWork uow, UserManager<ActiBookingUser> userManager, IUserService userService )
+        public UserController(IMapper mapper,IUnitOfWork uow, IUserService userService )
         {
             _mapper = mapper;
             _uow = uow;
-            _userManager = userManager;
             _userService = userService;
         }
 
