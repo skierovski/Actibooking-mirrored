@@ -55,5 +55,18 @@ namespace Actibooking.Tests.Controller
 
             result.Result.Should().BeOfType(typeof(OkObjectResult));
         }
+
+        [Fact]
+        public void UserController_GetUserCourses()
+        {
+            var userId = "String";
+            var listCourses = A.Fake<IEnumerable<Course>>();
+            A.CallTo(() => _userService.GetUserCourses(userId, _uow)).Returns(listCourses);
+            var controller = new UserController(_mapper, _uow, _userService);
+
+            var result = controller.GetUserCourses(userId).Result;
+
+            result.Should().BeOfType(typeof(OkObjectResult));
+        }
     }
 }
