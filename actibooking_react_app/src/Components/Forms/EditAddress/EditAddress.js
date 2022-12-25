@@ -1,78 +1,86 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState} from "react";
+import ReactDOM from 'react-dom';
 import styles from "./EditAddress.module.css";
 import CookiesContext from "../../../Context/cookies-context";
 import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
+import Input from "../../DefaultModels/Input/Input";
+import SuccessfullyRegisteredModal from "../../Authorization/AuthorizationModals/SuccessfullyRegisteredModal";
 
 const EditAddress = (props) => {
-  const [address, setAddress] = useState({
-    id: props.id,
-    country: props.Addresses.country,
-    city: props.Addresses.city,
-    zipcode: props.Addresses.zipcode,
-    street: props.Addresses.street,
-    streetNumber: props.Addresses.streetNumber,
-    flatNumber: props.Addresses.flatNumber,
-  });
   const cookies_ctx = useContext(CookiesContext);
+  const enteredCountry = useRef();
+  const enteredCity = useRef();
+  const enteredZipCode = useRef();
+  const enteredStreet = useRef();
+  const enteredStreetNumber = useRef();
+  const enteredFlatNumber = useRef();
+
+  const[isSuccessfull, setIsSuccessfull] = useState()
+  useEffect(()=>{
+  enteredCountry.current.setDefaultValue(props.Addresses.country);
+  enteredCity.current.setDefaultValue(props.Addresses.city);
+  enteredZipCode.current.setDefaultValue(props.Addresses.zipcode);
+  enteredStreet.current.setDefaultValue(props.Addresses.street);
+  enteredStreetNumber.current.setDefaultValue(props.Addresses.streetNumber);
+  props.Addresses.flatNumber ? enteredFlatNumber.current.setDefaultValue(props.Addresses.flatNumber) : enteredFlatNumber.current.setDefaultValue("brak");
+  },[])
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     let userData = {
       id: props.Addresses.id,
-      country: address.country,
-      city: address.city,
-      zipcode: address.zipcode,
-      street: address.street,
-      streetNumber: address.streetNumber,
-      flatNumber: address.flatNumber,
+      country: enteredCountry.current.getValue(),
+      city: enteredCity.current.getValue(),
+      zipcode: enteredZipCode.current.getValue(),
+      street: enteredStreet.current.getValue(),
+      streetNumber: enteredStreetNumber.current.getValue(),
+      flatNumber: enteredFlatNumber.current.getValue(),
     };
     if (userData.flatNumber == "brak") userData.flatNumber=null;
+    console.log(userData)
     PutDataHandler(
       "https://localhost:7127/api/Adress",
       userData,
       cookies_ctx.GetCookie("token")
     );
+    setIsSuccessfull(true)
   };
   
   return (
+    <>
+    {isSuccessfull && ReactDOM.createPortal(<SuccessfullyRegisteredModal closeModal={() => setIsSuccessfull(false)}/>, document.getElementById("modal-root"))}
     <form onSubmit={onSubmitHandler}>
       <div className={styles.login_controls}>
         <div className={styles.login_control}>
-          <label>country</label>
-          <input
+          <Input
+            label="Country"
             required={true}
-            value={address.country}
-            onChange={e=>setAddress(prevState => {return{ ...prevState, country: e.target.value}})}
+            ref ={enteredCountry}
           />
-          <label>city</label>
-          <input
+          <Input
+            label="City"
             required={true}
-            value={address.city}
-            onChange={e=>setAddress(prevState => {return{ ...prevState, city: e.target.value}})}
+            ref={enteredCity}
           />
-          <label>zipcode</label>
-          <input
+          <Input
+            label="ZipCode"
             required={true}
-            value={address.zipcode}
-            onChange={e=>setAddress(prevState => {return{ ...prevState, address: e.target.value}})}
+            ref={enteredZipCode}
           />
-          <label>street</label>
-          <input
+          <Input
+            label="Street"
             required={true}
-            value={address.street}
-            onChange={e=>setAddress(prevState => {return{ ...prevState, street: e.target.value}})}
+            ref={enteredStreet}
           />
-          <label>streetNumber</label>
-          <input
+          <Input
+            label="Street number"
             required={true}
-            value={address.streetNumber}
-            onChange={e=>setAddress(prevState => {return{ ...prevState, streetNumber: e.target.value}})}
+            ref={enteredStreetNumber}
           />
-          <label>flatNumber</label>
-          <input
+          <Input
+            label="Flat number *"
             required={true}
-            value={address.flatNumber??"brak"}
-            onChange={e=>setAddress(prevState => {return{ ...prevState, flatNumber: e.target.value }})}
+            ref={enteredFlatNumber}
           />
         </div>
       </div>
@@ -82,6 +90,7 @@ const EditAddress = (props) => {
         </button>
       </div>
     </form>
+    </>
   );
 };
 export default EditAddress;

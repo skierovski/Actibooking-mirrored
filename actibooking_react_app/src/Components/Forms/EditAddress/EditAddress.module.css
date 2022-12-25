@@ -73,3 +73,9 @@ form{
     font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
 }
+.Successfull{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+}
