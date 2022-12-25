@@ -42,5 +42,18 @@ namespace Actibooking.Tests.Controller
             //Assert
             result.Result.Should().BeOfType(typeof(OkObjectResult));
         }
+
+        [Fact]
+        public void UserController_AddChild_ReturnOk()
+        {
+            var addingChildDTO = A.Fake<AddingChildDTO>();
+            var okResult = new OkObjectResult(addingChildDTO);
+            A.CallTo(() => _userService.AddChild(addingChildDTO, _uow, _mapper)).Returns(okResult);
+            var controller = new UserController(_mapper, _uow, _userService);
+
+            var result = controller.AddChild(addingChildDTO);
+
+            result.Result.Should().BeOfType(typeof(OkObjectResult));
+        }
     }
 }
