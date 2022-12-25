@@ -82,7 +82,7 @@ namespace Actibooking.Controllers
         }
 
         [HttpPut()]
-        public async Task<IActionResult> UpdateAdress([FromQuery] Address address)
+        public async Task<IActionResult> UpdateAdress([FromBody] Address address)
         {
             _uow.AdressRepo.Update(address);
             await _uow.SaveChangesAsync();
