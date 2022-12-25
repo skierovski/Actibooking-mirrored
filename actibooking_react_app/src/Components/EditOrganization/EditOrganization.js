@@ -8,6 +8,7 @@ import GetDataHandler from "../FetchMethods/GetDataHandler";
 import Accordion from "../DefaultModels/Accordion/Accordion";
 import EditDescription from "./EditDescription/EditDescription";
 import EditAddress from "../Forms/EditAddress/EditAddress";
+import UploadNewImage from "./UploadNewImage/UploadNewImage";
 const EditOrganization = () => {
   const { id } = useParams();
   const [data, setData] = useState();
@@ -33,7 +34,7 @@ const EditOrganization = () => {
             <SectionTitle value="Edit Your Organization" />
             <div className={styles.Container}>
               <Accordion title={"Name"}></Accordion>
-              <Accordion title={"Edit Logo"}></Accordion>
+              <Accordion title={"Edit Logo"}><UploadNewImage id={id} oldUrl={data[0].logoUrl}/></Accordion>
               <Accordion title={"Edit Address"}>
                 <EditAddress id={id} Addresses={data[0].addresses} />
               </Accordion>
