@@ -8,8 +8,8 @@ const Input = React.forwardRef((props, ref) =>{
         return inputRef.current.value;
     };
     const setDefaultValue = (value) =>{
-        inputRef.current.value=value;
-    }
+        inputRef.current.value = value;
+    };
 
     useImperativeHandle(ref, ()=>{
         return{

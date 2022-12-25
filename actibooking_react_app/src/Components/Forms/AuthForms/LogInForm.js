@@ -38,7 +38,7 @@ const LogInForm = () => {
                 <div className={styles.login_control}>
                     {/* <label>Email</label>
                     <input type='email' minLength={10} ref={enteredEmail} required={true}/> */}
-                    <Input label="Email" type="email" minLength={10} ref={enteredEmail} required={true}/>
+                    <Input label="Email" type="email" ref={enteredEmail} required={true}/>
                     {/* <label>Password</label>
                     <input type='password' pattern="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/> */}
                     <Input label="Password" type="password" pattern ="(?=.*\d)(?=.*[\W_]).{5,}" ref={enteredPassword} required={true}/>
