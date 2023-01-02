@@ -6,12 +6,12 @@ import CoursesPage from "./CoursesPage/CoursesPage";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import {useContext, useEffect, useState } from "react";
 import ImageAndName from "./ImageAndName/ImageAndName";
-import NavigationBar from "./NavigationBar/NavigationBar";
 import AccountContext from "../../Context/account-ctx";
+import SettingsPage from "./SettingsPage/SettingsPage";
+import NavigationBar from "./NavigationBar/NavigationBar";
 import CookiesContext from "../../Context/cookies-context";
 import GetDataHandler from "../FetchMethods/GetDataHandler";
 import LoadingScreen from "../DefaultModels/LoadingScreen/LoadingScreen";
-import SettingsPage from "./SettingsPage/SettingsPage";
 
 const AccountPage = () => {
   const {id}=useParams();

@@ -5,6 +5,7 @@ import Backdrop from '../../../DefaultModels/Backdrop/Backdrop';
 import Modal from '../../../DefaultModels/Modals/Modal';
 import styles from "./EditUserPhotoModal.module.css";
 import WebcamCapture from './WebcamCapture';
+import ImageAndName from '../../ImageAndName/ImageAndName';
 
 const EditUserPhotoModal = () => {
     const account_ctx = useContext(AccountContext);
