@@ -13,6 +13,7 @@ using System.Text;
 using Serilog;
 using Actibooking.Middleware;
 using System.Text.Json.Serialization;
+using Microsoft.Net.Http.Headers;
 
 namespace Actibooking
 {
@@ -24,6 +25,13 @@ namespace Actibooking
 
             builder.Services.AddCors(options =>
             {
+/*                options.AddPolicy("Policy1",
+                   builder =>
+                   {
+                       builder.WithOrigins("http://localhost:3000")
+                       .WithMethods("POST","GET","PUT","DELETE")
+                       .WithHeaders(HeaderNames.ContentType);
+                   });*/
                 options.AddPolicy("CORSPolicy",
                     builder =>
                     {
@@ -114,6 +122,7 @@ namespace Actibooking
 
             app.UseHttpsRedirection();
 
+/*            app.UseCors("Policy1");*/
             app.UseCors("CORSPolicy");
 
 
