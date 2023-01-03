@@ -1,9 +1,9 @@
-import styles from "./ImageAndName.module.css";
+import UserImage from "./UserImage";
 import { useContext, useState } from "react";
+import styles from "./ImageAndName.module.css";
 import AccountContext from "../../../Context/account-ctx";
 import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
 import EditUserPhotoModal from "../AccountPageModals/EditUserPhotoModal/EditUserPhotoModal";
-import UserImage from "./UserImage";
 
 
 const ImageAndName = () => {
