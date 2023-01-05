@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import SingleOrganizationContainer from "./SingleOrganizationContainer";
 import { useState } from "react";
 import GetDataHandler from "../../FetchMethods/GetDataHandler";
+import OrganizationContext from "../../../Context/organization-context";
 
 const SingleOrganizationPage = () => {
   const { id } = useParams();
@@ -16,12 +17,20 @@ const SingleOrganizationPage = () => {
   };
 
   const ResponseHandler = (props) => {
-    console.log(props);
     setData(props);
   };
 
+  const RefreshData = () => {
+    GetData()
+  }
+
+  console.log(data)
+
   return (
     <>
+    <OrganizationContext.Provider value={{
+      RefreshData
+    }}>
       {data && (
         <>
           <Navibar />
@@ -30,6 +39,7 @@ const SingleOrganizationPage = () => {
         </>
       )}
       {!data && <div onLoad={GetData()}>Not working</div>}
+      </OrganizationContext.Provider>
     </>
   );
 };
