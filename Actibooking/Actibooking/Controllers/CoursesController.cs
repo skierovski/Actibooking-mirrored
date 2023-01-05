@@ -62,5 +62,12 @@ namespace Actibooking.Controllers
             Dictionary<string, List<object>> participants = await _courseManager.GetParticipantsCourse(courseId);
             return Ok(participants);
         }
+
+        [HttpGet("{orgId}/courses")]
+        public async Task<IActionResult> GetOrganizationCourses(int orgId)
+        {
+            var courseList = await _courseManager.GetOrganizationCourses(orgId);
+            return Ok(courseList);
+        }
     }
 }

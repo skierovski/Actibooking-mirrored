@@ -123,5 +123,11 @@ namespace Actibooking.Services
             }
             throw new NotFoundException("Course", courseId);
         }
+
+        public async Task<List<Course>> GetOrganizationCourses(int orgId)
+        {
+            var courseList = await _uow.CourseRepo.GetAsync(filter: x => x.OrganizationId == orgId);
+            return (List<Course>)courseList;
+        }
     }
 }
