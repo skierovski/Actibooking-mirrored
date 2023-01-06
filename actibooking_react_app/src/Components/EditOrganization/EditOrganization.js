@@ -9,6 +9,8 @@ import Accordion from "../DefaultModels/Accordion/Accordion";
 import EditDescription from "./EditDescription/EditDescription";
 import EditAddress from "../Forms/EditAddress/EditAddress";
 import UploadNewImage from "./UploadNewImage/UploadNewImage";
+import EditNameOrganization from "../Forms/EditNameOrganization/EditNameOrganization";
+import ManagePhotos from "./ManagePhotos/ManagePhotos";
 const EditOrganization = () => {
   const { id } = useParams();
   const [data, setData] = useState();
@@ -33,8 +35,12 @@ const EditOrganization = () => {
           <div className={styles.EditOrganization}>
             <SectionTitle value="Edit Your Organization" />
             <div className={styles.Container}>
-              <Accordion title={"Name"}></Accordion>
-              <Accordion title={"Edit Logo"}><UploadNewImage id={id} oldUrl={data[0].logoUrl}/></Accordion>
+              <Accordion title={"Name"}>
+                <EditNameOrganization id={id} Name={data[0].name} />
+              </Accordion>
+              <Accordion title={"Edit Logo"}>
+                <UploadNewImage id={id} oldUrl={data[0].logoUrl} />
+              </Accordion>
               <Accordion title={"Edit Address"}>
                 <EditAddress id={id} Addresses={data[0].addresses} />
               </Accordion>
@@ -43,7 +49,7 @@ const EditOrganization = () => {
               </Accordion>
               <Accordion title={"Manage Courses"}></Accordion>
               <Accordion title={"Manage Trainers"}></Accordion>
-              <Accordion title={"Manage Photos"}></Accordion>
+              <Accordion title={"Manage Photos"}><ManagePhotos id={id}/></Accordion>
             </div>
           </div>
           <Footer />

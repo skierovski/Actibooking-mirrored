@@ -5,6 +5,7 @@ import { useState } from "react";
 import TrainersBody from "./TrainersBody/TrainersBody";
 import AdressBody from "./AdressBody/AdressBody";
 import CoursesBody from "./CoursesBody/CoursesBody";
+import GalleriesBody from "./GalleriesBody/GalleriesBody";
 
 const SingleOrganizationContainer = (params) => {
   const [container, setContainer] = useState({
@@ -12,6 +13,7 @@ const SingleOrganizationContainer = (params) => {
     adress: false,
     courses: false,
     trainers: false,
+    gallery:false,
   });
 
   const ChangeContainer = (containerName) => {
@@ -33,6 +35,11 @@ const SingleOrganizationContainer = (params) => {
         return { ...prevState, trainers: containerName };
       });
     }
+    else if (containerName === "gallery") {
+      setContainer((prevState) => {
+        return { ...prevState, gallery: containerName };
+      });
+    }
   };
 
   const ClearContainer = () => {
@@ -41,6 +48,7 @@ const SingleOrganizationContainer = (params) => {
       adress: false,
       courses: false,
       trainers: false,
+      gallery:false,
     });
   };
 
@@ -72,6 +80,9 @@ const SingleOrganizationContainer = (params) => {
       )}
       {container.trainers && (
         <TrainersBody organizationDescription={organization.trainers} />
+      )}
+      {container.gallery && (
+        <GalleriesBody id={organization.id} organizationDescription={organization.gallery} />
       )}
     </div>
   );

@@ -10,11 +10,35 @@ const EditDescription = () => {
 export default EditDescription;
  */
 
-import React, { Component } from "react";
+import React, { useContext, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import styles from "./EditDescription.module.css";
+import CookiesContext from "../../../Context/cookies-context";
+import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
+import Input from "../../DefaultModels/Input/Input";
+import SuccessfullyRegisteredModal from "../../Authorization/AuthorizationModals/SuccessfullyRegisteredModal";
 
 const EditDescription = (props) => {
+  const [description, setDesciption] = useState();
+
+  const cookies_ctx = useContext(CookiesContext);
+  const [isSuccessfull, setIsSuccessfull] = useState();
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    let userData = {
+      id: props.id,
+      description: description,
+    };
+    PutDataHandler(
+      "https://localhost:7127/api/Organizations/update-description",
+      userData,
+      cookies_ctx.GetCookie("token")
+    );
+    setIsSuccessfull(true);
+  };
+
   return (
     <div className="EditDescription">
       <CKEditor
@@ -26,7 +50,7 @@ const EditDescription = (props) => {
         }}
         onChange={(event, editor) => {
           const data = editor.getData();
-          console.log({ event, editor, data });
+          setDesciption(data);
         }}
         onBlur={(event, editor) => {
           console.log("Blur.", editor);
@@ -35,6 +59,14 @@ const EditDescription = (props) => {
           console.log("Focus.", editor);
         }}
       />
+
+      <form onSubmit={onSubmitHandler}>
+        <div className={styles.login_actions}>
+          <button className={styles.create_button} type="submit">
+            Edit Description
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
