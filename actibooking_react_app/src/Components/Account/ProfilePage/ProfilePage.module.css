@@ -105,7 +105,9 @@ span {
 .ProfileButton {
   background: #518e48bd;
   border: none;
-  
+  margin: 2vh;
 }
-
-
+.ProfileButton:hover {
+  background: #76b56ebd;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.155);
+}

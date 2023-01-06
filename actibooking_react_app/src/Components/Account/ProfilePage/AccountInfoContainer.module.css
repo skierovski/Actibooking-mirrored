@@ -4,3 +4,6 @@
     flex-direction: row;
     justify-content: space-between;
   }
+.infoList{
+  padding: 3vh;
+}

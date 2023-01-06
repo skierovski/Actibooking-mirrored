@@ -15,9 +15,10 @@ import LoadingScreen from "../DefaultModels/LoadingScreen/LoadingScreen";
 
 const AccountPage = () => {
   const {id}=useParams();
-  const [userData, setData] = useState();
   const [body, setBody] = useState();
+  const [userData, setData] = useState();
   const [editUserPhoto, setEditUserPhoto] = useState();
+  const [addChildModal, setAddChildModal] = useState(false);
   const cookies_ctx = useContext(CookiesContext);
   
   useEffect(()=>{
@@ -32,14 +33,21 @@ const AccountPage = () => {
   },100)
   }
 
+  const ReloadData=()=>{
+    GetDataHandler(`https://localhost:7127/api/User/${id}`, setData)
+  }
+
   return (
     <AccountContext.Provider
     value={{
       userData,
       editUserPhoto,
+      addChildModal,
+      setAddChildModal,
       setBody,
       logOut,
-      setEditUserPhoto
+      setEditUserPhoto,
+      ReloadData
     }}>
     <Navibar/>
       {userData &&
