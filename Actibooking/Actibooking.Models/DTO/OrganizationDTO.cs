@@ -30,4 +30,21 @@ namespace Actibooking.Models
     {
         public int Id { get; set; }
     }
+
+    public class UpdateOrganizationNameDTO
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class UpdateOrganizationLogoDTO
+    {
+        public int Id { get; set; }
+        public string LogoUrl { get; set; }
+    }
+    public class UpdateOrganizationDescriptionDTO
+    {
+        public int Id { get; set; }
+        public string Description { get; set; }
+    }
 }

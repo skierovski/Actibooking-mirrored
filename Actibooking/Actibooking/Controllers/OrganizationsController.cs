@@ -88,5 +88,36 @@ namespace Actibooking.Controllers
             return Ok("Organization Updated");
         }
 
+        [HttpPut("update-name")]
+        public async Task<IActionResult> UpdateName([FromBody] UpdateOrganizationNameDTO updateOrganizationNameDTO)
+        {
+            var organization = await _uow.OrganizationRepo.GetAsync(filter: x => x.Id == updateOrganizationNameDTO.Id);
+            var editOrganization = organization.FirstOrDefault();
+            editOrganization.Name = updateOrganizationNameDTO.Name;
+            _uow.OrganizationRepo.Update(editOrganization);
+            await _uow.SaveChangesAsync();
+            return Ok();
+        }
+        [HttpPut("update-logo")]
+        public async Task<IActionResult> UpdateLogo([FromBody] UpdateOrganizationLogoDTO updateOrganizationLogoDTO)
+        {
+            var organization = await _uow.OrganizationRepo.GetAsync(filter: x => x.Id == updateOrganizationLogoDTO.Id);
+            var editOrganization = organization.FirstOrDefault();
+            editOrganization.LogoUrl = updateOrganizationLogoDTO.LogoUrl;
+            _uow.OrganizationRepo.Update(editOrganization);
+            await _uow.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPut("update-description")]
+        public async Task<IActionResult> UpdateDescription([FromBody] UpdateOrganizationDescriptionDTO updateOrganizationDescriptionDTO)
+        {
+            var organization = await _uow.OrganizationRepo.GetAsync(filter: x => x.Id == updateOrganizationDescriptionDTO.Id);
+            var editOrganization = organization.FirstOrDefault();
+            editOrganization.Description = updateOrganizationDescriptionDTO.Description;
+            _uow.OrganizationRepo.Update(editOrganization);
+            await _uow.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
