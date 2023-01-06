@@ -26,6 +26,10 @@ const AccountPage = () => {
     setBody({isProfilePage:true})
   },[id])
 
+  useEffect(() => {
+    GetDataHandler("", setData)
+  })
+
   const logOut = () =>{
     cookies_ctx.RemoveCookie('token');
     setTimeout(()=>{

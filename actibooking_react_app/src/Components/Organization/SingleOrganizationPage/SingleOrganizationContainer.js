@@ -4,6 +4,7 @@ import styles from "./SingleOrganizationContainer.module.css";
 import { useState } from "react";
 import TrainersBody from "./TrainersBody/TrainersBody";
 import AdressBody from "./AdressBody/AdressBody";
+import CoursesBody from "./CoursesBody/CoursesBody";
 
 const SingleOrganizationContainer = (params) => {
   const [container, setContainer] = useState({
@@ -67,7 +68,7 @@ const SingleOrganizationContainer = (params) => {
         <AdressBody organizationAdress={organization.addresses} />
       )}
       {container.courses && (
-        <DescriptionBody organizationDescription={organization.courses} />
+        <CoursesBody organizationDescription={organization.courses} />
       )}
       {container.trainers && (
         <TrainersBody organizationDescription={organization.trainers} />
