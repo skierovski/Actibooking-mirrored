@@ -1,5 +1,0 @@
-2022-11-09 20:28:24.066 +01:00 [INF] Now listening on: https://localhost:7127
-2022-11-09 20:28:24.118 +01:00 [INF] Now listening on: http://localhost:5127
-2022-11-09 20:28:24.125 +01:00 [INF] Application started. Press Ctrl+C to shut down.
-2022-11-09 20:28:24.125 +01:00 [INF] Hosting environment: Development
-2022-11-09 20:28:24.126 +01:00 [INF] Content root path: C:\Users\48512\Desktop\KURS_CODECOOL\Advanced\Actibooking\Actibooking\Actibooking\

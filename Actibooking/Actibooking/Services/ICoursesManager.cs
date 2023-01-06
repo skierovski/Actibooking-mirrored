@@ -11,5 +11,6 @@ namespace Actibooking.Services
         Task<bool> DeleteCourse(int courseId);
         Task<bool> UpdateCourse([FromQuery]CourseDTO courseDTO);
         Task<Dictionary<string, List<object>>> GetParticipantsCourse(int courseId);
+        Task<List<Course>> GetOrganizationCourses(int orgId);
     }
 }
