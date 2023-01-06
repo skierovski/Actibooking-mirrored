@@ -9,8 +9,8 @@ import ListOfOrganizations from "./Components/Organization/ListOfOrganizations/L
 import SingleOrganizationPage from "../src/Components/Organization/SingleOrganizationPage/SingleOrganizationPage";
 import EditOrganization from "./Components/EditOrganization/EditOrganization";
 import Input from "./Components/DefaultModels/Input/Input";
-
 const App = () => {
+
   const [cookies, setCookies, removeCookie] = useCookies();
 
   const GetCookie = (cookieName) => {

@@ -1,7 +1,7 @@
-.coursesConrainer {
+.coursesContainer {
     display: flex;
     width: 98%;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     text-align: center;
     height: auto;
@@ -14,4 +14,31 @@
     vertical-align: top;
     padding: 10px;
     gap: 10px;
+}
+
+.ImageTitle img {
+    width: 200px;
+    height: 200px;
+}
+
+.ImageTitle p{
+    font-size: 16px;
+    max-width: 200px;
+}
+
+.Information {
+    display: flex;
+    gap: 40px;
+    
+}
+
+.MiddleWrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex:1;
+}
+
+.Description {
 }

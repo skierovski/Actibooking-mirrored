@@ -25,12 +25,13 @@ const GoogleLogInPage = () => {
     }
 
     return(
-        <GoogleOAuthProvider clientId={clientId}>
+        <GoogleOAuthProvider  clientId={clientId}>
         <GoogleLogin
             onSuccess={ResponseSucces}
             onFailure={() => alert("Wrong email or password")}
-            useOneTap={true}
+            useOneTap={false}
             text= "continue_with"
+            scope= "https://www.googleapis.com/auth/calendar"
         />
         </GoogleOAuthProvider>
     )

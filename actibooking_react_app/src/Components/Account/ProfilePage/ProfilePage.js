@@ -7,6 +7,7 @@ import AccountInfoContainer from "./AccountInfoContaner";
 import AccountContext from "../../../Context/account-ctx";
 import SignUpPostDataHandler from "../../FetchMethods/PostMethods/SignUpPostDataHandler";
 import Backdrop from '../../DefaultModels/Backdrop/Backdrop';
+import ApiCalendar from 'react-google-calendar-api';
 
 const ProfilePage = () => {
   const account_ctx = useContext(AccountContext);
@@ -14,8 +15,6 @@ const ProfilePage = () => {
   const [modal, setModal] = useState(false);
   const children = account_ctx.userData.children ? account_ctx.userData.children : null;
   const isTrainer = account_ctx.userData.isTrainer;
-  console.log(children)
-  console.log(account_ctx)
 
   const onSubmitChild = (data) => {
     const addChildObject = {
