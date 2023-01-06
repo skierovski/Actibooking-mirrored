@@ -1,20 +1,38 @@
 import React, {  useContext, useEffect, useRef, useState } from "react";
 import { storage } from "../../../firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    listAll,
+    list,}
+   from "firebase/storage";
 import { v4 } from "uuid";
 import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
 import Input from "../../DefaultModels/Input/Input";
 import CookiesContext from "../../../Context/cookies-context";
-import styles from "./UploadNewImage.module.css";
-function UploadNewImage(props) {
+import styles from "./ManagePhotos.module.css";
+function ManagePhotos(props) {
   const [file, setFile] = useState();
   const [imageURL, setImageURL] = useState([]);
 
   const cookies_ctx = useContext(CookiesContext);
-  const enteredName = useRef();
+
 
   const [isSuccessfull, setIsSuccessfull] = useState();
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]);
 
+  const imagesListRef = ref(storage, `galery/${props.id}/`);
+  useEffect(() => {
+    listAll(imagesListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageUrls((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
 
   const saveFile = (e) => {
     setFile(e.target.files[0]);
@@ -22,10 +40,10 @@ function UploadNewImage(props) {
 
   const uploadFile = () => {
     if (file == null) return;
-    const imageRef = ref(storage, `images/${file.name + v4()}`);
+    const imageRef = ref(storage, `galery/${props.id}/${file.name + v4()}`);
     uploadBytes(imageRef, file).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
-        setImageURL(url);
+        setImageUrls((prev) => [...prev, url]);
       });
     });
     let userData = {
@@ -43,12 +61,13 @@ function UploadNewImage(props) {
 
   return (
     <>
-      <img className={styles.NewImage} src={props.oldUrl} alt="Old Logo" />
       <input type="file" onChange={saveFile} />
       <input type="button" value="upload" onClick={uploadFile} />
-      <img className={styles.NewImage} src={imageURL}></img>
+      {imageUrls.map((url) => {
+        return <img className={styles.NewImage} src={url} />;
+      })}
     </>
   );
 }
 
-export default UploadNewImage;
+export default ManagePhotos;
