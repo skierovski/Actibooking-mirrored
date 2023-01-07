@@ -25,7 +25,7 @@ const ProfilePage = () => {
           <div className={styles.Childs}>  
           {children?
           <>
-            {children.map(o => (<div>{o.name} {o.lastName}</div>))}
+            {children.map(o => (<div key={o.name}>{o.name} {o.lastName}</div>))}
             <button className={styles.ProfileButton} onClick={ () => account_ctx.setAddChildModal(true)} value="Add child">Add Child</button>
           </>
           : 

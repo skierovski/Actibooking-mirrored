@@ -1,55 +1,59 @@
-import styles from './SettingsPage.module.css';
-import SecurityPage from './SecurityPanel/SecurityPanel';
-import PutDataHandler from '../../FetchMethods/PutMethods/PutDataHandler';
-import Input from '../../DefaultModels/Input/Input';
-import { useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from "react";
+import AccountContext from "../../../Context/account-ctx";
+import Input from "../../DefaultModels/Input/Input";
+import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
+import styles from "./SettingsPage.module.css";
+import SectionTitle from "../../DefaultModels/Titles/SectionTitle";
+import { CgClose } from 'react-icons/cg';
 
-const SettingsPage = (props) => {
-    const enteredFirstName = useRef();
-    const enteredLastName = useRef();
-    const enteredBirthDate = useRef();
-    const enteredGender= useRef();
+const SettingsPage = () => {
+    const account_ctx = useContext(AccountContext);
+    const oldEmail = useRef();
+    const [newEmail, setNewEmail] = useState(null);
+    const oldPassword = useRef();
+    const [newPassword, setNewPassword] = useState(null);
+    
+
+    useEffect(()=>{
+        oldEmail.current.setDefaultValue(account_ctx.userData.email);
+    });
 
     const onSubmit = event => {
         event.preventDefault();
         let data = {
-            firstName:enteredFirstName.current.getValue(),
-            lastName:enteredLastName.current.getValue(),
-            birthDate:enteredBirthDate.current.getValue(),
-            gender:enteredGender.current.getValue(),
+            ActiBookingUserId: account_ctx.userData.id,
         };
-        data["ActiBookingUserId"] = props.id;
-        console.log(data);
-        PutDataHandler("https://localhost:7127/api/User",data);
+        if(newEmail && newEmail!=oldEmail.current.getValue() && !newPassword){
+            data.email = newEmail;
+        }
+        if(newPassword && newPassword!=oldPassword.current.getValue() && !newPassword){
+            data.email = newEmail;
+        }
+        PutDataHandler("https://localhost:7127/api/User", data);
     };
+
     return (
         <>
-        <div className={styles.Settings}>
-            <form onSubmit={onSubmit}>
-                <div className={styles.Inputs}>
-                <div className={styles.InputRow}>
-                    <Input id={1} type={'text'} label={"First name"} ref={enteredFirstName}/>
+        <form onSubmit={onSubmit}>
+            <SectionTitle value={"Change Your Email"}/>
+            <div className={styles.changeEmail}>
+                <div className={styles.changeEmailInputs}>
+                    <Input type="email" label="Old email" ref={oldEmail} readOnly={true}/>
+                    <Input type="email" label="New email" value={newEmail} onChange={(e)=>setNewEmail(e.target.value)}/>
+                    {newEmail && <CgClose size={20} className={styles.closeIcon} onClick={() => setNewEmail('')}/>}
                 </div>
-                <div className={styles.InputRow}>
-                    <Input id={2} type={'text'} label={"Last name"} ref={enteredLastName}/>
+                {newEmail && <button className={styles.saveButton} type="submit">Save</button>}
+            </div>
+            <SectionTitle value={"Change Your Password"}/>
+            <div className={styles.changePassword}>
+                <div className={styles.changePasswordInputs}>
+                    <Input type="password" label="Old password" ref={oldPassword}/>
+                    <Input type="password" label="New password" value={newPassword} onChange={(e)=>setNewPassword(e.target.value)} />
+                    {newPassword && <CgClose size={20} className={styles.closeIcon} onClick={() => setNewPassword('')}/>}
                 </div>
-                <div className={styles.InputRow}>
-                    <Input id={3} type={'date'} label={"Birth date"} ref={enteredBirthDate}/>
-                </div>
-                <div className={styles.InputRow}>
-                    <Input id={4} type={"select"} label={"Gender"} ref={enteredGender} options={["male", "female", "undefined"]}/>
-                    {/* <label>Gender:</label>
-                    <select onChange={e=>setEnteredGender(e.target.value)}>
-                        <option value="female">female</option>
-                        <option value="male">male</option>
-                        <option value="other">other</option>
-                    </select> */}
-                </div>
-                </div>
-                    <button type="submit">Submit</button>
-            </form>
-        </div>
-        <SecurityPage/>
+                {newPassword && <button className={styles.saveButton} type="submit">Save</button>}
+            </div>
+        </form>
         </>
     )
 }

@@ -9,7 +9,7 @@ const Button = (props) => {
     props.hrefStyle ? props.hrefStyle : "button-small"
   }`;
   return (
-    <div className={buttonContainerStyle}>
+    <div className={buttonContainerStyle} onClick={props.onClick}>
       <Link className={buttonHrefStyle} to={props.href}>
         {props.value}
       </Link>

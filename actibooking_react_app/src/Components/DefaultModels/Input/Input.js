@@ -57,7 +57,7 @@ const Input = React.forwardRef((props, ref) =>{
                 minLength={props.minLength}
                 maxLength={props.maxLength}
                 placeholder={props.placeholder}
-                readOnly={props.readOnly}
+                disabled={props.disabled}
                 >
                     {options.map(o => <option value={o}>{o}</option>)}
                 </select>
