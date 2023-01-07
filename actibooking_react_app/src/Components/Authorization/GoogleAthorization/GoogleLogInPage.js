@@ -6,15 +6,9 @@ import LogInPostDataHandler from "../../FetchMethods/PostMethods/LogInPostDataHa
 
 import { useEffect } from 'react';
 const GoogleLogInPage = () => {
-    const [tokenClient, setTokenClient] = useState({});
 
     const auth_ctx = useContext(AuthContext);
     const cookies_ctx = useContext(CookiesContext);
-
-
-    function GetAccesCalendar() {
-        tokenClient.requestAccessToken();
-    }
 
     function handleCallBackResponse(response) {
         console.log("Encodec JWT Token: " + response.credential);
@@ -41,14 +35,6 @@ const GoogleLogInPage = () => {
             document.getElementById('signInGoogle'),
             {theme: "outline", size: "large"}
         );
-        setTokenClient(google.accounts.oauth2.initTokenClient({
-            client_id: "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com",
-            scope: 'https://www.googleapis.com/auth/calendar.readonly',
-            callback: (response) => {
-              console.log(response)
-            }
-          })
-          );
     },[])
 
     return(
