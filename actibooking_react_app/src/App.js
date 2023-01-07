@@ -9,6 +9,8 @@ import ListOfOrganizations from "./Components/Organization/ListOfOrganizations/L
 import SingleOrganizationPage from "../src/Components/Organization/SingleOrganizationPage/SingleOrganizationPage";
 import EditOrganization from "./Components/EditOrganization/EditOrganization";
 import Input from "./Components/DefaultModels/Input/Input";
+import CalendarAuthorize from "./Components/Authorization/GoogleAthorization/CalendarAuthorize";
+
 const App = () => {
 
   const [cookies, setCookies, removeCookie] = useCookies();
@@ -45,6 +47,7 @@ const App = () => {
         }}
       >
         <Routes>
+          <Route path="/Magic" element={<CalendarAuthorize/>}/>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/Organizations" element={<ListOfOrganizations/>}/>
           <Route path="/Organizations/:id" element={<SingleOrganizationPage/>}/>
