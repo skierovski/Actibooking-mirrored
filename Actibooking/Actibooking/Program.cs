@@ -14,6 +14,7 @@ using Serilog;
 using Actibooking.Middleware;
 using System.Text.Json.Serialization;
 using Microsoft.Net.Http.Headers;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Actibooking
 {
@@ -74,6 +75,7 @@ namespace Actibooking
             builder.Services.AddScoped<ICoursesManager, CourseManager>();
             builder.Services.AddScoped<ITrainerManager, TrainerManager>();
             builder.Services.AddScoped<IOrganizationManager, OrganizationManager>();
+            builder.Services.AddScoped<IRepo<GoogleAuth>, DataRepository<GoogleAuth>>();
 
             builder.Services.AddAuthentication(o => {
                 o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -115,7 +117,13 @@ namespace Actibooking
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI( c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Actibooking V1");
+                    c.RoutePrefix = string.Empty;
+                    c.DisplayRequestDuration();
+                    c.SupportedSubmitMethods(SubmitMethod.Put, SubmitMethod.Get, SubmitMethod.Post, SubmitMethod.Delete, SubmitMethod.Head, SubmitMethod.Options, SubmitMethod.Patch);
+                });
             }
 
             app.UseMiddleware<ExceptionMiddleware>();

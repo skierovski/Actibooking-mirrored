@@ -12,7 +12,7 @@ namespace Actibooking.Data.Repository
     {
         private readonly ActibookingDBContex _ctx;
         public UnitOfWork(ActibookingDBContex ctx, IRepo<Organization> organizationRepo,
-            IRepo<Course> courseRepo, IRepo<Address> adressRepo, IRepo<CourseTag> courseTag, IRepo<OrganizationType> organizationType, IRepo<Child> childRepo, IRepo<Trainer> trainer, IRepo<ActiBookingUser> userRepo, IRepo<Participant> participantRepo, IRepo<Rating> ratingRepo)
+            IRepo<Course> courseRepo, IRepo<Address> adressRepo, IRepo<CourseTag> courseTag, IRepo<OrganizationType> organizationType, IRepo<Child> childRepo, IRepo<Trainer> trainer, IRepo<ActiBookingUser> userRepo, IRepo<Participant> participantRepo, IRepo<Rating> ratingRepo, IRepo<GoogleAuth> googleRepo)
         {
             _ctx = ctx;
             OrganizationRepo = organizationRepo;
@@ -25,6 +25,8 @@ namespace Actibooking.Data.Repository
             UserRepo = userRepo;
             ParticipantRepo = participantRepo;
             RatingRepo = ratingRepo;
+            GoogleRepo = googleRepo;
+
         }
         public virtual void Dispose(bool disposing)
         {
@@ -48,6 +50,7 @@ namespace Actibooking.Data.Repository
         public IRepo<CourseTag> CourseTagRepo { get; }
         public IRepo<Rating> RatingRepo { get; }
         public IRepo<OrganizationType> OrganizationTypeRepo { get; }
+        public IRepo<GoogleAuth> GoogleRepo { get; }
 
         public async Task SaveChangesAsync()
         {

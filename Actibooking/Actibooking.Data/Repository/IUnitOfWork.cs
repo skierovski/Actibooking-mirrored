@@ -20,6 +20,7 @@ namespace Actibooking.Data.Repository
         IRepo<Child> ChildRepo { get; }
         IRepo<Trainer> TrainerRepo { get; }
         IRepo<Rating> RatingRepo { get; }
+        IRepo<GoogleAuth> GoogleRepo { get; }
 
         Task SaveChangesAsync();
     }
