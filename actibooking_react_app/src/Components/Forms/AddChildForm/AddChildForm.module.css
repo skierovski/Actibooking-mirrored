@@ -3,4 +3,14 @@
     flex-direction: column;
     align-items: center;
   }
-  
+.addChildButton{
+  border: none;
+  background: #518e48;
+  padding: 1vh;
+  border-radius: 10px;
+  min-width: 5vw;
+}
+.addChildButton:hover{
+  cursor: pointer;
+  background: #67ad5c;
+}

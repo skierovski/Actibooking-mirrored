@@ -28,10 +28,10 @@ const AddChildForm = () => {
 
     return (
         <form onSubmit={onSubmitChild} className={styles.addChildForm}>
-            <Input id={1} type={'text'} label={"First name"} ref={enteredFirstName}/>
-            <Input id={2} type={'text'} label={"Last name"} ref={enteredLastName}/>
-            <Input id={3} type={'date'} label={"Birth date"} ref={enteredBirthDate}/>
-            <button type="submit">Add child</button>
+            <Input label={"First name"} ref={enteredFirstName}/>
+            <Input label={"Last name"} ref={enteredLastName}/>
+            <Input type={'date'} label={"Birth date"} ref={enteredBirthDate}/>
+            <button className={styles.addChildButton} type="submit">Add child</button>
         </form>
     )
 }

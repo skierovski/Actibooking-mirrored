@@ -11,6 +11,7 @@ import SettingsPage from "./SettingsPage/SettingsPage";
 import NavigationBar from "./NavigationBar/NavigationBar";
 import CookiesContext from "../../Context/cookies-context";
 import GetDataHandler from "../FetchMethods/GetDataHandler";
+import Footer from "../Footer/Footer";
 import LoadingScreen from "../DefaultModels/LoadingScreen/LoadingScreen";
 
 const AccountPage = () => {
@@ -42,33 +43,36 @@ const AccountPage = () => {
   }
 
   return (
-    <AccountContext.Provider
-    value={{
-      userData,
-      editUserPhoto,
-      addChildModal,
-      setAddChildModal,
-      setBody,
-      logOut,
-      setEditUserPhoto,
-      ReloadData
-    }}>
-    <Navibar/>
-      {userData &&
-        <div className={styles.Wrapper}>
-          <div className={styles.LeftColumn}>
-            <ImageAndName/>
-            <NavigationBar/>
-          </div>
-          <div className={styles.Container}>
-            {body.isProfilePage && <ProfilePage/>}
-            {body.isCoursesPage && <CoursesPage/>}
-            {body.isSettingsPage && <SettingsPage id={id}/>}
-            {body.isTrainerPage && <TrainerPage/>}
-          </div>
-        </div>}
-      {!userData && <LoadingScreen/>}
-    </AccountContext.Provider>
+    <>
+      <AccountContext.Provider
+      value={{
+        userData,
+        editUserPhoto,
+        addChildModal,
+        setAddChildModal,
+        setBody,
+        logOut,
+        setEditUserPhoto,
+        ReloadData
+      }}>
+      <Navibar/>
+        {userData &&
+          <div className={styles.Wrapper}>
+            <div className={styles.LeftColumn}>
+              <ImageAndName/>
+              <NavigationBar/>
+            </div>
+            <div className={styles.Container}>
+              {body.isProfilePage && <ProfilePage/>}
+              {body.isCoursesPage && <CoursesPage/>}
+              {body.isSettingsPage && <SettingsPage id={id}/>}
+              {body.isTrainerPage && <TrainerPage/>}
+            </div>
+          </div>}
+        {!userData && <LoadingScreen/>}
+      </AccountContext.Provider>
+      <Footer/>
+    </>
     );
 };
 
