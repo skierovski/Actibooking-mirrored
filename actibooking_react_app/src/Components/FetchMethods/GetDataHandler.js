@@ -1,5 +1,5 @@
-const GetDataHandler = (url, setMethod, token = null) => {
-    fetch(url,{
+const GetDataHandler = async (url, setMethod, token = null) => {
+    await fetch(url,{
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`

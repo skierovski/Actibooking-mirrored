@@ -1,12 +1,12 @@
 import styles from "./CoursesBody.module.css";
 import buttonStyles from "../../../Account/ProfilePage/ProfilePage.module.css"
 import CookiesContext from "../../../../Context/cookies-context";
-import { useContext, useEffect } from "react";
+import {  useContext } from "react";
 import SignUpPostDataHandler from "../../../FetchMethods/PostMethods/SignUpPostDataHandler";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import OrganizationContext from "../../../../Context/organization-context";
-import ApiCalendar from 'react-google-calendar-api';
+import GetDataHandler from "../../../FetchMethods/GetDataHandler"
 
 const CorsesBody = (props) => {
   const courses = props.organizationDescription; 
@@ -14,35 +14,19 @@ const CorsesBody = (props) => {
   const token = cookies_ctx.GetCookie("token")
   const userId = cookies_ctx.DecodeToken(token)
   const organization_ctx = useContext(OrganizationContext);
-  const config = {
-    "clientId": "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com",
-    "apiKey": "AIzaSyAW8PfRgim8H_FFQ2NwG2wyFqRJzXlf4X8",
-    "scope": "https://www.googleapis.com/auth/calendar",
-    "discoveryDocs": [
-      "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"
-    ]
-  }
-  const apiCalendar = new ApiCalendar(config)
 
-  const AddUser = (id, name, duration) => {
+
+
+
+
+  const AddUser = async (id, name, date, description) => {
     console.log(id)
     const data = {
       courseId: id,
       actiBookingUserId: userId.uid
     }
-    SignUpPostDataHandler('https://localhost:7127/api/User/Add-user-to-course',data, ResponseHandler)
-    const eventFromNow = {
-      summary: name,
-      time: duration,
-    };
-    apiCalendar.handleAuthClick(config)
-    apiCalendar.createEventFromNow(eventFromNow)
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    await SignUpPostDataHandler('https://localhost:7127/api/User/Add-user-to-course',data, ResponseHandler)
+    await GetDataHandler(`https://localhost:7127/api/Account/CreateEvent/${userId.uid}`)
   }
 
   const ResponseHandler = (props) => {
@@ -73,7 +57,7 @@ const CorsesBody = (props) => {
         {o.participant ? <p>Free slots:{o.maxNumbersOfParticipants}</p> : <p>Free slots:{o.maxNumbersOfParticipants}</p>}
         </div>
         </div>
-        <button className={buttonStyles.ProfileButton} onClick={() => AddUser(o.id, o.name, o.duration)} >Book slot</button>
+        <button className={buttonStyles.ProfileButton} onClick={() => AddUser(o.id, o.name, o.duration, o.date, o.description)} >Book slot</button>
       </div>
      ))}
      <ToastContainer />
