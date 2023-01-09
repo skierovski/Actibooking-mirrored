@@ -6,7 +6,7 @@ import SignUpPostDataHandler from "../../../FetchMethods/PostMethods/SignUpPostD
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import OrganizationContext from "../../../../Context/organization-context";
-import GetDataHandler from "../../../FetchMethods/GetDataHandler"
+import LogInPostDataHandler from "../../../FetchMethods/PostMethods/LogInPostDataHandler";
 
 const CorsesBody = (props) => {
   const courses = props.organizationDescription; 
@@ -19,14 +19,22 @@ const CorsesBody = (props) => {
 
 
 
-  const AddUser = async (id, name, date, description) => {
+  const AddUser = async (id, name, duration, date, description, hour) => {
     console.log(id)
     const data = {
       courseId: id,
       actiBookingUserId: userId.uid
     }
+    const eventData = {
+      name: name,
+      date, date,
+      description: description,
+      hour: hour,
+      duration: duration,
+      actiBookingUserId: userId.uid
+    }
     await SignUpPostDataHandler('https://localhost:7127/api/User/Add-user-to-course',data, ResponseHandler)
-    await GetDataHandler(`https://localhost:7127/api/Account/CreateEvent/${userId.uid}`)
+    await LogInPostDataHandler(`https://localhost:7127/api/Account/CreateEvent`, eventData)
   }
 
   const ResponseHandler = (props) => {
@@ -54,10 +62,11 @@ const CorsesBody = (props) => {
         <p>Maximum Age: {o.maxAge}</p>
         <p>Date: {o.date} </p>
         <p>Day Of Week: {o.dayOfWeek} </p>
+        <p>Hour: {o.hour}:00</p>
         {o.participant ? <p>Free slots:{o.maxNumbersOfParticipants}</p> : <p>Free slots:{o.maxNumbersOfParticipants}</p>}
         </div>
         </div>
-        <button className={buttonStyles.ProfileButton} onClick={() => AddUser(o.id, o.name, o.duration, o.date, o.description)} >Book slot</button>
+        <button className={buttonStyles.ProfileButton} onClick={() => AddUser(o.id, o.name, o.duration, o.date, o.description, o.hour)} >Book slot</button>
       </div>
      ))}
      <ToastContainer />
