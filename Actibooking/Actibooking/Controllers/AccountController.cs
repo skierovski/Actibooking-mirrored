@@ -16,6 +16,7 @@ using Google.Apis.Util.Store;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace Actibooking.Controllers
 {
@@ -122,11 +123,10 @@ namespace Actibooking.Controllers
         private async Task<bool> CalendarAuthAsync(string userId)
         {
             UserCredential credential = (await GoogleWebAuthorizationBroker.AuthorizeAsync(
-    new ClientSecrets { ClientId = "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com", ClientSecret = "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" },
-    new string[] {CalendarService.Scope.Calendar}, // Whatever scopes you need here.
-    "user",
-    default)) as UserCredential;
-
+   new ClientSecrets { ClientId = "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com", ClientSecret = "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" },
+   new string[] { CalendarService.Scope.Calendar }, // Whatever scopes you need here.
+   "user",
+   default)) as UserCredential;
             // TokenResponse contains the tokens, access token expiry time etc.
             TokenResponse token = credential.Token;
             GoogleAuth googleAuth = new GoogleAuth() { accessToken = token.AccessToken, refreshTokem = token.RefreshToken, ActibookingUserId = userId };
@@ -134,15 +134,15 @@ namespace Actibooking.Controllers
             await _uow.SaveChangesAsync();
             return true;
         }
-        [HttpGet("CreateEvent/{userId}")]
-        public async Task<IActionResult> CreateEvent(string userId)
+        [HttpPost("CreateEvent")]
+        public async Task<IActionResult> CreateEvent(GoogleCalendarDTO googleCalendarDTO)
         {
-            var userGoogleInfo = await _uow.GoogleRepo.GetAsync(filter: x => x.ActibookingUserId == userId);
+            var userGoogleInfo = await _uow.GoogleRepo.GetAsync(filter: x => x.ActibookingUserId == googleCalendarDTO.ActiBookingUserId);
             var userGoogle = userGoogleInfo.FirstOrDefault();
             if (userGoogle == null)
             {
-                await CalendarAuthAsync(userId);
-                userGoogleInfo = await _uow.GoogleRepo.GetAsync(filter: x => x.ActibookingUserId == userId);
+                await CalendarAuthAsync(googleCalendarDTO.ActiBookingUserId);
+                userGoogleInfo = await _uow.GoogleRepo.GetAsync(filter: x => x.ActibookingUserId == googleCalendarDTO.ActiBookingUserId);
                 userGoogle = userGoogleInfo.FirstOrDefault();
             }
 
@@ -162,22 +162,23 @@ namespace Actibooking.Controllers
             CalendarService calendarService = new CalendarService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = credential,
-                ApplicationName = "Calendar API Sample"
+                ApplicationName = "Actibooking"
             });
+
 
             Event newEvent = new Event()
             {
-                Summary = "New Event",
+                Summary = googleCalendarDTO.Name,
                 Location = "Somewhere",
-                Description = "This is a new event.",
+                Description = googleCalendarDTO.Description,
                 Start = new EventDateTime()
                 {
-                    DateTime = DateTime.Now,
+                    DateTime = DateTime.ParseExact($"2023-01-10 {googleCalendarDTO.Hour}:00", "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture),
                     TimeZone = "UTC"
                 },
                 End = new EventDateTime()
                 {
-                    DateTime = DateTime.Now.AddHours(1),
+                    DateTime = DateTime.ParseExact($"2023-01-10 {googleCalendarDTO.Hour}:00", "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture).AddMinutes(googleCalendarDTO.Duration),
                     TimeZone = "UTC"
                 },
                 Recurrence = new String[] { "RRULE:FREQ=DAILY;COUNT=1" },

@@ -17,4 +17,15 @@ namespace Actibooking.Models.DTO
         public string UserId { get; set; }
         public string Token { get; set; }
     }
+
+    public class GoogleCalendarDTO
+    {
+        public string ActiBookingUserId { get; set; }
+        public string Date { get; set; }
+        public int Duration { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Hour { get; set; }
+
+    }
 }
