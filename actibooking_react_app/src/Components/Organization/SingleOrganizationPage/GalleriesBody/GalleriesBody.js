@@ -8,8 +8,11 @@ import {
   listAll,
   list,
 } from "firebase/storage";
+import Gallery from "./Gallery";
+import FullImg from "./FullImg";
 
 const GalleriesBody = (props) => {
+  const [selectedImg, setSelectedImg] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
   const imagesListRef = ref(storage, `galery/${props.id}/`);
   const image = []
@@ -27,8 +30,12 @@ const GalleriesBody = (props) => {
       });
     });
   }, []);
+
+  console.log(selectedImg)
   return (
     <div className={styles.trainersContainer}>
+      <Gallery urls={imageUrls} setSelectedImg={setSelectedImg}/>
+      {selectedImg && <FullImg selectedImg={selectedImg} setSelectedImg={setSelectedImg}/> }
       {/* {organizationTrainers.map(t => <div>{t.name}</div>)} */}
 {/*       <Gallery {...{image, widths, ratios}} /> */}
 {/*       {imageUrls.map((url) => {

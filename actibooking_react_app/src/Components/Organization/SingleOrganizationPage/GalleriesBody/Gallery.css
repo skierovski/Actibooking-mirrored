@@ -1,0 +1,22 @@
+.img-grid{
+    margin:  20px auto;
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr;
+    grid-gap: 40px;
+}
+
+.img-wrap{
+    overflow: hidden;
+    height: 0;
+    padding: 50% 0;
+    position: relative;
+    opacity: 0.8;
+}
+
+.img-gallery{
+
+    max-width: 20vw;
+
+    border: 3px solid #518e48;
+    border-radius: 10px;
+}
