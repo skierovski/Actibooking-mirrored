@@ -1,4 +1,4 @@
-const GetDataHandler = async (url, setMethod, token = null) => {
+const GetDataHandler = async  (url, setMethod, token = null) => {
     await fetch(url,{
         headers: {
             "Content-Type": "application/json",

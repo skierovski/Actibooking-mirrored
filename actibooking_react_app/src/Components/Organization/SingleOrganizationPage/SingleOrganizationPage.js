@@ -2,34 +2,29 @@ import Footer from "../../Footer/Footer";
 import Navibar from "../../Navibar/Navibar";
 import { useParams } from "react-router-dom";
 import SingleOrganizationContainer from "./SingleOrganizationContainer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GetDataHandler from "../../FetchMethods/GetDataHandler";
 import OrganizationContext from "../../../Context/organization-context";
 
 const SingleOrganizationPage = () => {
   const { id } = useParams();
   const [data, setData] = useState();
-  const GetData = () => {
-    GetDataHandler(
+  const newData = {}
+
+  const GetData = async () => {
+    await GetDataHandler(
       `https://localhost:7127/api/Organizations/${id}`,
-      ResponseHandler
+      setData
     );
   };
 
-  const ResponseHandler = (props) => {
-    setData(props);
-  };
+ 
 
-  const RefreshData = () => {
-    GetData()
-  }
-
-  console.log(data)
 
   return (
     <>
     <OrganizationContext.Provider value={{
-      RefreshData
+      GetData
     }}>
       {data && (
         <>

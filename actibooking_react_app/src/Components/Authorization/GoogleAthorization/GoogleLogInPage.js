@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import AuthContext from '../../../Context/auth-context';
 import CookiesContext from '../../../Context/cookies-context';
-import { useState } from 'react';
 import LogInPostDataHandler from "../../FetchMethods/PostMethods/LogInPostDataHandler"
+import { ToastContainer, toast } from 'react-toastify';
 
 import { useEffect } from 'react';
 const GoogleLogInPage = () => {
@@ -22,7 +22,6 @@ const GoogleLogInPage = () => {
               cookies_ctx.SetCookie("token", token, "/", 'httpOnly');
               auth_ctx.closeModal();
           }
-          else alert("Wrong email or password");
       }
     useEffect(() => {
         /* global google */
@@ -38,7 +37,10 @@ const GoogleLogInPage = () => {
     },[])
 
     return(
+        <>
         <div id="signInGoogle"></div>
+        < ToastContainer/>
+        </>
 
     )
 }
