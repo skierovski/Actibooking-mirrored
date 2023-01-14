@@ -66,6 +66,8 @@ const SingleOrganizationContainer = (params) => {
         </div>
         <div className={styles.mainInfoContainer}>
           <div className={styles.nameContainer}>{organization.name}</div>
+          <div className={styles.addressContainer}>{organization.addresses.zipcode} {organization.addresses.city} </div>
+          <div className={styles.addressContainer}>{organization.addresses.street} {organization.addresses.streetNumber} </div>
         </div>
       </div>
       <OrganizationNavbar changeContainer={ChangeContainer} />

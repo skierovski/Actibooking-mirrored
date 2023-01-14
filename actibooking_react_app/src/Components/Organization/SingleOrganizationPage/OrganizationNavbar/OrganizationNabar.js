@@ -17,7 +17,7 @@ const OrganizationNavbar = (props) => {
           props.changeContainer("adress");
         }}
       >
-        Adress
+        Location
       </div>
       <div
         className={styles.listItem}

@@ -51,7 +51,7 @@ const CorsesBody = (props) => {
     <>
     {courses.map(o => (      
       <div className={styles.coursesContainer}> 
-        <div className={styles.ImageTitle}><img src={o.imageUrl}></img>
+        <div className={styles.ImageTitle}>{/* <img src={o.imageUrl}></img> */}
         <p>{o.name}</p>
         </div>
         <div className={styles.MiddleWrapper}>

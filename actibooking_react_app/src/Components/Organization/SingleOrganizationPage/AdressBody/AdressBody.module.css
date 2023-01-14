@@ -21,3 +21,8 @@
   width: 100%;
   display: block;
 }
+
+.mapContainer {
+  width: 60vw;
+  height: 50%;
+}

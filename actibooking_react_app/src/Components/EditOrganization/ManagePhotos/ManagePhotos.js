@@ -12,12 +12,15 @@ import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
 import Input from "../../DefaultModels/Input/Input";
 import CookiesContext from "../../../Context/cookies-context";
 import styles from "./ManagePhotos.module.css";
+import Img from "./Img";
+import Gallery from "../../Organization/SingleOrganizationPage/GalleriesBody/Gallery";
+import Gallery2 from "./Gallery2";
 function ManagePhotos(props) {
   const [file, setFile] = useState();
   const [imageURL, setImageURL] = useState([]);
 
   const cookies_ctx = useContext(CookiesContext);
-
+  const [selectedImg, setSelectedImg] = useState(null);
 
   const [isSuccessfull, setIsSuccessfull] = useState();
   const [imageUpload, setImageUpload] = useState(null);
@@ -63,9 +66,8 @@ function ManagePhotos(props) {
     <>
       <input type="file" onChange={saveFile} />
       <input type="button" value="upload" onClick={uploadFile} />
-      {imageUrls.map((url) => {
-        return <img className={styles.NewImage} src={url} />;
-      })}
+      <Gallery2 urls={imageUrls} setSelectedImg={setSelectedImg}/>
+
     </>
   );
 }
