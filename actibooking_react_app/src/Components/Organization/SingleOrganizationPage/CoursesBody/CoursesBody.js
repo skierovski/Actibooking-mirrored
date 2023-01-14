@@ -10,6 +10,7 @@ import LogInPostDataHandler from "../../../FetchMethods/PostMethods/LogInPostDat
 
 const CorsesBody = (props) => {
   const courses = props.organizationDescription; 
+  console.log(courses)
   const cookies_ctx = useContext(CookiesContext) 
   const token = cookies_ctx.GetCookie("token")
   const userId = cookies_ctx.DecodeToken(token)
@@ -39,12 +40,17 @@ const CorsesBody = (props) => {
 
   const ResponseHandler = (props) => {
     console.log(props)
-    props.ok ? toast.success("You Sign Up for Course",{
-      position: toast.POSITION.TOP_CENTER
-    }): toast.warn("Something went wrong",{
-      position: toast.POSITION.TOP_CENTER
-    })
-    organization_ctx.RefreshData()
+    if(props.ok){
+      toast.success("You Sign Up for Course",{
+        position: toast.POSITION.TOP_CENTER
+      })
+      setTimeout(() => organization_ctx.GetData(), 2000)
+    }
+    else{
+      toast.warn("Something went wrong",{
+        position: toast.POSITION.TOP_CENTER
+      })
+    }
   }
 
   return(
@@ -63,7 +69,7 @@ const CorsesBody = (props) => {
         <p>Date: {o.date} </p>
         <p>Day Of Week: {o.dayOfWeek} </p>
         <p>Hour: {o.hour}:00</p>
-        {o.participant ? <p>Free slots:{o.maxNumbersOfParticipants}</p> : <p>Free slots:{o.maxNumbersOfParticipants}</p>}
+        <p>Free slots:{o.maxNumbersOfParticipants - o.numberOfParticipants}</p>
         </div>
         </div>
         <button className={buttonStyles.ProfileButton} onClick={() => AddUser(o.id, o.name, o.duration, o.date, o.description, o.hour)} >Book slot</button>

@@ -9,9 +9,9 @@ import GalleriesBody from "./GalleriesBody/GalleriesBody";
 
 const SingleOrganizationContainer = (params) => {
   const [container, setContainer] = useState({
-    description: true,
+    description: false,
     adress: false,
-    courses: false,
+    courses: true,
     trainers: false,
     gallery:false,
   });
