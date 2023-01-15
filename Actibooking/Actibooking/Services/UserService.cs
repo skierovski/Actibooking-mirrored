@@ -69,10 +69,18 @@ namespace Actibooking.Services
             Course course = await _uow.CourseRepo.GetByIdAsync(addingUserToCourse.CourseId);
             CheckIsNull("Course not found", course, addingUserToCourse.CourseId);
 
-
-                Participant participant = new Participant() { ActiBookingUserId = user.Id, CourseId = course.Id };
-                user.Participants = new List<Participant>() { participant };
-                await _uow.SaveChangesAsync();
+            if (course.NumberOfParticipants == null)
+            {
+                course.NumberOfParticipants = 1;
+            }
+            else
+            {
+                course.NumberOfParticipants++;
+            }
+            _uow.CourseRepo.Update(course);
+            Participant participant = new Participant() { ActiBookingUserId = user.Id, CourseId = course.Id };
+            user.Participants = new List<Participant>() { participant };
+            await _uow.SaveChangesAsync();
 
         }
 

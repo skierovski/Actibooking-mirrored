@@ -27,6 +27,8 @@ namespace Actibooking.Models
 
         public int? Duration { get; set; }
 
+        public int? NumberOfParticipants { get; set; }
+
         public bool IsArchive { get; set; }
         public int? maxAge { get; set; }
         public int? minAge { get; set; }
