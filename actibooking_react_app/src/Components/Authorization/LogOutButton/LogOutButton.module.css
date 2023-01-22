@@ -1,4 +1,18 @@
 .button{
     background-color: brown;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.7vw;
+    font-style: normal;
+    font-weight: 300;
+    padding: 6px 6px;
+    text-decoration: none;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
     padding:none;
+    border: 0px;
 }
