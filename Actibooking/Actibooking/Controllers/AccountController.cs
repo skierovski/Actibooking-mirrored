@@ -173,12 +173,12 @@ namespace Actibooking.Controllers
                 Description = googleCalendarDTO.Description,
                 Start = new EventDateTime()
                 {
-                    DateTime = DateTime.ParseExact($"{googleCalendarDTO.Date} {googleCalendarDTO.Hour}:00", "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture),
+                    DateTime = DateTime.ParseExact($"2023-01-22 {googleCalendarDTO.Hour}:00", "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture),
                     TimeZone = "UTC"
                 },
                 End = new EventDateTime()
                 {
-                    DateTime = DateTime.ParseExact($"{googleCalendarDTO.Date} {googleCalendarDTO.Hour}:00", "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture).AddMinutes(googleCalendarDTO.Duration),
+                    DateTime = DateTime.ParseExact($"2023-01-22 {googleCalendarDTO.Hour}:00", "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture).AddMinutes(googleCalendarDTO.Duration),
                     TimeZone = "UTC"
                 },
                 Recurrence = new String[] { "RRULE:FREQ=DAILY;COUNT=1" },
