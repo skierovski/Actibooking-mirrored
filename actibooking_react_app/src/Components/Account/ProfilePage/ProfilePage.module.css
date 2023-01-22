@@ -108,10 +108,16 @@ span {
   padding: 1vh;
   border-radius: 10px;
   margin: 2vh;
+  text-decoration: none;
+  color: black;
 }
 
 
 .ProfileButton:hover {
   cursor: pointer;
   background: #67ad5c;
+  color: black;
+}
+.Test{
+  margin-top: 20px;
 }

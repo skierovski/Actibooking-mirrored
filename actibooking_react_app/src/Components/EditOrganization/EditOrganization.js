@@ -11,6 +11,7 @@ import EditAddress from "../Forms/EditAddress/EditAddress";
 import UploadNewImage from "./UploadNewImage/UploadNewImage";
 import EditNameOrganization from "../Forms/EditNameOrganization/EditNameOrganization";
 import ManagePhotos from "./ManagePhotos/ManagePhotos";
+import Button from "../DefaultModels/Buttons/Button";
 const EditOrganization = () => {
   const { id } = useParams();
   const [data, setData] = useState();
@@ -35,6 +36,7 @@ const EditOrganization = () => {
           <div className={styles.EditOrganization}>
             <SectionTitle value="Edit Your Organization" />
             <div className={styles.Container}>
+              <Button value="Show Organization" href="/Organizations/6" />
               <Accordion title={"Name"}>
                 <EditNameOrganization id={id} Name={data[0].name} />
               </Accordion>
@@ -49,7 +51,9 @@ const EditOrganization = () => {
               </Accordion>
               <Accordion title={"Manage Courses"}></Accordion>
               <Accordion title={"Manage Trainers"}></Accordion>
-              <Accordion title={"Manage Photos"}><ManagePhotos id={id}/></Accordion>
+              <Accordion title={"Manage Photos"}>
+                <ManagePhotos id={id} />
+              </Accordion>
             </div>
           </div>
           <Footer />

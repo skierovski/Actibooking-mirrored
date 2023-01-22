@@ -6,7 +6,7 @@ import TrainersBody from "./TrainersBody/TrainersBody";
 import AdressBody from "./AdressBody/AdressBody";
 import CoursesBody from "./CoursesBody/CoursesBody";
 import GalleriesBody from "./GalleriesBody/GalleriesBody";
-
+import Button from "../../DefaultModels/Buttons/Button";
 const SingleOrganizationContainer = (params) => {
   const [container, setContainer] = useState({
     description: false,
@@ -68,6 +68,7 @@ const SingleOrganizationContainer = (params) => {
           <div className={styles.nameContainer}>{organization.name}</div>
           <div className={styles.addressContainer}>{organization.addresses.zipcode} {organization.addresses.city} </div>
           <div className={styles.addressContainer}>{organization.addresses.street} {organization.addresses.streetNumber} </div>
+          <Button value="Edit" href={`/Edit/Organization/${organization.id}`}></Button>
         </div>
       </div>
       <OrganizationNavbar changeContainer={ChangeContainer} />
