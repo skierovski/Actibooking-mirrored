@@ -123,7 +123,7 @@ namespace Actibooking.Controllers
         private async Task<bool> CalendarAuthAsync(string userId)
         {
             UserCredential credential = (await GoogleWebAuthorizationBroker.AuthorizeAsync(
-   new ClientSecrets { ClientId = "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com", ClientSecret = "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" },
+   new ClientSecrets { ClientId = _goolgeSettings.GetSection("clientId").ToString(), ClientSecret = _goolgeSettings.GetSection("clientSecret").ToString() },
    new string[] { CalendarService.Scope.Calendar }, // Whatever scopes you need here.
    "user",
    default)) as UserCredential;
