@@ -55,7 +55,9 @@ const CorsesBody = (props) => {
 
   return(
     <>
-    {courses.map(o => (      
+    {courses.map(o => o.maxNumbersOfParticipants - o.numberOfParticipants > 0 && 
+    (
+      
       <div className={styles.coursesContainer}> 
         <div className={styles.ImageTitle}>{/* <img src={o.imageUrl}></img> */}
         <p>{o.name}</p>
@@ -72,7 +74,7 @@ const CorsesBody = (props) => {
         <p>Free slots:{o.maxNumbersOfParticipants - o.numberOfParticipants}</p>
         </div>
         </div>
-        <button className={buttonStyles.ProfileButton} onClick={() => AddUser(o.id, o.name, o.duration, o.date, o.description, o.hour)} >Book slot</button>
+        <button style={{color: "white"}} className={buttonStyles.ProfileButton} onClick={() => AddUser(o.id, o.name, o.duration, o.date, o.description, o.hour)} >Book slot</button>
       </div>
      ))}
      <ToastContainer />

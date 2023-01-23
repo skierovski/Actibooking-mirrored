@@ -1,5 +1,5 @@
 .button{
-    background-color: brown;
+    background-color: red;
     border-radius: 10px;
     display: inline-block;
     cursor: pointer;
@@ -15,4 +15,5 @@
     right: 0px;
     padding:none;
     border: 0px;
+    opacity: 90%;
 }
