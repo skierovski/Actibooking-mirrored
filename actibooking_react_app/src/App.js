@@ -14,6 +14,7 @@ import CalendarAuthorize from "./Components/Authorization/GoogleAthorization/Cal
 const App = () => {
 
   const [cookies, setCookies, removeCookie] = useCookies();
+  console.log(process.env.REACT_APP_SECRET_KEY)
 
   const GetCookie = (cookieName) => {
     return cookies[cookieName];

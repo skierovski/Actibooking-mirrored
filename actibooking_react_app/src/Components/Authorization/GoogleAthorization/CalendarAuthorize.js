@@ -7,14 +7,15 @@ const CalendarAuthorize = () => {
     function GetAccesCalendar() {
         tokenClient.requestAccessToken();
     }
+    console.log(process.env.REACT_APP_SECRET_KEY)
 
     useEffect(() => {
         /* global google */
         google.accounts.id.initialize({
-            client_id: "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com", 
+            client_id: process.env.REACT_APP_SECRET_KEY, 
             });
             setTokenClient(google.accounts.oauth2.initTokenClient({
-                client_id: "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com",
+                client_id: process.env.REACT_APP_SECRET_KEY,
                 scope: 'https://www.googleapis.com/auth/calendar.readonly',
                 callback: (response) => {
                   console.log(response)

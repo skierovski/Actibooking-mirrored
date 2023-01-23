@@ -26,7 +26,7 @@ const GoogleLogInPage = () => {
     useEffect(() => {
         /* global google */
         google.accounts.id.initialize({
-        client_id: "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com",
+        client_id: process.env.REACT_APP_SECRET_KEY,
         callback: handleCallBackResponse,
         
         });
