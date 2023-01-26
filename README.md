@@ -1,4 +1,5 @@
 Actibooking is an app that helps you book and manage extra activities like dance classes and guitar lessons. It integrates with Google Calendar so you can easily see and schedule your reservations, and share them with friends and family. You can browse and book a variety of activities that fit your interests and schedule. Actibooking is user-friendly and convenient.
+[Link to the presentation describing the project](https://docs.google.com/presentation/d/15_ofenf6lZsjNhphJbLtqvJpdyv6JMI69liYQpveRPA/edit?usp=sharing)
 
 ![image](https://user-images.githubusercontent.com/98186890/213995675-210a8822-d2d2-45a8-9248-4d1652a9e510.png)
 ![image](https://user-images.githubusercontent.com/98186890/213995768-1042fbc2-7c89-40b0-aadc-e2f72602ce4b.png)
