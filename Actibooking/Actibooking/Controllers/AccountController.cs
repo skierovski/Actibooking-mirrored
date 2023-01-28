@@ -150,8 +150,8 @@ namespace Actibooking.Controllers
             UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                 new ClientSecrets
                 {
-                    ClientId = "337470745858-36e0ar5ddn0csbinl1ore0qor37t6imn.apps.googleusercontent.com",
-                    ClientSecret = "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"
+                    ClientId = _goolgeSettings.GetSection("clientId").ToString(),
+                    ClientSecret = _goolgeSettings.GetSection("clientSecret").ToString()
                 },
                 scopes,
                 userGoogle.refreshTokem,

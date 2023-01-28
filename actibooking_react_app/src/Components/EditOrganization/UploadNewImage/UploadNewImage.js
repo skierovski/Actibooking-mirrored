@@ -6,6 +6,7 @@ import PutDataHandler from "../../FetchMethods/PutMethods/PutDataHandler";
 import Input from "../../DefaultModels/Input/Input";
 import CookiesContext from "../../../Context/cookies-context";
 import styles from "./UploadNewImage.module.css";
+import StyleButton from "../ManagePhotos/ManagePhotos.module.css"
 function UploadNewImage(props) {
   const [file, setFile] = useState();
   const [imageURL, setImageURL] = useState([]);
@@ -44,8 +45,8 @@ function UploadNewImage(props) {
   return (
     <>
       <img className={styles.NewImage} src={props.oldUrl} alt="Old Logo" />
-      <input type="file" onChange={saveFile} />
-      <input type="button" value="upload" onClick={uploadFile} />
+      <input className={StyleButton.Button} type="file" onChange={saveFile} />
+      <input className={StyleButton.Button}  type="button" value="upload" onClick={uploadFile} />
       <img className={styles.NewImage} src={imageURL}></img>
     </>
   );

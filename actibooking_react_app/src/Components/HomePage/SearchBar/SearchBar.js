@@ -12,8 +12,8 @@ const SearchBar = () => {
 
     return(
         <>
-            <BiSearchAlt size={50} className={styles.searchIcon}/>
-            <input className={styles.searchBar} maxLength={50} value={searchValue} onChange={searchValueHandler} placeholder="Search..."/>
+            <input className={styles.searchBar} maxLength={50} value={searchValue} onChange={searchValueHandler} placeholder="Search Courses..."/>
+            <BiSearchAlt size={40} className={styles.searchIcon}/>
             {searchValue && <CgClose size={25} className={styles.closeIcon} onClick={() => setSearchValue('')}/>}
         </>
     )

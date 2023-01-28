@@ -5,6 +5,9 @@ import Input from '../../DefaultModels/Input/Input';
 import PutDataHandler from '../../FetchMethods/PutMethods/PutDataHandler';
 import { useRef } from 'react';
 import {BiEdit} from "react-icons/bi";
+import { ToastContainer, toast } from 'react-toastify';
+import GetDataHandler from '../../FetchMethods/GetDataHandler';
+import { useParams } from 'react-router-dom';
 
 const AccountInfoContainer = () =>{
   const enteredFirstName = useRef();
@@ -32,6 +35,11 @@ const AccountInfoContainer = () =>{
     };
     setIsDisabled(true);
     PutDataHandler("https://localhost:7127/api/User", data);
+    toast.success("You edited your personal information",{
+      position: toast.POSITION.TOP_CENTER
+    })
+    setTimeout(() => {account_ctx.ReloadData()}, 1000) 
+    
 };
 
 
@@ -55,6 +63,7 @@ const AccountInfoContainer = () =>{
             </div>
             {!isDisabled && <button className={styles.saveChangesButton} type="submit">Save Changes</button>}
         </form>
+        <ToastContainer/>
     </div>
     )
 }

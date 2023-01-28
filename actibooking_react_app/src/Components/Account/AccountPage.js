@@ -53,7 +53,7 @@ const AccountPage = () => {
         setBody,
         logOut,
         setEditUserPhoto,
-        ReloadData
+        ReloadData,
       }}>
       <Navibar/>
         {userData &&

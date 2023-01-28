@@ -15,6 +15,7 @@ import styles from "./ManagePhotos.module.css";
 import Img from "./Img";
 import Gallery from "../../Organization/SingleOrganizationPage/GalleriesBody/Gallery";
 import Gallery2 from "./Gallery2";
+
 function ManagePhotos(props) {
   const [file, setFile] = useState();
   const [imageURL, setImageURL] = useState([]);
@@ -64,8 +65,8 @@ function ManagePhotos(props) {
 
   return (
     <>
-      <input type="file" onChange={saveFile} />
-      <input type="button" value="upload" onClick={uploadFile} />
+      <input className={styles.Button}  type="file" onChange={saveFile} />
+      <input className={styles.Button} type="button" value="upload" onClick={uploadFile} />
       <Gallery2 urls={imageUrls} setSelectedImg={setSelectedImg}/>
 
     </>
