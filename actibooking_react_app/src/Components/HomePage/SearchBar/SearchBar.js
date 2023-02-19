@@ -8,13 +8,17 @@ const SearchBar = () => {
 
     const searchValueHandler = (event) => {
         setSearchValue(event.target.value);
+        console.log(searchValue);
+    }
+
+    const searchPhrase = () =>{
+        
     }
 
     return(
         <>
-            <input className={styles.searchBar} maxLength={50} value={searchValue} onChange={searchValueHandler} placeholder="Search Courses..."/>
-            <BiSearchAlt size={40} className={styles.searchIcon}/>
-            {searchValue && <CgClose size={25} className={styles.closeIcon} onClick={() => setSearchValue('')}/>}
+            <input className={styles.searchBar} type="search" maxLength={50} value={searchValue} onChange={searchValueHandler} placeholder="Search Courses..."/>
+            <BiSearchAlt size={40} className={styles.searchIcon}  onClick={() => searchPhrase()}/>
         </>
     )
 }

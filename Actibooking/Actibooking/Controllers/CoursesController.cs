@@ -69,5 +69,12 @@ namespace Actibooking.Controllers
             var courseList = await _courseManager.GetOrganizationCourses(orgId);
             return Ok(courseList);
         }
+
+        [HttpGet("search/{phrase}")]
+        public async Task<IActionResult> SearchByPhrase(string phrase)
+        {
+            var courseList = await _courseManager.SearchPhrase(phrase);
+            return Ok(courseList);
+        }
     }
 }

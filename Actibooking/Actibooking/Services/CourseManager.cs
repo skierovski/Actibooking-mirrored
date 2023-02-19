@@ -129,5 +129,11 @@ namespace Actibooking.Services
             var courseList = await _uow.CourseRepo.GetAsync(filter: x => x.OrganizationId == orgId);
             return (List<Course>)courseList;
         }
+
+        public async Task<List<Course>> SearchPhrase(string phrase)
+        {
+            var courseList = await _uow.CourseRepo.GetAsync(filter: x => x.Name.Contains(phrase));
+            return (List<Course>) courseList;
+        }
     }
 }
