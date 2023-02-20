@@ -1,23 +1,17 @@
 import './App.css';
-import {Grid} from '@mui/material'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './Components/Pages/Home/Home';
 
 
 function App() {
   return (
       <div className='Container'>
-        <Grid container>
-          <Grid item xs={8} sx={{display: 'flex', justifyContent: 'flex-start'}}>Logo</Grid>
-          <Grid items xs={2} sx={{display: 'flex', justifyContent: 'flex-end'}}>Przycisk</Grid>
-          <Grid items xs={2} sx={{display: 'flex', justifyContent: 'flex-end'}}>Przycisk</Grid>
-        </Grid>
-        <Grid container>
-          <Grid item xs={6}>test</Grid>
-          <Grid items xs={6}>test</Grid>
-        </Grid>
-        <Grid container>
-          <Grid item xs={4}>test</Grid>
-          <Grid items xs={8}>test</Grid>
-        </Grid>
+        <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
         
       </div>
   );
