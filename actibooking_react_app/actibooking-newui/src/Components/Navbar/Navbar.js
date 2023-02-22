@@ -15,7 +15,7 @@ const Navbar = () => {
         <span className={Style.Logo}>actibooking</span>
         </Grid>
         <Grid item xs={5} sx={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-        <Button style={{fontSize: '1.2rem', display: 'inline-block', position: 'relative', border: 'none', background: 'transparent', letterSpacing: '2px'}} function={setOpenModal} functionProps={true}  text='sign up/log in' animation='underline'/>
+        <Button style={{fontSize: '1.2rem', color: 'white', display: 'inline-block', position: 'relative', border: 'none', background: 'transparent', letterSpacing: '2px'}} function={setOpenModal} functionProps={true}  text='sign up/log in' animation='underline'/>
         <Modal open={openModal} onClose={() => setOpenModal(false)} children={<LogInForm/>}></Modal>
         </Grid>
     </>

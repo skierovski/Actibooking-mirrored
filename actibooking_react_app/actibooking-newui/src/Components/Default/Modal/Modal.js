@@ -15,7 +15,7 @@ export default function Modal({open, onClose, children}) {
     <div className='modal'>
         <div className='modal-content'>
             {children}
-            <Button animation='none' text={<ClearIcon/>} style={{position: 'absolute', fontSize: '1.3rem', border: 'none', borderRadius: '10px', backgroundColor: 'transparent', color: 'black', top: '1%', right: '1%'}} function={onClose}/>
+            <Button animation='none' text={<ClearIcon fontSize="large"/>} style={{position: 'absolute', fontSize: '1.3rem', border: 'none', borderRadius: '10px', backgroundColor: 'transparent', color: 'black', top: '1%', right: '1%'}} function={onClose}/>
         </div>
     </div>
     </>,
