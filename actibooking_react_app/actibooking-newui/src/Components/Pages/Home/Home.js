@@ -6,7 +6,7 @@ const Home = () => {
     return ( 
     <Grid container>
         <Navbar/>
-        <Grid item><WideoWrapper/></Grid>
+        <WideoWrapper/>
     </Grid>
      );
 }
