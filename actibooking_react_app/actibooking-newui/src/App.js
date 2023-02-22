@@ -22,8 +22,7 @@ function App() {
         <ResponsiveContext.Provider value={{screenWidth: width}}>
         <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>}>
-        </Route>
+        <Route path="/" element={<Home/>}/>
       </Routes>
     </BrowserRouter>
     </ResponsiveContext.Provider >

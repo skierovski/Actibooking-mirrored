@@ -4,6 +4,7 @@ import Button from '../Default/Button/Button';
 import Modal from '../Default/Modal/Modal';
 import { useState } from 'react';
 import LogInForm from '../Default/Forms/LogInForm/LogInForm';
+import zIndex from '@mui/material/styles/zIndex';
 
 const Navbar = () => {
     const [openModal, setOpenModal] = useState(false)
