@@ -7,12 +7,11 @@ function App() {
   return (
       <div className='Container'>
         <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-        
+          <Routes>
+            <Route path="/" element={<Home/>}>
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </div>
   );
 }
